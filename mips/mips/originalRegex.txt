@@ -1,0 +1,1 @@
+({r-inst})\s+{register-desc-regex}\s*,\s*{register-desc-regex}\s*,\s*{register-desc-regex}\s*#

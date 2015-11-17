@@ -1,0 +1,2 @@
+{r-inst} [Aa][Dd][Dd]|[Xx][Oo][Rr]
+{register-desc-regex} [\$]([stva]{0,1}[0-9]{1,2})
