@@ -120,6 +120,18 @@
   <ItemGroup>
     <ClInclude Include="inst.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\ReallyCoolestRegExVerifier\regex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\MIPS.txt" />
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\originalRegex.txt" />
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\regexRule.txt" />
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\replaceRule.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\tester.bat" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

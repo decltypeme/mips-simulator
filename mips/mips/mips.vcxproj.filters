@@ -19,4 +19,28 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\ReallyCoolestRegExVerifier\regex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\originalRegex.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\regexRule.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\replaceRule.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\MIPS.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Visual Studio 2015\Projects\ReallyCoolestRegExVerifier\Debug\test\sandbox\tester.bat">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
