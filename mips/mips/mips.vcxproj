@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="add.h" />
     <ClInclude Include="inst.h" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,7 @@
     <None Include="tester.bat" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="inst.cpp" />
     <ClCompile Include="regex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
