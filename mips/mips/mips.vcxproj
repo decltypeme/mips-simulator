@@ -118,6 +118,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ble.h" />
+    <ClInclude Include="hazard_detection.h" />
     <ClInclude Include="j.h" />
     <ClInclude Include="jal.h" />
     <ClInclude Include="jr.h" />
@@ -138,6 +140,7 @@
     <None Include="tester.bat" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ble.cpp" />
     <ClCompile Include="iformat.cpp" />
     <ClCompile Include="inst.cpp" />
     <ClCompile Include="j.cpp" />

@@ -1,17 +1,16 @@
 
 #include <cstring>
 #include <stdexcept>
+#include "inst.h"
 using namespace std;
-extern class inst;
 
 
 int PC = 0;
-int inst_count = 0;
 int registers[32];
 int stack_size = 0;
 int stack[4];
 int data_memory[16];
-inst inst_memory[128];
+inst inst_memory[16];
 inst* pipeline[5];
 
 
@@ -29,7 +28,7 @@ void pushtostack(int address)
 		stack[++stack_size] = address;
 	}
 	else
-		throw logic_error("Stack full");
+		throw logic_error("Stack full.");
 }
 
 int popfromstack()
@@ -39,5 +38,10 @@ int popfromstack()
 		return stack[stack_size--];
 	}
 	else
-		throw logic_error("Stack empty");
+		throw logic_error("Stack empty.");
+}
+
+void proposePC()
+{
+
 }

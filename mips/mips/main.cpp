@@ -1,16 +1,18 @@
 
 #include "utility.h"
 
+void proposePC(int address) {}
+
 int main()
 {
 	initialize();
-	bool flag = true;
-	while (flag)
+
+	while (true)
 	{
-		fetch();
-		decode();
-		execute();
-		memory();
-		write_back();
+		//fetch();
+		//decode();
+		//execute();
+		//memory();
+		//write_back();
 	}
 }

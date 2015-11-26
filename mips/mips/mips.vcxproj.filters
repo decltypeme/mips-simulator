@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Utility Structures and Functions">
       <UniqueIdentifier>{b05f3a9a-86fd-462d-82f5-9b24303c3922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Hazard Detection">
+      <UniqueIdentifier>{e86220ed-4227-45cc-85c2-d754843218ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iformat.h">
@@ -68,6 +71,12 @@
     </ClInclude>
     <ClInclude Include="utility.h">
       <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="hazard_detection.h">
+      <Filter>Header Files\Hazard Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="ble.h">
+      <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +123,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ble.cpp">
+      <Filter>Source Files\Instructions General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
