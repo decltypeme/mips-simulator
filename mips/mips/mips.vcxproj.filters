@@ -37,6 +37,9 @@
     <Filter Include="Resource Files\Regex">
       <UniqueIdentifier>{51c65a89-afe2-4de8-a800-f27bf5d761ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utility Structures and Functions">
+      <UniqueIdentifier>{b05f3a9a-86fd-462d-82f5-9b24303c3922}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iformat.h">
@@ -62,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="jal.h">
       <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -126,6 +126,7 @@
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClInclude Include="rt.h" />
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="MIPS.txt" />

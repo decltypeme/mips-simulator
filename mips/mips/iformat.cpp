@@ -2,8 +2,8 @@
 #include <stdexcept>
 using namespace std;
 
-iformat::iformat(int source1, int source2)
-	:source1(source1), source2(source2)
+iformat::iformat(int source1, int source2, int immediate)
+	:source1(source1), source2(source2), immediate(immediate)
 {
 	if (!valid()) throw logic_error("Bad construction of iformat instruction.");
 }
