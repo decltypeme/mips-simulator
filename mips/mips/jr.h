@@ -1,14 +1,15 @@
 
 #include "inst.h"
 
-class add : public inst
+class jr : public inst
 {
 public:
-	inst(int hazard = -1);
-	virtual ~inst();
+	jr(int source = -1, int hazard = -1);
+	virtual ~jr();
 	virtual void operate();
 
 protected:
+	int source;
 	int hazard;
 	virtual bool valid();
 };

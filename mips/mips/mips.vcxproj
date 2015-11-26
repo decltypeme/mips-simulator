@@ -118,8 +118,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="add.h" />
+    <ClInclude Include="j.h" />
+    <ClInclude Include="jal.h" />
+    <ClInclude Include="jr.h" />
+    <ClInclude Include="iformat.h" />
+    <ClInclude Include="jmp.h" />
+    <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
+    <ClInclude Include="rt.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="MIPS.txt" />
@@ -131,8 +137,18 @@
     <None Include="tester.bat" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="iformat.cpp" />
     <ClCompile Include="inst.cpp" />
-    <ClCompile Include="regex.cpp" />
+    <ClCompile Include="j.cpp" />
+    <ClCompile Include="jal.cpp" />
+    <ClCompile Include="jmp.cpp" />
+    <ClCompile Include="jr.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="regex.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="rformat.cpp" />
+    <ClCompile Include="rt.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

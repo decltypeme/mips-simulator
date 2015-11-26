@@ -13,13 +13,55 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Regex">
+      <UniqueIdentifier>{2a21f973-885d-4e28-a7b2-9c2723141cac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Instructions General">
+      <UniqueIdentifier>{15bf42be-318f-491c-8a84-1f553eab32ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Instructions General">
+      <UniqueIdentifier>{7aaaea3c-ef53-4d54-994a-dc2e5c8e18eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rformat">
+      <UniqueIdentifier>{ff42cb07-11a5-4914-bd08-48db6620e319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rformat">
+      <UniqueIdentifier>{983bf0c2-0a92-4664-a27d-59ad38a572d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Iformat">
+      <UniqueIdentifier>{fe07a0d3-f409-466d-8ed1-dfffb222b4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Iformat">
+      <UniqueIdentifier>{2da4c251-24b1-44e3-93de-8429a3f87274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Regex">
+      <UniqueIdentifier>{51c65a89-afe2-4de8-a800-f27bf5d761ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inst.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="iformat.h">
+      <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
-    <ClInclude Include="add.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="jmp.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="rformat.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="inst.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="jr.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="rt.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="j.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="jal.h">
+      <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -27,26 +69,50 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="originalRegex.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Regex</Filter>
     </Text>
     <Text Include="regexRule.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Regex</Filter>
     </Text>
     <Text Include="replaceRule.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Regex</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="iformat.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="inst.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="jmp.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="rformat.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="jr.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="rt.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="j.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="jal.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="regex.cpp">
+      <Filter>Source Files\Regex</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="tester.bat">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="regex.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inst.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
