@@ -4,7 +4,7 @@
 class jal : public j
 {
 public:
-	jal(int address, int hazard = -1);
+	jal(int address);
 	virtual ~jal();
 	virtual void operate();
 };

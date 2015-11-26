@@ -4,10 +4,10 @@ using namespace std;
 
 extern int PC;
 
-j::j(int address, int hazard)
-	:address(address), hazard(hazard)
+j::j(int address)
+	:address(address)
 {
-	if (!valid()) throw logic_error("Bad construction of j instruction.");
+	if (!valid()) throw logic_error("Bad construction of jump instruction.");
 }
 
 j::~j() {}
@@ -16,5 +16,5 @@ void j::operate() { PC = address; }
 
 bool j::valid()
 {
-	return (address != -1) || (hazard != -1);
+	return (address != -1);
 }

@@ -4,11 +4,7 @@
 class rt : public inst
 {
 public:
-	rt(int hazard = -1);
+	rt();
 	virtual ~rt();
 	virtual void operate();
-
-protected:
-	int hazard;
-	virtual bool valid();
 };
