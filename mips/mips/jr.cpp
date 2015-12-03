@@ -6,8 +6,8 @@ extern int PC;
 extern int registers[32];
 extern void proposePC(int proposedPC, inst* instProposing);
 
-jr::jr(int source)
-	:source(source)
+jr::jr(int source, int instAddress)
+	:inst(instAddress), source(source)
 {
 	if (!valid()) throw logic_error("Bad construction of jr instruction.");
 }

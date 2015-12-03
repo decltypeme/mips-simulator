@@ -6,8 +6,8 @@ extern int PC;
 extern int registers[32];
 extern void proposePC(int proposedPC, inst* instProposing);
 
-jal::jal(int address)
-	:j(address) {}
+jal::jal(int address, int instAddress)
+	:j(address, instAddress) {}
 
 jal::~jal() {}
 

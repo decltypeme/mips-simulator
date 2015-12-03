@@ -4,7 +4,7 @@
 class iformat : public inst
 {
 public:
-	iformat(int source = -1, int destination = -1, int immediate = 0);
+	iformat(int source = -1, int destination = -1, int immediate = 0, int instAddress = -1);
 	virtual ~iformat();
 	virtual void operate() = 0;
 

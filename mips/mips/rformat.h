@@ -4,7 +4,7 @@
 class rformat : public inst
 {
 public:
-	rformat(int source1 = -1, int source2 = -1 , int destination = -1);
+	rformat(int source1 = -1, int source2 = -1 , int destination = -1, int instAddress = -1);
 	virtual ~rformat();
 	virtual void operate()=0;
 

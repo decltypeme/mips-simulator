@@ -130,7 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="tester.bat">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Regex</Filter>
     </None>
   </ItemGroup>
 </Project>
