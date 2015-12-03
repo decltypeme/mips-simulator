@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Hazard Detection">
       <UniqueIdentifier>{e86220ed-4227-45cc-85c2-d754843218ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Datapath">
+      <UniqueIdentifier>{1b49d330-0435-46fd-9559-fbe7e381afcb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="iformat.h">
@@ -126,6 +129,9 @@
     </ClCompile>
     <ClCompile Include="ret.cpp">
       <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="datapath.cpp">
+      <Filter>Source Files\Datapath</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ble.cpp" />
+    <ClCompile Include="datapath.cpp" />
     <ClCompile Include="iformat.cpp" />
     <ClCompile Include="inst.cpp" />
     <ClCompile Include="j.cpp" />

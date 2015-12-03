@@ -1,5 +1,6 @@
 
 #include "utility.cpp"
+#include "hazard_detection.cpp"
 
 int main()
 {
@@ -7,10 +8,11 @@ int main()
 
 	while (true)
 	{
-		//fetch();
-		//decode();
-		//execute();
-		//memory();
-		//write_back();
+		fetch();
+		hazard_detection();
+		decode();
+		execute();
+		memory();
+		write_back();
 	}
 }
