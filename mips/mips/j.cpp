@@ -3,7 +3,7 @@
 using namespace std;
 
 extern int PC;
-extern void proposePC(int proposedPC);
+extern void proposePC(int proposedPC, inst* instProposing);
 
 j::j(int address)
 	:address(address)
@@ -13,7 +13,7 @@ j::j(int address)
 
 j::~j() {}
 
-void j::operate() { proposePC(address); }
+void j::operate() { proposePC(address, this); }
 
 bool j::valid()
 {

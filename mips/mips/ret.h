@@ -1,10 +1,10 @@
 
 #include "inst.h"
 
-class rt : public inst
+class ret : public inst
 {
 public:
-	rt();
-	virtual ~rt();
+	ret();
+	virtual ~ret();
 	virtual void operate();
 };

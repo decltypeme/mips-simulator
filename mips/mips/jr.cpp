@@ -4,7 +4,7 @@ using namespace std;
 
 extern int PC;
 extern int registers[32];
-extern void proposePC(int proposedPC);
+extern void proposePC(int proposedPC, inst* instProposing);
 
 jr::jr(int source)
 	:source(source)
@@ -14,7 +14,7 @@ jr::jr(int source)
 
 jr::~jr() {}
 
-void jr::operate() { proposePC(registers[source]); }
+void jr::operate() { proposePC(registers[source], this); }
 
 bool jr::valid()
 {

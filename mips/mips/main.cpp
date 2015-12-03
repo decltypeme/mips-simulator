@@ -1,7 +1,5 @@
 
-#include "utility.h"
-
-void proposePC(int address) {}
+#include "utility.cpp"
 
 int main()
 {
@@ -9,10 +7,10 @@ int main()
 
 	while (true)
 	{
-		//fetch();
-		//decode();
-		//execute();
-		//memory();
-		//write_back();
+		fetch();
+		decode();
+		execute();
+		memory();
+		write_back();
 	}
 }
