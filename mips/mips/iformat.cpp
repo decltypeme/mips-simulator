@@ -16,7 +16,21 @@ bool iformat::valid() const
 		|| (destination < 0) || (destination > 31);
 }
 
+void iformat::fetch()
+{
+	readData[0] = readRegister(source);
+	readData[1] = readRegister(destination);
+}
+
 void iformat::execute() {}
+
+void iformat::memory()
+{
+}
+
+void iformat::writeBack()
+{
+}
 
 int iformat::getsource() const { return source; }
 int iformat::getdestination() const { return destination; }

@@ -78,12 +78,6 @@
     <ClInclude Include="Parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lw.h">
-      <Filter>Header Files\Iformat</Filter>
-    </ClInclude>
-    <ClInclude Include="sw.h">
-      <Filter>Header Files\Iformat</Filter>
-    </ClInclude>
     <ClInclude Include="Add.h">
       <Filter>Header Files\Rformat</Filter>
     </ClInclude>
@@ -101,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="instructions.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Addi.h">
+      <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="Lw.h">
+      <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="Sw.h">
+      <Filter>Header Files\Iformat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -169,10 +172,19 @@
     <ClCompile Include="Slt.cpp">
       <Filter>Source Files\Rformat</Filter>
     </ClCompile>
-    <ClCompile Include="Xor.cpp">
+    <ClCompile Include="ble.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
-    <ClCompile Include="ble.cpp">
+    <ClCompile Include="Addi.cpp">
+      <Filter>Source Files\Iformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Xor.cpp">
+      <Filter>Source Files\Rformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Lw.cpp">
+      <Filter>Source Files\Iformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Sw.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
   </ItemGroup>
