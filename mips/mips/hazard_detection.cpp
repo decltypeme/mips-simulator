@@ -1,5 +1,5 @@
 
 class inst;
-extern inst* pipeline[5];
+extern inst* pipeline[4];
 
 void hazard_detection() {};
