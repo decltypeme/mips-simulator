@@ -16,6 +16,8 @@ bool iformat::valid() const
 		|| (destination < 0) || (destination > 31);
 }
 
+void iformat::operate() {}
+
 int iformat::getsource() const { return source; }
 int iformat::getdestination() const { return destination; }
 int iformat::getimmediate() const { return immediate; }

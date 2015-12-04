@@ -17,6 +17,8 @@ bool rformat::valid() const
 		|| (destination > 0) || (destination > 31);
 }
 
+void rformat::operate() {}
+
 int rformat::getsource1() const { return source1; }
 int rformat::getsource2() const { return source2; }
 int rformat::getdestination() const { return destination; }
