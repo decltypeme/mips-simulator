@@ -5,6 +5,7 @@
 class inst;
 using namespace std;
 
+constexpr int maxRegNumber = 31;
 
 int PC = 0;
 int registers[32];
@@ -14,6 +15,29 @@ int data_memory[16];
 inst* inst_memory[16];
 inst* pipeline[4];
 
+bool validateRegister(const int& reg)
+{
+	return !(reg < 0 || reg >maxRegNumber);
+}
+
+int readRegister(const int& reg)
+{
+	if (!validateRegister(reg))
+		throw invalid_argument("Invalid register passed");
+	if (reg)
+		return registers[reg];
+	else
+		return 0;
+}
+
+void writeRegister(const int&reg, const int& value)
+{
+	if (!validateRegister(reg))
+		throw invalid_argument("Invalid register passed");
+	if (reg)
+		registers[reg] = value;
+	return;
+}
 
 void initialize()
 {

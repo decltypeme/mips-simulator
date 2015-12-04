@@ -17,8 +17,10 @@
 
 extern inst* pipeline[4];
 
-void hazard_detection() 
+void hazard_detection(int& hazardsFound) 
 {
+	
+	
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -41,23 +43,23 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				IF_ID_RegRS = rform.getsource1();
-				IF_ID_RegRT = rform.getsource2();
+				IF_ID_RegRS = rptr->getsource1();
+				IF_ID_RegRT = rptr->getsource2();
 
 			}
 			if (i == 1)
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				ID_EX_RegRS = rform.getsource1();
-				ID_EX_RegRT = rform.getsource2();
+				ID_EX_RegRS = rptr -> getsource1();
+				ID_EX_RegRT = rptr ->getsource2();
 			}
 
 			if (i == 2)
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				EX_MEM_RegRD = rform.getdestination();
+				EX_MEM_RegRD = rptr -> getdestination();
 
 			}
 			if (i == 3)
@@ -65,7 +67,7 @@ void hazard_detection()
 
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = rform.getdestination();
+				MEM_WB_RegRD = rptr -> getdestination();
 			}
 
 
@@ -73,14 +75,14 @@ void hazard_detection()
 
 		}
 		
-		iformat* rptr = dynamic_cast<iformat*> (pipeline[i]);
+		iformat* iptr = dynamic_cast<iformat*> (pipeline[i]);
 		if (rptr != nullptr)
 		{
 			if (i == 0)
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = -1;
-				IF_ID_RegRS = iform.getsource();
+				IF_ID_RegRS = iptr-> getsource();
 				IF_ID_RegRT = -1;
 
 			}
@@ -88,7 +90,7 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				ID_EX_RegRS = iform.getsource();
+				ID_EX_RegRS = iptr-> getsource();
 				ID_EX_RegRT = -1;
 			}
 
@@ -96,7 +98,7 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				EX_MEM_RegRD = iform.getdestination();
+				EX_MEM_RegRD = iptr-> getdestination();
 
 			}
 			if (i == 3)
@@ -104,7 +106,7 @@ void hazard_detection()
 
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = iform.getdestination();
+				MEM_WB_RegRD = iptr-> getdestination();
 			}
 
 		}
@@ -117,5 +119,16 @@ void hazard_detection()
 
 
 	}
+
+//ExHazard Read After Write 
+ 
+	if (EX_MEM_RegWrite && ((EX_MEM_RegRD == ID_EX_RegRS) || (EX_MEM_RegRD == ID_EX_RegRT)))
+	{
+		hazardsFound = 1; // EX_MEM -> ID_EX
+	}
+	if ()
+
+		
+
 	
 };

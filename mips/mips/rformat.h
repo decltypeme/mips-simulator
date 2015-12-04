@@ -19,10 +19,16 @@ public:
 	int getwriteData() const;
 	void setwriteData(const int _source1);
 
+	virtual void fetch();
+	virtual void execute();
+	virtual void memory();
+	virtual void writeBack();
+
 protected:
 	int source1;
 	int source2;
 	int destination;
 	int writeData;
+	int data[2];
 	virtual bool valid() const;
 };
