@@ -119,7 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ble.h" />
-    <ClInclude Include="hazard_detection.cpp" />
+    <ClCompile Include="hazard_detection.cpp" />
     <ClInclude Include="j.h" />
     <ClInclude Include="jal.h" />
     <ClInclude Include="jr.h" />
@@ -129,7 +129,7 @@
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClInclude Include="ret.h" />
-    <ClInclude Include="utility.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt" />
