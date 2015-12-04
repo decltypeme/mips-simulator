@@ -1,7 +1,8 @@
 
 #include <cstring>
 #include <stdexcept>
-#include "inst.h"
+
+class inst;
 using namespace std;
 
 
@@ -10,7 +11,7 @@ int registers[32];
 int stack_size = 0;
 int stack[4];
 int data_memory[16];
-inst inst_memory[16];
+inst* inst_memory[16];
 inst* pipeline[5];
 
 
