@@ -11,4 +11,4 @@ jmp::jmp(int address)
 
 jmp::~jmp() {}
 
-void jmp::operate() const {  pushtostack(PC +4); proposePC(address, this); }
+void jmp::execute() const {  pushtostack(PC +4); proposePC(address, this); }

@@ -154,7 +154,7 @@
     <ClCompile Include="jr.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parser.cpp" />
-    <ClCompile Include="regex.cpp">
+    <ClCompile Include="fileHandling.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="rformat.cpp" />

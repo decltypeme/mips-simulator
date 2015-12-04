@@ -9,7 +9,7 @@ ble::ble(int source1, int source2, int immediate)
 
 ble::~ble() {}
 
-void ble::operate() const
+void ble::execute() const
 {
 	if (registers[source] >= registers[destination])
 		proposePC(PC + 4 + immediate, this);
