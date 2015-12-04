@@ -10,4 +10,4 @@ ret::ret() {}
 
 ret::~ret() {}
 
-void ret::operate() const { proposePC(popfromstack(), this); }
+void ret::execute() const { proposePC(popfromstack(), this); }

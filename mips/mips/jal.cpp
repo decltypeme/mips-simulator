@@ -11,4 +11,4 @@ jal::jal(int address)
 
 jal::~jal() {}
 
-void jal::operate() const { registers[31] = PC + 4; proposePC(address, this); }
+void jal::execute() const { registers[31] = PC + 4; proposePC(address, this); }

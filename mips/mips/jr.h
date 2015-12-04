@@ -6,7 +6,7 @@ class jr : public inst
 public:
 	jr(int source = -1);
 	virtual ~jr();
-	virtual void operate() const;
+	virtual void execute() const;
 	int getsource() const;
 	void setsource(const int source);
 

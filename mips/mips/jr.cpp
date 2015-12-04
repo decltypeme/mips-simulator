@@ -14,7 +14,7 @@ jr::jr(int source)
 
 jr::~jr() {}
 
-void jr::operate() const { proposePC(registers[source], this); }
+void jr::execute() const { proposePC(registers[source], this); }
 
 bool jr::valid() const
 {

@@ -4,5 +4,9 @@ class inst
 public:
 	inst();
 	virtual ~inst();
-	virtual void operate() const;
+
+	virtual void fetch();
+	virtual void execute();
+	virtual void memory();
+	virtual void writeBack();
 };

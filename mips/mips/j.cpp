@@ -13,7 +13,7 @@ j::j(int address)
 
 j::~j() {}
 
-void j::operate() const { proposePC(address, this); }
+void j::execute() const { proposePC(address, this); }
 
 bool j::valid() const
 {
