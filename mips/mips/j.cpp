@@ -5,8 +5,8 @@ using namespace std;
 extern int PC;
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-j::j(int address, int instAddress)
-	:inst(instAddress), address(address)
+j::j(int address)
+	: address(address)
 {
 	if (!valid()) throw logic_error("Bad construction of jump instruction.");
 }

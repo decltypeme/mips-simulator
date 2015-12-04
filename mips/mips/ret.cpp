@@ -6,7 +6,7 @@ extern int popfromstack();
 extern int PC;
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-ret::ret(int instAddress):inst(instAddress) {}
+ret::ret() {}
 
 ret::~ret() {}
 

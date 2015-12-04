@@ -4,7 +4,7 @@
 class ret : public inst
 {
 public:
-	ret(int instAddress = -1);
+	ret();
 	virtual ~ret();
 	virtual void operate() const;
 };

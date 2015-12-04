@@ -2,8 +2,8 @@
 #include <stdexcept>
 using namespace std;
 
-iformat::iformat(int source, int destination, int immediate, int instAddress)
-	:inst(instAddress), source(source), destination(destination), immediate(immediate)
+iformat::iformat(int source, int destination, int immediate)
+	: source(source), destination(destination), immediate(immediate)
 {
 	if (!valid()) throw logic_error("Bad construction of iformat instruction.");
 }

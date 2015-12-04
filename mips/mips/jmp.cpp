@@ -6,8 +6,8 @@ extern void pushtostack(int address);
 extern int PC;
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-jmp::jmp(int address, int instAddress)
-	:j(address, instAddress) {}
+jmp::jmp(int address)
+	:j(address) {}
 
 jmp::~jmp() {}
 

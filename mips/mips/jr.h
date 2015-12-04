@@ -4,7 +4,7 @@
 class jr : public inst
 {
 public:
-	jr(int source = -1, int instAddress = -1);
+	jr(int source = -1);
 	virtual ~jr();
 	virtual void operate() const;
 	int getsource() const;

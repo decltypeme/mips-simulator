@@ -2,8 +2,8 @@
 #include <stdexcept>
 using namespace std;
 
-rformat::rformat(int source1, int source2, int destination, int instAddress)
-	:inst(instAddress), source1(source1), source2(source2), destination(destination)
+rformat::rformat(int source1, int source2, int destination)
+	:source1(source1), source2(source2), destination(destination)
 {
 	if (!valid()) throw logic_error("Bad construction of rformat instruction.");
 }
