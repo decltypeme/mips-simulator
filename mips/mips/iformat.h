@@ -8,9 +8,16 @@ public:
 	virtual ~iformat();
 	virtual void operate() = 0;
 
+	int getsource() const;
+	int getdestination() const;
+	int getimmediate() const;
+	void setsource(const int _source);
+	void setdestination(const int _destination);
+	void setimmediate(const int _immediate);
+
 protected:
 	int source;
 	int destination;
 	int immediate;
-	virtual bool valid();
+	virtual bool valid() const;
 };

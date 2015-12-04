@@ -41,7 +41,7 @@ int popfromstack()
 		throw logic_error("Stack empty.");
 }
 
-void proposePC(int proposedPC, inst* instProposing)
+void proposePC(int proposedPC, const inst* instProposing)
 {
 
 }

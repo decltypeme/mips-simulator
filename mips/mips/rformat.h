@@ -8,9 +8,17 @@ public:
 	virtual ~rformat();
 	virtual void operate()=0;
 
+	int getsource1() const;
+	int getsource2() const;
+	int getdestination() const;
+
+	void setsource1(const int _source1);
+	void setsource2(const int _source2);
+	void setdestination(const int _destination);
+
 protected:
 	int source1;
 	int source2;
 	int destination;
-	virtual bool valid();
+	virtual bool valid() const;
 };
