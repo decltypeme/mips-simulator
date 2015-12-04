@@ -118,7 +118,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Slt.cpp" />
+    <ClCompile Include="Xor.cpp" />
+    <ClInclude Include="Add.h" />
     <ClInclude Include="ble.h" />
+    <ClCompile Include="Add.cpp" />
     <ClCompile Include="hazard_detection.cpp" />
     <ClInclude Include="j.h" />
     <ClInclude Include="jal.h" />
@@ -131,7 +135,10 @@
     <ClInclude Include="inst.h" />
     <ClInclude Include="ret.h" />
     <ClCompile Include="utility.cpp" />
+    <ClInclude Include="Slt.h" />
     <ClInclude Include="sw.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Xor.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt" />
