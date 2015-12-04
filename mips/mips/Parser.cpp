@@ -1,7 +1,57 @@
 #include "Parser.h"
-
-
-
+regex hex_reg = regex("(0x)([0-9A-Fa-f]+)");
+regex dec_reg = regex("(0d){0,1}([0-9]+)");
+immediateType resolveImmediate(const string& strImmediate, bool signExtend)
+{
+	smatch results;
+	unsigned __int16 imm16;
+	if (regex_match(strImmediate, hex_reg))
+	{
+		regex_search(strImmediate, results, hex_reg);
+		stringstream ss(results[2]);
+		ss >> hex >> imm16;
+	}
+	else if (regex_match(strImmediate, dec_reg))
+	{
+		regex_search(strImmediate, results, hex_reg);
+		stringstream ss(results[2]);
+		ss >> imm16;
+	}
+	else
+	{
+		throw invalid_argument("Invalid immediate: Unable to parse the immediate field");
+	}
+	if (signExtend)
+	{
+		return (int(__int16(imm16)));
+	}
+	else
+	{
+		return unsigned int(unsigned __int16(imm16));
+	}
+}
+immediateType resolveJImmediate(const string& strImmediate)
+{
+	smatch results;
+	int jAddr;
+	if (regex_match(strImmediate, hex_reg))
+	{
+		regex_search(strImmediate, results, hex_reg);
+		stringstream ss(results[2]);
+		ss >> hex >> jAddr;
+	}
+	else if (regex_match(strImmediate, dec_reg))
+	{
+		regex_search(strImmediate, results, hex_reg);
+		stringstream ss(results[2]);
+		ss >> jAddr;
+	}
+	else
+	{
+		throw invalid_argument("Invalid immediate: Unable to parse the immediate field");
+	}
+	return jAddr;
+}
 inst parseInstruction(const string& instString, const vector<regex>& instRules)
 {
 	if (!verifyInstruction(instString, instRules))
@@ -65,7 +115,7 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 	}
 	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
 	{
-		immediateType jAddr = resolveImmediate(params[2]);
+		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
 		{
 			return J(jAddr);
