@@ -4,7 +4,7 @@
 #include<vector>
 #include<fstream>
 #include<stdexcept>
-
+#include "Parser.h"
 
 using namespace std;
 
@@ -48,7 +48,7 @@ bool verifyLines(const vector<string>& ruleStrings, const vector<string> lines, 
 	}
 	for (int ii = 1; ii <= int(lines.size()); ii++)
 	{
-		const string& line = lines[ii-1];
+		const string& line = lines[ii - 1];
 		bool isValid = false;
 		for (auto& rule : rules)
 		{
@@ -62,26 +62,30 @@ bool verifyLines(const vector<string>& ruleStrings, const vector<string> lines, 
 			toReturn = false;
 			errorLines.push_back(ii);
 		}
-		
+
 	}
 	return toReturn;
 }
 
-
-int main(int argc, char** argv)
+//It appends the instructions when parsing, make sure it is clear.
+int fileHandler(int argc, char** argv, vector<inst*>& instsToFill = vector<inst*>())
 {
 	if (argc == 4)
 	{
-		if (string(argv[1]) == string("-verify"))
-		{
-			try
+		try {
+			vector<string> linesToVerify;
+			vector<string> str_rules;
+			vector<int> errorLines;
+			readFromFileIntoVector(linesToVerify, argv[3], '\n');
+			readFromFileIntoVector(str_rules, argv[2], '\n');
+			vector<regex> reg_rules;
+			for (auto& ruleString : str_rules)
 			{
-				vector<string> linesToVerify;
-				vector<string> rules;
-				vector<int> errorLines;
-				readFromFileIntoVector(linesToVerify, argv[3], '\n');
-				readFromFileIntoVector(rules, argv[2], '#');
-				if (verifyLines(rules, linesToVerify, errorLines))
+				reg_rules.push_back(regex(ruleString));
+			}
+			if (string(argv[1]) == string("-verify"))
+			{
+				if (verifyLines(str_rules, linesToVerify, errorLines))
 				{
 					cout << "The file is syntactically correct" << endl;
 				}
@@ -94,18 +98,31 @@ int main(int argc, char** argv)
 				}
 
 			}
-			catch (exception& ex)
+			else if ((string(argv[1]) == string("-parse")))
 			{
-				cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
+				for (const auto& toParse : linesToVerify)
+				{
+					//Skip empty lines
+					if (regex_match(toParse, reg_rules[int(instGenericType::noOps)]))
+					{
+						continue;
+					}
+					instsToFill.push_back(parseInstruction(toParse, reg_rules));
+				}
+				cout << "File has been parsed correctly" << endl;
+			}
+			else
+			{
+				cerr << "Invalid use of " << argv[1] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
 				exit(EXIT_FAILURE);
 			}
+
 		}
-		else
+		catch (exception& ex)
 		{
-			cerr << "Invalid use of " << argv[1] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
+			cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
 			exit(EXIT_FAILURE);
 		}
-
 	}
 	else if (argc == 5)
 	{

@@ -14,10 +14,8 @@ bool rformat::valid() const
 {
 	return (source1 < 0) || (source1>31)
 		|| (source2 < 0) || (source2 > 31)
-		|| (destination > 0) || (destination > 31);
+		|| (destination < 0) || (destination > 31);
 }
-
-void rformat::execute() {}
 
 int rformat::getsource1() const { return source1; }
 int rformat::getsource2() const { return source2; }
