@@ -42,7 +42,7 @@ void hazard_detection(int& hazardsFound)
 			if (i == 0)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
+				MEM_WB_RegWrite = 0;
 				IF_ID_RegRS = rptr->getsource1();
 				IF_ID_RegRT = rptr->getsource2();
 
@@ -50,7 +50,7 @@ void hazard_detection(int& hazardsFound)
 			if (i == 1)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
+				MEM_WB_RegWrite = 0;
 				ID_EX_RegRS = rptr -> getsource1();
 				ID_EX_RegRT = rptr ->getsource2();
 			}
@@ -58,14 +58,14 @@ void hazard_detection(int& hazardsFound)
 			if (i == 2)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
+				MEM_WB_RegWrite = 0;
 				EX_MEM_RegRD = rptr -> getdestination();
 
 			}
 			if (i == 3)
 			{
 
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 1;
 				MEM_WB_RegRD = rptr -> getdestination();
 			}
@@ -76,38 +76,75 @@ void hazard_detection(int& hazardsFound)
 		}
 		
 		iformat* iptr = dynamic_cast<iformat*> (pipeline[i]);
-		if (rptr != nullptr)
+		if (iptr != nullptr)
 		{
 			if (i == 0)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = -1;
-				IF_ID_RegRS = iptr-> getsource();
+				MEM_WB_RegWrite = 0;
+				IF_ID_RegRS = iptr->getsource();
 				IF_ID_RegRT = -1;
 
 			}
 			if (i == 1)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
-				ID_EX_RegRS = iptr-> getsource();
+				MEM_WB_RegWrite = 0;
+				ID_EX_RegRS = iptr->getsource();
 				ID_EX_RegRT = -1;
 			}
 
 			if (i == 2)
 			{
 				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
-				EX_MEM_RegRD = iptr-> getdestination();
+				MEM_WB_RegWrite = 0;
+				EX_MEM_RegRD = iptr->getdestination();
 
 			}
 			if (i == 3)
 			{
 
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = iptr-> getdestination();
+				MEM_WB_RegRD = iptr->getdestination();
 			}
+		}
+		lw* lwptr = dynamic_cast<lw*> (pipeline[i]);
+			if (lwptr != nullptr)
+			{
+				if (i == 0)
+				{
+					ID_EX_MemRead = 1;
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 0;
+					IF_ID_RegRT = lwptr->getsource();
+					IF_ID_RegRS = -1;
+
+				}
+				if (i == 1)
+				{
+					ID_EX_MemRead = 1;
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 0;
+					ID_EX_RegRT = lwptr->getsource();
+					ID_EX_RegRS = -1;
+				}
+
+				if (i == 2)
+				{
+					ID_EX_MemRead = 1;
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 0;
+					EX_MEM_RegRD = lwptr->getdestination();
+
+				}
+				if (i == 3)
+				{
+					ID_EX_MemRead = 1;
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 1;
+					MEM_WB_RegRD = lwptr->getdestination();
+				}
 
 		}
 
@@ -120,13 +157,23 @@ void hazard_detection(int& hazardsFound)
 
 	}
 
-//ExHazard Read After Write 
+//EX and MEM Hazard Read After Write 
  
 	if (EX_MEM_RegWrite && ((EX_MEM_RegRD == ID_EX_RegRS) || (EX_MEM_RegRD == ID_EX_RegRT)))
 	{
 		hazardsFound = 1; // EX_MEM -> ID_EX
 	}
-	if ()
+	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite) && ((MEM_WB_RegRD == ID_EX_RegRS) || (MEM_WB_RegRD == ID_EX_RegRT)))
+	{
+		hazardsFound = 2; // MEM_WB -> ID_EX
+	}
+	
+	if (ID_EX_MemRead && (ID_EX_RegRT == IF_ID_RegRS) || (ID_EX_RegRT == IF_ID_RegRS))
+	{
+		hazardsFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
+	}
+	
+	
 
 		
 
