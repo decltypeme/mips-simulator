@@ -17,7 +17,7 @@
 
 extern inst* pipeline[4];
 
-void hazard_detection(int& hazardsFound) 
+void hazard_detection(int& hazardFound, int& hazardWhere) 
 {
 	
 	
@@ -159,19 +159,55 @@ void hazard_detection(int& hazardsFound)
 
 //EX and MEM Hazard Read After Write 
  
-	if (EX_MEM_RegWrite && ((EX_MEM_RegRD == ID_EX_RegRS) || (EX_MEM_RegRD == ID_EX_RegRT)))
-	{
-		hazardsFound = 1; // EX_MEM -> ID_EX
+	hazardFound = 0;
+	if (ID_EX_MemRead)
+	{ 
+		if (ID_EX_RegRT == IF_ID_RegRS)
+		{
+			hazardWhere = 1; //RS
+			hazardFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
+		}
+		else if (ID_EX_RegRT == IF_ID_RegRT)
+		{
+			hazardWhere = 2; //RT
+			hazardFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
+		}
+		
 	}
-	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite) && ((MEM_WB_RegRD == ID_EX_RegRS) || (MEM_WB_RegRD == ID_EX_RegRT)))
+
+	if (EX_MEM_RegWrite)
 	{
-		hazardsFound = 2; // MEM_WB -> ID_EX
+		if (EX_MEM_RegRD == ID_EX_RegRS)
+		{
+			hazardWhere = 1; //RS
+			hazardFound = 1; // EX_MEM -> ID_EX
+		}
+			
+		else if (EX_MEM_RegRD == ID_EX_RegRT)
+		{
+			hazardWhere = 2; //RT
+			hazardFound = 1; // EX_MEM -> ID_EX
+		}
+		else hazardFound = 0;
+		
+	}
+	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite))
+	{
+		if (MEM_WB_RegRD == ID_EX_RegRS)
+		{
+			hazardWhere = 1; //RS
+			hazardFound = 2; // MEM_WB -> ID_EX
+		}
+		else if (MEM_WB_RegRD == ID_EX_RegRT)
+		{
+			hazardWhere = 2; //RT
+			hazardFound = 2; // MEM_WB -> ID_EX
+		}
+
+		else hazardFound = 0;
+		
 	}
 	
-	if (ID_EX_MemRead && (ID_EX_RegRT == IF_ID_RegRS) || (ID_EX_RegRT == IF_ID_RegRS))
-	{
-		hazardsFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
-	}
 	
 	
 
