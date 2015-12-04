@@ -75,11 +75,14 @@
     <ClInclude Include="ret.h">
       <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
-    <ClInclude Include="hazard_detection.cpp">
-      <Filter>Source Files\Hazard Detection</Filter>
+    <ClInclude Include="Parser.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utility.cpp">
-      <Filter>Source Files\Utility Structures and Functions</Filter>
+    <ClInclude Include="lw.h">
+      <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="sw.h">
+      <Filter>Header Files\Iformat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +138,15 @@
     </ClCompile>
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hazard_detection.cpp">
+      <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

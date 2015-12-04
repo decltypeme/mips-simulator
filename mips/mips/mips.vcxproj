@@ -125,11 +125,13 @@
     <ClInclude Include="jr.h" />
     <ClInclude Include="iformat.h" />
     <ClInclude Include="jmp.h" />
+    <ClInclude Include="lw.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClInclude Include="ret.h" />
     <ClCompile Include="utility.cpp" />
+    <ClInclude Include="sw.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt" />
