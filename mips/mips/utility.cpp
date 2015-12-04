@@ -17,9 +17,9 @@ inst* pipeline[4];
 
 void initialize()
 {
-	memset(registers, -1, sizeof(registers));
-	memset(stack, -1, sizeof(stack));
-	memset(data_memory, -1, sizeof(data_memory));
+	memset(registers, 0, sizeof(registers));
+	memset(stack, 0, sizeof(stack));
+	memset(data_memory, 0, sizeof(data_memory));
 }
 
 void pushtostack(int address)
