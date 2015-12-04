@@ -81,6 +81,9 @@
     <ClInclude Include="utility.cpp">
       <Filter>Source Files\Utility Structures and Functions</Filter>
     </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="MIPS.txt">
@@ -94,6 +97,9 @@
     </Text>
     <Text Include="replaceRule.txt">
       <Filter>Resource Files\Regex</Filter>
+    </Text>
+    <Text Include="InstructionsInOrder.txt">
+      <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +138,9 @@
     </ClCompile>
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -125,12 +125,14 @@
     <ClInclude Include="jr.h" />
     <ClInclude Include="iformat.h" />
     <ClInclude Include="jmp.h" />
+    <ClInclude Include="Parser.h" />
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClInclude Include="ret.h" />
     <ClInclude Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="InstructionsInOrder.txt" />
     <Text Include="MIPS.txt" />
     <Text Include="originalRegex.txt" />
     <Text Include="regexRule.txt" />
@@ -149,6 +151,7 @@
     <ClCompile Include="jmp.cpp" />
     <ClCompile Include="jr.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="regex.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
