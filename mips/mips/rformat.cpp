@@ -27,7 +27,8 @@ void rformat::setdestination(const int _destination) { destination = _destinatio
 
 void rformat::fetch()
 {
-
+	read_data[0] = readRegister(source1);
+	read_data[1] = readRegister(source2);
 }
 void rformat::execute()
 {
@@ -39,5 +40,5 @@ void rformat::memory()
 }
 void rformat::writeBack()
 {
-
+	writeRegister(destination, writeData);
 }

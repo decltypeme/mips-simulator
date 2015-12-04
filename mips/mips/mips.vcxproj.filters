@@ -90,6 +90,12 @@
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Xor.h">
+      <Filter>Header Files\Rformat</Filter>
+    </ClInclude>
+    <ClInclude Include="Slt.h">
+      <Filter>Header Files\Rformat</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="MIPS.txt">
@@ -155,6 +161,12 @@
       <Filter>Source Files\Regex</Filter>
     </ClCompile>
     <ClCompile Include="Add.cpp">
+      <Filter>Source Files\Rformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Xor.cpp">
+      <Filter>Source Files\Rformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Slt.cpp">
       <Filter>Source Files\Rformat</Filter>
     </ClCompile>
   </ItemGroup>

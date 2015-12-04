@@ -16,7 +16,7 @@ int registers[maxRegNumber+1];
 int stack_size = 0;
 int stack[4];
 int data_memory[dataMemSize];
-inst* inst_memory[instMemSize];
+inst inst_memory[instMemSize];
 inst* pipeline[4];
 
 bool validateRegister(const int& reg)
