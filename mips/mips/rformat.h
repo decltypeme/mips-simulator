@@ -6,7 +6,7 @@ class rformat : public inst
 public:
 	rformat(int source1 = -1, int source2 = -1 , int destination = -1);
 	virtual ~rformat();
-	virtual void operate();
+	virtual void operate() = 0;
 
 	int getsource1() const;
 	int getsource2() const;
@@ -21,4 +21,11 @@ protected:
 	int source2;
 	int destination;
 	virtual bool valid() const;
+};
+
+class Add :rformat
+{
+public:
+	Add(int rs, int rt, int rd) :rformat(rs, rt, rd) {};
+	virtual void operate() { destination  = source1}
 };
