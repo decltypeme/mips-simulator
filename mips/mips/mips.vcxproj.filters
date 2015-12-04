@@ -19,9 +19,6 @@
     <Filter Include="Source Files\Instructions General">
       <UniqueIdentifier>{15bf42be-318f-491c-8a84-1f553eab32ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Instructions General">
-      <UniqueIdentifier>{7aaaea3c-ef53-4d54-994a-dc2e5c8e18eb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Rformat">
       <UniqueIdentifier>{ff42cb07-11a5-4914-bd08-48db6620e319}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,9 @@
     </Filter>
     <Filter Include="Source Files\Datapath">
       <UniqueIdentifier>{1b49d330-0435-46fd-9559-fbe7e381afcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Instructions General">
+      <UniqueIdentifier>{7aaaea3c-ef53-4d54-994a-dc2e5c8e18eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="Parser.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lw.h">
+      <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="sw.h">
+      <Filter>Header Files\Iformat</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -133,14 +139,14 @@
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
     </ClCompile>
-    <ClCompile Include="utility.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hazard_detection.cpp">
       <Filter>Source Files\Hazard Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>Source Files\Utility Structures and Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
