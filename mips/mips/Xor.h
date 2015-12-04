@@ -1,10 +1,10 @@
 #pragma once
 #include "rformat.h"
-class Add:
+class Xor :
 	public rformat
 {
 public:
-	Add(int rs, int rt, int rd);
-	virtual ~Add();
+	Xor(int rs, int rt, int rd);
+	virtual ~Xor();
 	virtual void execute();
 };

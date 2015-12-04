@@ -29,6 +29,6 @@ protected:
 	int source2;
 	int destination;
 	int writeData;
-	int data[2];
+	int read_data[2];
 	virtual bool valid() const;
 };
