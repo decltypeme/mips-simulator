@@ -12,7 +12,7 @@ int registers[32];
 int stack_size = 0;
 int stack[4];
 int data_memory[16];
-inst* inst_memory[16];
+inst inst_memory[16];
 inst* pipeline[4];
 
 bool validateRegister(const int& reg)
