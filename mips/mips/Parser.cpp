@@ -52,7 +52,7 @@ immediateType resolveJImmediate(const string& strImmediate)
 	}
 	return jAddr;
 }
-inst parseInstruction(const string& instString, const vector<regex>& instRules)
+inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 {
 	if (!verifyInstruction(instString, instRules))
 		throw invalid_argument("Cannot parse an invalid instruction");
@@ -78,15 +78,15 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 		int rd = stoi(params[2]);
 		if (params[1] == "ADD")
 		{
-			return Add(rs, rt, rd);
+			return new Add(rs, rt, rd);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Xor(rs, rt, rd);
+			return new Xor(rs, rt, rd);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Slt(rs, rt, rd);
+			return new Slt(rs, rt, rd);
 		}
 	}
 	//I-Type Instructions
@@ -98,43 +98,52 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 		immediateType immediate = resolveImmediate(params[4]);
 		if (params[1] == "LW")
 		{
-			return Lw(rt, rs, immediate);
+			return new Lw(rt, rs, immediate);
 		}
 		else if (params[1] == "SW")
 		{
-			return Sw(rt, rs, immediate);
+			return new Sw(rt, rs, immediate);
 		}
 		else if (params[1] == "BLE")
 		{
-			return BLE(rt, rs, immediate);
+			return new BLE(rt, rs, immediate);
 		}
 	}
 	else if (params[1] == "JR")
 	{
-		return Jr(stoi(params[2]));
+		return new Jr(stoi(params[2]));
 	}
 	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
 	{
 		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
 		{
-			return J(jAddr);
+			return new J(jAddr);
 		}
 		else if (params[1] == "JAL")
 		{
-			return Jal(jAddr);
+			return new Jal(jAddr);
 		}
 		else if (params[1] == "JMP")
 		{
-			return Jmp(jAddr);
+			return new Jmp(jAddr);
 		}
 	}
 	else if (params[1] == "RET")
 	{
-		return Ret();
+		return new Ret();
 	}
 	else
 	{
 		throw logic_error("Unrecognized Instruction: Instruction was unrecognized as part of the ISA");
 	}
+}
+bool verifyInstruction(const string& instString, const vector<regex>& instRules)
+{
+	for (const auto& rule : instRules)
+	{
+		if (regex_match(instString, rule))
+			return true;
+	}
+	return false;
 }

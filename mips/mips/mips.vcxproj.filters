@@ -124,9 +124,6 @@
     <ClCompile Include="jal.cpp">
       <Filter>Source Files\Instructions General</Filter>
     </ClCompile>
-    <ClCompile Include="regex.cpp">
-      <Filter>Source Files\Regex</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -147,6 +144,9 @@
     </ClCompile>
     <ClCompile Include="hazard_detection.cpp">
       <Filter>Source Files\Hazard Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="fileHandling.cpp">
+      <Filter>Source Files\Regex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

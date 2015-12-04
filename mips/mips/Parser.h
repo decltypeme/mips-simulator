@@ -29,6 +29,7 @@ enum class instGenericType
 	jType,
 	jrType,
 	retType,
+	noOps,
 	numTypes
 };
 constexpr int instTypeCount = int(instGenericType::numTypes);
@@ -47,4 +48,4 @@ bool verifyInstruction(const string&instString, const vector<regex>& instRules);
 Instruction rules need to be passed with same order of appearance in the enum class
 Throws an exception
 */
-inst parseInstruction(const string&instString, const vector<regex>& instRules);
+inst* parseInstruction(const string&instString, const vector<regex>& instRules);
