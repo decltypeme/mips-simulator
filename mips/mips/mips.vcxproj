@@ -118,7 +118,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Add.h" />
     <ClInclude Include="ble.h" />
+    <ClCompile Include="Add.cpp" />
     <ClCompile Include="hazard_detection.cpp" />
     <ClInclude Include="j.h" />
     <ClInclude Include="jal.h" />
