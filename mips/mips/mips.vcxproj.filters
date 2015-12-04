@@ -87,6 +87,9 @@
     <ClInclude Include="Add.h">
       <Filter>Header Files\Rformat</Filter>
     </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="MIPS.txt">
