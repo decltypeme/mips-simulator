@@ -1,4 +1,4 @@
-#include "jal.h"
+#include "Jal.h"
 #include <stdexcept>
 using namespace std;
 
@@ -6,9 +6,9 @@ extern int PC;
 extern int registers[32];
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-jal::jal(int address)
-	:j(address) {}
+Jal::Jal(int address)
+	:J(address) {}
 
-jal::~jal() {}
+Jal::~Jal() {}
 
-void jal::execute() const { registers[31] = PC + 4; proposePC(address, this); }
+void Jal::execute() const { registers[31] = PC + 4; proposePC(address, this); }

@@ -1,10 +1,10 @@
-
+#pragma once
 #include "inst.h"
 
-class ret : public inst
+class Ret : public inst
 {
 public:
-	ret();
-	virtual ~ret();
+	Ret();
+	virtual ~Ret();
 	virtual void execute() const;
 };

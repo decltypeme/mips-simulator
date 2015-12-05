@@ -5,7 +5,6 @@ using namespace std;
 
 inst::inst(){}
 inst::~inst() {};
-void inst::execute() {};
 void inst::fetch() {};
 void inst::execute() {};
 void inst::memory() {};

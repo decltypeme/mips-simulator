@@ -1,6 +1,6 @@
 #include "Lw.h"
 
-Lw::Lw()
+Lw::Lw(int rs, int rt, int immediate):iformat(rs, rt, immediate)
 {
 }
 

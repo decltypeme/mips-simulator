@@ -1,4 +1,4 @@
-
+#pragma once
 #include "inst.h"
 
 class iformat : public inst

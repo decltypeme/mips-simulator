@@ -1,6 +1,4 @@
-#include "inst.h"
-#include "iformat.h"
-#include "rformat.h"
+#pragma once
 #include "Add.h"
 #include "Xor.h"
 #include "Slt.h"

@@ -1,10 +1,10 @@
+#pragma once
+#include "J.h"
 
-#include "j.h"
-
-class jal : public j
+class Jal : public J
 {
 public:
-	jal(int address=-1);
-	virtual ~jal();
+	Jal(int address = -1);
+	virtual ~Jal();
 	virtual void execute() const;
 };

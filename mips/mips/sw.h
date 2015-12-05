@@ -4,7 +4,7 @@ class Sw :
 	public iformat
 {
 public:
-	Sw();
+	Sw(int rs, int rt, int immediate);
 	virtual ~Sw();
 	virtual void execute();
 	virtual void memory();

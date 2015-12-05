@@ -2,7 +2,7 @@
 #include <cstring>
 #include <stdexcept>
 #include "Utility.h"
-
+#include "Parser.h"
 class inst;
 using namespace std;
 
