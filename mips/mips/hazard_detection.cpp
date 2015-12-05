@@ -17,7 +17,7 @@
 
 extern inst* pipeline[4];
 
-void hazard_detection(int& hazardFound, int& hazardWhere) 
+void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere) 
 {
 	
 	
@@ -30,11 +30,16 @@ void hazard_detection(int& hazardFound, int& hazardWhere)
 	int EX_MEM_RegRD = -1;
 	int MEM_WB_RegWrite = -1; 
 	int MEM_WB_RegRD = -1;
+	int JAL_EXIST = -1;
+	int JR_EXIST = -1;
+	int JAL_Where = -1;
+	
 
 
 	for (int i = 0; i < 4; i++)
 	{
-
+		int JAL_EXIST = -1;
+		int JR_EXIST = -1;
 
 		rformat* rptr = dynamic_cast<rformat*> (pipeline[i]);
 		if (rptr != nullptr)
@@ -154,6 +159,37 @@ void hazard_detection(int& hazardFound, int& hazardWhere)
 
 		}
 
+		jal* jalptr = dynamic_cast<jal*> (pipeline[i]);
+		if (jalptr != nullptr)
+		{
+			JAL_EXIST = 1;
+			if (i == 1)
+			{
+				JAL_Where = 1;
+			}
+			if (i == 2)
+			{
+				JAL_Where = 2;
+			}
+			if (i == 3)
+			{
+				JAL_Where = 3;
+			}
+			 
+
+		}
+
+		jr* jrptr = dynamic_cast<jr*> (pipeline[i]);
+		if (jrptr != nullptr)
+		{
+			if (i == 0)
+			{
+				JR_EXIST = 1;
+				if (JAL_EXIST)
+				JALWhere = JAL_Where;
+			}
+
+		}
 
 	}
 
@@ -206,6 +242,10 @@ void hazard_detection(int& hazardFound, int& hazardWhere)
 
 		else hazardFound = 0;
 		
+	}
+	if (JR_EXIST == 1 && JAL_EXIST)
+	{
+		hazardFound = 4;
 	}
 	
 	
