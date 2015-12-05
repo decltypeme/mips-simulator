@@ -5,8 +5,8 @@
 
 #include "iformat.h"
 #include "ble.h"
-#include "lw.h"
-#include "sw.h"
+#include "Lw.h"
+#include "Sw.h"
 
 
 #include "j.h"
@@ -17,10 +17,9 @@
 
 extern inst* pipeline[4];
 
-void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere) 
+void hazard_detection(int** hazardFound) 
 {
-	
-	
+		
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -33,18 +32,17 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 	int JAL_EXIST = -1;
 	int JR_EXIST = -1;
 	int JAL_Where = -1;
+	int JALWhere = -1;
 	
-
+	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
 
 	for (int i = 0; i < 4; i++)
 	{
-		int JAL_EXIST = -1;
-		int JR_EXIST = -1;
 
 		rformat* rptr = dynamic_cast<rformat*> (pipeline[i]);
 		if (rptr != nullptr)
 		{
-			if (i == 0)
+			if (i == 0) //IF_ID
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
@@ -52,7 +50,7 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 				IF_ID_RegRT = rptr->getsource2();
 
 			}
-			if (i == 1)
+			if (i == 1) //ID_EX
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
@@ -60,17 +58,17 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 				ID_EX_RegRT = rptr ->getsource2();
 			}
 
-			if (i == 2)
+			if (i == 2) // EX_MEM
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
 				EX_MEM_RegRD = rptr -> getdestination();
 
 			}
-			if (i == 3)
+			if (i == 3) //MEM_WB
 			{
 
-				EX_MEM_RegWrite = 0;
+				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
 				MEM_WB_RegRD = rptr -> getdestination();
 			}
@@ -109,20 +107,20 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 			if (i == 3)
 			{
 
-				EX_MEM_RegWrite = 0;
+				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
 				MEM_WB_RegRD = iptr->getdestination();
 			}
 		}
-		lw* lwptr = dynamic_cast<lw*> (pipeline[i]);
-			if (lwptr != nullptr)
+		Lw* Lwptr = dynamic_cast<Lw*> (pipeline[i]);
+			if (Lwptr != nullptr)
 			{
 				if (i == 0)
 				{
 					ID_EX_MemRead = 1;
 					EX_MEM_RegWrite = 1;
 					MEM_WB_RegWrite = 0;
-					IF_ID_RegRT = lwptr->getsource();
+					IF_ID_RegRT = Lwptr->getsource();
 					IF_ID_RegRS = -1;
 
 				}
@@ -131,7 +129,7 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 					ID_EX_MemRead = 1;
 					EX_MEM_RegWrite = 1;
 					MEM_WB_RegWrite = 0;
-					ID_EX_RegRT = lwptr->getsource();
+					ID_EX_RegRT = Lwptr->getsource();
 					ID_EX_RegRS = -1;
 				}
 
@@ -140,15 +138,15 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 					ID_EX_MemRead = 1;
 					EX_MEM_RegWrite = 1;
 					MEM_WB_RegWrite = 0;
-					EX_MEM_RegRD = lwptr->getdestination();
+					EX_MEM_RegRD = Lwptr->getdestination();
 
 				}
 				if (i == 3)
 				{
 					ID_EX_MemRead = 1;
-					EX_MEM_RegWrite = 0;
+					EX_MEM_RegWrite = 1;
 					MEM_WB_RegWrite = 1;
-					MEM_WB_RegRD = lwptr->getdestination();
+					MEM_WB_RegRD = Lwptr->getdestination();
 				}
 
 		}
@@ -165,14 +163,20 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 			JAL_EXIST = 1;
 			if (i == 1)
 			{
+				EX_MEM_RegWrite = 1;
+				MEM_WB_RegWrite = 0;
 				JAL_Where = 1;
 			}
 			if (i == 2)
 			{
+				EX_MEM_RegWrite = 1;
+				MEM_WB_RegWrite = 0;
 				JAL_Where = 2;
 			}
 			if (i == 3)
 			{
+				EX_MEM_RegWrite = 1;
+				MEM_WB_RegWrite = 1;
 				JAL_Where = 3;
 			}
 			 
@@ -185,8 +189,10 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 			if (i == 0)
 			{
 				JR_EXIST = 1;
+				IF_ID_RegRT = jrptr->getsource();
 				if (JAL_EXIST)
 				JALWhere = JAL_Where;
+
 			}
 
 		}
@@ -196,17 +202,18 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 //EX and MEM Hazard Read After Write 
  
 	hazardFound = 0;
-	if (ID_EX_MemRead)
+	if (ID_EX_MemRead)  // for example lw $2,20($1) followed by and $4,$2,$5 
 	{ 
 		if (ID_EX_RegRT == IF_ID_RegRS)
 		{
-			hazardWhere = 1; //RS
-			hazardFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
+			
+			hazardFound[0][2] = 3; //Stall the pipeline and MEM_WB -> ID_EX
+			hazardFound[1][2] = 1; //RS
 		}
 		else if (ID_EX_RegRT == IF_ID_RegRT)
 		{
-			hazardWhere = 2; //RT
-			hazardFound = 3; //Stall the pipeline and MEM_WB -> ID_EX
+			hazardFound[0][2] = 3; //Stall the pipeline and MEM_WB -> ID_EX
+			hazardFound[1][2] = 2; //RT
 		}
 		
 	}
@@ -215,37 +222,77 @@ void hazard_detection(int& hazardFound, int& hazardWhere, int&JALWhere)
 	{
 		if (EX_MEM_RegRD == ID_EX_RegRS)
 		{
-			hazardWhere = 1; //RS
-			hazardFound = 1; // EX_MEM -> ID_EX
+			hazardFound[0][0] = 1; //EX_MEM -> ID_EX
+			hazardFound[1][0] = 1; //RS
+			
 		}
 			
 		else if (EX_MEM_RegRD == ID_EX_RegRT)
 		{
-			hazardWhere = 2; //RT
-			hazardFound = 1; // EX_MEM -> ID_EX
+			hazardFound[0][0] = 1; //EX_MEM -> ID_EX
+			hazardFound[1][0] = 2; //RT
+
 		}
-		else hazardFound = 0;
+		
+		else EX_MEM_RegWrite = 0;
 		
 	}
+
 	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite))
 	{
 		if (MEM_WB_RegRD == ID_EX_RegRS)
 		{
-			hazardWhere = 1; //RS
-			hazardFound = 2; // MEM_WB -> ID_EX
+			hazardFound[0][1] = 2; //MEM_WB -> ID_EX
+			hazardFound[1][1] = 1; //RS
+			
 		}
 		else if (MEM_WB_RegRD == ID_EX_RegRT)
 		{
-			hazardWhere = 2; //RT
-			hazardFound = 2; // MEM_WB -> ID_EX
+			hazardFound[0][1] = 2; //MEM_WB -> ID_EX
+			hazardFound[1][1] = 2; //RT
+			
 		}
 
-		else hazardFound = 0;
 		
 	}
-	if (JR_EXIST == 1 && JAL_EXIST)
+	if (JAL_EXIST) // Occurence of JAL and usage of $31 in other instructions
 	{
-		hazardFound = 4;
+		if (EX_MEM_RegWrite)
+		{
+			if (ID_EX_RegRS == 31) // Rs is using $31
+			{
+				hazardFound[0][0] = 1; //EX_MEM -> ID_EX
+				hazardFound[1][0] = 1; //RS
+			}
+			if (ID_EX_RegRT == 31) // RT is using $31
+			{
+				hazardFound[0][0] = 1; //EX_MEM -> ID_EX
+				hazardFound[1][0] = 2; //RT
+			}
+		}
+		if (MEM_WB_RegWrite)
+		{
+			if (ID_EX_RegRS == 31) // Rs is using $31
+			{
+				hazardFound[0][1] = 2; //MEM_WB -> ID_EX
+				hazardFound[1][1] = 1; //RS
+			}
+			if (ID_EX_RegRT == 31) // RT is using $31
+			{
+				hazardFound[0][1] = 2; //MEM_WB -> ID_EX
+				hazardFound[1][1] = 2; //RT
+			
+			}
+		}
+	}
+
+	if (JR_EXIST == 1 && JAL_EXIST ==1) // Occurence of JAL and JR (Multiple usage of $31)
+	{
+		if (IF_ID_RegRT == 31)
+		{
+			hazardFound[0][3] = 4;
+			hazardFound[1][3] = JALWhere;
+		}
 	}
 	
 	
