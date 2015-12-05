@@ -1,4 +1,4 @@
-#include "ret.h"
+#include "Ret.h"
 #include <stdexcept>
 using namespace std;
 
@@ -6,8 +6,8 @@ extern int popfromstack();
 extern int PC;
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-ret::ret() {}
+Ret::Ret() {}
 
-ret::~ret() {}
+Ret::~Ret() {}
 
-void ret::execute() const { proposePC(popfromstack(), this); }
+void Ret::execute() const { proposePC(popfromstack(), this); }

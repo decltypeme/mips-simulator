@@ -1,11 +1,11 @@
-
+#pragma once
 #include "inst.h"
 
-class jr : public inst
+class Jr : public inst
 {
 public:
-	jr(int source = -1);
-	virtual ~jr();
+	Jr(int source = -1);
+	virtual ~Jr();
 	virtual void execute() const;
 	int getsource() const;
 	void setsource(const int source);

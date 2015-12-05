@@ -1,10 +1,10 @@
+#pragma once
+#include "J.h"
 
-#include "j.h"
-
-class jmp : public j
+class Jmp : public J
 {
 public:
-	jmp(int address = -1);
-	virtual ~jmp();
+	Jmp(int address = -1);
+	virtual ~Jmp();
 	virtual void execute() const;
 };

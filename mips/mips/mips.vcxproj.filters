@@ -54,25 +54,10 @@
     <ClInclude Include="iformat.h">
       <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
-    <ClInclude Include="jmp.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
     <ClInclude Include="rformat.h">
       <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
     <ClInclude Include="inst.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="jr.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="j.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="jal.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="ret.h">
       <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
     <ClInclude Include="Parser.h">
@@ -104,6 +89,21 @@
     </ClInclude>
     <ClInclude Include="Sw.h">
       <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="J.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="Jal.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="Jmp.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="Jr.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="Ret.h">
+      <Filter>Header Files\Instructions General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

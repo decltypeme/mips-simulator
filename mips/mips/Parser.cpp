@@ -106,7 +106,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 		}
 		else if (params[1] == "BLE")
 		{
-			return new BLE(rt, rs, immediate);
+			return new Ble(rt, rs, immediate);
 		}
 	}
 	else if (params[1] == "JR")

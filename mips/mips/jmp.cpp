@@ -1,4 +1,4 @@
-#include "jmp.h"
+#include "Jmp.h"
 #include <stdexcept>
 using namespace std;
 
@@ -6,9 +6,9 @@ extern void pushtostack(int address);
 extern int PC;
 extern void proposePC(int proposedPC, const inst* instProposing);
 
-jmp::jmp(int address)
-	:j(address) {}
+Jmp::Jmp(int address)
+	:J(address) {}
 
-jmp::~jmp() {}
+Jmp::~Jmp() {}
 
-void jmp::execute() const {  pushtostack(PC +4); proposePC(address, this); }
+void Jmp::execute() const {  pushtostack(PC +4); proposePC(address, this); }

@@ -151,13 +151,13 @@ void hazard_detection(int** hazardFound)
 
 		}
 
-		ble* rptr = dynamic_cast<ble*> (pipeline[i]);
+		Ble* rptr = dynamic_cast<Ble*> (pipeline[i]);
 		if (rptr != nullptr)
 		{
 
 		}
 
-		jal* jalptr = dynamic_cast<jal*> (pipeline[i]);
+		Jal* jalptr = dynamic_cast<Jal*> (pipeline[i]);
 		if (jalptr != nullptr)
 		{
 			JAL_EXIST = 1;
@@ -183,7 +183,7 @@ void hazard_detection(int** hazardFound)
 
 		}
 
-		jr* jrptr = dynamic_cast<jr*> (pipeline[i]);
+		Jr* jrptr = dynamic_cast<Jr*> (pipeline[i]);
 		if (jrptr != nullptr)
 		{
 			if (i == 0)

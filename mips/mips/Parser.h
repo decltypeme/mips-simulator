@@ -1,5 +1,5 @@
 #pragma once
-#include "inst.h"
+#include "instructions.h"
 #include <regex>
 #include <sstream>
 #include <string>
@@ -8,19 +8,6 @@
 typedef unsigned int immediateType;
 
 using namespace std;
-
-class Add;
-class Xor;
-class Slt;
-class Addi;
-class Lw;
-class Sw;
-class Ble;
-class Jr;
-class J;
-class Jal;
-class Jmp;
-class Ret;
 
 enum class instGenericType
 {

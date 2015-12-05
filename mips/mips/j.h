@@ -1,15 +1,15 @@
-
+#pragma once
 #include "inst.h"
 
-class j : public inst
+class J : public inst
 {
 public:
-	j(int address = -1);
-	virtual ~j();
+	J(int address = -1);
+	virtual ~J();
 	virtual void execute() const;
 
-	int j::getaddress() const;
-	void j::setaddress(const int _address);
+	int J::getaddress() const;
+	void J::setaddress(const int _address);
 
 protected:
 	int address;

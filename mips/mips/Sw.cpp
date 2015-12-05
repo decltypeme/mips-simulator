@@ -1,6 +1,6 @@
 #include "Sw.h"
 
-Sw::Sw()
+Sw::Sw(int rs, int rt, int immediate) :iformat(rs, rt, immediate)
 {
 }
 
