@@ -1,11 +1,11 @@
 #pragma once
 #include "iformat.h"
-class Lw :
+class Addi :
 	public iformat
 {
 public:
-	Lw();
-	virtual ~Lw();
+	Addi();
+	virtual ~Addi();
 	virtual void execute();
 	virtual void memory();
 	virtual void writeBack();

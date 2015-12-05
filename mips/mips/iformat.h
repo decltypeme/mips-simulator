@@ -6,7 +6,13 @@ class iformat : public inst
 public:
 	iformat(int source = -1, int destination = -1, int immediate = 0);
 	virtual ~iformat();
+
+
+	virtual void fetch();
 	virtual void execute();
+	virtual void memory();
+	virtual void writeBack();
+
 
 	int getsource() const;
 	int getdestination() const;
@@ -16,9 +22,10 @@ public:
 	void setimmediate(const int _immediate);
 
 protected:
-	int source;
-	int destination;
+	int source;			//rs
+	int destination;	//rt
 	int immediate;
 	int writeData;
+	int readData[2];
 	virtual bool valid() const;
 };
