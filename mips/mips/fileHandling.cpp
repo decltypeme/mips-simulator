@@ -70,11 +70,12 @@ bool verifyLines(const vector<string>& ruleStrings, const vector<string> lines, 
 }
 
 //It appends the instructions when parsing, make sure it is clear.
-int fileHandler(int argc, char** argv, vector<inst*>& instsToFill = vector<inst*>())
+int fileHandler(int argc, char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField)
 {
 	if (argc == 4)
 	{
 		try {
+			int counterOnEarth = 0;
 			vector<string> linesToVerify;
 			vector<string> str_rules;
 			vector<int> errorLines;
@@ -89,12 +90,14 @@ int fileHandler(int argc, char** argv, vector<inst*>& instsToFill = vector<inst*
 			{
 				if (verifyLines(str_rules, linesToVerify, errorLines))
 				{
+					resultsField->AppendText("The file is syntactically correct\n");
 					cout << "The file is syntactically correct" << endl;
 				}
 				else
 				{
 					for (auto& no : errorLines)
 					{
+						resultsField->AppendText(string(string("Syntax error: Cannot parse line ") + to_string(no) + string("\n")));
 						cerr << "Syntax error: Cannot parse line " << no << endl;
 					}
 				}
@@ -109,7 +112,8 @@ int fileHandler(int argc, char** argv, vector<inst*>& instsToFill = vector<inst*
 					{
 						continue;
 					}
-					instsToFill.push_back(parseInstruction(toParse, reg_rules));
+					instsToFill[counterOnEarth] = (parseInstruction(toParse, reg_rules));
+					counterOnEarth++;
 				}
 				cout << "File has been parsed correctly" << endl;
 			}

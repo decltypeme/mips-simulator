@@ -52,7 +52,7 @@ immediateType resolveJImmediate(const string& strImmediate)
 	}
 	return jAddr;
 }
-inst* parseInstruction(const string& instString, const vector<regex>& instRules)
+inst parseInstruction(const string& instString, const vector<regex>& instRules)
 {
 	if (!verifyInstruction(instString, instRules))
 		throw invalid_argument("Cannot parse an invalid instruction");
@@ -78,15 +78,15 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 		int rd = stoi(params[2]);
 		if (params[1] == "ADD")
 		{
-			return new Add(rs, rt, rd);
+			return Add(rs, rt, rd);
 		}
 		else if (params[1] == "SLT")
 		{
-			return new Xor(rs, rt, rd);
+			return Xor(rs, rt, rd);
 		}
 		else if (params[1] == "SLT")
 		{
-			return new Slt(rs, rt, rd);
+			return Slt(rs, rt, rd);
 		}
 	}
 	//I-Type Instructions
@@ -98,40 +98,40 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 		immediateType immediate = resolveImmediate(params[4]);
 		if (params[1] == "LW")
 		{
-			return new Lw(rt, rs, immediate);
+			return Lw(rt, rs, immediate);
 		}
 		else if (params[1] == "SW")
 		{
-			return new Sw(rt, rs, immediate);
+			return Sw(rt, rs, immediate);
 		}
 		else if (params[1] == "BLE")
 		{
-			return new Ble(rt, rs, immediate);
+			return Ble(rt, rs, immediate);
 		}
 	}
 	else if (params[1] == "JR")
 	{
-		return new Jr(stoi(params[2]));
+		return Jr(stoi(params[2]));
 	}
 	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
 	{
 		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
 		{
-			return new J(jAddr);
+			return J(jAddr);
 		}
 		else if (params[1] == "JAL")
 		{
-			return new Jal(jAddr);
+			return Jal(jAddr);
 		}
 		else if (params[1] == "JMP")
 		{
-			return new Jmp(jAddr);
+			return Jmp(jAddr);
 		}
 	}
 	else if (params[1] == "RET")
 	{
-		return new Ret();
+		return Ret();
 	}
 	else
 	{

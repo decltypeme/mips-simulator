@@ -22,7 +22,7 @@ int main()
 
 	mips::Simulator mainSimulatorForm;
 	Application::Run(%mainSimulatorForm);
-
+	//Magic mainSimulatorForm.Controls->Find((gcnew String("Reg1")), true);
 
 	while (true)
 	{

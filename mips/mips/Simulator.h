@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+#include "Parser.h"
 
 namespace mips {
 
@@ -36,8 +38,10 @@ namespace mips {
 		}
 	private: System::Windows::Forms::Label^  CodeFileLabel;
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::TextBox^  textBox1;
-	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::TextBox^  sourceTextBox;
+	private: System::Windows::Forms::TextBox^  isaTextBox;
+
+
 	private: System::Windows::Forms::Label^  ParsingLabel;
 	private: System::Windows::Forms::Button^  LoadSourceCodeButton;
 	private: System::Windows::Forms::RichTextBox^  ParsingResults;
@@ -241,6 +245,8 @@ private: System::Windows::Forms::TextBox^  p2Inst;
 private: System::Windows::Forms::TextBox^  p3Inst;
 
 private: System::Windows::Forms::TextBox^  p1Inst;
+private: System::Windows::Forms::OpenFileDialog^  sourceFile;
+private: System::Windows::Forms::OpenFileDialog^  isaFile;
 
 
 
@@ -269,8 +275,8 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 		{
 			this->CodeFileLabel = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->sourceTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->isaTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->ParsingLabel = (gcnew System::Windows::Forms::Label());
 			this->LoadSourceCodeButton = (gcnew System::Windows::Forms::Button());
 			this->ParsingResults = (gcnew System::Windows::Forms::RichTextBox());
@@ -342,18 +348,20 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->pcGroupBox = (gcnew System::Windows::Forms::GroupBox());
 			this->PC = (gcnew System::Windows::Forms::TextBox());
 			this->pipelineGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->p11Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p12Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p6Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p8Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p9Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p10Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p7Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p4Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p5Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p2Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p3Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p1Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p10Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p9Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p8Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p6Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p12Inst = (gcnew System::Windows::Forms::TextBox());
-			this->p11Inst = (gcnew System::Windows::Forms::TextBox());
+			this->sourceFile = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->isaFile = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->RegistersGroupBox->SuspendLayout();
 			this->memGroupBox->SuspendLayout();
 			this->stackBox->SuspendLayout();
@@ -380,19 +388,19 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"ISA Regex Syntax File:";
 			// 
-			// textBox1
+			// sourceTextBox
 			// 
-			this->textBox1->Location = System::Drawing::Point(133, 6);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(191, 20);
-			this->textBox1->TabIndex = 2;
+			this->sourceTextBox->Location = System::Drawing::Point(133, 6);
+			this->sourceTextBox->Name = L"sourceTextBox";
+			this->sourceTextBox->Size = System::Drawing::Size(191, 20);
+			this->sourceTextBox->TabIndex = 2;
 			// 
-			// textBox2
+			// isaTextBox
 			// 
-			this->textBox2->Location = System::Drawing::Point(133, 35);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(191, 20);
-			this->textBox2->TabIndex = 3;
+			this->isaTextBox->Location = System::Drawing::Point(133, 35);
+			this->isaTextBox->Name = L"isaTextBox";
+			this->isaTextBox->Size = System::Drawing::Size(191, 20);
+			this->isaTextBox->TabIndex = 3;
 			// 
 			// ParsingLabel
 			// 
@@ -431,6 +439,7 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->CodeBrowse->TabIndex = 7;
 			this->CodeBrowse->Text = L"Browse";
 			this->CodeBrowse->UseVisualStyleBackColor = true;
+			this->CodeBrowse->Click += gcnew System::EventHandler(this, &Simulator::CodeBrowse_Click);
 			// 
 			// RegexBrowse
 			// 
@@ -440,6 +449,7 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->RegexBrowse->TabIndex = 8;
 			this->RegexBrowse->Text = L"Browse";
 			this->RegexBrowse->UseVisualStyleBackColor = true;
+			this->RegexBrowse->Click += gcnew System::EventHandler(this, &Simulator::RegexBrowse_Click);
 			// 
 			// AssemblySource
 			// 
@@ -1051,6 +1061,48 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->pipelineGroup->TabStop = false;
 			this->pipelineGroup->Text = L"Pipeline";
 			// 
+			// p11Inst
+			// 
+			this->p11Inst->Location = System::Drawing::Point(6, 469);
+			this->p11Inst->Name = L"p11Inst";
+			this->p11Inst->Size = System::Drawing::Size(100, 20);
+			this->p11Inst->TabIndex = 101;
+			// 
+			// p12Inst
+			// 
+			this->p12Inst->Location = System::Drawing::Point(6, 511);
+			this->p12Inst->Name = L"p12Inst";
+			this->p12Inst->Size = System::Drawing::Size(100, 20);
+			this->p12Inst->TabIndex = 100;
+			// 
+			// p6Inst
+			// 
+			this->p6Inst->Location = System::Drawing::Point(6, 259);
+			this->p6Inst->Name = L"p6Inst";
+			this->p6Inst->Size = System::Drawing::Size(100, 20);
+			this->p6Inst->TabIndex = 99;
+			// 
+			// p8Inst
+			// 
+			this->p8Inst->Location = System::Drawing::Point(6, 343);
+			this->p8Inst->Name = L"p8Inst";
+			this->p8Inst->Size = System::Drawing::Size(100, 20);
+			this->p8Inst->TabIndex = 98;
+			// 
+			// p9Inst
+			// 
+			this->p9Inst->Location = System::Drawing::Point(6, 385);
+			this->p9Inst->Name = L"p9Inst";
+			this->p9Inst->Size = System::Drawing::Size(100, 20);
+			this->p9Inst->TabIndex = 97;
+			// 
+			// p10Inst
+			// 
+			this->p10Inst->Location = System::Drawing::Point(6, 427);
+			this->p10Inst->Name = L"p10Inst";
+			this->p10Inst->Size = System::Drawing::Size(100, 20);
+			this->p10Inst->TabIndex = 96;
+			// 
 			// p7Inst
 			// 
 			this->p7Inst->Location = System::Drawing::Point(6, 301);
@@ -1093,47 +1145,14 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->p1Inst->Size = System::Drawing::Size(100, 20);
 			this->p1Inst->TabIndex = 90;
 			// 
-			// p10Inst
+			// sourceFile
 			// 
-			this->p10Inst->Location = System::Drawing::Point(6, 427);
-			this->p10Inst->Name = L"p10Inst";
-			this->p10Inst->Size = System::Drawing::Size(100, 20);
-			this->p10Inst->TabIndex = 96;
+			this->sourceFile->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Simulator::sourceFile_FileOk);
 			// 
-			// p9Inst
+			// isaFile
 			// 
-			this->p9Inst->Location = System::Drawing::Point(6, 385);
-			this->p9Inst->Name = L"p9Inst";
-			this->p9Inst->Size = System::Drawing::Size(100, 20);
-			this->p9Inst->TabIndex = 97;
-			// 
-			// p8Inst
-			// 
-			this->p8Inst->Location = System::Drawing::Point(6, 343);
-			this->p8Inst->Name = L"p8Inst";
-			this->p8Inst->Size = System::Drawing::Size(100, 20);
-			this->p8Inst->TabIndex = 98;
-			// 
-			// p6Inst
-			// 
-			this->p6Inst->Location = System::Drawing::Point(6, 259);
-			this->p6Inst->Name = L"p6Inst";
-			this->p6Inst->Size = System::Drawing::Size(100, 20);
-			this->p6Inst->TabIndex = 99;
-			// 
-			// p12Inst
-			// 
-			this->p12Inst->Location = System::Drawing::Point(6, 511);
-			this->p12Inst->Name = L"p12Inst";
-			this->p12Inst->Size = System::Drawing::Size(100, 20);
-			this->p12Inst->TabIndex = 100;
-			// 
-			// p11Inst
-			// 
-			this->p11Inst->Location = System::Drawing::Point(6, 469);
-			this->p11Inst->Name = L"p11Inst";
-			this->p11Inst->Size = System::Drawing::Size(100, 20);
-			this->p11Inst->TabIndex = 101;
+			this->isaFile->FileName = L"openFileDialog1";
+			this->isaFile->FileOk += gcnew System::ComponentModel::CancelEventHandler(this, &Simulator::isaFile_FileOk);
 			// 
 			// Simulator
 			// 
@@ -1158,8 +1177,8 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 			this->Controls->Add(this->ParsingResults);
 			this->Controls->Add(this->LoadSourceCodeButton);
 			this->Controls->Add(this->ParsingLabel);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->isaTextBox);
+			this->Controls->Add(this->sourceTextBox);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->CodeFileLabel);
 			this->Name = L"Simulator";
@@ -1186,6 +1205,11 @@ private: System::Windows::Forms::TextBox^  p1Inst;
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	sourceTextBox->Clear();
+	ParsingResults->Clear();
+	char argsToPass[][4];
+	fileHandler()
+
 }
 private: System::Void label2_Click_1(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -1208,6 +1232,18 @@ private: System::Void RegistersGroupBox_Enter(System::Object^  sender, System::E
 private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void Reg19_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void CodeBrowse_Click(System::Object^  sender, System::EventArgs^  e) {
+	sourceFile->ShowDialog();
+}
+private: System::Void RegexBrowse_Click(System::Object^  sender, System::EventArgs^  e) {
+	isaFile->ShowDialog();
+}
+private: System::Void sourceFile_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+	sourceTextBox->Text = sourceFile->FileName;
+}
+private: System::Void isaFile_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+	isaTextBox->Text = isaFile->FileName;
 }
 };
 }
