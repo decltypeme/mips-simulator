@@ -9,6 +9,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		mips_GUI|x64 = mips_GUI|x64
+		mips_GUI|x86 = mips_GUI|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,6 +19,10 @@ Global
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Debug|x64.Build.0 = Debug|x64
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Debug|x86.ActiveCfg = Debug|Win32
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Debug|x86.Build.0 = Debug|Win32
+		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.mips_GUI|x64.ActiveCfg = mips_GUI|x64
+		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.mips_GUI|x64.Build.0 = mips_GUI|x64
+		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.mips_GUI|x86.ActiveCfg = mips_GUI|Win32
+		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.mips_GUI|x86.Build.0 = mips_GUI|Win32
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Release|x64.ActiveCfg = Release|x64
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Release|x64.Build.0 = Release|x64
 		{DE79057A-65A2-4C74-A592-0B6B148C93C4}.Release|x86.ActiveCfg = Release|Win32

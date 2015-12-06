@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Hazard Detection">
       <UniqueIdentifier>{8fd1b423-1f59-426b-94ea-8e31e33b6ddc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UserInterface">
+      <UniqueIdentifier>{5dd183d3-16bc-4ffb-afde-68dfcf964911}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rformat.h">
@@ -116,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="datapath.h">
       <Filter>Header Files\Datapath</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="Ble.cpp">
       <Filter>Source Files\Iformat</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
