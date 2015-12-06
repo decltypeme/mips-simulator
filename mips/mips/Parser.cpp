@@ -59,13 +59,10 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 	smatch params;
 	for (const auto& instRule : instRules)
 	{
-		smatch temp;
-		regex_search(instString, temp, instRule);
+		regex_search(instString, params, instRule);
 		if (!params.empty())
 		{
-			if (params.ready())
-				throw logic_error("Amibgous instruction: Instruction parses to more than one type of instruction");
-			params = temp;
+			break;
 		}
 	}
 	//Now, we will do a must-do cases, I know, you know it sucks, even this plastic debugging duck knows it!

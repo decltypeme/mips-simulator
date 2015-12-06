@@ -53,7 +53,7 @@ namespace mips {
 	private: System::Windows::Forms::RichTextBox^  AssemblySource;
 
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::GroupBox^  RegistersGroupBox;
@@ -286,7 +286,6 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->RegexBrowse = (gcnew System::Windows::Forms::Button());
 			this->AssemblySource = (gcnew System::Windows::Forms::RichTextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->RegistersGroupBox = (gcnew System::Windows::Forms::GroupBox());
@@ -472,15 +471,6 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->label2->Text = L"Assembly Source";
 			this->label2->Click += gcnew System::EventHandler(this, &Simulator::label2_Click_1);
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(101, 94);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 11;
-			this->button1->Text = L"Auto-Play";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(15, 94);
@@ -492,7 +482,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(182, 94);
+			this->button3->Location = System::Drawing::Point(133, 96);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(117, 23);
 			this->button3->TabIndex = 13;
@@ -1171,7 +1161,6 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->Controls->Add(this->RegistersGroupBox);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->AssemblySource);
 			this->Controls->Add(this->RegexBrowse);
@@ -1218,12 +1207,12 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	strcpy(argsToPass[2], marshal_as<std::string>(isaTextBox->Text).c_str());
 	argsToPass[3] = new char[1000];
 	strcpy(argsToPass[3], marshal_as<std::string>(sourceTextBox->Text).c_str());
-	cout << argsToPass[0] << " " << argsToPass[1] << " " << argsToPass[2] << " " << argsToPass[3] << endl;
-	system("pause");
+	//cout << argsToPass[0] << " " << argsToPass[1] << " " << argsToPass[2] << " " << argsToPass[3] << endl;
+	//system("pause");
 	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
 	argsToPass[1] = "-parse";
 	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
-	system("pause");
+	//system("pause");
 }
 private: System::Void label2_Click_1(System::Object^  sender, System::EventArgs^  e) {
 }
