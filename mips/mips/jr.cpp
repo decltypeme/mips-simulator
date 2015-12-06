@@ -14,7 +14,7 @@ Jr::~Jr() {}
 
 void Jr::fetch()
 {
-	rsData = registers[rs];
+	rsData = readRegister(rs);
 }
 
 bool Jr::valid()

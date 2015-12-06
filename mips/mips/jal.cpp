@@ -9,4 +9,4 @@ Jal::Jal(int _immediate, int _instAddress, string _instString)
 
 Jal::~Jal() {}
 
-void Jal::fetch() { J::fetch(); registers[31] = PC + 4; }
+void Jal::fetch() { J::fetch(); writeRegister(31, PC+1); }

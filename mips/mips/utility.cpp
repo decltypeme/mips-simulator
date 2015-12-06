@@ -167,7 +167,7 @@ int updatePC()
 	Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
 	Ble* bleptr = dynamic_cast <Ble*> (pipeline[0]);
 
-	if (!(jptr || retptr || bleptr || jrptr)) return PC + 4;
+	if (!(jptr || retptr || bleptr || jrptr)) return PC + 1;
 	else
 	{
 		if (jptr)

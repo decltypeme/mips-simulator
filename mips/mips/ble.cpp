@@ -8,13 +8,13 @@ Ble::~Ble() {}
 
 void Ble::fetch()
 {
-	addressIfNotTaken = PC + 4;
-	addressIfTaken = immediate + PC +4 ;
+	addressIfNotTaken = PC + 1;
+	addressIfTaken = immediate + PC + 1 ;
 }
 
 void Ble::execute()
 {
-	if (registers[rs] <= registers[rt])
+	if (readRegister(rs) <= readRegister(rt))
 	{
 		addressTrue = addressIfTaken;
 	}
