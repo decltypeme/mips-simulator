@@ -149,13 +149,13 @@ void hazardDetection()
 				if (i == 2)
 				{
 					EX_MEM_MEMWr = 1;
-					EX_MEM_RegRD_SW = Swptr->getdestination();
+					EX_MEM_RegRD_SW = Swptr->rt;
 
 				}
 				if (i == 3)
 				{
 					EX_MEM_MEMWr = 1;
-					MEM_WB_RegRD = Swptr->getdestination();
+					MEM_WB_RegRD = Swptr->rt;
 				}
 			}
 		}
@@ -166,36 +166,36 @@ void hazardDetection()
 		Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
 		if (bleptr != nullptr)
 		{
-			if (i == 0)
+			if (i == 0) // IF_ID
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
 				IF_ID_RegRS = bleptr->rs;
-				IF_ID_RegRT = -1;
+				IF_ID_RegRT = bleptr->rt;
+				
 
 			}
-			if (i == 1)
+			if (i == 1)  // ID_EX
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
 				ID_EX_RegRS = bleptr->rs;
-				ID_EX_RegRT = -1;
-				ID_EX_RegRD = bleptr->getdestination();
+				ID_EX_RegRT = bleptr->rt;
 			}
 
-			if (i == 2)
+			if (i == 2) //EX_MEM
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
-				EX_MEM_RegRD = bleptr->getdestination();
+				EX_MEM_RegRD = -1;
 
 			}
 			if (i == 3)
 			{
 
-				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = bleptr->getdestination();
+				EX_MEM_RegWrite = 0;
+				MEM_WB_RegWrite = 0;
+				MEM_WB_RegRD = -1;
 			}
 
 		}
