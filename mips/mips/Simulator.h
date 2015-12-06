@@ -51,6 +51,7 @@ namespace mips {
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::GroupBox^  RegistersGroupBox;
+	private: System::Windows::Forms::TextBox^  Reg16;
 
 
 
@@ -89,14 +90,22 @@ namespace mips {
 
 
 
-	private: System::Windows::Forms::TextBox^  textBox34;
-	private: System::Windows::Forms::TextBox^  textBox33;
-	private: System::Windows::Forms::TextBox^  textBox32;
-	private: System::Windows::Forms::TextBox^  textBox31;
-	private: System::Windows::Forms::TextBox^  textBox30;
-	private: System::Windows::Forms::TextBox^  textBox29;
-	private: System::Windows::Forms::TextBox^  textBox28;
-	private: System::Windows::Forms::TextBox^  textBox27;
+
+	private: System::Windows::Forms::TextBox^  Reg15;
+
+	private: System::Windows::Forms::TextBox^  Reg14;
+
+
+	private: System::Windows::Forms::TextBox^  Reg13;
+
+	private: System::Windows::Forms::TextBox^  Reg12;
+
+	private: System::Windows::Forms::TextBox^  Reg11;
+
+	private: System::Windows::Forms::TextBox^  Reg10;
+
+	private: System::Windows::Forms::TextBox^  Reg9;
+
 	private: System::Windows::Forms::TextBox^  Reg8;
 
 	private: System::Windows::Forms::TextBox^  Reg7;
@@ -112,22 +121,38 @@ namespace mips {
 	private: System::Windows::Forms::TextBox^  Reg1;
 
 	private: System::Windows::Forms::TextBox^  Reg0;
+private: System::Windows::Forms::TextBox^  Reg31;
 
-	private: System::Windows::Forms::TextBox^  textBox18;
-	private: System::Windows::Forms::TextBox^  textBox17;
-	private: System::Windows::Forms::TextBox^  textBox16;
-	private: System::Windows::Forms::TextBox^  textBox15;
-	private: System::Windows::Forms::TextBox^  textBox14;
-	private: System::Windows::Forms::TextBox^  textBox13;
-	private: System::Windows::Forms::TextBox^  textBox12;
-	private: System::Windows::Forms::TextBox^  textBox11;
-	private: System::Windows::Forms::TextBox^  textBox10;
-	private: System::Windows::Forms::TextBox^  textBox9;
-	private: System::Windows::Forms::TextBox^  textBox8;
-	private: System::Windows::Forms::TextBox^  textBox7;
-	private: System::Windows::Forms::TextBox^  textBox6;
-	private: System::Windows::Forms::TextBox^  textBox5;
-	private: System::Windows::Forms::TextBox^  textBox4;
+
+private: System::Windows::Forms::TextBox^  Reg30;
+
+private: System::Windows::Forms::TextBox^  Reg29;
+
+private: System::Windows::Forms::TextBox^  Reg28;
+
+private: System::Windows::Forms::TextBox^  Reg27;
+
+private: System::Windows::Forms::TextBox^  Reg26;
+
+private: System::Windows::Forms::TextBox^  Reg25;
+
+private: System::Windows::Forms::TextBox^  Reg24;
+
+private: System::Windows::Forms::TextBox^  Reg23;
+
+private: System::Windows::Forms::TextBox^  Reg22;
+
+private: System::Windows::Forms::TextBox^  Reg21;
+
+private: System::Windows::Forms::TextBox^  Reg20;
+
+
+private: System::Windows::Forms::TextBox^  Reg19;
+
+private: System::Windows::Forms::TextBox^  Reg18;
+
+private: System::Windows::Forms::TextBox^  Reg17;
+
 private: System::Windows::Forms::TextBox^  Reg3;
 private: System::Windows::Forms::GroupBox^  memGroupBox;
 private: System::Windows::Forms::GroupBox^  stackBox;
@@ -142,6 +167,7 @@ private: System::Windows::Forms::TextBox^  Stack3;
 private: System::Windows::Forms::TextBox^  Stack2;
 
 private: System::Windows::Forms::TextBox^  Stack1;
+private: System::Windows::Forms::TextBox^  Mem15;
 
 
 
@@ -156,25 +182,67 @@ private: System::Windows::Forms::TextBox^  Stack1;
 
 
 
-private: System::Windows::Forms::TextBox^  textBox3;
-private: System::Windows::Forms::TextBox^  textBox37;
-private: System::Windows::Forms::TextBox^  textBox19;
-private: System::Windows::Forms::TextBox^  textBox41;
-private: System::Windows::Forms::TextBox^  textBox20;
-private: System::Windows::Forms::TextBox^  textBox40;
-private: System::Windows::Forms::TextBox^  textBox21;
-private: System::Windows::Forms::TextBox^  textBox39;
-private: System::Windows::Forms::TextBox^  textBox22;
-private: System::Windows::Forms::TextBox^  textBox38;
-private: System::Windows::Forms::TextBox^  textBox23;
-private: System::Windows::Forms::TextBox^  textBox36;
-private: System::Windows::Forms::TextBox^  textBox24;
-private: System::Windows::Forms::TextBox^  textBox35;
-private: System::Windows::Forms::TextBox^  textBox25;
-private: System::Windows::Forms::TextBox^  textBox26;
+
+private: System::Windows::Forms::TextBox^  Mem4;
+private: System::Windows::Forms::TextBox^  Mem14;
+
+
+private: System::Windows::Forms::TextBox^  Mem3;
+private: System::Windows::Forms::TextBox^  Mem13;
+
+
+private: System::Windows::Forms::TextBox^  Mem0;
+private: System::Windows::Forms::TextBox^  Mem12;
+
+
+private: System::Windows::Forms::TextBox^  Mem1;
+private: System::Windows::Forms::TextBox^  Mem11;
+
+
+private: System::Windows::Forms::TextBox^  Mem2;
+private: System::Windows::Forms::TextBox^  Mem10;
+
+
+private: System::Windows::Forms::TextBox^  Mem5;
+private: System::Windows::Forms::TextBox^  Mem9;
+
+
+private: System::Windows::Forms::TextBox^  Mem6;
+private: System::Windows::Forms::TextBox^  Mem8;
+
+
+private: System::Windows::Forms::TextBox^  Mem7;
+
 private: System::Windows::Forms::Label^  baseLabel;
 private: System::Windows::Forms::Button^  button4;
 private: System::Windows::Forms::ComboBox^  base_choice;
+private: System::Windows::Forms::GroupBox^  pcGroupBox;
+private: System::Windows::Forms::TextBox^  PC;
+private: System::Windows::Forms::GroupBox^  pipelineGroup;
+private: System::Windows::Forms::TextBox^  p11Inst;
+private: System::Windows::Forms::TextBox^  p12Inst;
+
+
+private: System::Windows::Forms::TextBox^  p6Inst;
+private: System::Windows::Forms::TextBox^  p8Inst;
+private: System::Windows::Forms::TextBox^  p9Inst;
+private: System::Windows::Forms::TextBox^  p10Inst;
+
+
+
+
+private: System::Windows::Forms::TextBox^  p7Inst;
+
+private: System::Windows::Forms::TextBox^  p4Inst;
+private: System::Windows::Forms::TextBox^  p5Inst;
+
+
+private: System::Windows::Forms::TextBox^  p2Inst;
+private: System::Windows::Forms::TextBox^  p3Inst;
+
+private: System::Windows::Forms::TextBox^  p1Inst;
+
+
 
 
 
@@ -214,55 +282,55 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->RegistersGroupBox = (gcnew System::Windows::Forms::GroupBox());
-			this->Reg3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox16 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox17 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox18 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg0 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg1 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg2 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg4 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg5 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg6 = (gcnew System::Windows::Forms::TextBox());
-			this->Reg7 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg16 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg15 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg14 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg13 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg12 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg11 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg10 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg9 = (gcnew System::Windows::Forms::TextBox());
 			this->Reg8 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox27 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox28 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox29 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox30 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox31 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox32 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox33 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox34 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg7 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg6 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg5 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg4 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg2 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg1 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg0 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg31 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg30 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg29 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg28 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg27 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg26 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg25 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg24 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg23 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg22 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg21 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg20 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg19 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg18 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg17 = (gcnew System::Windows::Forms::TextBox());
+			this->Reg3 = (gcnew System::Windows::Forms::TextBox());
 			this->memGroupBox = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox19 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox20 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox21 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox22 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox23 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox24 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox25 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox26 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox35 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox36 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox37 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox38 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox39 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox40 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox41 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem15 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem4 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem14 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem3 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem13 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem0 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem12 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem1 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem11 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem2 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem10 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem5 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem9 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem6 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem8 = (gcnew System::Windows::Forms::TextBox());
+			this->Mem7 = (gcnew System::Windows::Forms::TextBox());
 			this->stackBox = (gcnew System::Windows::Forms::GroupBox());
 			this->Stack0 = (gcnew System::Windows::Forms::TextBox());
 			this->Stack3 = (gcnew System::Windows::Forms::TextBox());
@@ -271,9 +339,26 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->baseLabel = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->base_choice = (gcnew System::Windows::Forms::ComboBox());
+			this->pcGroupBox = (gcnew System::Windows::Forms::GroupBox());
+			this->PC = (gcnew System::Windows::Forms::TextBox());
+			this->pipelineGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->p7Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p4Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p5Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p2Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p3Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p1Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p10Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p9Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p8Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p6Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p12Inst = (gcnew System::Windows::Forms::TextBox());
+			this->p11Inst = (gcnew System::Windows::Forms::TextBox());
 			this->RegistersGroupBox->SuspendLayout();
 			this->memGroupBox->SuspendLayout();
 			this->stackBox->SuspendLayout();
+			this->pcGroupBox->SuspendLayout();
+			this->pipelineGroup->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// CodeFileLabel
@@ -331,6 +416,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// ParsingResults
 			// 
+			this->ParsingResults->Enabled = false;
 			this->ParsingResults->Location = System::Drawing::Point(12, 504);
 			this->ParsingResults->Name = L"ParsingResults";
 			this->ParsingResults->Size = System::Drawing::Size(271, 145);
@@ -357,6 +443,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// AssemblySource
 			// 
+			this->AssemblySource->Enabled = false;
 			this->AssemblySource->Location = System::Drawing::Point(12, 136);
 			this->AssemblySource->Name = L"AssemblySource";
 			this->AssemblySource->Size = System::Drawing::Size(271, 323);
@@ -402,14 +489,14 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// RegistersGroupBox
 			// 
-			this->RegistersGroupBox->Controls->Add(this->textBox34);
-			this->RegistersGroupBox->Controls->Add(this->textBox33);
-			this->RegistersGroupBox->Controls->Add(this->textBox32);
-			this->RegistersGroupBox->Controls->Add(this->textBox31);
-			this->RegistersGroupBox->Controls->Add(this->textBox30);
-			this->RegistersGroupBox->Controls->Add(this->textBox29);
-			this->RegistersGroupBox->Controls->Add(this->textBox28);
-			this->RegistersGroupBox->Controls->Add(this->textBox27);
+			this->RegistersGroupBox->Controls->Add(this->Reg16);
+			this->RegistersGroupBox->Controls->Add(this->Reg15);
+			this->RegistersGroupBox->Controls->Add(this->Reg14);
+			this->RegistersGroupBox->Controls->Add(this->Reg13);
+			this->RegistersGroupBox->Controls->Add(this->Reg12);
+			this->RegistersGroupBox->Controls->Add(this->Reg11);
+			this->RegistersGroupBox->Controls->Add(this->Reg10);
+			this->RegistersGroupBox->Controls->Add(this->Reg9);
 			this->RegistersGroupBox->Controls->Add(this->Reg8);
 			this->RegistersGroupBox->Controls->Add(this->Reg7);
 			this->RegistersGroupBox->Controls->Add(this->Reg6);
@@ -418,21 +505,21 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->RegistersGroupBox->Controls->Add(this->Reg2);
 			this->RegistersGroupBox->Controls->Add(this->Reg1);
 			this->RegistersGroupBox->Controls->Add(this->Reg0);
-			this->RegistersGroupBox->Controls->Add(this->textBox18);
-			this->RegistersGroupBox->Controls->Add(this->textBox17);
-			this->RegistersGroupBox->Controls->Add(this->textBox16);
-			this->RegistersGroupBox->Controls->Add(this->textBox15);
-			this->RegistersGroupBox->Controls->Add(this->textBox14);
-			this->RegistersGroupBox->Controls->Add(this->textBox13);
-			this->RegistersGroupBox->Controls->Add(this->textBox12);
-			this->RegistersGroupBox->Controls->Add(this->textBox11);
-			this->RegistersGroupBox->Controls->Add(this->textBox10);
-			this->RegistersGroupBox->Controls->Add(this->textBox9);
-			this->RegistersGroupBox->Controls->Add(this->textBox8);
-			this->RegistersGroupBox->Controls->Add(this->textBox7);
-			this->RegistersGroupBox->Controls->Add(this->textBox6);
-			this->RegistersGroupBox->Controls->Add(this->textBox5);
-			this->RegistersGroupBox->Controls->Add(this->textBox4);
+			this->RegistersGroupBox->Controls->Add(this->Reg31);
+			this->RegistersGroupBox->Controls->Add(this->Reg30);
+			this->RegistersGroupBox->Controls->Add(this->Reg29);
+			this->RegistersGroupBox->Controls->Add(this->Reg28);
+			this->RegistersGroupBox->Controls->Add(this->Reg27);
+			this->RegistersGroupBox->Controls->Add(this->Reg26);
+			this->RegistersGroupBox->Controls->Add(this->Reg25);
+			this->RegistersGroupBox->Controls->Add(this->Reg24);
+			this->RegistersGroupBox->Controls->Add(this->Reg23);
+			this->RegistersGroupBox->Controls->Add(this->Reg22);
+			this->RegistersGroupBox->Controls->Add(this->Reg21);
+			this->RegistersGroupBox->Controls->Add(this->Reg20);
+			this->RegistersGroupBox->Controls->Add(this->Reg19);
+			this->RegistersGroupBox->Controls->Add(this->Reg18);
+			this->RegistersGroupBox->Controls->Add(this->Reg17);
 			this->RegistersGroupBox->Controls->Add(this->Reg3);
 			this->RegistersGroupBox->Location = System::Drawing::Point(305, 62);
 			this->RegistersGroupBox->Name = L"RegistersGroupBox";
@@ -442,248 +529,281 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->RegistersGroupBox->Text = L"Registers";
 			this->RegistersGroupBox->Enter += gcnew System::EventHandler(this, &Simulator::RegistersGroupBox_Enter);
 			// 
-			// Reg3
+			// Reg16
 			// 
-			this->Reg3->Location = System::Drawing::Point(27, 77);
-			this->Reg3->Name = L"Reg3";
-			this->Reg3->Size = System::Drawing::Size(109, 20);
-			this->Reg3->TabIndex = 16;
+			this->Reg16->Enabled = false;
+			this->Reg16->Location = System::Drawing::Point(27, 337);
+			this->Reg16->Name = L"Reg16";
+			this->Reg16->Size = System::Drawing::Size(109, 20);
+			this->Reg16->TabIndex = 62;
 			// 
-			// textBox4
+			// Reg15
 			// 
-			this->textBox4->Location = System::Drawing::Point(27, 357);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(109, 20);
-			this->textBox4->TabIndex = 32;
+			this->Reg15->Enabled = false;
+			this->Reg15->Location = System::Drawing::Point(27, 317);
+			this->Reg15->Name = L"Reg15";
+			this->Reg15->Size = System::Drawing::Size(109, 20);
+			this->Reg15->TabIndex = 61;
 			// 
-			// textBox5
+			// Reg14
 			// 
-			this->textBox5->Location = System::Drawing::Point(27, 377);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(109, 20);
-			this->textBox5->TabIndex = 33;
+			this->Reg14->Enabled = false;
+			this->Reg14->Location = System::Drawing::Point(27, 297);
+			this->Reg14->Name = L"Reg14";
+			this->Reg14->Size = System::Drawing::Size(109, 20);
+			this->Reg14->TabIndex = 60;
 			// 
-			// textBox6
+			// Reg13
 			// 
-			this->textBox6->Location = System::Drawing::Point(27, 397);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(109, 20);
-			this->textBox6->TabIndex = 34;
+			this->Reg13->Enabled = false;
+			this->Reg13->Location = System::Drawing::Point(27, 277);
+			this->Reg13->Name = L"Reg13";
+			this->Reg13->Size = System::Drawing::Size(109, 20);
+			this->Reg13->TabIndex = 59;
 			// 
-			// textBox7
+			// Reg12
 			// 
-			this->textBox7->Location = System::Drawing::Point(27, 417);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(109, 20);
-			this->textBox7->TabIndex = 35;
+			this->Reg12->Enabled = false;
+			this->Reg12->Location = System::Drawing::Point(27, 257);
+			this->Reg12->Name = L"Reg12";
+			this->Reg12->Size = System::Drawing::Size(109, 20);
+			this->Reg12->TabIndex = 58;
 			// 
-			// textBox8
+			// Reg11
 			// 
-			this->textBox8->Location = System::Drawing::Point(27, 437);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(109, 20);
-			this->textBox8->TabIndex = 36;
+			this->Reg11->Enabled = false;
+			this->Reg11->Location = System::Drawing::Point(27, 237);
+			this->Reg11->Name = L"Reg11";
+			this->Reg11->Size = System::Drawing::Size(109, 20);
+			this->Reg11->TabIndex = 57;
 			// 
-			// textBox9
+			// Reg10
 			// 
-			this->textBox9->Location = System::Drawing::Point(27, 457);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(109, 20);
-			this->textBox9->TabIndex = 37;
+			this->Reg10->Enabled = false;
+			this->Reg10->Location = System::Drawing::Point(27, 217);
+			this->Reg10->Name = L"Reg10";
+			this->Reg10->Size = System::Drawing::Size(109, 20);
+			this->Reg10->TabIndex = 56;
 			// 
-			// textBox10
+			// Reg9
 			// 
-			this->textBox10->Location = System::Drawing::Point(27, 477);
-			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(109, 20);
-			this->textBox10->TabIndex = 38;
-			// 
-			// textBox11
-			// 
-			this->textBox11->Location = System::Drawing::Point(27, 497);
-			this->textBox11->Name = L"textBox11";
-			this->textBox11->Size = System::Drawing::Size(109, 20);
-			this->textBox11->TabIndex = 39;
-			// 
-			// textBox12
-			// 
-			this->textBox12->Location = System::Drawing::Point(27, 517);
-			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(109, 20);
-			this->textBox12->TabIndex = 40;
-			// 
-			// textBox13
-			// 
-			this->textBox13->Location = System::Drawing::Point(27, 537);
-			this->textBox13->Name = L"textBox13";
-			this->textBox13->Size = System::Drawing::Size(109, 20);
-			this->textBox13->TabIndex = 41;
-			// 
-			// textBox14
-			// 
-			this->textBox14->Location = System::Drawing::Point(27, 557);
-			this->textBox14->Name = L"textBox14";
-			this->textBox14->Size = System::Drawing::Size(109, 20);
-			this->textBox14->TabIndex = 42;
-			// 
-			// textBox15
-			// 
-			this->textBox15->Location = System::Drawing::Point(27, 577);
-			this->textBox15->Name = L"textBox15";
-			this->textBox15->Size = System::Drawing::Size(109, 20);
-			this->textBox15->TabIndex = 43;
-			// 
-			// textBox16
-			// 
-			this->textBox16->Location = System::Drawing::Point(27, 597);
-			this->textBox16->Name = L"textBox16";
-			this->textBox16->Size = System::Drawing::Size(109, 20);
-			this->textBox16->TabIndex = 44;
-			// 
-			// textBox17
-			// 
-			this->textBox17->Location = System::Drawing::Point(27, 617);
-			this->textBox17->Name = L"textBox17";
-			this->textBox17->Size = System::Drawing::Size(109, 20);
-			this->textBox17->TabIndex = 45;
-			// 
-			// textBox18
-			// 
-			this->textBox18->Location = System::Drawing::Point(27, 637);
-			this->textBox18->Name = L"textBox18";
-			this->textBox18->Size = System::Drawing::Size(109, 20);
-			this->textBox18->TabIndex = 46;
-			// 
-			// Reg0
-			// 
-			this->Reg0->Location = System::Drawing::Point(27, 17);
-			this->Reg0->Name = L"Reg0";
-			this->Reg0->Size = System::Drawing::Size(109, 20);
-			this->Reg0->TabIndex = 47;
-			// 
-			// Reg1
-			// 
-			this->Reg1->Location = System::Drawing::Point(27, 37);
-			this->Reg1->Name = L"Reg1";
-			this->Reg1->Size = System::Drawing::Size(109, 20);
-			this->Reg1->TabIndex = 48;
-			// 
-			// Reg2
-			// 
-			this->Reg2->Location = System::Drawing::Point(27, 57);
-			this->Reg2->Name = L"Reg2";
-			this->Reg2->Size = System::Drawing::Size(109, 20);
-			this->Reg2->TabIndex = 49;
-			// 
-			// Reg4
-			// 
-			this->Reg4->Location = System::Drawing::Point(27, 97);
-			this->Reg4->Name = L"Reg4";
-			this->Reg4->Size = System::Drawing::Size(109, 20);
-			this->Reg4->TabIndex = 50;
-			// 
-			// Reg5
-			// 
-			this->Reg5->Location = System::Drawing::Point(27, 117);
-			this->Reg5->Name = L"Reg5";
-			this->Reg5->Size = System::Drawing::Size(109, 20);
-			this->Reg5->TabIndex = 51;
-			// 
-			// Reg6
-			// 
-			this->Reg6->Location = System::Drawing::Point(27, 137);
-			this->Reg6->Name = L"Reg6";
-			this->Reg6->Size = System::Drawing::Size(109, 20);
-			this->Reg6->TabIndex = 52;
-			// 
-			// Reg7
-			// 
-			this->Reg7->Location = System::Drawing::Point(27, 157);
-			this->Reg7->Name = L"Reg7";
-			this->Reg7->Size = System::Drawing::Size(109, 20);
-			this->Reg7->TabIndex = 53;
+			this->Reg9->Enabled = false;
+			this->Reg9->Location = System::Drawing::Point(27, 197);
+			this->Reg9->Name = L"Reg9";
+			this->Reg9->Size = System::Drawing::Size(109, 20);
+			this->Reg9->TabIndex = 55;
 			// 
 			// Reg8
 			// 
+			this->Reg8->Enabled = false;
 			this->Reg8->Location = System::Drawing::Point(27, 177);
 			this->Reg8->Name = L"Reg8";
 			this->Reg8->Size = System::Drawing::Size(109, 20);
 			this->Reg8->TabIndex = 54;
 			// 
-			// textBox27
+			// Reg7
 			// 
-			this->textBox27->Location = System::Drawing::Point(27, 197);
-			this->textBox27->Name = L"textBox27";
-			this->textBox27->Size = System::Drawing::Size(109, 20);
-			this->textBox27->TabIndex = 55;
+			this->Reg7->Enabled = false;
+			this->Reg7->Location = System::Drawing::Point(27, 157);
+			this->Reg7->Name = L"Reg7";
+			this->Reg7->Size = System::Drawing::Size(109, 20);
+			this->Reg7->TabIndex = 53;
 			// 
-			// textBox28
+			// Reg6
 			// 
-			this->textBox28->Location = System::Drawing::Point(27, 217);
-			this->textBox28->Name = L"textBox28";
-			this->textBox28->Size = System::Drawing::Size(109, 20);
-			this->textBox28->TabIndex = 56;
+			this->Reg6->Enabled = false;
+			this->Reg6->Location = System::Drawing::Point(27, 137);
+			this->Reg6->Name = L"Reg6";
+			this->Reg6->Size = System::Drawing::Size(109, 20);
+			this->Reg6->TabIndex = 52;
 			// 
-			// textBox29
+			// Reg5
 			// 
-			this->textBox29->Location = System::Drawing::Point(27, 237);
-			this->textBox29->Name = L"textBox29";
-			this->textBox29->Size = System::Drawing::Size(109, 20);
-			this->textBox29->TabIndex = 57;
+			this->Reg5->Enabled = false;
+			this->Reg5->Location = System::Drawing::Point(27, 117);
+			this->Reg5->Name = L"Reg5";
+			this->Reg5->Size = System::Drawing::Size(109, 20);
+			this->Reg5->TabIndex = 51;
 			// 
-			// textBox30
+			// Reg4
 			// 
-			this->textBox30->Location = System::Drawing::Point(27, 257);
-			this->textBox30->Name = L"textBox30";
-			this->textBox30->Size = System::Drawing::Size(109, 20);
-			this->textBox30->TabIndex = 58;
+			this->Reg4->Enabled = false;
+			this->Reg4->Location = System::Drawing::Point(27, 97);
+			this->Reg4->Name = L"Reg4";
+			this->Reg4->Size = System::Drawing::Size(109, 20);
+			this->Reg4->TabIndex = 50;
 			// 
-			// textBox31
+			// Reg2
 			// 
-			this->textBox31->Location = System::Drawing::Point(27, 277);
-			this->textBox31->Name = L"textBox31";
-			this->textBox31->Size = System::Drawing::Size(109, 20);
-			this->textBox31->TabIndex = 59;
+			this->Reg2->Enabled = false;
+			this->Reg2->Location = System::Drawing::Point(27, 57);
+			this->Reg2->Name = L"Reg2";
+			this->Reg2->Size = System::Drawing::Size(109, 20);
+			this->Reg2->TabIndex = 49;
 			// 
-			// textBox32
+			// Reg1
 			// 
-			this->textBox32->Location = System::Drawing::Point(27, 297);
-			this->textBox32->Name = L"textBox32";
-			this->textBox32->Size = System::Drawing::Size(109, 20);
-			this->textBox32->TabIndex = 60;
+			this->Reg1->Enabled = false;
+			this->Reg1->Location = System::Drawing::Point(27, 37);
+			this->Reg1->Name = L"Reg1";
+			this->Reg1->Size = System::Drawing::Size(109, 20);
+			this->Reg1->TabIndex = 48;
 			// 
-			// textBox33
+			// Reg0
 			// 
-			this->textBox33->Location = System::Drawing::Point(27, 317);
-			this->textBox33->Name = L"textBox33";
-			this->textBox33->Size = System::Drawing::Size(109, 20);
-			this->textBox33->TabIndex = 61;
+			this->Reg0->Enabled = false;
+			this->Reg0->Location = System::Drawing::Point(27, 17);
+			this->Reg0->Name = L"Reg0";
+			this->Reg0->Size = System::Drawing::Size(109, 20);
+			this->Reg0->TabIndex = 47;
 			// 
-			// textBox34
+			// Reg31
 			// 
-			this->textBox34->Location = System::Drawing::Point(27, 337);
-			this->textBox34->Name = L"textBox34";
-			this->textBox34->Size = System::Drawing::Size(109, 20);
-			this->textBox34->TabIndex = 62;
+			this->Reg31->Enabled = false;
+			this->Reg31->Location = System::Drawing::Point(27, 637);
+			this->Reg31->Name = L"Reg31";
+			this->Reg31->Size = System::Drawing::Size(109, 20);
+			this->Reg31->TabIndex = 46;
+			// 
+			// Reg30
+			// 
+			this->Reg30->Enabled = false;
+			this->Reg30->Location = System::Drawing::Point(27, 617);
+			this->Reg30->Name = L"Reg30";
+			this->Reg30->Size = System::Drawing::Size(109, 20);
+			this->Reg30->TabIndex = 45;
+			// 
+			// Reg29
+			// 
+			this->Reg29->Enabled = false;
+			this->Reg29->Location = System::Drawing::Point(27, 597);
+			this->Reg29->Name = L"Reg29";
+			this->Reg29->Size = System::Drawing::Size(109, 20);
+			this->Reg29->TabIndex = 44;
+			// 
+			// Reg28
+			// 
+			this->Reg28->Enabled = false;
+			this->Reg28->Location = System::Drawing::Point(27, 577);
+			this->Reg28->Name = L"Reg28";
+			this->Reg28->Size = System::Drawing::Size(109, 20);
+			this->Reg28->TabIndex = 43;
+			// 
+			// Reg27
+			// 
+			this->Reg27->Enabled = false;
+			this->Reg27->Location = System::Drawing::Point(27, 557);
+			this->Reg27->Name = L"Reg27";
+			this->Reg27->Size = System::Drawing::Size(109, 20);
+			this->Reg27->TabIndex = 42;
+			// 
+			// Reg26
+			// 
+			this->Reg26->Enabled = false;
+			this->Reg26->Location = System::Drawing::Point(27, 537);
+			this->Reg26->Name = L"Reg26";
+			this->Reg26->Size = System::Drawing::Size(109, 20);
+			this->Reg26->TabIndex = 41;
+			// 
+			// Reg25
+			// 
+			this->Reg25->Enabled = false;
+			this->Reg25->Location = System::Drawing::Point(27, 517);
+			this->Reg25->Name = L"Reg25";
+			this->Reg25->Size = System::Drawing::Size(109, 20);
+			this->Reg25->TabIndex = 40;
+			// 
+			// Reg24
+			// 
+			this->Reg24->Enabled = false;
+			this->Reg24->Location = System::Drawing::Point(27, 497);
+			this->Reg24->Name = L"Reg24";
+			this->Reg24->Size = System::Drawing::Size(109, 20);
+			this->Reg24->TabIndex = 39;
+			// 
+			// Reg23
+			// 
+			this->Reg23->Enabled = false;
+			this->Reg23->Location = System::Drawing::Point(27, 477);
+			this->Reg23->Name = L"Reg23";
+			this->Reg23->Size = System::Drawing::Size(109, 20);
+			this->Reg23->TabIndex = 38;
+			// 
+			// Reg22
+			// 
+			this->Reg22->Enabled = false;
+			this->Reg22->Location = System::Drawing::Point(27, 457);
+			this->Reg22->Name = L"Reg22";
+			this->Reg22->Size = System::Drawing::Size(109, 20);
+			this->Reg22->TabIndex = 37;
+			// 
+			// Reg21
+			// 
+			this->Reg21->Enabled = false;
+			this->Reg21->Location = System::Drawing::Point(27, 437);
+			this->Reg21->Name = L"Reg21";
+			this->Reg21->Size = System::Drawing::Size(109, 20);
+			this->Reg21->TabIndex = 36;
+			// 
+			// Reg20
+			// 
+			this->Reg20->Enabled = false;
+			this->Reg20->Location = System::Drawing::Point(27, 417);
+			this->Reg20->Name = L"Reg20";
+			this->Reg20->Size = System::Drawing::Size(109, 20);
+			this->Reg20->TabIndex = 35;
+			// 
+			// Reg19
+			// 
+			this->Reg19->Enabled = false;
+			this->Reg19->Location = System::Drawing::Point(27, 397);
+			this->Reg19->Name = L"Reg19";
+			this->Reg19->Size = System::Drawing::Size(109, 20);
+			this->Reg19->TabIndex = 34;
+			this->Reg19->TextChanged += gcnew System::EventHandler(this, &Simulator::Reg19_TextChanged);
+			// 
+			// Reg18
+			// 
+			this->Reg18->Enabled = false;
+			this->Reg18->Location = System::Drawing::Point(27, 377);
+			this->Reg18->Name = L"Reg18";
+			this->Reg18->Size = System::Drawing::Size(109, 20);
+			this->Reg18->TabIndex = 33;
+			// 
+			// Reg17
+			// 
+			this->Reg17->Enabled = false;
+			this->Reg17->Location = System::Drawing::Point(27, 357);
+			this->Reg17->Name = L"Reg17";
+			this->Reg17->Size = System::Drawing::Size(109, 20);
+			this->Reg17->TabIndex = 32;
+			// 
+			// Reg3
+			// 
+			this->Reg3->Enabled = false;
+			this->Reg3->Location = System::Drawing::Point(27, 77);
+			this->Reg3->Name = L"Reg3";
+			this->Reg3->Size = System::Drawing::Size(109, 20);
+			this->Reg3->TabIndex = 16;
 			// 
 			// memGroupBox
 			// 
-			this->memGroupBox->Controls->Add(this->textBox3);
-			this->memGroupBox->Controls->Add(this->textBox37);
-			this->memGroupBox->Controls->Add(this->textBox19);
-			this->memGroupBox->Controls->Add(this->textBox41);
-			this->memGroupBox->Controls->Add(this->textBox20);
-			this->memGroupBox->Controls->Add(this->textBox40);
-			this->memGroupBox->Controls->Add(this->textBox21);
-			this->memGroupBox->Controls->Add(this->textBox39);
-			this->memGroupBox->Controls->Add(this->textBox22);
-			this->memGroupBox->Controls->Add(this->textBox38);
-			this->memGroupBox->Controls->Add(this->textBox23);
-			this->memGroupBox->Controls->Add(this->textBox36);
-			this->memGroupBox->Controls->Add(this->textBox24);
-			this->memGroupBox->Controls->Add(this->textBox35);
-			this->memGroupBox->Controls->Add(this->textBox25);
-			this->memGroupBox->Controls->Add(this->textBox26);
+			this->memGroupBox->Controls->Add(this->Mem15);
+			this->memGroupBox->Controls->Add(this->Mem4);
+			this->memGroupBox->Controls->Add(this->Mem14);
+			this->memGroupBox->Controls->Add(this->Mem3);
+			this->memGroupBox->Controls->Add(this->Mem13);
+			this->memGroupBox->Controls->Add(this->Mem0);
+			this->memGroupBox->Controls->Add(this->Mem12);
+			this->memGroupBox->Controls->Add(this->Mem1);
+			this->memGroupBox->Controls->Add(this->Mem11);
+			this->memGroupBox->Controls->Add(this->Mem2);
+			this->memGroupBox->Controls->Add(this->Mem10);
+			this->memGroupBox->Controls->Add(this->Mem5);
+			this->memGroupBox->Controls->Add(this->Mem9);
+			this->memGroupBox->Controls->Add(this->Mem6);
+			this->memGroupBox->Controls->Add(this->Mem8);
+			this->memGroupBox->Controls->Add(this->Mem7);
 			this->memGroupBox->Location = System::Drawing::Point(473, 64);
 			this->memGroupBox->Name = L"memGroupBox";
 			this->memGroupBox->Size = System::Drawing::Size(140, 355);
@@ -691,118 +811,133 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->memGroupBox->TabStop = false;
 			this->memGroupBox->Text = L"Memory";
 			// 
-			// textBox3
+			// Mem15
 			// 
-			this->textBox3->Location = System::Drawing::Point(16, 317);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(109, 20);
-			this->textBox3->TabIndex = 78;
+			this->Mem15->Enabled = false;
+			this->Mem15->Location = System::Drawing::Point(16, 317);
+			this->Mem15->Name = L"Mem15";
+			this->Mem15->Size = System::Drawing::Size(109, 20);
+			this->Mem15->TabIndex = 78;
 			// 
-			// textBox19
+			// Mem4
 			// 
-			this->textBox19->Location = System::Drawing::Point(16, 297);
-			this->textBox19->Name = L"textBox19";
-			this->textBox19->Size = System::Drawing::Size(109, 20);
-			this->textBox19->TabIndex = 77;
+			this->Mem4->Enabled = false;
+			this->Mem4->Location = System::Drawing::Point(16, 97);
+			this->Mem4->Name = L"Mem4";
+			this->Mem4->Size = System::Drawing::Size(109, 20);
+			this->Mem4->TabIndex = 67;
 			// 
-			// textBox20
+			// Mem14
 			// 
-			this->textBox20->Location = System::Drawing::Point(16, 277);
-			this->textBox20->Name = L"textBox20";
-			this->textBox20->Size = System::Drawing::Size(109, 20);
-			this->textBox20->TabIndex = 76;
+			this->Mem14->Enabled = false;
+			this->Mem14->Location = System::Drawing::Point(16, 297);
+			this->Mem14->Name = L"Mem14";
+			this->Mem14->Size = System::Drawing::Size(109, 20);
+			this->Mem14->TabIndex = 77;
 			// 
-			// textBox21
+			// Mem3
 			// 
-			this->textBox21->Location = System::Drawing::Point(16, 257);
-			this->textBox21->Name = L"textBox21";
-			this->textBox21->Size = System::Drawing::Size(109, 20);
-			this->textBox21->TabIndex = 75;
+			this->Mem3->Enabled = false;
+			this->Mem3->Location = System::Drawing::Point(16, 77);
+			this->Mem3->Name = L"Mem3";
+			this->Mem3->Size = System::Drawing::Size(109, 20);
+			this->Mem3->TabIndex = 63;
 			// 
-			// textBox22
+			// Mem13
 			// 
-			this->textBox22->Location = System::Drawing::Point(16, 237);
-			this->textBox22->Name = L"textBox22";
-			this->textBox22->Size = System::Drawing::Size(109, 20);
-			this->textBox22->TabIndex = 74;
+			this->Mem13->Enabled = false;
+			this->Mem13->Location = System::Drawing::Point(16, 277);
+			this->Mem13->Name = L"Mem13";
+			this->Mem13->Size = System::Drawing::Size(109, 20);
+			this->Mem13->TabIndex = 76;
 			// 
-			// textBox23
+			// Mem0
 			// 
-			this->textBox23->Location = System::Drawing::Point(16, 217);
-			this->textBox23->Name = L"textBox23";
-			this->textBox23->Size = System::Drawing::Size(109, 20);
-			this->textBox23->TabIndex = 73;
+			this->Mem0->Enabled = false;
+			this->Mem0->Location = System::Drawing::Point(16, 17);
+			this->Mem0->Name = L"Mem0";
+			this->Mem0->Size = System::Drawing::Size(109, 20);
+			this->Mem0->TabIndex = 64;
 			// 
-			// textBox24
+			// Mem12
 			// 
-			this->textBox24->Location = System::Drawing::Point(16, 197);
-			this->textBox24->Name = L"textBox24";
-			this->textBox24->Size = System::Drawing::Size(109, 20);
-			this->textBox24->TabIndex = 72;
+			this->Mem12->Enabled = false;
+			this->Mem12->Location = System::Drawing::Point(16, 257);
+			this->Mem12->Name = L"Mem12";
+			this->Mem12->Size = System::Drawing::Size(109, 20);
+			this->Mem12->TabIndex = 75;
 			// 
-			// textBox25
+			// Mem1
 			// 
-			this->textBox25->Location = System::Drawing::Point(16, 177);
-			this->textBox25->Name = L"textBox25";
-			this->textBox25->Size = System::Drawing::Size(109, 20);
-			this->textBox25->TabIndex = 71;
+			this->Mem1->Enabled = false;
+			this->Mem1->Location = System::Drawing::Point(16, 37);
+			this->Mem1->Name = L"Mem1";
+			this->Mem1->Size = System::Drawing::Size(109, 20);
+			this->Mem1->TabIndex = 65;
 			// 
-			// textBox26
+			// Mem11
 			// 
-			this->textBox26->Location = System::Drawing::Point(16, 157);
-			this->textBox26->Name = L"textBox26";
-			this->textBox26->Size = System::Drawing::Size(109, 20);
-			this->textBox26->TabIndex = 70;
+			this->Mem11->Enabled = false;
+			this->Mem11->Location = System::Drawing::Point(16, 237);
+			this->Mem11->Name = L"Mem11";
+			this->Mem11->Size = System::Drawing::Size(109, 20);
+			this->Mem11->TabIndex = 74;
 			// 
-			// textBox35
+			// Mem2
 			// 
-			this->textBox35->Location = System::Drawing::Point(16, 137);
-			this->textBox35->Name = L"textBox35";
-			this->textBox35->Size = System::Drawing::Size(109, 20);
-			this->textBox35->TabIndex = 69;
+			this->Mem2->Enabled = false;
+			this->Mem2->Location = System::Drawing::Point(16, 57);
+			this->Mem2->Name = L"Mem2";
+			this->Mem2->Size = System::Drawing::Size(109, 20);
+			this->Mem2->TabIndex = 66;
 			// 
-			// textBox36
+			// Mem10
 			// 
-			this->textBox36->Location = System::Drawing::Point(16, 117);
-			this->textBox36->Name = L"textBox36";
-			this->textBox36->Size = System::Drawing::Size(109, 20);
-			this->textBox36->TabIndex = 68;
+			this->Mem10->Enabled = false;
+			this->Mem10->Location = System::Drawing::Point(16, 217);
+			this->Mem10->Name = L"Mem10";
+			this->Mem10->Size = System::Drawing::Size(109, 20);
+			this->Mem10->TabIndex = 73;
 			// 
-			// textBox37
+			// Mem5
 			// 
-			this->textBox37->Location = System::Drawing::Point(16, 97);
-			this->textBox37->Name = L"textBox37";
-			this->textBox37->Size = System::Drawing::Size(109, 20);
-			this->textBox37->TabIndex = 67;
+			this->Mem5->Enabled = false;
+			this->Mem5->Location = System::Drawing::Point(16, 117);
+			this->Mem5->Name = L"Mem5";
+			this->Mem5->Size = System::Drawing::Size(109, 20);
+			this->Mem5->TabIndex = 68;
 			// 
-			// textBox38
+			// Mem9
 			// 
-			this->textBox38->Location = System::Drawing::Point(16, 57);
-			this->textBox38->Name = L"textBox38";
-			this->textBox38->Size = System::Drawing::Size(109, 20);
-			this->textBox38->TabIndex = 66;
+			this->Mem9->Enabled = false;
+			this->Mem9->Location = System::Drawing::Point(16, 197);
+			this->Mem9->Name = L"Mem9";
+			this->Mem9->Size = System::Drawing::Size(109, 20);
+			this->Mem9->TabIndex = 72;
 			// 
-			// textBox39
+			// Mem6
 			// 
-			this->textBox39->Location = System::Drawing::Point(16, 37);
-			this->textBox39->Name = L"textBox39";
-			this->textBox39->Size = System::Drawing::Size(109, 20);
-			this->textBox39->TabIndex = 65;
+			this->Mem6->Enabled = false;
+			this->Mem6->Location = System::Drawing::Point(16, 137);
+			this->Mem6->Name = L"Mem6";
+			this->Mem6->Size = System::Drawing::Size(109, 20);
+			this->Mem6->TabIndex = 69;
 			// 
-			// textBox40
+			// Mem8
 			// 
-			this->textBox40->Enabled = false;
-			this->textBox40->Location = System::Drawing::Point(16, 17);
-			this->textBox40->Name = L"textBox40";
-			this->textBox40->Size = System::Drawing::Size(109, 20);
-			this->textBox40->TabIndex = 64;
+			this->Mem8->Enabled = false;
+			this->Mem8->Location = System::Drawing::Point(16, 177);
+			this->Mem8->Name = L"Mem8";
+			this->Mem8->Size = System::Drawing::Size(109, 20);
+			this->Mem8->TabIndex = 71;
 			// 
-			// textBox41
+			// Mem7
 			// 
-			this->textBox41->Location = System::Drawing::Point(16, 77);
-			this->textBox41->Name = L"textBox41";
-			this->textBox41->Size = System::Drawing::Size(109, 20);
-			this->textBox41->TabIndex = 63;
+			this->Mem7->Enabled = false;
+			this->Mem7->Location = System::Drawing::Point(16, 157);
+			this->Mem7->Name = L"Mem7";
+			this->Mem7->Size = System::Drawing::Size(109, 20);
+			this->Mem7->TabIndex = 70;
 			// 
 			// stackBox
 			// 
@@ -820,6 +955,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// Stack0
 			// 
+			this->Stack0->Enabled = false;
 			this->Stack0->Location = System::Drawing::Point(16, 77);
 			this->Stack0->Name = L"Stack0";
 			this->Stack0->Size = System::Drawing::Size(109, 20);
@@ -827,6 +963,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// Stack3
 			// 
+			this->Stack3->Enabled = false;
 			this->Stack3->Location = System::Drawing::Point(16, 17);
 			this->Stack3->Name = L"Stack3";
 			this->Stack3->Size = System::Drawing::Size(109, 20);
@@ -834,6 +971,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// Stack2
 			// 
+			this->Stack2->Enabled = false;
 			this->Stack2->Location = System::Drawing::Point(16, 37);
 			this->Stack2->Name = L"Stack2";
 			this->Stack2->Size = System::Drawing::Size(109, 20);
@@ -841,6 +979,7 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			// 
 			// Stack1
 			// 
+			this->Stack1->Enabled = false;
 			this->Stack1->Location = System::Drawing::Point(16, 57);
 			this->Stack1->Name = L"Stack1";
 			this->Stack1->Size = System::Drawing::Size(109, 20);
@@ -873,11 +1012,136 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->base_choice->Size = System::Drawing::Size(121, 21);
 			this->base_choice->TabIndex = 82;
 			// 
+			// pcGroupBox
+			// 
+			this->pcGroupBox->Controls->Add(this->PC);
+			this->pcGroupBox->Location = System::Drawing::Point(473, 559);
+			this->pcGroupBox->Name = L"pcGroupBox";
+			this->pcGroupBox->Size = System::Drawing::Size(140, 60);
+			this->pcGroupBox->TabIndex = 80;
+			this->pcGroupBox->TabStop = false;
+			this->pcGroupBox->Text = L"PC";
+			// 
+			// PC
+			// 
+			this->PC->Enabled = false;
+			this->PC->Location = System::Drawing::Point(16, 17);
+			this->PC->Name = L"PC";
+			this->PC->Size = System::Drawing::Size(109, 20);
+			this->PC->TabIndex = 64;
+			// 
+			// pipelineGroup
+			// 
+			this->pipelineGroup->Controls->Add(this->p11Inst);
+			this->pipelineGroup->Controls->Add(this->p12Inst);
+			this->pipelineGroup->Controls->Add(this->p6Inst);
+			this->pipelineGroup->Controls->Add(this->p8Inst);
+			this->pipelineGroup->Controls->Add(this->p9Inst);
+			this->pipelineGroup->Controls->Add(this->p10Inst);
+			this->pipelineGroup->Controls->Add(this->p7Inst);
+			this->pipelineGroup->Controls->Add(this->p4Inst);
+			this->pipelineGroup->Controls->Add(this->p5Inst);
+			this->pipelineGroup->Controls->Add(this->p2Inst);
+			this->pipelineGroup->Controls->Add(this->p3Inst);
+			this->pipelineGroup->Controls->Add(this->p1Inst);
+			this->pipelineGroup->Location = System::Drawing::Point(634, 64);
+			this->pipelineGroup->Name = L"pipelineGroup";
+			this->pipelineGroup->Size = System::Drawing::Size(610, 555);
+			this->pipelineGroup->TabIndex = 90;
+			this->pipelineGroup->TabStop = false;
+			this->pipelineGroup->Text = L"Pipeline";
+			// 
+			// p7Inst
+			// 
+			this->p7Inst->Location = System::Drawing::Point(6, 301);
+			this->p7Inst->Name = L"p7Inst";
+			this->p7Inst->Size = System::Drawing::Size(100, 20);
+			this->p7Inst->TabIndex = 95;
+			// 
+			// p4Inst
+			// 
+			this->p4Inst->Location = System::Drawing::Point(6, 175);
+			this->p4Inst->Name = L"p4Inst";
+			this->p4Inst->Size = System::Drawing::Size(100, 20);
+			this->p4Inst->TabIndex = 94;
+			// 
+			// p5Inst
+			// 
+			this->p5Inst->Location = System::Drawing::Point(6, 217);
+			this->p5Inst->Name = L"p5Inst";
+			this->p5Inst->Size = System::Drawing::Size(100, 20);
+			this->p5Inst->TabIndex = 93;
+			// 
+			// p2Inst
+			// 
+			this->p2Inst->Location = System::Drawing::Point(6, 91);
+			this->p2Inst->Name = L"p2Inst";
+			this->p2Inst->Size = System::Drawing::Size(100, 20);
+			this->p2Inst->TabIndex = 92;
+			// 
+			// p3Inst
+			// 
+			this->p3Inst->Location = System::Drawing::Point(6, 133);
+			this->p3Inst->Name = L"p3Inst";
+			this->p3Inst->Size = System::Drawing::Size(100, 20);
+			this->p3Inst->TabIndex = 91;
+			// 
+			// p1Inst
+			// 
+			this->p1Inst->Location = System::Drawing::Point(6, 49);
+			this->p1Inst->Name = L"p1Inst";
+			this->p1Inst->Size = System::Drawing::Size(100, 20);
+			this->p1Inst->TabIndex = 90;
+			// 
+			// p10Inst
+			// 
+			this->p10Inst->Location = System::Drawing::Point(6, 427);
+			this->p10Inst->Name = L"p10Inst";
+			this->p10Inst->Size = System::Drawing::Size(100, 20);
+			this->p10Inst->TabIndex = 96;
+			// 
+			// p9Inst
+			// 
+			this->p9Inst->Location = System::Drawing::Point(6, 385);
+			this->p9Inst->Name = L"p9Inst";
+			this->p9Inst->Size = System::Drawing::Size(100, 20);
+			this->p9Inst->TabIndex = 97;
+			// 
+			// p8Inst
+			// 
+			this->p8Inst->Location = System::Drawing::Point(6, 343);
+			this->p8Inst->Name = L"p8Inst";
+			this->p8Inst->Size = System::Drawing::Size(100, 20);
+			this->p8Inst->TabIndex = 98;
+			// 
+			// p6Inst
+			// 
+			this->p6Inst->Location = System::Drawing::Point(6, 259);
+			this->p6Inst->Name = L"p6Inst";
+			this->p6Inst->Size = System::Drawing::Size(100, 20);
+			this->p6Inst->TabIndex = 99;
+			// 
+			// p12Inst
+			// 
+			this->p12Inst->Location = System::Drawing::Point(6, 511);
+			this->p12Inst->Name = L"p12Inst";
+			this->p12Inst->Size = System::Drawing::Size(100, 20);
+			this->p12Inst->TabIndex = 100;
+			// 
+			// p11Inst
+			// 
+			this->p11Inst->Location = System::Drawing::Point(6, 469);
+			this->p11Inst->Name = L"p11Inst";
+			this->p11Inst->Size = System::Drawing::Size(100, 20);
+			this->p11Inst->TabIndex = 101;
+			// 
 			// Simulator
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1284, 742);
+			this->Controls->Add(this->pipelineGroup);
+			this->Controls->Add(this->pcGroupBox);
 			this->Controls->Add(this->base_choice);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->baseLabel);
@@ -906,6 +1170,10 @@ private: System::Windows::Forms::ComboBox^  base_choice;
 			this->memGroupBox->PerformLayout();
 			this->stackBox->ResumeLayout(false);
 			this->stackBox->PerformLayout();
+			this->pcGroupBox->ResumeLayout(false);
+			this->pcGroupBox->PerformLayout();
+			this->pipelineGroup->ResumeLayout(false);
+			this->pipelineGroup->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -938,6 +1206,8 @@ private: System::Void label6_Click_1(System::Object^  sender, System::EventArgs^
 private: System::Void RegistersGroupBox_Enter(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void groupBox1_Enter(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void Reg19_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
