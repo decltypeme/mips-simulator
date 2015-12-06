@@ -1,16 +1,21 @@
 #include "Ble.h"
 
 
-Ble::Ble(int source1, int source2, int immediate)
-	:iformat(source1, source2, immediate) {}
+Ble::Ble(int _rs, int _rt, int _immediate)
+	:iformat(_rs, _rt, _immediate) {}
 
 Ble::~Ble() {}
 
+void Ble::fetch()
+{
+	addressIfNotTaken = PC + 4;
+	addressIfTaken = immediate + PC + 4;
+}
+
 void Ble::execute()
 {
-	if (registers[source] >= registers[destination])
-		proposePC(PC + 4 + immediate, this);
-	else
-		proposePC(PC + 4, this);
+	if (registers[rs] > registers[rt]);
 }
+
+void Ble::writeBack() {}
 

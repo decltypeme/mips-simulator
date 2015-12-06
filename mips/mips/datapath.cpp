@@ -47,10 +47,10 @@ void fetch()
 
 void decode()
 {
+	pipeline[0]->fetch();
 	hazardDetection(hazards);
 	sort(begin(hazards), end(hazards));
 	for_each(begin(hazards), end(hazards), dealWithHazard);
-	pipeline[0]->fetch();
 }
 
 void execute()

@@ -1,6 +1,6 @@
 #include "Lw.h"
 
-Lw::Lw(int rs, int rt, int immediate):iformat(rs, rt, immediate)
+Lw::Lw(int _rs, int _rt, int _immediate):iformat(_rs, _rt, _immediate)
 {
 }
 
@@ -11,15 +11,10 @@ Lw::~Lw()
 
 void Lw::execute()
 {
-	writeData = readData[0] + immediate;
+	writeData = rs + immediate;
 }
 
 void Lw::memory()
 {
 	writeData = readDataMem(writeData);
-}
-
-void Lw::writeBack()
-{
-	writeRegister(destination, writeData);
 }

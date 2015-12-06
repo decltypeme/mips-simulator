@@ -7,4 +7,4 @@ Ret::Ret() {}
 
 Ret::~Ret() {}
 
-void Ret::fetch() { PC = popfromstack(); }
+void Ret::fetch() { addressPopped = popfromstack(); }

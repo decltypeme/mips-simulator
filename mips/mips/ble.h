@@ -9,5 +9,8 @@ public:
 	virtual void fetch();
 	virtual void execute();
 	virtual void writeBack();
+	
+	int addressIfNotTaken;
+	int addressIfTaken;
 };
 

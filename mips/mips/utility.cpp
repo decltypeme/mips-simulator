@@ -64,10 +64,10 @@ void initialize()
 	memset(registers, 0, sizeof(registers));
 	memset(stack, 0, sizeof(stack));
 	memset(data_memory, 0, sizeof(data_memory));
-	memset(data_memory, 0, sizeof(hazards));
+	memset(hazards, 0, sizeof(hazards));
 }
 
-void pushtostack(int address)
+void pushtostack(const int& address)
 {
 	if (stack_size < 4)
 	{
@@ -139,6 +139,7 @@ bool right_prediction()
 int updatePC()
 {
 	J* jptr = dynamic_cast <J*> (pipeline[0]);
+	Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
 	Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
 	Ble* bleptr = dynamic_cast <Ble*> (pipeline[0]);
 
@@ -149,11 +150,15 @@ int updatePC()
 			return jptr->address;
 		if (retptr)
 		{
-			retptr->fetch(); return PC;
+			return retptr->addressPopped;
 		}
 		if (bleptr)
 		{
 			return predict_branch();
+		}
+		if (jrptr)
+		{
+			return jrptr->rsData;
 		}
 	}
 }

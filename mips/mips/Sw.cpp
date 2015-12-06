@@ -1,5 +1,5 @@
 #include "Sw.h"
-Sw::Sw(int rs, int rt, int immediate) :iformat(rs, rt, immediate)
+Sw::Sw(int _rs, int _rt, int _immediate) :iformat(_rs, _rt, _immediate)
 {
 }
 
@@ -10,14 +10,12 @@ Sw::~Sw()
 
 void Sw::execute()
 {
-	writeData = readData[0] + immediate;
+	writeData = rs + immediate;
 }
 
 void Sw::memory()
 {
-	writeDataMem(writeData, readData[1]);
+	writeDataMem(writeData, rt);
 }
 
-void Sw::writeBack()
-{
-}
+void Sw::writeBack(){}

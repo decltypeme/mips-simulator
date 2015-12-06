@@ -7,4 +7,5 @@ public:
 	Ret();
 	virtual ~Ret();
 	void fetch();
+	int addressPopped;
 };
