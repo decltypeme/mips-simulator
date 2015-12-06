@@ -30,6 +30,8 @@ int readDataMem(const int& index);
 
 void writeDataMem(const int& index, const int& value);
 
+void fillNops();
+
 void initialize();
 
 void pushtostack(int address);

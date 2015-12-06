@@ -61,12 +61,21 @@ void writeDataMem(const int& index, const int& value)
 	data_memory[index] = value;
 }
 
+void fillNops()
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		pipeline[i] = new inst();
+	}
+}
+
 void initialize()
 {
 	memset(registers, 0, sizeof(registers));
 	memset(stack, 0, sizeof(stack));
 	memset(data_memory, 0, sizeof(data_memory));
 	memset(hazards, 0, sizeof(hazards));
+	fillNops();
 }
 
 void pushtostack(int address)
