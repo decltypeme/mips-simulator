@@ -28,7 +28,7 @@ void hazardDetection()
 	int Ret_EXIST = -1;
 	
 	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
-	memset(data_memory, 0, sizeof(hazards));
+	memset(hazards, 0, sizeof(hazards));
 	for (int i = 0; i < 4; i++)
 	{
 
