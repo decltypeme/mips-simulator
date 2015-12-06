@@ -411,11 +411,15 @@ void hazardDetection()
 		}
 	}
 
-	if (right_prediction() == false) //Flush D&E
+	Ble* bleptr2 = dynamic_cast<Ble*>(pipeline[1]);
+	if (bleptr2 != nullptr)
 	{
-		hazards[z] = 42;
-		z++;
-		flushHappend = 1;
+		if (right_prediction() == false) //Flush D&E
+		{
+			hazards[z] = 42;
+			z++;
+			flushHappend = 1;
+		}
 	}
 
 	if (JR_EXIST != 1 && J_EXIST == 1 && Ret_EXIST == 1) //Flush D
