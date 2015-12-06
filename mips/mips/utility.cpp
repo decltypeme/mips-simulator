@@ -140,7 +140,7 @@ bool right_prediction()
 		branchedToLastTime = bleptr->addressIfNotTaken;
 	}
 	
-	if (branchedToLastTime != bleptr->adressTrue)
+	if (branchedToLastTime != bleptr->addressTrue)
 	{
 		bptptr->taken = ~(bptptr->taken);
 		return false;

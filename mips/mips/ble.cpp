@@ -16,11 +16,11 @@ void Ble::execute()
 {
 	if (registers[rs] <= registers[rt])
 	{
-		adressTrue = addressIfTaken;
+		addressTrue = addressIfTaken;
 	}
 	else
 	{
-		adressTrue = addressIfNotTaken;
+		addressTrue = addressIfNotTaken;
 	}
 }
 
