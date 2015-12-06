@@ -4,8 +4,6 @@
 #include "hazards.h"
 #include "datapath.h"
 
-class inst;
-
 constexpr int maxRegNumber = 31;
 constexpr int dataMemSize = 16;
 constexpr int instMemSize = 16;
@@ -44,3 +42,5 @@ int updatePC();
 int predict_branch();
 
 bool right_prediction();
+
+prediction* getbptptr(prediction& totest, int inst_address);

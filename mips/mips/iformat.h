@@ -4,16 +4,15 @@
 class iformat : public inst
 {
 public:
-	iformat(int source = -1, int destination = -1, int immediate = 0);
+	iformat(int rs = -1, int rt = -1, int immediate = 0);
 	virtual ~iformat();
 	virtual void fetch();
-	virtual void execute();
-	virtual void memory();
 	virtual void writeBack();
-	int source;			//rs
-	int destination;	//rt
+	int rs;
+	int rt;
 	int immediate;
+	int rsData;
+	int rtData;
 	int writeData;
-	int readData[2];
-	virtual bool valid() const;
+	virtual bool valid();
 };

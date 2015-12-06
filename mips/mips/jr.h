@@ -6,7 +6,10 @@ class Jr : public inst
 public:
 	Jr(int source = -1);
 	virtual ~Jr();
-	virtual void execute() const;
-	int source;
-	virtual bool valid() const;
+	virtual void fetch();
+	
+	int rs;
+	int rsData;
+	
+	virtual bool valid();
 };
