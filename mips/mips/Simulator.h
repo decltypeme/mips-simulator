@@ -250,6 +250,7 @@ private: System::Windows::Forms::TextBox^  p3Inst;
 private: System::Windows::Forms::TextBox^  p1Inst;
 private: System::Windows::Forms::OpenFileDialog^  sourceFile;
 private: System::Windows::Forms::OpenFileDialog^  isaFile;
+private: System::Windows::Forms::TextBox^  p0Inst;
 
 
 
@@ -274,6 +275,66 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+
+		void updateDisplay(
+)
+		{
+			p0Inst->Text = gcnew String(pipeline[0]->instString.c_str());
+			p1Inst->Text = gcnew String(pipeline[1]->instString.c_str());
+			p2Inst->Text = gcnew String(pipeline[2]->instString.c_str());
+			p3Inst->Text = gcnew String(pipeline[3]->instString.c_str());
+			Reg0->Text = "00: " + readRegister(0);
+			Reg1->Text = "01: " + readRegister(1);
+			Reg2->Text = "02: " + readRegister(2);
+			Reg3->Text = "03: " + readRegister(3);
+			Reg4->Text = "04: " + readRegister(4);
+			Reg5->Text = "05: " + readRegister(5);
+			Reg6->Text = "06: " + readRegister(6);
+			Reg7->Text = "07: " + readRegister(7);
+			Reg8->Text = "08: " + readRegister(8);
+			Reg9->Text = "09: " + readRegister(9);
+			Reg10->Text = "10: " + readRegister(10);
+			Reg11->Text = "11: " + readRegister(11);
+			Reg12->Text = "12: " + readRegister(12);
+			Reg13->Text = "13: " + readRegister(13);
+			Reg14->Text = "14: " + readRegister(14);
+			Reg15->Text = "15: " + readRegister(15);
+			Reg16->Text = "16: " + readRegister(16);
+			Reg17->Text = "17: " + readRegister(17);
+			Reg18->Text = "18: " + readRegister(18);
+			Reg19->Text = "19: " + readRegister(19);
+			Reg20->Text = "20: " + readRegister(20);
+			Reg21->Text = "21: " + readRegister(21);
+			Reg22->Text = "22: " + readRegister(22);
+			Reg23->Text = "23: " + readRegister(23);
+			Reg24->Text = "24: " + readRegister(24);
+			Reg25->Text = "25: " + readRegister(25);
+			Reg26->Text = "26: " + readRegister(26);
+			Reg27->Text = "27: " + readRegister(27);
+			Reg28->Text = "28: " + readRegister(28);
+			Reg29->Text = "29: " + readRegister(29);
+			Reg30->Text = "30: " + readRegister(30);
+			Reg31->Text = "31: " + readRegister(31);
+			Mem0->Text = "00: " + readDataMem(0);
+			Mem1->Text = "01: " + readDataMem(1);
+			Mem2->Text = "02: " + readDataMem(2);
+			Mem3->Text = "03: " + readDataMem(3);
+			Mem4->Text = "04: " + readDataMem(4);
+			Mem5->Text = "05: " + readDataMem(5);
+			Mem6->Text = "06: " + readDataMem(6);
+			Mem7->Text = "07: " + readDataMem(7);
+			Mem8->Text = "08: " + readDataMem(8);
+			Mem9->Text = "09: " + readDataMem(9);
+			Mem10->Text = "10: " + readDataMem(10);
+			Mem11->Text = "11: " + readDataMem(11);
+			Mem12->Text = "12: " + readDataMem(12);
+			Mem13->Text = "13: " + readDataMem(13);
+			Mem14->Text = "14: " + readDataMem(14);
+			Mem15->Text = "15: " + readDataMem(15);
+			PC_Show->Text = gcnew System::String((to_string(PC)).c_str());
+		}
+
+
 		void InitializeComponent(void)
 		{
 			this->CodeFileLabel = (gcnew System::Windows::Forms::Label());
@@ -350,6 +411,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->pcGroupBox = (gcnew System::Windows::Forms::GroupBox());
 			this->PC_Show = (gcnew System::Windows::Forms::TextBox());
 			this->pipelineGroup = (gcnew System::Windows::Forms::GroupBox());
+			this->p0Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p11Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p12Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p6Inst = (gcnew System::Windows::Forms::TextBox());
@@ -1037,6 +1099,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			// 
 			// pipelineGroup
 			// 
+			this->pipelineGroup->Controls->Add(this->p0Inst);
 			this->pipelineGroup->Controls->Add(this->p11Inst);
 			this->pipelineGroup->Controls->Add(this->p12Inst);
 			this->pipelineGroup->Controls->Add(this->p6Inst);
@@ -1056,12 +1119,20 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->pipelineGroup->TabStop = false;
 			this->pipelineGroup->Text = L"Pipeline";
 			// 
+			// p0Inst
+			// 
+			this->p0Inst->Location = System::Drawing::Point(24, 57);
+			this->p0Inst->Name = L"p0Inst";
+			this->p0Inst->Size = System::Drawing::Size(100, 20);
+			this->p0Inst->TabIndex = 103;
+			// 
 			// p11Inst
 			// 
 			this->p11Inst->Location = System::Drawing::Point(6, 469);
 			this->p11Inst->Name = L"p11Inst";
 			this->p11Inst->Size = System::Drawing::Size(100, 20);
 			this->p11Inst->TabIndex = 101;
+			this->p11Inst->Visible = false;
 			// 
 			// p12Inst
 			// 
@@ -1069,6 +1140,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p12Inst->Name = L"p12Inst";
 			this->p12Inst->Size = System::Drawing::Size(100, 20);
 			this->p12Inst->TabIndex = 100;
+			this->p12Inst->Visible = false;
 			// 
 			// p6Inst
 			// 
@@ -1076,6 +1148,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p6Inst->Name = L"p6Inst";
 			this->p6Inst->Size = System::Drawing::Size(100, 20);
 			this->p6Inst->TabIndex = 99;
+			this->p6Inst->Visible = false;
 			// 
 			// p8Inst
 			// 
@@ -1083,6 +1156,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p8Inst->Name = L"p8Inst";
 			this->p8Inst->Size = System::Drawing::Size(100, 20);
 			this->p8Inst->TabIndex = 98;
+			this->p8Inst->Visible = false;
 			// 
 			// p9Inst
 			// 
@@ -1090,6 +1164,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p9Inst->Name = L"p9Inst";
 			this->p9Inst->Size = System::Drawing::Size(100, 20);
 			this->p9Inst->TabIndex = 97;
+			this->p9Inst->Visible = false;
 			// 
 			// p10Inst
 			// 
@@ -1097,6 +1172,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p10Inst->Name = L"p10Inst";
 			this->p10Inst->Size = System::Drawing::Size(100, 20);
 			this->p10Inst->TabIndex = 96;
+			this->p10Inst->Visible = false;
 			// 
 			// p7Inst
 			// 
@@ -1104,6 +1180,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p7Inst->Name = L"p7Inst";
 			this->p7Inst->Size = System::Drawing::Size(100, 20);
 			this->p7Inst->TabIndex = 95;
+			this->p7Inst->Visible = false;
 			// 
 			// p4Inst
 			// 
@@ -1111,6 +1188,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p4Inst->Name = L"p4Inst";
 			this->p4Inst->Size = System::Drawing::Size(100, 20);
 			this->p4Inst->TabIndex = 94;
+			this->p4Inst->Visible = false;
 			// 
 			// p5Inst
 			// 
@@ -1118,24 +1196,25 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->p5Inst->Name = L"p5Inst";
 			this->p5Inst->Size = System::Drawing::Size(100, 20);
 			this->p5Inst->TabIndex = 93;
+			this->p5Inst->Visible = false;
 			// 
 			// p2Inst
 			// 
-			this->p2Inst->Location = System::Drawing::Point(6, 91);
+			this->p2Inst->Location = System::Drawing::Point(372, 57);
 			this->p2Inst->Name = L"p2Inst";
 			this->p2Inst->Size = System::Drawing::Size(100, 20);
 			this->p2Inst->TabIndex = 92;
 			// 
 			// p3Inst
 			// 
-			this->p3Inst->Location = System::Drawing::Point(6, 133);
+			this->p3Inst->Location = System::Drawing::Point(504, 57);
 			this->p3Inst->Name = L"p3Inst";
 			this->p3Inst->Size = System::Drawing::Size(100, 20);
 			this->p3Inst->TabIndex = 91;
 			// 
 			// p1Inst
 			// 
-			this->p1Inst->Location = System::Drawing::Point(6, 49);
+			this->p1Inst->Location = System::Drawing::Point(195, 57);
 			this->p1Inst->Name = L"p1Inst";
 			this->p1Inst->Size = System::Drawing::Size(100, 20);
 			this->p1Inst->TabIndex = 90;
@@ -1252,55 +1331,7 @@ private: System::Void isaFile_FileOk(System::Object^  sender, System::ComponentM
 	isaTextBox->Text = isaFile->FileName;
 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	Reg0->Text = "00: " + readRegister(0);
-	Reg1->Text = "01: " + readRegister(1);
-	Reg2->Text = "02: " + readRegister(2);
-	Reg3->Text = "03: " + readRegister(3);
-	Reg4->Text = "04: " + readRegister(4);
-	Reg5->Text = "05: " + readRegister(5);
-	Reg6->Text = "06: " + readRegister(6);
-	Reg7->Text = "07: " + readRegister(7);
-	Reg8->Text = "08: " + readRegister(8);
-	Reg9->Text = "09: " + readRegister(9);
-	Reg10->Text = "10: " + readRegister(10);
-	Reg11->Text = "11: " + readRegister(11);
-	Reg12->Text = "12: " + readRegister(12);
-	Reg13->Text = "13: " + readRegister(13);
-	Reg14->Text = "14: " + readRegister(14);
-	Reg15->Text = "15: " + readRegister(15);
-	Reg16->Text = "16: " + readRegister(16);
-	Reg17->Text = "17: " + readRegister(17);
-	Reg18->Text = "18: " + readRegister(18);
-	Reg19->Text = "19: " + readRegister(19);
-	Reg20->Text = "20: " + readRegister(20);
-	Reg21->Text = "21: " + readRegister(21);
-	Reg22->Text = "22: " + readRegister(22);
-	Reg23->Text = "23: " + readRegister(23);
-	Reg24->Text = "24: " + readRegister(24);
-	Reg25->Text = "25: " + readRegister(25);
-	Reg26->Text = "26: " + readRegister(26);
-	Reg27->Text = "27: " + readRegister(27);
-	Reg28->Text = "28: " + readRegister(28);
-	Reg29->Text = "29: " + readRegister(29);
-	Reg30->Text = "30: " + readRegister(30);
-	Reg31->Text = "31: " + readRegister(31);
-	Mem0->Text = "00: " + readDataMem(0);
-	Mem1->Text = "01: " + readDataMem(1);
-	Mem2->Text = "02: " + readDataMem(2);
-	Mem3->Text = "03: " + readDataMem(3);
-	Mem4->Text = "04: " + readDataMem(4);
-	Mem5->Text = "05: " + readDataMem(5);
-	Mem6->Text = "06: " + readDataMem(6);
-	Mem7->Text = "07: " + readDataMem(7);
-	Mem8->Text = "08: " + readDataMem(8);
-	Mem9->Text = "09: " + readDataMem(9);
-	Mem10->Text = "10: " + readDataMem(10);
-	Mem11->Text = "11: " + readDataMem(11);
-	Mem12->Text = "12: " + readDataMem(12);
-	Mem13->Text = "13: " + readDataMem(13);
-	Mem14->Text = "14: " + readDataMem(14);
-	Mem15->Text = "15: " + readDataMem(15);
-	PC_Show->Text = gcnew System::String ((to_string(PC)).c_str());
+	updateDisplay();
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 	fetch();
@@ -1308,55 +1339,7 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	execute();
 	memory();
 	writeBack();
-	Reg0->Text = "00: " + readRegister(0);
-	Reg1->Text = "01: " + readRegister(1);
-	Reg2->Text = "02: " + readRegister(2);
-	Reg3->Text = "03: " + readRegister(3);
-	Reg4->Text = "04: " + readRegister(4);
-	Reg5->Text = "05: " + readRegister(5);
-	Reg6->Text = "06: " + readRegister(6);
-	Reg7->Text = "07: " + readRegister(7);
-	Reg8->Text = "08: " + readRegister(8);
-	Reg9->Text = "09: " + readRegister(9);
-	Reg10->Text = "10: " + readRegister(10);
-	Reg11->Text = "11: " + readRegister(11);
-	Reg12->Text = "12: " + readRegister(12);
-	Reg13->Text = "13: " + readRegister(13);
-	Reg14->Text = "14: " + readRegister(14);
-	Reg15->Text = "15: " + readRegister(15);
-	Reg16->Text = "16: " + readRegister(16);
-	Reg17->Text = "17: " + readRegister(17);
-	Reg18->Text = "18: " + readRegister(18);
-	Reg19->Text = "19: " + readRegister(19);
-	Reg20->Text = "20: " + readRegister(20);
-	Reg21->Text = "21: " + readRegister(21);
-	Reg22->Text = "22: " + readRegister(22);
-	Reg23->Text = "23: " + readRegister(23);
-	Reg24->Text = "24: " + readRegister(24);
-	Reg25->Text = "25: " + readRegister(25);
-	Reg26->Text = "26: " + readRegister(26);
-	Reg27->Text = "27: " + readRegister(27);
-	Reg28->Text = "28: " + readRegister(28);
-	Reg29->Text = "29: " + readRegister(29);
-	Reg30->Text = "30: " + readRegister(30);
-	Reg31->Text = "31: " + readRegister(31);
-	Mem0->Text = "00: " + readDataMem(0);
-	Mem1->Text = "01: " + readDataMem(1);
-	Mem2->Text = "02: " + readDataMem(2);
-	Mem3->Text = "03: " + readDataMem(3);
-	Mem4->Text = "04: " + readDataMem(4);
-	Mem5->Text = "05: " + readDataMem(5);
-	Mem6->Text = "06: " + readDataMem(6);
-	Mem7->Text = "07: " + readDataMem(7);
-	Mem8->Text = "08: " + readDataMem(8);
-	Mem9->Text = "09: " + readDataMem(9);
-	Mem10->Text = "10: " + readDataMem(10);
-	Mem11->Text = "11: " + readDataMem(11);
-	Mem12->Text = "12: " + readDataMem(12);
-	Mem13->Text = "13: " + readDataMem(13);
-	Mem14->Text = "14: " + readDataMem(14);
-	Mem15->Text = "15: " + readDataMem(15);
-	PC_Show->Text = gcnew System::String((to_string(PC)).c_str());
+	updateDisplay();
 }
 };
 }
