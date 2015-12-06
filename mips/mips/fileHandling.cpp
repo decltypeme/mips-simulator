@@ -70,7 +70,7 @@ bool verifyLines(const vector<string>& ruleStrings, const vector<string> lines, 
 }
 
 //It appends the instructions when parsing, make sure it is clear.
-int fileHandler(int argc, char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField)
+int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField)
 {
 	if (argc == 4)
 	{

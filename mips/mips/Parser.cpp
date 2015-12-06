@@ -52,7 +52,7 @@ immediateType resolveJImmediate(const string& strImmediate)
 	}
 	return jAddr;
 }
-inst parseInstruction(const string& instString, const vector<regex>& instRules, int address)
+inst* parseInstruction(const string& instString, const vector<regex>& instRules, int address)
 {
 	if (!verifyInstruction(instString, instRules))
 		throw invalid_argument("Cannot parse an invalid instruction");
@@ -75,15 +75,15 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 		int rd = stoi(params[2]);
 		if (params.str(1).compare(string("ADD")) == 0)
 		{
-			return Add(rs, rt, rd, address, instString);
+			return new Add(rs, rt, rd, address, instString);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Xor(rs, rt, rd, address, instString);
+			return new Xor(rs, rt, rd, address, instString);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Slt(rs, rt, rd, address, instString);
+			return new Slt(rs, rt, rd, address, instString);
 		}
 	}
 	//I-Type Instructions
@@ -95,44 +95,44 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 		immediateType immediate = resolveImmediate(params[4]);
 		if (params[1] == "ADDI")
 		{
-			return Addi(rt, rs, immediate, address, instString);
+			return new Addi(rt, rs, immediate, address, instString);
 		}
 		if (params[1] == "LW")
 		{
-			return Lw(rt, rs, immediate, address, instString);
+			return new Lw(rt, rs, immediate, address, instString);
 		}
 		else if (params[1] == "SW")
 		{
-			return Sw(rt, rs, immediate, address, instString);
+			return new Sw(rt, rs, immediate, address, instString);
 		}
 		else if (params[1] == "BLE")
 		{
-			return Ble(rt, rs, immediate, address, instString);
+			return new Ble(rt, rs, immediate, address, instString);
 		}
 	}
 	else if (params[1] == "JR")
 	{
-		return Jr(stoi(params[2]));
+		return new Jr(stoi(params[2]));
 	}
 	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
 	{
 		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
 		{
-			return J(jAddr, address, instString);
+			return new J(jAddr, address, instString);
 		}
 		else if (params[1] == "JAL")
 		{
-			return Jal(jAddr, address, instString);
+			return new Jal(jAddr, address, instString);
 		}
 		else if (params[1] == "JMP")
 		{
-			return Jmp(jAddr, address, instString);
+			return new Jmp(jAddr, address, instString);
 		}
 	}
 	else if (params[1] == "RET")
 	{
-		return Ret(address, instString);
+		return new Ret(address, instString);
 	}
 	else
 	{

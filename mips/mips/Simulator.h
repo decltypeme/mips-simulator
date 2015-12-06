@@ -223,7 +223,8 @@ private: System::Windows::Forms::Label^  baseLabel;
 private: System::Windows::Forms::Button^  button4;
 private: System::Windows::Forms::ComboBox^  base_choice;
 private: System::Windows::Forms::GroupBox^  pcGroupBox;
-private: System::Windows::Forms::TextBox^  PC;
+private: System::Windows::Forms::TextBox^  PC_Show;
+
 private: System::Windows::Forms::GroupBox^  pipelineGroup;
 private: System::Windows::Forms::TextBox^  p11Inst;
 private: System::Windows::Forms::TextBox^  p12Inst;
@@ -347,7 +348,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->base_choice = (gcnew System::Windows::Forms::ComboBox());
 			this->pcGroupBox = (gcnew System::Windows::Forms::GroupBox());
-			this->PC = (gcnew System::Windows::Forms::TextBox());
+			this->PC_Show = (gcnew System::Windows::Forms::TextBox());
 			this->pipelineGroup = (gcnew System::Windows::Forms::GroupBox());
 			this->p11Inst = (gcnew System::Windows::Forms::TextBox());
 			this->p12Inst = (gcnew System::Windows::Forms::TextBox());
@@ -1017,7 +1018,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			// 
 			// pcGroupBox
 			// 
-			this->pcGroupBox->Controls->Add(this->PC);
+			this->pcGroupBox->Controls->Add(this->PC_Show);
 			this->pcGroupBox->Location = System::Drawing::Point(473, 559);
 			this->pcGroupBox->Name = L"pcGroupBox";
 			this->pcGroupBox->Size = System::Drawing::Size(140, 60);
@@ -1025,13 +1026,13 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->pcGroupBox->TabStop = false;
 			this->pcGroupBox->Text = L"PC";
 			// 
-			// PC
+			// PC_Show
 			// 
-			this->PC->Enabled = false;
-			this->PC->Location = System::Drawing::Point(16, 17);
-			this->PC->Name = L"PC";
-			this->PC->Size = System::Drawing::Size(109, 20);
-			this->PC->TabIndex = 64;
+			this->PC_Show->Enabled = false;
+			this->PC_Show->Location = System::Drawing::Point(16, 17);
+			this->PC_Show->Name = L"PC_Show";
+			this->PC_Show->Size = System::Drawing::Size(109, 20);
+			this->PC_Show->TabIndex = 64;
 			// 
 			// pipelineGroup
 			// 
@@ -1282,6 +1283,23 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	Reg29->Text = "29: " + readRegister(29);
 	Reg30->Text = "30: " + readRegister(30);
 	Reg31->Text = "31: " + readRegister(31);
+	Mem0->Text = "00: " + readDataMem(0);
+	Mem1->Text = "01: " + readDataMem(1);
+	Mem2->Text = "02: " + readDataMem(2);
+	Mem3->Text = "03: " + readDataMem(3);
+	Mem4->Text = "04: " + readDataMem(4);
+	Mem5->Text = "05: " + readDataMem(5);
+	Mem6->Text = "06: " + readDataMem(6);
+	Mem7->Text = "07: " + readDataMem(7);
+	Mem8->Text = "08: " + readDataMem(8);
+	Mem9->Text = "09: " + readDataMem(9);
+	Mem10->Text = "10: " + readDataMem(10);
+	Mem11->Text = "11: " + readDataMem(11);
+	Mem12->Text = "12: " + readDataMem(12);
+	Mem13->Text = "13: " + readDataMem(13);
+	Mem14->Text = "14: " + readDataMem(14);
+	Mem15->Text = "15: " + readDataMem(15);
+	PC_Show->Text = gcnew System::String ((to_string(PC)).c_str());
 }
 };
 }
