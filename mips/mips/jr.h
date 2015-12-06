@@ -4,7 +4,7 @@
 class Jr : public inst
 {
 public:
-	Jr(int source = -1);
+	Jr(int _rs = -1);
 	virtual ~Jr();
 	virtual void fetch();
 	

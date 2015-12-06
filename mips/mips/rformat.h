@@ -4,7 +4,7 @@
 class rformat : public inst
 {
 public:
-	rformat(int rs = -1, int rt = -1 , int rd = -1);
+	rformat(int _rs = -1, int _rt = -1 , int _rd = -1);
 	virtual ~rformat();
 	virtual void fetch();
 	virtual void writeBack();

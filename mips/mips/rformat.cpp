@@ -2,36 +2,29 @@
 #include <stdexcept>
 using namespace std;
 
-rformat::rformat(int source1, int source2, int destination)
-	:source1(source1), source2(source2), destination(destination)
+rformat::rformat(int _rs, int _rt, int _rd)
+	:rs(_rs), rt(_rt), rd(_rd)
 {
 	if (!valid()) throw logic_error("Bad construction of rformat instruction.");
 }
 
 rformat::~rformat() {  }
 
-bool rformat::valid() const
+bool rformat::valid()
 {
-	return (source1 < 0) || (source1>31)
-		|| (source2 < 0) || (source2 > 31)
-		|| (destination < 0) || (destination > 31);
+	return (rs < 0) || (rs>31)
+		|| (rt < 0) || (rt > 31)
+		|| (rd < 0) || (rd > 31);
 }
 
 
 void rformat::fetch()
 {
-	read_data[0] = readRegister(source1);
-	read_data[1] = readRegister(source2);
+	rsData = readRegister(rs);
+	rtData = readRegister(rt);
 }
-void rformat::execute()
-{
 
-}
-void rformat::memory()
-{
-
-}
 void rformat::writeBack()
 {
-	writeRegister(destination, writeData);
+	writeRegister(rd, writeData);
 }

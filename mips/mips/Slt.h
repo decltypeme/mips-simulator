@@ -4,7 +4,7 @@ class Slt :
 	public rformat
 {
 public:
-	Slt(int rs=-1, int rt=-1, int rd=-1);
+	Slt(int _rs=-1, int _rt=-1, int _rd=-1);
 	virtual ~Slt();
 	virtual void execute();
 };

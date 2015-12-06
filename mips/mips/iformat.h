@@ -4,7 +4,7 @@
 class iformat : public inst
 {
 public:
-	iformat(int rs = -1, int rt = -1, int immediate = 0);
+	iformat(int _rs = -1, int _rt = -1, int _immediate = 0);
 	virtual ~iformat();
 	virtual void fetch();
 	virtual void writeBack();

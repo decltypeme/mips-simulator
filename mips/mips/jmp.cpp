@@ -4,9 +4,9 @@ using namespace std;
 
 
 
-Jmp::Jmp(int address)
-	:J(address) {}
+Jmp::Jmp(int _immediate)
+	:J(_immediate) {}
 
 Jmp::~Jmp() {}
 
-void Jmp::execute() const {  pushtostack(PC +4); proposePC(address, this); }
+void Jmp::fetch() { J::fetch(); pushtostack(PC +4);}

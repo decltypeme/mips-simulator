@@ -569,11 +569,11 @@ void dealWithHazard(int value)
 		iformat* iptrto = dynamic_cast<iformat*> (pipeline[2]);
 		if (rptrfrom != nullptr)
 		{
-			iptrto->destination = rptrfrom->writeData;
+			iptrto->rtData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			iptrto->destination = iptrfrom->writeData;
+			iptrto->rtData = iptrfrom->writeData;
 		}
 		break;
 	}

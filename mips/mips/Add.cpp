@@ -1,14 +1,17 @@
 #include "Add.h"
+
+Add::Add(int _rs, int _rt, int _rd)
+	:rformat(_rs, _rt, _rd)
+{
+}
+
 Add::~Add()
 {
 }
 
 void Add::execute()
 {
-	writeData = read_data[0] + read_data[1];
+	writeData = rsData + rtData;
 }
 
-Add::Add(int rs, int rt, int rd)
-	:rformat(rs, rt, rd)
-{
-}
+

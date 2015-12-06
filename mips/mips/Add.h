@@ -4,7 +4,7 @@ class Add:
 	public rformat
 {
 public:
-	Add(int rs=-1, int rt=-1, int rd=-1);
+	Add(int _rs=-1, int _rt=-1, int _rd=-1);
 	virtual ~Add();
 	virtual void execute();
 };

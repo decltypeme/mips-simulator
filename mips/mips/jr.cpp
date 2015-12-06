@@ -4,17 +4,20 @@ using namespace std;
 
 
 
-Jr::Jr(int source)
-	: source(source)
+Jr::Jr(int _rs)
+	: rs(_rs)
 {
 	if (!valid()) throw logic_error("Bad construction of jr instruction.");
 }
 
 Jr::~Jr() {}
 
-void Jr::execute() const { }
-
-bool Jr::valid() const
+void Jr::fetch()
 {
-	return (source < 0) || (source > 31);
+	rsData = registers[rs];
+}
+
+bool Jr::valid()
+{
+	return (rs < 0) || (rs > 31);
 }

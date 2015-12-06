@@ -8,4 +8,5 @@ public:
 	virtual ~Sw();
 	virtual void execute();
 	virtual void memory();
+	virtual void writeBack();
 };
