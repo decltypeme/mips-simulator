@@ -1,6 +1,4 @@
-
-#include "utility.h"
-
+#include "parser.h"
 regex hex_reg = regex("(0x)([0-9A-Fa-f]+)");
 regex dec_reg = regex("(0d){0,1}([0-9]+)");
 immediateType resolveImmediate(const string& strImmediate, bool signExtend)
@@ -139,6 +137,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 	{
 		throw logic_error("Unrecognized Instruction: Instruction was unrecognized as part of the ISA");
 	}
+	throw logic_error("Reached end of function, no suitable return");
 }
 bool verifyInstruction(const string& instString, const vector<regex>& instRules)
 {

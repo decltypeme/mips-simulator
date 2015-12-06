@@ -1,4 +1,4 @@
-#include "utility.h"
+#include "Xor.h"
 Xor::~Xor()
 {
 }

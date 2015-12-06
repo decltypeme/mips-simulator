@@ -1,6 +1,5 @@
 
-#include "utility.h"
-
+#include "parser.h"
 int current_hazards;
 
 void fetch()

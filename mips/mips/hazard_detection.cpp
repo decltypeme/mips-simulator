@@ -1,6 +1,4 @@
-
-#include "utility.h"
-
+#include "Parser.h"
 void hazard_detection(int** hazardFound) 
 {
 		

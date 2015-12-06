@@ -6,7 +6,7 @@
 #include<fstream>
 #include<stdexcept>
 
-#include "utility.h"
+#include "parser.h"
 
 using namespace std;
 
@@ -140,7 +140,7 @@ int fileHandler(int argc, char** argv, vector<inst*>& instsToFill = vector<inst*
 				{
 					for (auto rule : replaceRules)
 					{
-						int ii;
+						size_t ii;
 						while ((ii = line.find(rule.first)) != string::npos)
 						{
 							line.replace(ii, rule.first.length(), rule.second);

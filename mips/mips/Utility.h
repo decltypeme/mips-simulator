@@ -1,22 +1,22 @@
-
 #pragma once
 
-#include "instructions.h"
+
 #include "hazard_detection.h"
-#include "parser.h"
 #include "datapath.h"
+
+class inst;
 
 constexpr int maxRegNumber = 31;
 constexpr int dataMemSize = 16;
 constexpr int instMemSize = 16;
 
-int PC = 0;
-int registers[maxRegNumber + 1];
-int stack_size = 0;
-int stack[4];
-int data_memory[dataMemSize];
-inst inst_memory[instMemSize];
-inst* pipeline[4];
+extern int PC;
+extern int registers[maxRegNumber + 1];
+extern int stack_size;
+extern int stack[4];
+extern int data_memory[dataMemSize];
+extern inst inst_memory[instMemSize];
+extern inst* pipeline[4];
 
 bool validateRegister(const int& reg);
 
