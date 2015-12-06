@@ -12,12 +12,9 @@ Jr::Jr(int source)
 
 Jr::~Jr() {}
 
-void Jr::execute() const { proposePC(registers[source], this); }
+void Jr::execute() const { }
 
 bool Jr::valid() const
 {
 	return (source < 0) || (source > 31);
 }
-
-int Jr::getsource() const { return source; }
-void Jr::setsource(const int _source) { source = _source; }

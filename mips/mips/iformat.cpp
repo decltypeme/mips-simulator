@@ -31,10 +31,3 @@ void iformat::memory()
 void iformat::writeBack()
 {
 }
-
-int iformat::getsource() const { return source; }
-int iformat::getdestination() const { return destination; }
-int iformat::getimmediate() const { return immediate; }
-void iformat::setsource(const int _source) { source = _source; }
-void iformat::setdestination(const int _destination) { destination = _destination; }
-void iformat::setimmediate(const int _immediate) { immediate = _immediate; }

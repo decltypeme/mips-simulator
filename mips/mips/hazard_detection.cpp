@@ -1,12 +1,7 @@
 
 #include "parser.h"
 
-extern inst* pipeline[4];
-
-bool correct_prediction ()
-{ }
-
-void hazard_detection(int** hazardFound) 
+void hazard_detection(int* hazards) 
 {
 		
 	int IF_ID_RegRS = -1;
@@ -366,10 +361,164 @@ void hazard_detection(int** hazardFound)
 	}
 	
 	
-	
-	
+}
 
-		
 
-	
+void deal_with_hazard(int value)
+{
+	switch (value)
+	{
+	case 111:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[1]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[1]);
+		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
+		if (rptrfrom != nullptr)
+		{
+			jrptr->source = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			jrptr->source = iptrfrom->writeData;
+		}
+		break;
+	}
+	case 211:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[2]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[2]);
+		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
+		if (rptrfrom != nullptr)
+		{
+			jrptr->source = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			jrptr->source = iptrfrom->writeData;
+		}
+		break;
+	}
+	case 311:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
+		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
+		if (rptrfrom != nullptr)
+		{
+			jrptr->source = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			jrptr->source = iptrfrom->writeData;
+		}
+		break;
+	}
+	case 221:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[2]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[2]);
+		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
+		iformat* iptrto = dynamic_cast<iformat*> (pipeline[1]);
+		if (rptrfrom != nullptr)
+		{
+			if (rptrto != nullptr)
+			{
+				rptrto->source1 = rptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->source = rptrfrom->writeData;
+			}
+		}
+		else if (iptrfrom != nullptr)
+		{
+			if (rptrto != nullptr)
+			{
+				rptrto->source1 = iptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->source = iptrfrom->writeData;
+			}
+		}
+		break;
+	}
+	case 222:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[2]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[2]);
+		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
+		if (rptrfrom != nullptr)
+		{
+			rptrto->source2 = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			rptrto->source2 = iptrfrom->writeData;
+		}
+		break;
+	}
+	case 321:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
+		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
+		iformat* iptrto = dynamic_cast<iformat*> (pipeline[1]);
+		if (rptrfrom != nullptr)
+		{
+			if (rptrto != nullptr)
+			{
+				rptrto->source1 = rptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->source = rptrfrom->writeData;
+			}
+		}
+		else if (iptrfrom != nullptr)
+		{
+			if (rptrto != nullptr)
+			{
+				rptrto->source1 = iptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->source = iptrfrom->writeData;
+			}
+		}
+		break;
+	}
+	case 322:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
+		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
+		if (rptrfrom != nullptr)
+		{
+			rptrto->source2 = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			rptrto->source2 = iptrfrom->writeData;
+		}
+		break;
+	}
+	case 332:
+	{
+		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
+		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
+		iformat* iptrto = dynamic_cast<iformat*> (pipeline[2]);
+		if (rptrfrom != nullptr)
+		{
+			iptrto->destination = rptrfrom->writeData;
+		}
+		else if (iptrfrom != nullptr)
+		{
+			iptrto->destination = iptrfrom->writeData;
+		}
+		break;
+	}
+	default:
+		break;
+	}
 }

@@ -17,6 +17,11 @@ extern int stack[4];
 extern int data_memory[dataMemSize];
 extern inst inst_memory[instMemSize];
 extern inst* pipeline[4];
+extern int hazards[5];
+
+extern struct prediction;
+extern prediction bpt[instMemSize];
+extern int prediction_count;
 
 bool validateRegister(const int& reg);
 
@@ -34,4 +39,8 @@ void pushtostack(int address);
 
 int popfromstack();
 
-void proposePC(int proposedPC, const inst* instProposing);
+int updatePC();
+
+int predict_branch();
+
+bool right_prediction();

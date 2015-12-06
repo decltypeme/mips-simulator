@@ -12,12 +12,9 @@ J::J(int address)
 
 J::~J() {}
 
-void J::execute() const { proposePC(address, this); }
+void J::execute() const {  }
 
 bool J::valid() const
 {
 	return (address != -1);
 }
-
-int J::getaddress() const { return address; }
-void J::setaddress(const int _address) { address = _address; }
