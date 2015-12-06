@@ -3,7 +3,7 @@
 #include <cstring>
 using namespace std;
 
-void hazard_detection() 
+void hazardDetection() 
 {
 	int z = 0;
 	int IF_ID_RegRS = -1;
@@ -39,24 +39,24 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				IF_ID_RegRS = rptr->getsource1();
-				IF_ID_RegRT = rptr->getsource2();
+				IF_ID_RegRS = rptr->rs;
+				IF_ID_RegRT = rptr->rt;
 
 			}
 			if (i == 1) //ID_EX
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				ID_EX_RegRS = rptr -> getsource1();
-				ID_EX_RegRT = rptr ->getsource2();
-				ID_EX_RegRD = rptr ->getdestination();
+				ID_EX_RegRS = rptr -> rs;
+				ID_EX_RegRT = rptr ->rt;
+				ID_EX_RegRD = rptr ->rd;
 			}
 
 			if (i == 2) // EX_MEM
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				EX_MEM_RegRD = rptr -> getdestination();
+				EX_MEM_RegRD = rptr -> rd;
 
 			}
 			if (i == 3) //MEM_WB
@@ -64,7 +64,7 @@ void hazard_detection()
 
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = rptr -> getdestination();
+				MEM_WB_RegRD = rptr -> rd;
 			}
 
 
@@ -79,7 +79,7 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				IF_ID_RegRS = iptr->getsource();
+				IF_ID_RegRS = iptr->rs;
 				IF_ID_RegRT = -1;
 
 			}
@@ -87,16 +87,16 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				ID_EX_RegRS = iptr->getsource();
+				ID_EX_RegRS = iptr->rs;
 				ID_EX_RegRT = -1;
-				ID_EX_RegRD = iptr->getdestination();
+				ID_EX_RegRD = iptr->rt;
 			}
 
 			if (i == 2)
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				EX_MEM_RegRD = iptr->getdestination();
+				EX_MEM_RegRD = iptr->rt;
 
 			}
 			if (i == 3)
@@ -104,7 +104,7 @@ void hazard_detection()
 
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = iptr->getdestination();
+				MEM_WB_RegRD = iptr->rt;
 			}
 
 		Lw* Lwptr = dynamic_cast<Lw*> (pipeline[i]);
@@ -118,19 +118,19 @@ void hazard_detection()
 				if (i == 1)
 				{
 					ID_EX_MemRead = 1;
-					ID_EX_RegRD_LW = Lwptr->getdestination();
+					ID_EX_RegRD_LW = Lwptr->rt;
 				}
 
 				if (i == 2)
 				{
 					ID_EX_MemRead = 1;
-					EX_MEM_RegRD_LW = Lwptr->getdestination();
+					EX_MEM_RegRD_LW = Lwptr->rt;
 
 				}
 				if (i == 3)
 				{
 					ID_EX_MemRead = 1;
-					MEM_WB_RegRD = Lwptr->getdestination();
+					MEM_WB_RegRD = Lwptr->rt;
 				}
 			}
 			Sw* Swptr = dynamic_cast<Sw*> (pipeline[i]);
@@ -170,7 +170,7 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				IF_ID_RegRS = bleptr->getsource();
+				IF_ID_RegRS = bleptr->rs;
 				IF_ID_RegRT = -1;
 
 			}
@@ -178,7 +178,7 @@ void hazard_detection()
 			{
 				EX_MEM_RegWrite = 1;
 				MEM_WB_RegWrite = 0;
-				ID_EX_RegRS = bleptr->getsource();
+				ID_EX_RegRS = bleptr->rs;
 				ID_EX_RegRT = -1;
 				ID_EX_RegRD = bleptr->getdestination();
 			}
@@ -206,7 +206,7 @@ void hazard_detection()
 			if (i == 0)
 			{
 				JR_EXIST = 1;
-				IF_ID_RegRT = jrptr->getsource();
+				IF_ID_RegRT = jrptr->rs;
 				if (JAL_EXIST)
 				JALWhere = JAL_Where;
 
@@ -423,7 +423,7 @@ void hazard_detection()
 }
 	
 	
-void deal_with_hazard(int value)
+void dealWithHazard(int value)
 {
 	switch (value)
 	{
@@ -434,11 +434,11 @@ void deal_with_hazard(int value)
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
-			jrptr->source = rptrfrom->writeData;
+			jrptr->rsData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			jrptr->source = iptrfrom->writeData;
+			jrptr->rsData = iptrfrom->writeData;
 		}
 		break;
 	}
@@ -449,11 +449,11 @@ void deal_with_hazard(int value)
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
-			jrptr->source = rptrfrom->writeData;
+			jrptr->rsData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			jrptr->source = iptrfrom->writeData;
+			jrptr->rsData = iptrfrom->writeData;
 		}
 		break;
 	}
@@ -464,11 +464,11 @@ void deal_with_hazard(int value)
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
-			jrptr->source = rptrfrom->writeData;
+			jrptr->rsData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			jrptr->source = iptrfrom->writeData;
+			jrptr->rsData = iptrfrom->writeData;
 		}
 		break;
 	}
@@ -482,22 +482,22 @@ void deal_with_hazard(int value)
 		{
 			if (rptrto != nullptr)
 			{
-				rptrto->source1 = rptrfrom->writeData;
+				rptrto->rsData = rptrfrom->writeData;
 			}
 			else if (iptrto != nullptr)
 			{
-				iptrto->source = rptrfrom->writeData;
+				iptrto->rsData = rptrfrom->writeData;
 			}
 		}
 		else if (iptrfrom != nullptr)
 		{
 			if (rptrto != nullptr)
 			{
-				rptrto->source1 = iptrfrom->writeData;
+				rptrto->rsData = iptrfrom->writeData;
 			}
 			else if (iptrto != nullptr)
 			{
-				iptrto->source = iptrfrom->writeData;
+				iptrto->rsData = iptrfrom->writeData;
 			}
 		}
 		break;
@@ -509,11 +509,11 @@ void deal_with_hazard(int value)
 		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
 		if (rptrfrom != nullptr)
 		{
-			rptrto->source2 = rptrfrom->writeData;
+			rptrto->rtData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			rptrto->source2 = iptrfrom->writeData;
+			rptrto->rtData = iptrfrom->writeData;
 		}
 		break;
 	}
@@ -527,22 +527,22 @@ void deal_with_hazard(int value)
 		{
 			if (rptrto != nullptr)
 			{
-				rptrto->source1 = rptrfrom->writeData;
+				rptrto->rsData = rptrfrom->writeData;
 			}
 			else if (iptrto != nullptr)
 			{
-				iptrto->source = rptrfrom->writeData;
+				iptrto->rsData = rptrfrom->writeData;
 			}
 		}
 		else if (iptrfrom != nullptr)
 		{
 			if (rptrto != nullptr)
 			{
-				rptrto->source1 = iptrfrom->writeData;
+				rptrto->rsData = iptrfrom->writeData;
 			}
 			else if (iptrto != nullptr)
 			{
-				iptrto->source = iptrfrom->writeData;
+				iptrto->rsData = iptrfrom->writeData;
 			}
 		}
 		break;
@@ -554,11 +554,11 @@ void deal_with_hazard(int value)
 		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
 		if (rptrfrom != nullptr)
 		{
-			rptrto->source2 = rptrfrom->writeData;
+			rptrto->rtData = rptrfrom->writeData;
 		}
 		else if (iptrfrom != nullptr)
 		{
-			rptrto->source2 = iptrfrom->writeData;
+			rptrto->rtData = iptrfrom->writeData;
 		}
 		break;
 	}

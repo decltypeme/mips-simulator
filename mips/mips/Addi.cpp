@@ -1,7 +1,7 @@
 #include "Addi.h"
 
-Addi::Addi()
-{
+Addi::Addi(int rt = -1, int rs = -1, int immediate = 0)
+:iformat(rt,rs,immediate){
 }
 
 

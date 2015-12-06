@@ -10,7 +10,7 @@ public:
 	virtual void writeBack();
 	int rs;
 	int rt;
-	int destination;
+	int rd;
 	int rsData;
 	int rtData;
 	int writeData;
