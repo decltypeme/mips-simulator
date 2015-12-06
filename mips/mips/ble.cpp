@@ -1,8 +1,5 @@
-#include "ble.h"
+#include "Ble.h"
 
-extern int registers[32];
-extern int PC;
-extern void proposePC(int proposedPC, const inst* instProposing);
 
 Ble::Ble(int source1, int source2, int immediate)
 	:iformat(source1, source2, immediate) {}

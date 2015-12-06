@@ -49,19 +49,16 @@
     <Filter Include="Header Files\Utility Structures and Functions">
       <UniqueIdentifier>{9d0218b3-2920-44f8-9cd3-a6b316c5b7c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Datapath">
+      <UniqueIdentifier>{0c08659e-3d9e-471a-af2b-7c3b0ed60bfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hazard Detection">
+      <UniqueIdentifier>{8fd1b423-1f59-426b-94ea-8e31e33b6ddc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="iformat.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
     <ClInclude Include="rformat.h">
       <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="inst.h">
-      <Filter>Header Files\Instructions General</Filter>
-    </ClInclude>
-    <ClInclude Include="Parser.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
       <Filter>Header Files\Rformat</Filter>
@@ -71,15 +68,6 @@
     </ClInclude>
     <ClInclude Include="Slt.h">
       <Filter>Header Files\Rformat</Filter>
-    </ClInclude>
-    <ClInclude Include="ble.h">
-      <Filter>Header Files\Iformat</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>Header Files\Utility Structures and Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="instructions.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Addi.h">
       <Filter>Header Files\Iformat</Filter>
@@ -104,6 +92,30 @@
     </ClInclude>
     <ClInclude Include="Ret.h">
       <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="Ble.h">
+      <Filter>Header Files\Iformat</Filter>
+    </ClInclude>
+    <ClInclude Include="iformat.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="inst.h">
+      <Filter>Header Files\Instructions General</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="hazard_detection.h">
+      <Filter>Header Files\Hazard Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="instructions.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="datapath.h">
+      <Filter>Header Files\Datapath</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -130,32 +142,14 @@
     <ClCompile Include="inst.cpp">
       <Filter>Source Files\Instructions General</Filter>
     </ClCompile>
-    <ClCompile Include="jmp.cpp">
-      <Filter>Source Files\Instructions General</Filter>
-    </ClCompile>
     <ClCompile Include="rformat.cpp">
-      <Filter>Source Files\Instructions General</Filter>
-    </ClCompile>
-    <ClCompile Include="jr.cpp">
-      <Filter>Source Files\Instructions General</Filter>
-    </ClCompile>
-    <ClCompile Include="j.cpp">
-      <Filter>Source Files\Instructions General</Filter>
-    </ClCompile>
-    <ClCompile Include="jal.cpp">
       <Filter>Source Files\Instructions General</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ret.cpp">
-      <Filter>Source Files\Instructions General</Filter>
-    </ClCompile>
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
-    </ClCompile>
-    <ClCompile Include="Parser.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hazard_detection.cpp">
       <Filter>Source Files\Hazard Detection</Filter>
@@ -172,9 +166,6 @@
     <ClCompile Include="Slt.cpp">
       <Filter>Source Files\Rformat</Filter>
     </ClCompile>
-    <ClCompile Include="ble.cpp">
-      <Filter>Source Files\Iformat</Filter>
-    </ClCompile>
     <ClCompile Include="Addi.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
@@ -185,6 +176,27 @@
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
     <ClCompile Include="Sw.cpp">
+      <Filter>Source Files\Iformat</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>Source Files\Utility Structures and Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Ret.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="Jr.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="Jmp.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="Jal.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="J.cpp">
+      <Filter>Source Files\Instructions General</Filter>
+    </ClCompile>
+    <ClCompile Include="Ble.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
   </ItemGroup>

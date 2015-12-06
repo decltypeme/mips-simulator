@@ -1,5 +1,4 @@
 #include "Xor.h"
-
 Xor::~Xor()
 {
 }

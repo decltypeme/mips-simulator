@@ -1,6 +1,5 @@
 #pragma once
-#include "Utility.h"
-
+#include "utility.h"
 class inst
 {
 public:

@@ -5,6 +5,7 @@
 #include <string>
 #include <ios>
 #include <iomanip>
+#include <algorithm>
 typedef unsigned int immediateType;
 
 using namespace std;

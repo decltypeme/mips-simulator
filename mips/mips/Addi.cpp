@@ -1,7 +1,5 @@
 #include "Addi.h"
 
-
-
 Addi::Addi()
 {
 }
