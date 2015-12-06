@@ -4,7 +4,7 @@ class Xor :
 	public rformat
 {
 public:
-	Xor(int rs, int rt, int rd);
+	Xor(int _rs=-1, int _rt=-1, int _rd=-1);
 	virtual ~Xor();
 	virtual void execute();
 };

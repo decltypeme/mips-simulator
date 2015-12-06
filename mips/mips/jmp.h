@@ -4,7 +4,7 @@
 class Jmp : public J
 {
 public:
-	Jmp(int address = -1);
+	Jmp(int _immediate = -1);
 	virtual ~Jmp();
-	virtual void execute() const;
+	virtual void fetch();
 };

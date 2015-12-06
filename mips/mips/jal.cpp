@@ -4,9 +4,9 @@ using namespace std;
 
 
 
-Jal::Jal(int address)
-	:J(address) {}
+Jal::Jal(int _immediate)
+	:J(_immediate) {}
 
 Jal::~Jal() {}
 
-void Jal::execute() const { registers[31] = PC + 4; proposePC(address, this); }
+void Jal::fetch() { J::fetch(); registers[31] = PC + 4; }

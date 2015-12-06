@@ -1,10 +1,8 @@
 #pragma once
 
 
-#include "hazard_detection.h"
+#include "hazards.h"
 #include "datapath.h"
-
-class inst;
 
 constexpr int maxRegNumber = 31;
 constexpr int dataMemSize = 16;
@@ -17,6 +15,11 @@ extern int stack[4];
 extern int data_memory[dataMemSize];
 extern inst inst_memory[instMemSize];
 extern inst* pipeline[4];
+extern int hazards[5];
+
+extern struct prediction;
+extern prediction bpt[instMemSize];
+extern int prediction_count;
 
 bool validateRegister(const int& reg);
 
@@ -34,4 +37,10 @@ void pushtostack(int address);
 
 int popfromstack();
 
-void proposePC(int proposedPC, const inst* instProposing);
+int updatePC();
+
+int predict_branch();
+
+bool right_prediction();
+
+prediction* getbptptr(prediction& totest, int inst_address);

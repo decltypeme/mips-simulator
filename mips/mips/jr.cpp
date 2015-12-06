@@ -4,20 +4,20 @@ using namespace std;
 
 
 
-Jr::Jr(int source)
-	: source(source)
+Jr::Jr(int _rs)
+	: rs(_rs)
 {
 	if (!valid()) throw logic_error("Bad construction of jr instruction.");
 }
 
 Jr::~Jr() {}
 
-void Jr::execute() const { proposePC(registers[source], this); }
-
-bool Jr::valid() const
+void Jr::fetch()
 {
-	return (source < 0) || (source > 31);
+	rsData = registers[rs];
 }
 
-int Jr::getsource() const { return source; }
-void Jr::setsource(const int _source) { source = _source; }
+bool Jr::valid()
+{
+	return (rs < 0) || (rs > 31);
+}

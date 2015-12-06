@@ -4,9 +4,7 @@ class Addi :
 	public iformat
 {
 public:
-	Addi();
+	Addi(int _rt = -1, int _rs = -1, int _immediate = 0);
 	virtual ~Addi();
 	virtual void execute();
-	virtual void memory();
-	virtual void writeBack();
 };

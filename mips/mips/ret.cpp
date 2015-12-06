@@ -7,4 +7,4 @@ Ret::Ret() {}
 
 Ret::~Ret() {}
 
-void Ret::execute() const { proposePC(popfromstack(), this); }
+void Ret::fetch() { PC = popfromstack(); }

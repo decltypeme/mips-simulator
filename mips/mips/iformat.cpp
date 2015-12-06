@@ -2,39 +2,27 @@
 #include <stdexcept>
 using namespace std;
 
-iformat::iformat(int source, int destination, int immediate)
-	: source(source), destination(destination), immediate(immediate)
+iformat::iformat(int _rs, int _rt, int _immediate)
+	: rs(_rs), rt(_rt), immediate(_immediate)
 {
 	if (!valid()) throw logic_error("Bad construction of iformat instruction.");
 }
 
 iformat::~iformat() {  }
 
-bool iformat::valid() const
-{
-	return (source < 0) || (source > 31)
-		|| (destination < 0) || (destination > 31);
-}
-
 void iformat::fetch()
 {
-	readData[0] = readRegister(source);
-	readData[1] = readRegister(destination);
-}
-
-void iformat::execute() {}
-
-void iformat::memory()
-{
+	rsData = readRegister(rs);
+	rtData = readRegister(rt);
 }
 
 void iformat::writeBack()
 {
+	writeRegister(rt, writeData);
 }
 
-int iformat::getsource() const { return source; }
-int iformat::getdestination() const { return destination; }
-int iformat::getimmediate() const { return immediate; }
-void iformat::setsource(const int _source) { source = _source; }
-void iformat::setdestination(const int _destination) { destination = _destination; }
-void iformat::setimmediate(const int _immediate) { immediate = _immediate; }
+bool iformat::valid()
+{
+	return (rs < 0) || (rs>31)
+		|| (rt < 0) || (rt > 31);
+}

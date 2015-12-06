@@ -6,5 +6,5 @@ class Ret : public inst
 public:
 	Ret();
 	virtual ~Ret();
-	virtual void execute() const;
+	void fetch();
 };

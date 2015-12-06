@@ -30,6 +30,6 @@ int main()
 		decode();
 		execute();
 		memory();
-		write_back();
+		writeBack();
 	}
 }

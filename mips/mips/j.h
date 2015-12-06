@@ -4,14 +4,12 @@
 class J : public inst
 {
 public:
-	J(int address = -1);
+	J(int _immediate = -1);
 	virtual ~J();
-	virtual void execute() const;
 
-	int J::getaddress() const;
-	void J::setaddress(const int _address);
-
-protected:
+	int immediate;
 	int address;
-	virtual bool valid() const;
+
+	virtual void fetch();
+	virtual bool valid();
 };

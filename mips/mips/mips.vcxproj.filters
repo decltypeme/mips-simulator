@@ -55,9 +55,6 @@
     <Filter Include="Header Files\Hazard Detection">
       <UniqueIdentifier>{8fd1b423-1f59-426b-94ea-8e31e33b6ddc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\UserInterface">
-      <UniqueIdentifier>{5dd183d3-16bc-4ffb-afde-68dfcf964911}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rformat.h">
@@ -111,9 +108,6 @@
     <ClInclude Include="parser.h">
       <Filter>Header Files\Utility Structures and Functions</Filter>
     </ClInclude>
-    <ClInclude Include="hazard_detection.h">
-      <Filter>Header Files\Hazard Detection</Filter>
-    </ClInclude>
     <ClInclude Include="instructions.h">
       <Filter>Header Files\Utility Structures and Functions</Filter>
     </ClInclude>
@@ -122,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="Simulator.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hazards.h">
+      <Filter>Header Files\Hazard Detection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +153,6 @@
     </ClCompile>
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
-    </ClCompile>
-    <ClCompile Include="hazard_detection.cpp">
-      <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
     <ClCompile Include="fileHandling.cpp">
       <Filter>Source Files\Regex</Filter>
@@ -205,6 +199,9 @@
     <ClCompile Include="Ble.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
+    <ClCompile Include="hazards.cpp">
+      <Filter>Source Files\Hazard Detection</Filter>
+    </ClCompile>
     <ClCompile Include="Simulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -213,5 +210,10 @@
     <None Include="tester.bat">
       <Filter>Resource Files\Regex</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulator.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

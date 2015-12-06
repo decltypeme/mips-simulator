@@ -4,8 +4,10 @@
 class Ble : public iformat
 {
 public:
-	Ble(int source1 = -1 , int source2 = -1, int immediate = 0);
+	Ble(int rs = -1 , int rt = -1, int immediate = 0);
 	virtual ~Ble();
-	virtual void execute() const;
+	virtual void fetch();
+	virtual void execute();
+	virtual void writeBack();
 };
 

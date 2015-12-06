@@ -1,55 +1,69 @@
 
 #include "parser.h"
-int current_hazards;
+#include <algorithm>
+using namespace std;
 
 void fetch()
 {
-	//hazard_detection(current_hazards);
-
-	pipeline[0] = &inst_memory[PC];
-	pipeline[1] = pipeline[0];
-	pipeline[2] = pipeline[1];
-	pipeline[3] = pipeline[2];
+	if (!(binary_search(begin(hazards), end(hazards), 51) || binary_search(begin(hazards), end(hazards), 52)
+		|| binary_search(begin(hazards), end(hazards), 41) || binary_search(begin(hazards), end(hazards), 42)))
+	{
+		int oldPC = PC;
+		PC = updatePC();
+		pipeline[3] = pipeline[2];
+		pipeline[2] = pipeline[1];
+		pipeline[1] = pipeline[0];
+		pipeline[0] = &inst_memory[oldPC];
+	}
+	if ((binary_search(begin(hazards), end(hazards), 51)))
+	{
+		pipeline[3] = pipeline[2];
+		pipeline[2] = pipeline[1];
+		pipeline[1] = new inst();
+	}
+	if ((binary_search(begin(hazards), end(hazards), 52)))
+	{
+		pipeline[3] = pipeline[2];
+		pipeline[2] = new inst();
+	}
+	if ((binary_search(begin(hazards), end(hazards), 41)))
+	{
+		PC = updatePC();
+		pipeline[3] = pipeline[2];
+		pipeline[2] = pipeline[1];
+		pipeline[1] = pipeline[0];
+		pipeline[0] = new inst();
+	}
+	
+	if ((binary_search(begin(hazards), end(hazards), 42)))
+	{
+		PC = updatePC();
+		pipeline[3] = pipeline[2];
+		pipeline[2] = pipeline[1];
+		pipeline[1] = new inst();
+		pipeline[0] = new inst();
+	}
 }
 
 void decode()
 {
-	if (current_hazards == 0)
-	{
-		pipeline[0]->fetch();
-	}
+	hazardDetection(hazards);
+	sort(begin(hazards), end(hazards));
+	for_each(begin(hazards), end(hazards), dealWithHazard);
+	pipeline[0]->fetch();
 }
 
 void execute()
 {
-	if (current_hazards == 0)
-	{
-		pipeline[1]->execute();
-	}
-	else if (current_hazards == 1)
-	{
-		
-	}
-	else if (current_hazards == 2)
-	{
-
-	}
+	pipeline[1]->execute();
 }
 
 void memory()
 {
-	if (current_hazards == 0)
-	{
-		pipeline[2]->memory();
-	}
-	
+	pipeline[2]->memory();
 }
 
 void write_back()
 {
-
-	if (current_hazards == 0)
-	{
-		pipeline[3]->writeBack();
-	}
+	pipeline[3]->writeBack();
 }

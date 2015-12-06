@@ -4,20 +4,22 @@ using namespace std;
 
 
 
-J::J(int address)
-	: address(address)
+J::J(int _immediate)
+	: immediate(_immediate)
 {
-	if (!valid()) throw logic_error("Bad construction of jump instruction.");
+	if (!valid()) throw logic_error("Bad construction of a jump instruction.");
 }
 
 J::~J() {}
 
-void J::execute() const { proposePC(address, this); }
-
-bool J::valid() const
+void J::fetch()
 {
-	return (address != -1);
+	int tempPC = PC >> 28;
+	tempPC = tempPC << 28;
+	address = immediate * 4 ^ tempPC;
 }
 
-int J::getaddress() const { return address; }
-void J::setaddress(const int _address) { address = _address; }
+bool J::valid()
+{
+	return (immediate >=0);
+}
