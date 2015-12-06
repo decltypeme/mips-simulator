@@ -14,7 +14,14 @@ void Ble::fetch()
 
 void Ble::execute()
 {
-	if (registers[rs] > registers[rt]);
+	if (registers[rs] <= registers[rt])
+	{
+		adressTrue = addressIfTaken;
+	}
+	else
+	{
+		adressTrue = addressIfNotTaken;
+	}
 }
 
 void Ble::writeBack() {}

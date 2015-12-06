@@ -10,6 +10,7 @@ public:
 	virtual void execute();
 	virtual void writeBack();
 	
+	int adressTrue;
 	int addressIfNotTaken;
 	int addressIfTaken;
 };

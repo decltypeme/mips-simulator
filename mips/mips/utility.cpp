@@ -140,10 +140,13 @@ bool right_prediction()
 		branchedToLastTime = bleptr->addressIfNotTaken;
 	}
 	
-	if (branchedToLastTime != pipeline[1]->instAddress)
+	if (branchedToLastTime != bleptr->adressTrue)
 	{
 		bptptr->taken = ~(bptptr->taken);
+		return false;
 	}
+	else
+		return true;
 }
 
 int updatePC()
