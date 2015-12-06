@@ -1,19 +1,5 @@
 
-#include "inst.h"
-
-#include "rformat.h"
-
-#include "iformat.h"
-#include "ble.h"
-#include "Lw.h"
-#include "Sw.h"
-
-
-#include "j.h"
-#include "jr.h"
-#include "jal.h"
-#include "jmp.h"
-#include "ret.h"
+#include "parser.h"
 
 extern inst* pipeline[4];
 
