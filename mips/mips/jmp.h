@@ -2,10 +2,10 @@
 #include "J.h"
 #include <string>
 
-class Jal : public J
+class Jmp : public J
 {
 public:
-	Jal(int _immediate = -1, int _instAddress = -1, string _instString = "nop");
-	virtual ~Jal();
+	Jmp(int _immediate = -1, int _instAddress = -1, string _instString = "nop");
+	virtual ~Jmp();
 	virtual void fetch();
 };
