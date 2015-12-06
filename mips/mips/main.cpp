@@ -16,13 +16,14 @@ void uiInitialize()
 [STAThread]
 int main()
 {
-	try {
-		initialize();
-		uiInitialize();
+	initialize();
+	uiInitialize();
 
-		mips::Simulator mainSimulatorForm;
-		Application::Run(%mainSimulatorForm);
-		//Magic mainSimulatorForm.Controls->Find((gcnew String("Reg1")), true);
+	mips::Simulator mainSimulatorForm;
+	Application::Run(%mainSimulatorForm);
+	//Magic mainSimulatorForm.Controls->Find((gcnew String("Reg1")), true);
+	try {
+		;
 	}
 	catch (exception e)
 	{
@@ -33,12 +34,4 @@ int main()
 		std::cerr << "Unhandled Exception\n";
 	}
 	system("pause");
-	while (true)
-	{
-		fetch();
-		decode();
-		execute();
-		memory();
-		writeBack();
-	}
 }
