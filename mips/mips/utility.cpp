@@ -18,9 +18,9 @@ inst* pipeline[4];
 int hazards[5];
 
 struct prediction 
-{ int inst_address; int branchedto_address; bool taken; 
-	prediction(int _inst_address, int _branchedto_address, bool _taken)
-	:inst_address(_inst_address), branchedto_address(_branchedto_address), taken(_taken) {}
+{ int inst_address; bool taken; 
+	prediction(int _inst_address, bool _taken)
+	:inst_address(_inst_address), taken(_taken) {}
 };
 prediction bpt[instMemSize];
 int prediction_count = 0;
@@ -90,9 +90,10 @@ int popfromstack()
 int predict_branch()
 {
 	prediction* bptptr = nullptr;
+	Ble* bleptr = dynamic_cast<Ble*> (pipeline[0]);
 	for (int i = 0; i < instMemSize; ++i)
 	{
-		bptptr = getbptptr(bpt[i], reinterpret_cast<int>(pipeline[0]));
+		bptptr = getbptptr(bpt[i], bleptr->instAddress);
 		if (bptptr)
 			break;
 	}
@@ -100,15 +101,15 @@ int predict_branch()
 	if (bptptr)
 	{
 		if (bptptr->taken)
-			return bptptr->branchedto_address;
+			return bleptr->addressIfTaken;
 		else
-			return PC + 4;
+			return bleptr->addressIfNotTaken;
 	}
 	else
 	{
-		bpt[static_cast<unsigned int>(prediction_count)%instMemSize] = prediction(reinterpret_cast<int>(pipeline[0]),PC+4,0);
+		bpt[static_cast<unsigned int>(prediction_count)%instMemSize] = prediction(bleptr->instAddress,0);
 		prediction_count++;
-		return PC + 4;
+		return bleptr->addressIfNotTaken;
 	}
 }
 
@@ -121,18 +122,27 @@ prediction* getbptptr (prediction& totest, int inst_address)
 bool right_prediction()
 {
 	prediction* bptptr = nullptr;
+	Ble* bleptr = dynamic_cast<Ble*> (pipeline[2]);
 	for (int i = 0; i < instMemSize; ++i)
 	{
-		bptptr = getbptptr(bpt[i], reinterpret_cast<int>(pipeline[2]));
+		bptptr = getbptptr(bpt[i], bleptr->instAddress);
 		if (bptptr)
 			break;
 	}
 
-	Ble* bleptr = dynamic_cast <Ble*> (pipeline[2]);
-	if (bleptr->writeData != bptptr->branchedto_address)
+	int branchedToLastTime;
+	if (bptptr->taken)
+	{
+		branchedToLastTime = bleptr->addressIfTaken;
+	}
+	else
+	{
+		branchedToLastTime = bleptr->addressIfNotTaken;
+	}
+	
+	if (branchedToLastTime != pipeline[1]->instAddress)
 	{
 		bptptr->taken = ~(bptptr->taken);
-		bptptr->branchedto_address = bleptr->writeData;
 	}
 }
 
@@ -147,7 +157,9 @@ int updatePC()
 	else
 	{
 		if (jptr)
+		{
 			return jptr->address;
+		}
 		if (retptr)
 		{
 			return retptr->addressPopped;

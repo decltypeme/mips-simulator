@@ -113,7 +113,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 	{
 		return new Jr(stoi(params[2]));
 	}
-	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
+	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "Jal")
 	{
 		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
@@ -124,9 +124,9 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 		{
 			return new Jal(jAddr);
 		}
-		else if (params[1] == "JMP")
+		else if (params[1] == "Jal")
 		{
-			return new Jmp(jAddr);
+			return new Jal(jAddr);
 		}
 	}
 	else if (params[1] == "RET")

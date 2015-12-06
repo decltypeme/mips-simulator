@@ -24,7 +24,7 @@ void hazardDetection()
 	int ID_EX_RegRD_LW = -1;
 	int EX_MEM_RegRD_LW = -1;
 	int EX_MEM_RegRD_SW = -1;
-	int Jmp_EXIST = -1;
+	int Jal_EXIST = -1;
 	int Ret_EXIST = -1;
 	
 	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
@@ -243,7 +243,7 @@ void hazardDetection()
 
 			if (i == 0)
 			{
-				Jmp_EXIST = 1;
+				Jal_EXIST = 1;
 			}
 
 
@@ -413,7 +413,7 @@ void hazardDetection()
 		z++;
 	}
 
-	if (JR_EXIST != 1 && Jmp_EXIST == 1 && Ret_EXIST == 1) //Flush D
+	if (JR_EXIST != 1 && Jal_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
@@ -423,7 +423,7 @@ void hazardDetection()
 }
 	
 	
-void dealWithHazard(int value)
+void dealWithForwarding(int value)
 {
 	switch (value)
 	{

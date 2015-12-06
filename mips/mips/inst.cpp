@@ -3,7 +3,10 @@
 #include <stdexcept>
 using namespace std;
 
-inst::inst(){}
+inst::inst():inst("nop")
+{}
+
+inst::inst(string _instString = "nop"): instString(_instString){}
 inst::~inst() {}
 void inst::fetch() {}
 void inst::execute() {}

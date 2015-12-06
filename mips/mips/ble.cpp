@@ -1,15 +1,15 @@
 #include "Ble.h"
 
 
-Ble::Ble(int _rs, int _rt, int _immediate)
-	:iformat(_rs, _rt, _immediate) {}
+Ble::Ble(int _rs, int _rt, int _immediate, int _instAddress, string _instString)
+	:iformat(_rs, _rt, _immediate, _instAddress, _instString){}
 
 Ble::~Ble() {}
 
 void Ble::fetch()
 {
 	addressIfNotTaken = PC + 4;
-	addressIfTaken = immediate + PC + 4;
+	addressIfTaken = immediate + PC +4 ;
 }
 
 void Ble::execute()
@@ -18,4 +18,3 @@ void Ble::execute()
 }
 
 void Ble::writeBack() {}
-

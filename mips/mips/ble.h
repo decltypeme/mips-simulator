@@ -4,7 +4,7 @@
 class Ble : public iformat
 {
 public:
-	Ble(int rs = -1 , int rt = -1, int immediate = 0);
+	Ble(int _rs = -1 , int _rt = -1, int _immediate = 0, int _instAddress = -1, string _instString = "nop");
 	virtual ~Ble();
 	virtual void fetch();
 	virtual void execute();

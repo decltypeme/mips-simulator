@@ -1,7 +1,7 @@
 #include "Xor.h"
 
-Xor::Xor(int _rs, int _rt, int _rd)
-	:rformat(_rs, _rt, _rd)
+Xor::Xor(int _rs, int _rt, int _rd, int _instAddress, string _instString)
+	:rformat(_rs, _rt, _rd, _instAddress , _instString)
 {
 }
 
