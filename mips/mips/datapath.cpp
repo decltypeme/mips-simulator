@@ -11,7 +11,7 @@ void fetch()
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
-		pipeline[0] = &inst_memory[PC];
+		pipeline[0] = inst_memory[PC];
 		PC = updatePC();
 	}
 	if ((binary_search(begin(hazards), end(hazards), 51)))

@@ -12,7 +12,7 @@ extern int registers[maxRegNumber + 1];
 extern int stack_size;
 extern int stack[4];
 extern int data_memory[dataMemSize];
-extern inst inst_memory[instMemSize];
+extern inst* inst_memory[instMemSize];
 extern inst* pipeline[4];
 extern int hazards[5];
 
