@@ -1,12 +1,13 @@
 
 #include "parser.h"
 #include <cstring>
+#include <algorithm>
+#include <iterator>
 using namespace std;
 
 void hazardDetection() 
 {
 	int z = 0;
-	int flushOnly = 0;
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -413,20 +414,24 @@ void hazardDetection()
 	{
 		hazards[z] = 42;
 		z++;
-		flushOnly = 42;
 	}
 
 	if (JR_EXIST != 1 && J_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
-		flushOnly = 41;
 	}
 	
-	if (flushOnly != 0)
+	int* it = find(begin(hazards), end(hazards), 51);
+	if ( it != end(hazards))
 	{
-		memset(hazards, 0, sizeof(hazards));
-		hazards[0] = flushOnly;
+		*it = 0;
+	}
+
+	it = find(begin(hazards), end(hazards), 52);
+	if (it != end(hazards))
+	{
+		*it = 0;
 	}
 }
 	
