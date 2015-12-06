@@ -115,7 +115,7 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 					sourceField->AppendText(gcnew System::String(toParse.c_str()));
 					sourceField->AppendText("\n");
 					instsToFill[counterOnEarth] = (parseInstruction(toParse, reg_rules, counterOnEarth));
-					counterOnEarth++;
+					counterOnEarth+=4;
 				}
 				resultsField->AppendText("File has been parsed correctly\n");
 				cout << "File has been parsed correctly" << endl;
