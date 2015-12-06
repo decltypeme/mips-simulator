@@ -8,12 +8,11 @@ void fetch()
 	if (!(binary_search(begin(hazards), end(hazards), 51) || binary_search(begin(hazards), end(hazards), 52)
 		|| binary_search(begin(hazards), end(hazards), 41) || binary_search(begin(hazards), end(hazards), 42)))
 	{
-		int oldPC = PC;
-		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
-		pipeline[0] = &inst_memory[oldPC];
+		pipeline[0] = &inst_memory[PC];
+		PC = updatePC();
 	}
 	if ((binary_search(begin(hazards), end(hazards), 51)))
 	{
@@ -28,29 +27,29 @@ void fetch()
 	}
 	if ((binary_search(begin(hazards), end(hazards), 41)))
 	{
-		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
 		pipeline[0] = new inst();
+		PC = updatePC();
 	}
 	
 	if ((binary_search(begin(hazards), end(hazards), 42)))
 	{
-		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = new inst();
 		pipeline[0] = new inst();
+		PC = updatePC();
 	}
 }
 
 void decode()
 {
+	pipeline[0]->fetch();
 	hazardDetection(hazards);
 	sort(begin(hazards), end(hazards));
-	for_each(begin(hazards), end(hazards), dealWithHazard);
-	pipeline[0]->fetch();
+	for_each(begin(hazards), end(hazards), dealWithForwarding);
 }
 
 void execute()

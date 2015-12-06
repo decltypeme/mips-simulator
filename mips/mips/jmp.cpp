@@ -4,8 +4,8 @@ using namespace std;
 
 
 
-Jmp::Jmp(int _immediate)
-	:J(_immediate) {}
+Jmp::Jmp(int _immediate, int _instAddress, string _instString)
+	:J(_immediate, _instAddress, _instString) {}
 
 Jmp::~Jmp() {}
 

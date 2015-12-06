@@ -4,8 +4,8 @@ using namespace std;
 
 
 
-J::J(int _immediate)
-	: immediate(_immediate)
+J::J(int _immediate, int _instAddress, string _instString)
+	: inst(_instString), instAddress(_instAddress), immediate(_immediate)
 {
 	if (!valid()) throw logic_error("Bad construction of a jump instruction.");
 }
@@ -21,5 +21,6 @@ void J::fetch()
 
 bool J::valid()
 {
-	return (immediate >=0);
+	return (immediate >=0)
+		&& (instAddress >= 0);
 }

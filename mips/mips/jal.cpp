@@ -4,8 +4,8 @@ using namespace std;
 
 
 
-Jal::Jal(int _immediate)
-	:J(_immediate) {}
+Jal::Jal(int _immediate, int _instAddress, string _instString)
+	:J(_immediate, _instAddress, _instString) {}
 
 Jal::~Jal() {}
 

@@ -1,10 +1,11 @@
 #pragma once
 #include "J.h"
+#include <string>
 
-class Jmp : public J
+class Jal : public J
 {
 public:
-	Jmp(int _immediate = -1);
-	virtual ~Jmp();
+	Jal(int _immediate = -1, int _instAddress = -1, string _instString = "nop");
+	virtual ~Jal();
 	virtual void fetch();
 };

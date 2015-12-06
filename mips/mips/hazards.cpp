@@ -24,11 +24,11 @@ void hazardDetection()
 	int ID_EX_RegRD_LW = -1;
 	int EX_MEM_RegRD_LW = -1;
 	int EX_MEM_RegRD_SW = -1;
-	int Jmp_EXIST = -1;
+	int Jal_EXIST = -1;
 	int Ret_EXIST = -1;
 	
 	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
-	memset(data_memory, 0, sizeof(hazards));
+	memset(hazards, 0, sizeof(hazards));
 	for (int i = 0; i < 4; i++)
 	{
 
@@ -140,7 +140,7 @@ void hazardDetection()
 				{
 					EX_MEM_MEMWr = 1;
 
-		}
+				}
 				if (i == 1)
 				{
 					EX_MEM_MEMWr = 1;
@@ -149,13 +149,13 @@ void hazardDetection()
 				if (i == 2)
 				{
 					EX_MEM_MEMWr = 1;
-					EX_MEM_RegRD_SW = Swptr->getdestination();
+					EX_MEM_RegRD_SW = Swptr->rt;
 
 				}
 				if (i == 3)
 				{
 					EX_MEM_MEMWr = 1;
-					MEM_WB_RegRD = Swptr->getdestination();
+					MEM_WB_RegRD = Swptr->rt;
 				}
 			}
 		}
@@ -166,36 +166,36 @@ void hazardDetection()
 		Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
 		if (bleptr != nullptr)
 		{
-			if (i == 0)
+			if (i == 0) // IF_ID
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
 				IF_ID_RegRS = bleptr->rs;
-				IF_ID_RegRT = -1;
+				IF_ID_RegRT = bleptr->rt;
+				
 
 			}
-			if (i == 1)
+			if (i == 1)  // ID_EX
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
 				ID_EX_RegRS = bleptr->rs;
-				ID_EX_RegRT = -1;
-				ID_EX_RegRD = bleptr->getdestination();
+				ID_EX_RegRT = bleptr->rt;
 			}
 
-			if (i == 2)
+			if (i == 2) //EX_MEM
 			{
-				EX_MEM_RegWrite = 1;
+				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
-				EX_MEM_RegRD = bleptr->getdestination();
+				EX_MEM_RegRD = -1;
 
 			}
 			if (i == 3)
 			{
 
-				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
-				MEM_WB_RegRD = bleptr->getdestination();
+				EX_MEM_RegWrite = 0;
+				MEM_WB_RegWrite = 0;
+				MEM_WB_RegRD = -1;
 			}
 
 		}
@@ -243,7 +243,7 @@ void hazardDetection()
 
 			if (i == 0)
 			{
-				Jmp_EXIST = 1;
+				Jal_EXIST = 1;
 			}
 
 
@@ -261,31 +261,31 @@ void hazardDetection()
  
 	if (JR_EXIST == 1)
 	{
-		if (IF_ID_RegRT == EX_MEM_RegRD)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
+		if (IF_ID_RegRT == EX_MEM_RegRD && IF_ID_RegRT != -1)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
 		{
 			hazards[z] = 212;
 			z++;
 		}
 
-		if (IF_ID_RegRT == MEM_WB_RegRD) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
+		if (IF_ID_RegRT == MEM_WB_RegRD && IF_ID_RegRT != -1) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
 		{
 			hazards[z] = 312;
 			z++;
 		}
 
-		if (IF_ID_RegRT == ID_EX_RegRD) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
+		if (IF_ID_RegRT == ID_EX_RegRD && IF_ID_RegRT != -1) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
 		{
 			hazards[z] = 51;
 			z++;
 		}
 		
-		if (IF_ID_RegRT == ID_EX_RegRD_LW ) //Stall nop -> Ex  Example: lw $1,20($2) jr $1
+		if (IF_ID_RegRT == ID_EX_RegRD_LW && IF_ID_RegRT != -1) //Stall nop -> Ex  Example: lw $1,20($2) jr $1
 		{ 
 			hazards[z] = 51;
 			z++;
 		}
 
-		if(IF_ID_RegRT == EX_MEM_RegRD_LW) // Stall nop -> M  Example: lw $1,20($2) jr $1
+		if(IF_ID_RegRT == EX_MEM_RegRD_LW && IF_ID_RegRT != -1) // Stall nop -> M  Example: lw $1,20($2) jr $1
 		{
 			hazards[z] = 52;
 			z++;
@@ -321,13 +321,13 @@ void hazardDetection()
 	
 	if (ID_EX_MemRead)  // for example lw $2,20($1) followed by add $4,$2,$5 
 	{ 
-		if (ID_EX_RegRT == IF_ID_RegRS)
+		if (ID_EX_RegRT == IF_ID_RegRS && ID_EX_RegRT != -1)
 		{
 			hazards[z] = 52; // Stall nop -> M
 			z++;
 			
 		}
-		else if (ID_EX_RegRT == IF_ID_RegRT) //Stall nop -> M
+		else if (ID_EX_RegRT == IF_ID_RegRT  && ID_EX_RegRT != -1) //Stall nop -> M
 		{
 			hazards[z] = 52;
 			z++;
@@ -337,13 +337,13 @@ void hazardDetection()
 
 	if (EX_MEM_RegWrite)
 	{
-		if (EX_MEM_RegRD == ID_EX_RegRS) //EX_MEM -> ID_EX
+		if (EX_MEM_RegRD == ID_EX_RegRS && EX_MEM_RegRD != -1) //EX_MEM -> ID_EX
 		{
 			hazards[z] = 221;
 			z++;
 		}
 			
-		else if (EX_MEM_RegRD == ID_EX_RegRT) //EX_MEM -> ID_EX
+		else if (EX_MEM_RegRD == ID_EX_RegRT && EX_MEM_RegRD != -1) //EX_MEM -> ID_EX
 		{
 			hazards[z] = 222;
 			z++;
@@ -357,18 +357,18 @@ void hazardDetection()
 
 	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite))
 	{
-		if (MEM_WB_RegRD == ID_EX_RegRS) //MEM_WB -> ID_EX
+		if (MEM_WB_RegRD == ID_EX_RegRS && MEM_WB_RegRD != -1) //MEM_WB -> ID_EX
 		{
 			hazards[z] = 321;
 			z++;			
 		}
-		if (MEM_WB_RegRD == ID_EX_RegRT) //MEM_WB -> ID_EX
+		if (MEM_WB_RegRD == ID_EX_RegRT  && MEM_WB_RegRD != -1) //MEM_WB -> ID_EX
 		{
 			hazards[z] = 322;
 			z++;			
 		}
 			
-		if ((MEM_WB_RegRD == EX_MEM_RegRD_SW) && (EX_MEM_MEMWr == 1)) // MEM_WB -> EX_MEM   Example: add $1,$3,$2  sw $1,20($2)
+		if ((MEM_WB_RegRD == EX_MEM_RegRD_SW) && (EX_MEM_MEMWr == 1) && (MEM_WB_RegRD != -1)) // MEM_WB -> EX_MEM   Example: add $1,$3,$2  sw $1,20($2)
 		{
 			hazards[z] = 332;
 			z++;
@@ -413,7 +413,7 @@ void hazardDetection()
 		z++;
 	}
 
-	if (JR_EXIST != 1 && Jmp_EXIST == 1 && Ret_EXIST == 1) //Flush D
+	if (JR_EXIST != 1 && Jal_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
@@ -423,7 +423,7 @@ void hazardDetection()
 }
 	
 	
-void dealWithHazard(int value)
+void dealWithForwarding(int value)
 {
 	switch (value)
 	{

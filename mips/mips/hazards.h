@@ -1,4 +1,4 @@
 #pragma once
 
 void hazardDetection(int* hazards);
-void dealWithHazard(int value);
+void dealWithForwarding(int value);

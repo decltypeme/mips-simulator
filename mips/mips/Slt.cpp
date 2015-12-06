@@ -1,8 +1,8 @@
 
 #include "Slt.h"
 
-Slt::Slt(int _rs, int _rt, int _rd)
-	:rformat(_rs, _rt, _rd)
+Slt::Slt(int _rs, int _rt, int _rd, int _instAddress, string _instString)
+	:rformat(_rs, _rt, _rd, _instAddress, _instString)
 {
 }
 

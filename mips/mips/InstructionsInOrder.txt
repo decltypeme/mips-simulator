@@ -8,5 +8,5 @@ BLE
 JR
 J
 JAL
-JMP
+Jal
 RET
