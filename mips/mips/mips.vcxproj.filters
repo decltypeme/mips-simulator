@@ -58,6 +58,9 @@
     <Filter Include="Header Files\UserInterface">
       <UniqueIdentifier>{5dd183d3-16bc-4ffb-afde-68dfcf964911}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{d94cc860-5a35-4ff3-8091-a781db8751ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rformat.h">
@@ -111,9 +114,6 @@
     <ClInclude Include="parser.h">
       <Filter>Header Files\Utility Structures and Functions</Filter>
     </ClInclude>
-    <ClInclude Include="hazard_detection.h">
-      <Filter>Header Files\Hazard Detection</Filter>
-    </ClInclude>
     <ClInclude Include="instructions.h">
       <Filter>Header Files\Utility Structures and Functions</Filter>
     </ClInclude>
@@ -122,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="Simulator.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hazards.h">
+      <Filter>Header Files\Hazard Detection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +159,6 @@
     </ClCompile>
     <ClCompile Include="datapath.cpp">
       <Filter>Source Files\Datapath</Filter>
-    </ClCompile>
-    <ClCompile Include="hazard_detection.cpp">
-      <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
     <ClCompile Include="fileHandling.cpp">
       <Filter>Source Files\Regex</Filter>
@@ -205,13 +205,21 @@
     <ClCompile Include="Ble.cpp">
       <Filter>Source Files\Iformat</Filter>
     </ClCompile>
+    <ClCompile Include="hazards.cpp">
+      <Filter>Source Files\Hazard Detection</Filter>
+    </ClCompile>
     <ClCompile Include="Simulator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="tester.bat">
       <Filter>Resource Files\Regex</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulator.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

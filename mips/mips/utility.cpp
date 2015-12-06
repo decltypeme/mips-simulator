@@ -118,20 +118,21 @@ prediction* getbptptr (prediction& totest, int inst_address)
 	else return nullptr;
 }
 
-bool right_prediction(int correct_address)
+bool right_prediction()
 {
 	prediction* bptptr = nullptr;
 	for (int i = 0; i < instMemSize; ++i)
 	{
-		bptptr = getbptptr(bpt[i], reinterpret_cast<int>(pipeline[0]));
+		bptptr = getbptptr(bpt[i], reinterpret_cast<int>(pipeline[2]));
 		if (bptptr)
 			break;
 	}
 
-	if (correct_address != bptptr->branchedto_address)
+	Ble* bleptr = dynamic_cast <Ble*> (pipeline[2]);
+	if (bleptr->writeData != bptptr->branchedto_address)
 	{
 		bptptr->taken = ~(bptptr->taken);
-		bptptr->branchedto_address;
+		bptptr->branchedto_address = bleptr->writeData;
 	}
 }
 

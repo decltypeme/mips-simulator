@@ -175,9 +175,9 @@
     <ClInclude Include="Addi.h" />
     <ClInclude Include="Ble.h" />
     <ClCompile Include="Add.cpp" />
-    <ClCompile Include="hazard_detection.cpp" />
+    <ClCompile Include="hazards.cpp" />
     <ClInclude Include="datapath.h" />
-    <ClInclude Include="hazard_detection.h" />
+    <ClInclude Include="hazards.h" />
     <ClInclude Include="instructions.h" />
     <ClInclude Include="J.h" />
     <ClInclude Include="Jal.h" />

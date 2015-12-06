@@ -1,7 +1,9 @@
 
 #include "parser.h"
+#include <cstring>
+using namespace std;
 
-void hazard_detection(int* hazardFound) 
+void hazard_detection() 
 {
 	int z = 0;
 	int IF_ID_RegRS = -1;
@@ -26,7 +28,7 @@ void hazard_detection(int* hazardFound)
 	int Ret_EXIST = -1;
 	
 	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
-	hazardFound = 0;
+	memset(data_memory, 0, sizeof(hazards));
 	for (int i = 0; i < 4; i++)
 	{
 
@@ -261,31 +263,31 @@ void hazard_detection(int* hazardFound)
 	{
 		if (IF_ID_RegRT == EX_MEM_RegRD)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
 		{
-			hazardFound[z] = 212;
+			hazards[z] = 212;
 			z++;
 		}
 
 		if (IF_ID_RegRT == MEM_WB_RegRD) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
 		{
-			hazardFound[z] = 312;
+			hazards[z] = 312;
 			z++;
 		}
 
 		if (IF_ID_RegRT == ID_EX_RegRD) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
 		{
-			hazardFound[z] = 51;
+			hazards[z] = 51;
 			z++;
 		}
 		
 		if (IF_ID_RegRT == ID_EX_RegRD_LW ) //Stall nop -> Ex  Example: lw $1,20($2) jr $1
 		{ 
-			hazardFound[z] = 51;
+			hazards[z] = 51;
 			z++;
 		}
 
 		if(IF_ID_RegRT == EX_MEM_RegRD_LW) // Stall nop -> M  Example: lw $1,20($2) jr $1
 		{
-			hazardFound[z] = 52;
+			hazards[z] = 52;
 			z++;
 		}
 
@@ -295,19 +297,19 @@ void hazard_detection(int* hazardFound)
 			{
 				if (JALWhere == 1) // ID_EX -> IF_ID
 				{
-					hazardFound[z] = 112;
+					hazards[z] = 112;
 					z++;
 				}
 
 				if (JALWhere==2 ) // EX_MEM -> IF_ID
 				{
-					hazardFound[z] = 212;
+					hazards[z] = 212;
 					z++;
 				}
 
 				if (JALWhere == 3) // MEM_WB -> IF_ID
 				{
-					hazardFound[z] = 312;
+					hazards[z] = 312;
 					z++;
 				}
 				
@@ -321,13 +323,13 @@ void hazard_detection(int* hazardFound)
 	{ 
 		if (ID_EX_RegRT == IF_ID_RegRS)
 		{
-			hazardFound[z] = 52; // Stall nop -> M
+			hazards[z] = 52; // Stall nop -> M
 			z++;
 			
 		}
 		else if (ID_EX_RegRT == IF_ID_RegRT) //Stall nop -> M
 		{
-			hazardFound[z] = 52;
+			hazards[z] = 52;
 			z++;
 		}
 		
@@ -337,13 +339,13 @@ void hazard_detection(int* hazardFound)
 	{
 		if (EX_MEM_RegRD == ID_EX_RegRS) //EX_MEM -> ID_EX
 		{
-			hazardFound[z] = 221;
+			hazards[z] = 221;
 			z++;
 		}
 			
 		else if (EX_MEM_RegRD == ID_EX_RegRT) //EX_MEM -> ID_EX
 		{
-			hazardFound[z] = 222;
+			hazards[z] = 222;
 			z++;
 			
 
@@ -357,18 +359,18 @@ void hazard_detection(int* hazardFound)
 	{
 		if (MEM_WB_RegRD == ID_EX_RegRS) //MEM_WB -> ID_EX
 		{
-			hazardFound[z] = 321;
+			hazards[z] = 321;
 			z++;			
 		}
 		if (MEM_WB_RegRD == ID_EX_RegRT) //MEM_WB -> ID_EX
 		{
-			hazardFound[z] = 322;
+			hazards[z] = 322;
 			z++;			
 		}
 			
 		if ((MEM_WB_RegRD == EX_MEM_RegRD_SW) && (EX_MEM_MEMWr == 1)) // MEM_WB -> EX_MEM   Example: add $1,$3,$2  sw $1,20($2)
 		{
-			hazardFound[z] = 332;
+			hazards[z] = 332;
 			z++;
 		}
 
@@ -380,12 +382,12 @@ void hazard_detection(int* hazardFound)
 		{
 			if (ID_EX_RegRS == 31) // Rs is using $31  //EX_MEM -> ID_EX
 			{
-				hazardFound[z] = 221;
+				hazards[z] = 221;
 				z++;
 			}
 			if (ID_EX_RegRT == 31) // RT is using $31
 			{
-				hazardFound[z] = 222;
+				hazards[z] = 222;
 				z++;
 			}
 		}
@@ -393,27 +395,27 @@ void hazard_detection(int* hazardFound)
 		{
 			if (ID_EX_RegRS == 31) // Rs is using $31 //MEM_WB -> ID_EX
 			{
-				hazardFound[z] = 321;
+				hazards[z] = 321;
 				z++;
 			}
 			if (ID_EX_RegRT == 31) // RT is using $31
 			{
-				hazardFound[z] = 322;
+				hazards[z] = 322;
 				z++;
 			
 			}
 		}
 	}
 
-	if (correct_prediction == false) //Flush D&E
+	if (right_prediction() == false) //Flush D&E
 	{
-		hazardFound[z] = 42;
+		hazards[z] = 42;
 		z++;
 	}
 
 	if (JR_EXIST != 1 && Jmp_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
-		hazardFound[z] = 41;
+		hazards[z] = 41;
 		z++;
 	}
 	

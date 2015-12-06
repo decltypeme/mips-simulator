@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "hazard_detection.h"
+#include "hazards.h"
 #include "datapath.h"
 
 class inst;
