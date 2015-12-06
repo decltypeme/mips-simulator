@@ -55,12 +55,6 @@
     <Filter Include="Header Files\Hazard Detection">
       <UniqueIdentifier>{8fd1b423-1f59-426b-94ea-8e31e33b6ddc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\UserInterface">
-      <UniqueIdentifier>{5dd183d3-16bc-4ffb-afde-68dfcf964911}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GUI">
-      <UniqueIdentifier>{d94cc860-5a35-4ff3-8091-a781db8751ea}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rformat.h">
@@ -209,7 +203,7 @@
       <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
     <ClCompile Include="Simulator.cpp">
-      <Filter>Source Files\GUI</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
