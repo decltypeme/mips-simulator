@@ -479,6 +479,7 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 			this->button2->TabIndex = 12;
 			this->button2->Text = L"Reset";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Simulator::button2_Click);
 			// 
 			// button3
 			// 
@@ -1247,6 +1248,40 @@ private: System::Void sourceFile_FileOk(System::Object^  sender, System::Compone
 }
 private: System::Void isaFile_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 	isaTextBox->Text = isaFile->FileName;
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	Reg0->Text = "00: " + readRegister(0);
+	Reg1->Text = "01: " + readRegister(1);
+	Reg2->Text = "02: " + readRegister(2);
+	Reg3->Text = "03: " + readRegister(3);
+	Reg4->Text = "04: " + readRegister(4);
+	Reg5->Text = "05: " + readRegister(5);
+	Reg6->Text = "06: " + readRegister(6);
+	Reg7->Text = "07: " + readRegister(7);
+	Reg8->Text = "08: " + readRegister(8);
+	Reg9->Text = "09: " + readRegister(9);
+	Reg10->Text = "10: " + readRegister(10);
+	Reg11->Text = "11: " + readRegister(11);
+	Reg12->Text = "12: " + readRegister(12);
+	Reg13->Text = "13: " + readRegister(13);
+	Reg14->Text = "14: " + readRegister(14);
+	Reg15->Text = "15: " + readRegister(15);
+	Reg16->Text = "16: " + readRegister(16);
+	Reg17->Text = "17: " + readRegister(17);
+	Reg18->Text = "18: " + readRegister(18);
+	Reg19->Text = "19: " + readRegister(19);
+	Reg20->Text = "20: " + readRegister(20);
+	Reg21->Text = "21: " + readRegister(21);
+	Reg22->Text = "22: " + readRegister(22);
+	Reg23->Text = "23: " + readRegister(23);
+	Reg24->Text = "24: " + readRegister(24);
+	Reg25->Text = "25: " + readRegister(25);
+	Reg26->Text = "26: " + readRegister(26);
+	Reg27->Text = "27: " + readRegister(27);
+	Reg28->Text = "28: " + readRegister(28);
+	Reg29->Text = "29: " + readRegister(29);
+	Reg30->Text = "30: " + readRegister(30);
+	Reg31->Text = "31: " + readRegister(31);
 }
 };
 }
