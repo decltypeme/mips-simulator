@@ -6,6 +6,7 @@ using namespace std;
 void hazardDetection() 
 {
 	int z = 0;
+	int flushOnly = 0;
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -18,6 +19,7 @@ void hazardDetection()
 	int MEM_WB_RegWrite = -1; 
 	int MEM_WB_RegRD = -1;
 	int JAL_EXIST = -1;
+	int J_EXIST = -1;
 	int JR_EXIST = -1;
 	int JAL_Where = -1;
 	int JALWhere = -1;
@@ -243,7 +245,7 @@ void hazardDetection()
 
 			if (i == 0)
 			{
-				Jal_EXIST = 1;
+				J_EXIST = 1;
 			}
 
 
@@ -411,15 +413,21 @@ void hazardDetection()
 	{
 		hazards[z] = 42;
 		z++;
+		flushOnly = 42;
 	}
 
-	if (JR_EXIST != 1 && Jal_EXIST == 1 && Ret_EXIST == 1) //Flush D
+	if (JR_EXIST != 1 && J_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
+		flushOnly = 41;
 	}
 	
-	
+	if (flushOnly != 0)
+	{
+		memset(hazards, 0, sizeof(hazards));
+		hazards[0] = flushOnly;
+	}
 }
 	
 	
