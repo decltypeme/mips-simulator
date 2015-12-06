@@ -8,6 +8,7 @@ using namespace std;
 void hazardDetection() 
 {
 	int z = 0;
+	int flushHappend = 0;
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -414,24 +415,29 @@ void hazardDetection()
 	{
 		hazards[z] = 42;
 		z++;
+		flushHappend = 1;
 	}
 
 	if (JR_EXIST != 1 && J_EXIST == 1 && Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
+		flushHappend = 1;
 	}
 	
-	int* it = find(begin(hazards), end(hazards), 51);
-	if ( it != end(hazards))
+	if (flushHappend)
 	{
-		*it = 0;
-	}
+		int* it = find(begin(hazards), end(hazards), 51);
+		if ( it != end(hazards))
+		{
+			*it = 0;
+		}
 
-	it = find(begin(hazards), end(hazards), 52);
-	if (it != end(hazards))
-	{
-		*it = 0;
+		it = find(begin(hazards), end(hazards), 52);
+		if (it != end(hazards))
+		{
+			*it = 0;
+		}
 	}
 }
 	
