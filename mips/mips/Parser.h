@@ -36,6 +36,6 @@ bool verifyInstruction(const string&instString, const vector<regex>& instRules);
 Instruction rules need to be passed with same order of appearance in the enum class
 Throws an exception
 */
-inst parseInstruction(const string&instString, const vector<regex>& instRules);
+inst parseInstruction(const string&instString, const vector<regex>& instRules, int address);
 
-int fileHandler(int argc, char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField);
+int fileHandler(int argc, const char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField);

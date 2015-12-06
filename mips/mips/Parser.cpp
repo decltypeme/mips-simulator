@@ -52,7 +52,7 @@ immediateType resolveJImmediate(const string& strImmediate)
 	}
 	return jAddr;
 }
-inst parseInstruction(const string& instString, const vector<regex>& instRules)
+inst parseInstruction(const string& instString, const vector<regex>& instRules, int address)
 {
 	if (!verifyInstruction(instString, instRules))
 		throw invalid_argument("Cannot parse an invalid instruction");
@@ -78,15 +78,15 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 		int rd = stoi(params[2]);
 		if (params[1] == "ADD")
 		{
-			return Add(rs, rt, rd);
+			return Add(rs, rt, rd, address, instString);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Xor(rs, rt, rd);
+			return Xor(rs, rt, rd, address, instString);
 		}
 		else if (params[1] == "SLT")
 		{
-			return Slt(rs, rt, rd);
+			return Slt(rs, rt, rd, address, instString);
 		}
 	}
 	//I-Type Instructions
@@ -98,15 +98,15 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 		immediateType immediate = resolveImmediate(params[4]);
 		if (params[1] == "LW")
 		{
-			return Lw(rt, rs, immediate);
+			return Lw(rt, rs, immediate, address, instString);
 		}
 		else if (params[1] == "SW")
 		{
-			return Sw(rt, rs, immediate);
+			return Sw(rt, rs, immediate, address, instString);
 		}
 		else if (params[1] == "BLE")
 		{
-			return Ble(rt, rs, immediate);
+			return Ble(rt, rs, immediate, address, instString);
 		}
 	}
 	else if (params[1] == "JR")
@@ -118,20 +118,20 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules)
 		immediateType jAddr = resolveJImmediate(params[2]);
 		if (params[1] == "J")
 		{
-			return J(jAddr);
+			return J(jAddr, address, instString);
 		}
 		else if (params[1] == "JAL")
 		{
-			return Jal(jAddr);
+			return Jal(jAddr, address, instString);
 		}
 		else if (params[1] == "JMP")
 		{
-			return Jmp(jAddr);
+			return Jmp(jAddr, address, instString);
 		}
 	}
 	else if (params[1] == "RET")
 	{
-		return Ret();
+		return Ret(address, instString);
 	}
 	else
 	{

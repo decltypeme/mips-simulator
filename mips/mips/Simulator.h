@@ -1,7 +1,7 @@
 #pragma once
 #include <array>
 #include "Parser.h"
-
+#include <msclr\marshal_cppstd.h>
 namespace mips {
 
 	using namespace System;
@@ -10,6 +10,7 @@ namespace mips {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace msclr::interop;
 
 	/// <summary>
 	/// Summary for Simulator
@@ -1205,11 +1206,16 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	sourceTextBox->Clear();
+	AssemblySource->Clear();
 	ParsingResults->Clear();
-	char argsToPass[][4];
-	fileHandler()
-
+	const char* argsToPass[4];
+	argsToPass[0] = "handler";
+	argsToPass[1] = "-verify";
+	argsToPass[2] = marshal_as<std::string>(isaTextBox->Text).c_str();
+	argsToPass[3] = marshal_as<std::string>(sourceTextBox->Text).c_str();
+	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
+	argsToPass[1] = "-parse";
+	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
 }
 private: System::Void label2_Click_1(System::Object^  sender, System::EventArgs^  e) {
 }
