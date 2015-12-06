@@ -202,9 +202,6 @@
     <ClCompile Include="hazards.cpp">
       <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
-    <ClCompile Include="Simulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="tester.bat">

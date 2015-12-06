@@ -1,8 +1,7 @@
 #pragma once
-
-
-#include "hazards.h"
 #include "datapath.h"
+#include "hazards.h"
+class inst;
 
 constexpr int maxRegNumber = 31;
 constexpr int dataMemSize = 16;

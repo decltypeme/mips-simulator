@@ -7,7 +7,7 @@ class inst
 {
 public:
 	inst();
-	inst(string _instString = "nop");
+	inst(string _instString);
 	virtual ~inst();
 	virtual void fetch();
 	virtual void execute();

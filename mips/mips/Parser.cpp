@@ -65,18 +65,18 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 		{
 			if (params.ready())
 				throw logic_error("Amibgous instruction: Instruction parses to more than one type of instruction");
-			temp = params;
+			params = temp;
 		}
 	}
 	//Now, we will do a must-do cases, I know, you know it sucks, even this plastic debugging duck knows it!
 	//transform(params.begin(), params.end(), params.begin(), toupper);
 	//R-Type instructions
-	if (params[1] == "ADD" | params[1] == "XOR" | params[1] == "SLT")
+	if (params.str(1).compare(string("ADD")) == 0 || params[1] == "XOR" || params[1] == "SLT")
 	{
 		int rs = stoi(params[3]);
 		int rt = stoi(params[4]);
 		int rd = stoi(params[2]);
-		if (params[1] == "ADD")
+		if (params.str(1).compare(string("ADD")) == 0)
 		{
 			return Add(rs, rt, rd, address, instString);
 		}
@@ -96,6 +96,10 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 		int rt = stoi(params[2]);
 		int rs = stoi(params[3]);
 		immediateType immediate = resolveImmediate(params[4]);
+		if (params[1] == "ADDI")
+		{
+			return Addi(rt, rs, immediate, address, instString);
+		}
 		if (params[1] == "LW")
 		{
 			return Lw(rt, rs, immediate, address, instString);
@@ -135,7 +139,8 @@ inst parseInstruction(const string& instString, const vector<regex>& instRules, 
 	}
 	else
 	{
-		throw logic_error("Unrecognized Instruction: Instruction was unrecognized as part of the ISA");
+		throw logic_error("Unrecognized Instruction: Instruction was unrecognized as part of the ISA: " + to_string(address));
+		system("pause");
 	}
 	throw logic_error("Reached end of function, no suitable return");
 }

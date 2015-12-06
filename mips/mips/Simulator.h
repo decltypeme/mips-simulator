@@ -2,6 +2,7 @@
 #include <array>
 #include "Parser.h"
 #include <msclr\marshal_cppstd.h>
+#include <iostream>
 namespace mips {
 
 	using namespace System;
@@ -1208,14 +1209,21 @@ private: System::Windows::Forms::OpenFileDialog^  isaFile;
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 	AssemblySource->Clear();
 	ParsingResults->Clear();
-	const char* argsToPass[4];
-	argsToPass[0] = "handler";
-	argsToPass[1] = "-verify";
-	argsToPass[2] = marshal_as<std::string>(isaTextBox->Text).c_str();
-	argsToPass[3] = marshal_as<std::string>(sourceTextBox->Text).c_str();
+	char* argsToPass[4];
+	argsToPass[0] = new char[1000];
+	strcpy(argsToPass[0], "handler");
+	argsToPass[1] = new char[1000];
+	strcpy(argsToPass[1], "-verify");
+	argsToPass[2] = new char[1000];
+	strcpy(argsToPass[2], marshal_as<std::string>(isaTextBox->Text).c_str());
+	argsToPass[3] = new char[1000];
+	strcpy(argsToPass[3], marshal_as<std::string>(sourceTextBox->Text).c_str());
+	cout << argsToPass[0] << " " << argsToPass[1] << " " << argsToPass[2] << " " << argsToPass[3] << endl;
+	system("pause");
 	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
 	argsToPass[1] = "-parse";
 	fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
+	system("pause");
 }
 private: System::Void label2_Click_1(System::Object^  sender, System::EventArgs^  e) {
 }

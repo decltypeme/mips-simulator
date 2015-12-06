@@ -18,7 +18,9 @@ inst* pipeline[4];
 int hazards[5];
 
 struct prediction 
-{ int inst_address; bool taken; 
+{ int inst_address; bool taken;
+prediction()
+	:inst_address(-1), taken(0) {}
 	prediction(int _inst_address, bool _taken)
 	:inst_address(_inst_address), taken(_taken) {}
 };
@@ -67,7 +69,7 @@ void initialize()
 	memset(hazards, 0, sizeof(hazards));
 }
 
-void pushtostack(const int& address)
+void pushtostack(int address)
 {
 	if (stack_size < 4)
 	{
@@ -142,7 +144,7 @@ bool right_prediction()
 	
 	if (branchedToLastTime != bleptr->addressTrue)
 	{
-		bptptr->taken = ~(bptptr->taken);
+		bptptr->taken = !(bptptr->taken);
 		return false;
 	}
 	else

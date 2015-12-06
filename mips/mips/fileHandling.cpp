@@ -70,7 +70,7 @@ bool verifyLines(const vector<string>& ruleStrings, const vector<string> lines, 
 }
 
 //It appends the instructions when parsing, make sure it is clear.
-int fileHandler(int argc, const char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField)
+int fileHandler(int argc, char** argv, inst* instsToFill, System::Windows::Forms::RichTextBox^ sourceField, System::Windows::Forms::RichTextBox^ resultsField)
 {
 	if (argc == 4)
 	{
@@ -122,6 +122,7 @@ int fileHandler(int argc, const char** argv, inst* instsToFill, System::Windows:
 			else
 			{
 				cerr << "Invalid use of " << argv[1] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
+				system("pause");
 				exit(EXIT_FAILURE);
 			}
 
@@ -129,6 +130,7 @@ int fileHandler(int argc, const char** argv, inst* instsToFill, System::Windows:
 		catch (exception& ex)
 		{
 			cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
+			system("pause");
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -159,18 +161,21 @@ int fileHandler(int argc, const char** argv, inst* instsToFill, System::Windows:
 			catch (exception& ex)
 			{
 				cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
+				system("pause");
 				exit(EXIT_FAILURE);
 			}
 		}
 		else
 		{
 			cerr << "Invalid use of " << argv[0] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
+			system("pause");
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		cerr << "Invalid use of " << argv[0] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
+		system("pause");
 		exit(EXIT_FAILURE);
 	}
 	return EXIT_SUCCESS;

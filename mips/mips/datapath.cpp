@@ -47,7 +47,7 @@ void fetch()
 void decode()
 {
 	pipeline[0]->fetch();
-	hazardDetection(hazards);
+	hazardDetection();
 	sort(begin(hazards), end(hazards));
 	for_each(begin(hazards), end(hazards), dealWithForwarding);
 }
@@ -62,7 +62,7 @@ void memory()
 	pipeline[2]->memory();
 }
 
-void write_back()
+void writeBack()
 {
 	pipeline[3]->writeBack();
 }
