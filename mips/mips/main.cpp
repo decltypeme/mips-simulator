@@ -1,16 +1,8 @@
-/*
-extern void initialize();
-extern void fetch();
-extern void decode();
-extern void execute();
-extern void memory();
-extern void write_back();
-*/
 
+#include "utility.h"
 
 int main()
 {
-	/*
 	initialize();
 
 	while (true)
@@ -20,5 +12,5 @@ int main()
 		execute();
 		memory();
 		write_back();
-	}*/
+	}
 }

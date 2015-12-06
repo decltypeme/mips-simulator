@@ -1,9 +1,8 @@
-#include "J.h"
+#include "utility.h"
 #include <stdexcept>
 using namespace std;
 
-extern int PC;
-extern void proposePC(int proposedPC, const inst* instProposing);
+
 
 J::J(int address)
 	: address(address)

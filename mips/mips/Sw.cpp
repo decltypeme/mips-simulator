@@ -1,5 +1,4 @@
-#include "Sw.h"
-
+#include "utility.h"
 Sw::Sw(int rs, int rt, int immediate) :iformat(rs, rt, immediate)
 {
 }

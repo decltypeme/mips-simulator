@@ -1,30 +1,15 @@
 
 #include <cstring>
 #include <stdexcept>
-#include "Utility.h"
-#include "Parser.h"
-class inst;
+
+#include "utility.h"
+
 using namespace std;
-
-constexpr int maxRegNumber = 31;
-constexpr int dataMemSize = 16;
-constexpr int instMemSize = 16;
-
-
-int PC = 0;
-int registers[maxRegNumber+1];
-int stack_size = 0;
-int stack[4];
-int data_memory[dataMemSize];
-inst inst_memory[instMemSize];
-inst* pipeline[4];
 
 bool validateRegister(const int& reg)
 {
 	return !(reg < 0 || reg >maxRegNumber);
 }
-
-//Add validation for inst, data memory read and write
 
 int readRegister(const int& reg)
 {
@@ -54,8 +39,6 @@ void writeDataMem(const int& index, const int& value)
 {
 	data_memory[index] = value;
 }
-
-
 
 void initialize()
 {

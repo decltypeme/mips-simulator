@@ -1,10 +1,8 @@
-#include "Jal.h"
+#include "utility.h"
 #include <stdexcept>
 using namespace std;
 
-extern int PC;
-extern int registers[32];
-extern void proposePC(int proposedPC, const inst* instProposing);
+
 
 Jal::Jal(int address)
 	:J(address) {}

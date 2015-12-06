@@ -1,4 +1,6 @@
-#include "Parser.h"
+
+#include "utility.h"
+
 regex hex_reg = regex("(0x)([0-9A-Fa-f]+)");
 regex dec_reg = regex("(0d){0,1}([0-9]+)");
 immediateType resolveImmediate(const string& strImmediate, bool signExtend)
@@ -69,7 +71,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules)
 		}
 	}
 	//Now, we will do a must-do cases, I know, you know it sucks, even this plastic debugging duck knows it!
-	transform(params.begin(), params.end(), params.begin(), toupper);
+	//transform(params.begin(), params.end(), params.begin(), toupper);
 	//R-Type instructions
 	if (params[1] == "ADD" | params[1] == "XOR" | params[1] == "SLT")
 	{

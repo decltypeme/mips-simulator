@@ -1,10 +1,8 @@
-#include "Jr.h"
+#include "utility.h"
 #include <stdexcept>
 using namespace std;
 
-extern int PC;
-extern int registers[32];
-extern void proposePC(int proposedPC, const inst* instProposing);
+
 
 Jr::Jr(int source)
 	: source(source)

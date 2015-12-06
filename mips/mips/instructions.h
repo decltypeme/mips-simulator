@@ -1,4 +1,7 @@
 #pragma once
+#include "inst.h"
+#include "rformat.h"
+#include "iformat.h"
 #include "Add.h"
 #include "Xor.h"
 #include "Slt.h"

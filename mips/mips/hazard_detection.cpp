@@ -1,21 +1,5 @@
 
-#include "inst.h"
-
-#include "rformat.h"
-
-#include "iformat.h"
-#include "ble.h"
-#include "Lw.h"
-#include "Sw.h"
-
-
-#include "j.h"
-#include "jr.h"
-#include "jal.h"
-#include "jmp.h"
-#include "ret.h"
-
-extern inst* pipeline[4];
+#include "utility.h"
 
 void hazard_detection(int** hazardFound) 
 {
@@ -151,8 +135,8 @@ void hazard_detection(int** hazardFound)
 
 		}
 
-		Ble* rptr = dynamic_cast<Ble*> (pipeline[i]);
-		if (rptr != nullptr)
+		Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
+		if (bleptr != nullptr)
 		{
 
 		}

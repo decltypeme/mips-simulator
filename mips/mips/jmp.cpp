@@ -1,10 +1,8 @@
-#include "Jmp.h"
+#include "utility.h"
 #include <stdexcept>
 using namespace std;
 
-extern void pushtostack(int address);
-extern int PC;
-extern void proposePC(int proposedPC, const inst* instProposing);
+
 
 Jmp::Jmp(int address)
 	:J(address) {}

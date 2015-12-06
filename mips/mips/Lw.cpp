@@ -1,4 +1,4 @@
-#include "Lw.h"
+#include "utility.h"
 
 Lw::Lw(int rs, int rt, int immediate):iformat(rs, rt, immediate)
 {
