@@ -5,7 +5,7 @@
 class Jal : public J
 {
 public:
-	Jal(int _immediate = -1, int _instAddress = -1, string _instString = "nop");
+	Jal(int _immediate = -1, int _instAddress = -1, std::string _instString = "nop");
 	virtual ~Jal();
 	virtual void fetch();
 };

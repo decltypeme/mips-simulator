@@ -185,14 +185,10 @@
     <ClInclude Include="iformat.h" />
     <ClInclude Include="Jr.h" />
     <ClInclude Include="Lw.h" />
-    <ClInclude Include="parser.h" />
     <ClInclude Include="Ret.h" />
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClCompile Include="utility.cpp" />
-    <ClInclude Include="Simulator.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Slt.h" />
     <ClInclude Include="Sw.h" />
     <ClInclude Include="utility.h" />
@@ -200,13 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt" />
-    <Text Include="MIPS.txt" />
-    <Text Include="originalRegex.txt" />
-    <Text Include="regexRule.txt" />
-    <Text Include="replaceRule.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="tester.bat" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ble.cpp" />
@@ -218,11 +207,6 @@
     <ClCompile Include="Jmp.cpp" />
     <ClCompile Include="Jr.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="parser.cpp" />
-    <ClCompile Include="fileHandling.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='mips_GUI|x64'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="rformat.cpp" />
     <ClCompile Include="Ret.cpp" />
   </ItemGroup>
@@ -232,11 +216,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Simulator.resx">
-      <DependentUpon>Simulator.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

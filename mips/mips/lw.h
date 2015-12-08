@@ -5,7 +5,7 @@ class Lw :
 	public iformat
 {
 public:
-	Lw(int _rs = -1, int _rt = -1, int _immediate = 0, int _instAddress = -1, string _instString = "nop");
+	Lw(int _rs = -1, int _rt = -1, int _immediate = 0, int _instAddress = -1, std::string _instString = "nop");
 	virtual ~Lw();
 	virtual void execute();
 	virtual void memory();

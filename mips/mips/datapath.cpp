@@ -1,5 +1,5 @@
 
-#include "parser.h"
+#include "inst.h"
 #include <algorithm>
 using namespace std;
 
