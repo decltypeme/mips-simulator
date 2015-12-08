@@ -13,10 +13,10 @@ Lw::~Lw()
 
 void Lw::execute()
 {
-	writeData = rs + immediate;
+	addressResolved = readRegister(rs) + immediate;
 }
 
 void Lw::memory()
 {
-	writeData = readDataMem(writeData);
+	writeData = readDataMem(addressResolved);
 }

@@ -128,12 +128,15 @@ void hazardDetection()
 				if (i == 2)
 				{
 					ID_EX_MemRead = 1;
+					ID_EX_RegRD_LW = -1;
 					EX_MEM_RegRD_LW = Lwptr->rt;
 
 				}
 				if (i == 3)
 				{
-					ID_EX_MemRead = 1;
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 1;
+					EX_MEM_RegRD_LW = -1;
 					MEM_WB_RegRD = Lwptr->rt;
 				}
 			}
@@ -159,6 +162,7 @@ void hazardDetection()
 				if (i == 3)
 				{
 					EX_MEM_MEMWr = 1;
+					EX_MEM_RegRD_SW = -1;
 					MEM_WB_RegRD = Swptr->rt;
 				}
 			}
@@ -325,13 +329,13 @@ void hazardDetection()
 	
 	if (ID_EX_MemRead)  // for example lw $2,20($1) followed by add $4,$2,$5 
 	{ 
-		if (ID_EX_RegRD_LW == IF_ID_RegRS && ID_EX_RegRD_LW != -1)
+		if (EX_MEM_RegRD_LW == ID_EX_RegRS && EX_MEM_RegRD_LW != -1)
 		{
 			hazards[z] = 52; // Stall nop -> M
 			z++;
 			
 		}
-		else if (ID_EX_RegRD_LW == IF_ID_RegRT  && ID_EX_RegRD_LW != -1) //Stall nop -> M
+		else if (EX_MEM_RegRD_LW == ID_EX_RegRT  && EX_MEM_RegRD_LW != -1) //Stall nop -> M
 		{
 			hazards[z] = 52;
 			z++;
@@ -377,6 +381,7 @@ void hazardDetection()
 			hazards[z] = 332;
 			z++;
 		}
+
 
 		
 	}

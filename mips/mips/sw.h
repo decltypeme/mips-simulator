@@ -10,4 +10,5 @@ public:
 	virtual void execute();
 	virtual void memory();
 	virtual void writeBack();
+	int addressResolved;
 };

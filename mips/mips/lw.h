@@ -9,4 +9,5 @@ public:
 	virtual ~Lw();
 	virtual void execute();
 	virtual void memory();
+	int addressResolved;
 };

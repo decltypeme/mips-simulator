@@ -14,7 +14,7 @@ void fillwithInst()
 	data_memory[2] = 45;
 
 	inst_memory[0] = new Lw(3, 1, 2, 0, "lw $3, 2($1)");
-	inst_memory[1] = new Addi(4, 3, 5, 1, "addi $4, $3, 5");
+	inst_memory[1] = new Add(4, 0, 3, 1, "addi $4, $3, 5");
 }
 
 void displayPipe()

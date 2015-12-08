@@ -13,12 +13,12 @@ Sw::~Sw()
 
 void Sw::execute()
 {
-	writeData = rs + immediate;
+	addressResolved = readRegister(rs) + immediate;
 }
 
 void Sw::memory()
 {
-	writeDataMem(writeData, rt);
+	writeDataMem(addressResolved, rt);
 }
 
 void Sw::writeBack(){}
