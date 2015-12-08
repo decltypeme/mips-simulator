@@ -11,10 +11,10 @@ void fillwithInst()
 		inst_memory[i] = new inst();
 	}
 
-	data_memory[2] = 2;
+	data_memory[2] = 45;
 
-	inst_memory[0] = new Lw(1, 0, 2, 0, "lw to $1 from mem[0+2]");
-	inst_memory[1] = new Addi(2, 1, 4, 1, "addi $2, $1, 4");
+	inst_memory[0] = new Lw(3, 1, 2, 0, "lw $3, 2($1)");
+	inst_memory[1] = new Addi(4, 3, 5, 1, "addi $4, $3, 5");
 }
 
 void displayPipe()
@@ -22,10 +22,10 @@ void displayPipe()
 	cout << endl << endl << endl;
 	cout << "PC:\t" << PC * 4;
 	cout << endl << endl;
-	cout << "PipelinePos\t" << "Inst" << endl;
+	cout << "Pipeline\t" << "Inst" << endl;
 	for (int i = 0; i < 4; ++i)
 	{
-		cout << i << "\t" << pipeline[i]->instString << endl;
+		cout << i << "\t\t" << pipeline[i]->instString << endl;
 	}
 }
 
@@ -56,7 +56,7 @@ int main()
 	system("Pause");
 
 	int n = 0;
-	while (n<10)
+	while (n<16)
 	{
 		n++;
 		fetch();
@@ -64,6 +64,9 @@ int main()
 		displayPipe();
 
 		decode();
+
+		cout << endl << endl << hazards[0] << "\t" << hazards[1] << "\t" << hazards[2] << "\t" << hazards[3] << "\t" << hazards[4] << endl;
+		
 		execute();
 		memory();
 		writeBack();
@@ -71,5 +74,7 @@ int main()
 		displayStorage();
 		system("Pause");
 	}
+
+	cout << endl << endl << "End of simulation\n\n";
 	system("Pause");
 }
