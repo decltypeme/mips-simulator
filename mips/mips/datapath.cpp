@@ -1,5 +1,5 @@
 
-#include "inst.h"
+#include "instructions.h"
 #include <algorithm>
 using namespace std;
 

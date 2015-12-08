@@ -1,4 +1,5 @@
 #include "Ble.h"
+using namespace std;
 
 
 Ble::Ble(int _rs, int _rt, int _immediate, int _instAddress, string _instString)

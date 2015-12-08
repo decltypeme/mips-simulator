@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <algorithm>
 
-#include "utility.h"
+#include "instructions.h"
 using namespace std;
 
 
@@ -166,24 +166,22 @@ int updatePC()
 	Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
 	Ble* bleptr = dynamic_cast <Ble*> (pipeline[0]);
 
-	if (!(jptr || retptr || bleptr || jrptr)) return PC + 1;
-	else
+	if (jptr)
 	{
-		if (jptr)
-		{
-			return jptr->address;
-		}
-		if (retptr)
-		{
-			return retptr->addressPopped;
-		}
-		if (bleptr)
-		{
-			return predict_branch();
-		}
-		if (jrptr)
-		{
-			return jrptr->rsData;
-		}
+		return jptr->address;
 	}
+	if (retptr)
+	{
+		return retptr->addressPopped;
+	}
+	if (bleptr)
+	{
+		return predict_branch();
+	}
+	if (jrptr)
+	{
+		return jrptr->rsData;
+	}
+
+	return PC + 1;
 }

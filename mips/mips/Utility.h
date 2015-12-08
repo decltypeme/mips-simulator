@@ -16,7 +16,7 @@ extern inst* inst_memory[instMemSize];
 extern inst* pipeline[4];
 extern int hazards[5];
 
-extern struct prediction;
+struct prediction;
 extern prediction bpt[instMemSize];
 extern int prediction_count;
 

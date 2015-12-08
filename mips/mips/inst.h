@@ -1,6 +1,6 @@
 #pragma once
-#include "utility.h"
 #include <string>
+#include "utility.h"
 
 class inst
 {
