@@ -11,10 +11,12 @@ void fillwithInst()
 		inst_memory[i] = new inst();
 	}
 
-	data_memory[2] = 45;
+	registers[0] = 0;
+	registers[1] = 1;
+	registers[2] = 2;
 
-	inst_memory[0] = new Lw(3, 1, 2, 0, "lw $3, 2($1)");
-	inst_memory[1] = new Add(4, 0, 3, 1, "addi $4, $3, 5");
+	inst_memory[0] = new Add(3, 1, 2, 0, "add $3, $1, $2");
+	inst_memory[1] = new Add(4, 3, 3, 1, "add $4, $3, $3");
 }
 
 void displayPipe()

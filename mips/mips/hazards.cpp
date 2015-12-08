@@ -351,7 +351,7 @@ void hazardDetection()
 			z++;
 		}
 			
-		else if (EX_MEM_RegRD == ID_EX_RegRT && EX_MEM_RegRD != -1) //EX_MEM -> ID_EX
+		if (EX_MEM_RegRD == ID_EX_RegRT && EX_MEM_RegRD != -1) //EX_MEM -> ID_EX
 		{
 			hazards[z] = 222;
 			z++;
