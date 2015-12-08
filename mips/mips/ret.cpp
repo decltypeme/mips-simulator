@@ -3,7 +3,10 @@
 using namespace std;
 
 
-Ret::Ret(int _instAddress, string _instString): inst(_instString), instAddress(_instAddress){}
+Ret::Ret(int _instAddress, string _instString): inst(_instString), instAddress(_instAddress)
+{
+	if (!valid()) throw logic_error("Bad construction of ret instruction.");
+}
 
 Ret::~Ret() {}
 

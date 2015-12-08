@@ -17,7 +17,7 @@ void fillwithInst()
 	inst_memory[1] = new Addi(2, 1, 4, 1, "addi $2, $1, 4");
 }
 
-void updatePipe()
+void displayPipe()
 {
 	cout << endl << endl << endl;
 	cout << "PC:\t" << PC * 4;
@@ -29,7 +29,7 @@ void updatePipe()
 	}
 }
 
-void updateOthers()
+void displayStorage()
 {
 	cout << endl << endl;
 	cout << "RegNum\t" << "Value" << endl;
@@ -51,23 +51,25 @@ int main()
 
 	fillwithInst();
 
-	updatePipe();
-	updateOthers();
+	displayPipe();
+	displayStorage();
 	system("Pause");
 
-	while (1)
+	int n = 0;
+	while (n<10)
 	{
+		n++;
 		fetch();
 		
-		updatePipe();
-		system("Pause");
+		displayPipe();
 
 		decode();
 		execute();
 		memory();
 		writeBack();
 
-		updateOthers();
+		displayStorage();
 		system("Pause");
 	}
+	system("Pause");
 }
