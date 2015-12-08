@@ -12,13 +12,14 @@ void fillwithInst()
 	}
 
 	//data_memory[2] = 1;
-	//inst_memory[0] = new Jr(0, 0, "jr $0");
+	inst_memory[0] = new Jr(0, 0, "jr $0");
+	inst_memory[1] = new Add(1, 0,0, 0,"add 1,0,0");
 	//inst_memory[0] = new Lw(1, 2, 2 , 0, "lw $1, 2($2)");
-	inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
-	inst_memory[1] = new Add(2, 0, 0, 1, "add 2,0,0");
-	inst_memory[2] = new Add(3, 0, 0, 2, "add 3,0,0");
-	inst_memory[3] = new Add(4, 0, 0, 3, "add 4,0,0");
-	inst_memory[4] = new Add(5, 0, 0, 4, "add 5,0,0");
+	//inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
+	//inst_memory[1] = new Add(2, 0, 0, 1, "add 2,0,0");
+	//inst_memory[2] = new Add(3, 0, 0, 2, "add 3,0,0");
+	//inst_memory[3] = new Add(4, 0, 0, 3, "add 4,0,0");
+	//inst_memory[4] = new Add(5, 0, 0, 4, "add 5,0,0");
 }
 
 void displayPipe()

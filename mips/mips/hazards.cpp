@@ -30,6 +30,9 @@ void hazardDetection()
 	int EX_MEM_RegRD_SW = -1;
 	int Jal_EXIST = -1;
 	int Ret_EXIST = -1;
+	int IF_ID_RegRT_JR = -1;
+	int IF_ID_RegRT_JAL = -1;
+	int JR_Notready = -1;
 	
 	// The following loop goes through every pipeline stage and captures what type of instruction is in the current stage buffer
 	memset(hazards, 0, sizeof(hazards));
@@ -230,11 +233,12 @@ void hazardDetection()
 			if (i == 0)
 			{
 				JR_EXIST = 1;
-				IF_ID_RegRT = jrptr->rs;
+				IF_ID_RegRT_JR = jrptr->rs;
 				if (JAL_EXIST)
 				JALWhere = JAL_Where;
 
 			}
+			
 
 		}
 		J* jptr = dynamic_cast<J*> (pipeline[i]);
@@ -245,6 +249,10 @@ void hazardDetection()
 		if (jalptr != nullptr)
 		{
 			JAL_EXIST = 1;
+			if (i == 0)
+			{
+				IF_ID_RegRT_JAL = 1;
+			}
 			if (i == 1)
 			{
 				EX_MEM_RegWrite = 1;
@@ -285,56 +293,64 @@ void hazardDetection()
  
 	if (JR_EXIST == 1)
 	{
-		if (IF_ID_RegRT == EX_MEM_RegRD && IF_ID_RegRT != -1)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
+		if (IF_ID_RegRT_JR == EX_MEM_RegRD && IF_ID_RegRT_JR != -1)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
 		{
 			hazards[z] = 212;
 			z++;
+			JR_Notready = 1; 
 		}
 
-		if (IF_ID_RegRT == MEM_WB_RegRD && IF_ID_RegRT != -1) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
+		if (IF_ID_RegRT_JR == MEM_WB_RegRD && IF_ID_RegRT_JR != -1) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
 		{
 			hazards[z] = 311;
 			z++;
+			JR_Notready = 1;
 		}
 
-		if (IF_ID_RegRT == ID_EX_RegRD && IF_ID_RegRT != -1) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
+		if (IF_ID_RegRT_JR == ID_EX_RegRD && IF_ID_RegRT_JR != -1) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
 		{
 			hazards[z] = 51;
 			z++;
+			JR_Notready = 1;
 		}
 		
-		if (IF_ID_RegRT == ID_EX_RegRD_LW && IF_ID_RegRT != -1) //Stall nop -> Ex  Example: lw $1,20($2) jr $1
+		if (IF_ID_RegRT_JR == ID_EX_RegRD_LW && IF_ID_RegRT_JR != -1) //Stall nop -> Ex  Example: lw $1,20($2) jr $1
 		{ 
 			hazards[z] = 51;
 			z++;
+			JR_Notready = 1;
 		}
 
-		if(IF_ID_RegRT == EX_MEM_RegRD_LW && IF_ID_RegRT != -1) // Stall nop -> M  Example: lw $1,20($2) jr $1
+		if(IF_ID_RegRT_JR == EX_MEM_RegRD_LW && IF_ID_RegRT_JR != -1) // Stall nop -> M  Example: lw $1,20($2) jr $1
 		{
 			hazards[z] = 52;
 			z++;
+			JR_Notready = 1;
 		}
 
 		if (JAL_EXIST == 1) // Occurence of JAL and JR (Multiple usage of $31)
 		{
-			if (IF_ID_RegRT == 31)
+			if (IF_ID_RegRT_JR == 31)
 			{
 				if (JALWhere == 1) // ID_EX -> IF_ID
 				{
 					hazards[z] = 112;
 					z++;
+					JR_Notready = 1;
 				}
 
 				if (JALWhere==2 ) // EX_MEM -> IF_ID
 				{
 					hazards[z] = 212;
 					z++;
+					JR_Notready = 1;
 				}
 
 				if (JALWhere == 3) // MEM_WB -> IF_ID
 				{
 					hazards[z] = 312;
 					z++;
+					JR_Notready = 1;
 				}
 				
 				
@@ -443,7 +459,7 @@ void hazardDetection()
 		}
 	}
 
-	if (JR_EXIST != 1 && J_EXIST == 1 && Ret_EXIST == 1) //Flush D
+	if ((IF_ID_RegRT_JR = 1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
