@@ -18,7 +18,7 @@ void Sw::execute()
 
 void Sw::memory()
 {
-	writeDataMem(addressResolved, rt);
+	writeDataMem(addressResolved, rtData);
 }
 
 void Sw::writeBack(){}
