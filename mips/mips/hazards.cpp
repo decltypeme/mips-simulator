@@ -116,17 +116,32 @@ void hazardDetection()
 			{
 				if (i == 0)
 				{
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					IF_ID_RegRS = -1;
+					IF_ID_RegRT = -1;
+
 					ID_EX_MemRead = 1;
 
 				}
 				if (i == 1)
 				{
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					ID_EX_RegRS = -1;
+					ID_EX_RegRT = -1;
+					ID_EX_RegRD = -1;
+
 					ID_EX_MemRead = 1;
 					ID_EX_RegRD_LW = Lwptr->rt;
 				}
 
 				if (i == 2)
 				{
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					EX_MEM_RegRD = -1;
+
 					ID_EX_MemRead = 1;
 					ID_EX_RegRD_LW = -1;
 					EX_MEM_RegRD_LW = Lwptr->rt;
@@ -134,6 +149,7 @@ void hazardDetection()
 				}
 				if (i == 3)
 				{
+
 					EX_MEM_RegWrite = 0;
 					MEM_WB_RegWrite = 1;
 					EX_MEM_RegRD_LW = -1;
@@ -277,7 +293,7 @@ void hazardDetection()
 
 		if (IF_ID_RegRT == MEM_WB_RegRD && IF_ID_RegRT != -1) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
 		{
-			hazards[z] = 312;
+			hazards[z] = 311;
 			z++;
 		}
 

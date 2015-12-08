@@ -11,10 +11,14 @@ void fillwithInst()
 		inst_memory[i] = new inst();
 	}
 
-	registers[1] = 1;
-	registers[2] = 2;
-	inst_memory[0] = new Add(1, 1, 2, 0, "add $1, $1, $2");
-	inst_memory[1] = new Sw(1, 0, 2, 1, "sw $1, 2($0)");
+	//data_memory[2] = 1;
+	//inst_memory[0] = new Jr(0, 0, "jr $0");
+	//inst_memory[0] = new Lw(1, 2, 2 , 0, "lw $1, 2($2)");
+	inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
+	inst_memory[1] = new Add(2, 0, 0, 1, "add 2,0,0");
+	inst_memory[2] = new Add(3, 0, 0, 2, "add 3,0,0");
+	inst_memory[3] = new Add(4, 0, 0, 3, "add 4,0,0");
+	inst_memory[4] = new Add(5, 0, 0, 4, "add 5,0,0");
 }
 
 void displayPipe()
@@ -33,10 +37,11 @@ void displayStorage()
 {
 	cout << endl << endl;
 	cout << "RegNum\t" << "Value" << endl;
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 6; ++i)
 	{
 		cout << i << "\t" << registers[i] << endl;
 	}
+	cout << 31 << "\t" << registers[31] << endl;
 	cout << endl << endl;
 	cout << "MemNum\t" << "Value" << endl;
 	for (int i = 0; i < 5; ++i)
@@ -56,7 +61,7 @@ int main()
 	system("Pause");
 
 	int n = 0;
-	while (n<16)
+	while (n<8)
 	{
 		n++;
 		fetch();
