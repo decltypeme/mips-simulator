@@ -1,8 +1,8 @@
 #include "Sw.h"
 using namespace std;
 
-Sw::Sw(int _rs, int _rt, int _immediate, int _instAddress, string _instString) 
-	:iformat(_rs, _rt, _immediate, _instAddress,  _instString)
+Sw::Sw(int _rt, int _rs, int _immediate, int _instAddress, string _instString)
+	:iformat(_rt, _rs,  _immediate, _instAddress,  _instString)
 {
 }
 

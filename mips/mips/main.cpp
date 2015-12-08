@@ -11,10 +11,10 @@ void fillwithInst()
 		inst_memory[i] = new inst();
 	}
 
-	inst_memory[0] = new Addi(1, 0, 2, 0, "addi $1, $0, 2");
-	inst_memory[1] = new Addi(2, 0, 4, 1, "addi $2, $0, 4");
-	inst_memory[2] = new Addi(3, 0, 8, 2, "addi $3, $0, 8");
-	inst_memory[3] = new Addi(4, 0, 16, 3, "addi $4, $0, 16");
+	data_memory[2] = 2;
+
+	inst_memory[0] = new Lw(1, 0, 2, 0, "lw to $1 from mem[0+2]");
+	inst_memory[1] = new Addi(2, 1, 4, 1, "addi $2, $1, 4");
 }
 
 void updatePipe()
@@ -60,6 +60,7 @@ int main()
 		fetch();
 		
 		updatePipe();
+		system("Pause");
 
 		decode();
 		execute();
