@@ -1,6 +1,7 @@
 
 #include <cstring>
 #include <stdexcept>
+#include <string>
 #include <algorithm>
 
 #include "instructions.h"
@@ -16,6 +17,7 @@ inst* inst_memory[instMemSize];
 inst* pipeline[4];
 int hazards[5];
 prediction bpt[instMemSize];
+string hazard_msgs[3];
 
 bool validateRegister(const int& reg)
 {
@@ -59,12 +61,22 @@ void fillNops()
 	}
 }
 
+void resetInstMem()
+{
+	for (int i = 0; i < instMemSize; ++i)
+	{
+		inst_memory[i] = new inst();
+	}
+}
+
 void initialize()
 {
-	memset(registers, 0, sizeof(registers));
-	memset(stack, 0, sizeof(stack));
-	memset(data_memory, 0, sizeof(data_memory));
-	memset(hazards, 0, sizeof(hazards));
+	memset (registers, 0, sizeof(registers));
+	memset (stack, 0, sizeof(stack));
+	memset (data_memory, 0, sizeof(data_memory));
+	memset (hazards, 0, sizeof(hazards));
+	stack_size = 0;
+	PC = 0;
 	fillNops();
 }
 

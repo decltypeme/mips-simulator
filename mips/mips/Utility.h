@@ -15,6 +15,7 @@ extern int data_memory[dataMemSize];
 extern inst* inst_memory[instMemSize];
 extern inst* pipeline[4];
 extern int hazards[5];
+extern string hazard_msgs[3];
 
 struct prediction
 {
@@ -25,6 +26,8 @@ struct prediction
 		:inst_address(_inst_address), taken(_taken) {}
 };
 extern prediction bpt[instMemSize];
+
+void resetInstMem();
 
 bool validateRegister(const int& reg);
 
