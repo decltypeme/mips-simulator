@@ -459,7 +459,7 @@ void hazardDetection()
 		}
 	}*/
 
-	Ble* bleptr2 = dynamic_cast<Ble*>(pipeline[1]);
+	Ble* bleptr2 = dynamic_cast<Ble*>(pipeline[2]);
 	if (bleptr2 != nullptr)
 	{
 		if (right_prediction() == false) //Flush D&E
@@ -638,13 +638,28 @@ void dealWithForwarding(int value)
 		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
 		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
 		rformat* rptrto = dynamic_cast<rformat*> (pipeline[1]);
+		iformat* iptrto = dynamic_cast<iformat*> (pipeline[1]);
 		if (rptrfrom != nullptr)
 		{
-			rptrto->rtData = rptrfrom->writeData;
+			if (rptrto != nullptr)
+			{
+				rptrto->rtData = rptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->rtData = rptrfrom->writeData;
+			}
 		}
 		else if (iptrfrom != nullptr)
 		{
-			rptrto->rtData = iptrfrom->writeData;
+			if (rptrto != nullptr)
+			{
+				rptrto->rtData = iptrfrom->writeData;
+			}
+			else if (iptrto != nullptr)
+			{
+				iptrto->rtData = iptrfrom->writeData;
+			}
 		}
 		break;
 	}
