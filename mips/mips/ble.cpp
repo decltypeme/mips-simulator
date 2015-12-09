@@ -9,8 +9,8 @@ Ble::~Ble() {}
 
 void Ble::fetch()
 {
-	addressIfNotTaken = PC + 1;
-	addressIfTaken = immediate + PC + 1 ;
+	addressIfNotTaken = PC ;
+	addressIfTaken = immediate + PC  ;
 }
 
 void Ble::execute()
