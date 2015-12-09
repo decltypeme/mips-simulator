@@ -470,7 +470,7 @@ void hazardDetection()
 		}
 	}
 
-	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1) //Flush D
+	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;

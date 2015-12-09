@@ -16,10 +16,12 @@ void fillwithInst()
 	//inst_memory[0] = new Add(1, 1,2, 0,"add 1,1,2");
 	//inst_memory[1] = new Add(1, 1, 3, 1, "add 1,1,3");
 	//inst_memory[2] = new Add(1, 1, 4, 2, "add 1,1,4");
-	inst_memory[0] = new Addi(1, 0, 10, 0, "addi 1,0,10");
-	inst_memory[1] = new Addi(2, 2, 1, 1, "addi 2,2,1");
-	inst_memory[2] = new Ble(1, 2, -2, 2, "ble 1,0, -2");
-	inst_memory[3] = new Add(3, 1, 2, 3, "add 3,1,2");
+	inst_memory[0] = new Jmp(2, 0, "Jmp 2");
+	inst_memory[1] = new Add(3, 1, 2, 1, "add 3,1,2");
+	inst_memory[2] = new Ret(2,"ret");
+	inst_memory[3] = new Add(0, 0, 0, 3, "add 0,0,0");
+	//inst_memory[2] = new Ble(1, 2, -2, 2, "ble 1,0, -2");
+	
 	//inst_memory[0] = new Jal(0, 0, "jr $31");
 	//inst_memory[1] = new Jr(2, 0, "jr");
 	//inst_memory[1] = new Add(0, 0, 0, 1, "add 0,0,0");
