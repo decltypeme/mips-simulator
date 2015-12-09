@@ -397,7 +397,15 @@ void hazardDetection()
 		else EX_MEM_RegWrite = 0;
 		
 	}
-
+	if (MEM_WB_RegRD != EX_MEM_RegRD)
+	{
+		EX_MEM_RegWrite = 0;
+	}
+	else if (MEM_WB_RegRD == EX_MEM_RegRD || MEM_WB_RegRD == EX_MEM_RegRD_LW)
+	{
+		EX_MEM_RegWrite = 1;
+	}
+	
 	if (MEM_WB_RegWrite ==1 && !(EX_MEM_RegWrite))
 	{
 		if (MEM_WB_RegRD == ID_EX_RegRS && MEM_WB_RegRD != -1) //MEM_WB -> ID_EX
