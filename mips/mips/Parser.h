@@ -23,7 +23,7 @@ enum class instGenericType
 constexpr int instTypeCount = int(instGenericType::numTypes);
 
 //A function that resolves the immediate field
-immediateType resolveImmediate(const string& strImmediate, bool signExtend = false);
+immediateType resolveImmediate(const string& strImmediate, bool signExtend = true);
 //A function that resolves a jump immediate
 immediateType resolveJImmediate(const string& strImmediate);
 

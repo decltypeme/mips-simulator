@@ -1,6 +1,10 @@
 #pragma once
 #include "datapath.h"
 #include "hazards.h"
+#include "Macro.h"
+#include <string>
+
+using namespace std;
 class inst;
 
 constexpr int maxRegNumber = 31;

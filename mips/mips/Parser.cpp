@@ -13,7 +13,7 @@ immediateType resolveImmediate(const string& strImmediate, bool signExtend)
 	}
 	else if (regex_match(strImmediate, dec_reg))
 	{
-		regex_search(strImmediate, results, hex_reg);
+		regex_search(strImmediate, results, dec_reg);
 		stringstream ss(results[2]);
 		ss >> imm16;
 	}
@@ -42,7 +42,7 @@ immediateType resolveJImmediate(const string& strImmediate)
 	}
 	else if (regex_match(strImmediate, dec_reg))
 	{
-		regex_search(strImmediate, results, hex_reg);
+		regex_search(strImmediate, results, dec_reg);
 		stringstream ss(results[2]);
 		ss >> jAddr;
 	}
