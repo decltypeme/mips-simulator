@@ -1,11 +1,6 @@
 #pragma once
 #include "datapath.h"
 #include "hazards.h"
-#include "Macro.h"
-#include <string>
-
-using namespace std;
-
 class inst;
 
 constexpr int maxRegNumber = 31;
@@ -22,9 +17,17 @@ extern inst* pipeline[4];
 extern int hazards[5];
 extern string hazard_msgs[3];
 
-struct prediction;
+struct prediction
+{
+	int inst_address; bool taken;
+	prediction()
+		:inst_address(-1), taken(0) {}
+	prediction(int _inst_address, bool _taken)
+		:inst_address(_inst_address), taken(_taken) {}
+};
 extern prediction bpt[instMemSize];
-extern int prediction_count;
+
+void resetInstMem();
 
 bool validateRegister(const int& reg);
 
@@ -37,8 +40,6 @@ int readDataMem(const int& index);
 void writeDataMem(const int& index, const int& value);
 
 void fillNops();
-
-void resetInstMem();
 
 void initialize();
 

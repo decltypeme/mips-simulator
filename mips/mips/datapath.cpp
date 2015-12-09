@@ -3,6 +3,8 @@
 #include <algorithm>
 using namespace std;
 
+
+
 void fetch()
 {	
 	if (!(binary_search(begin(hazards), end(hazards), 51) || binary_search(begin(hazards), end(hazards), 52)
@@ -13,7 +15,37 @@ void fetch()
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
-		pipeline[0] = inst_memory[oldPC];
+		Ble* bleptr = dynamic_cast<Ble*> (pipeline[0]);
+		if (bleptr != nullptr)
+		{
+			prediction* bptptr = nullptr;
+			for (int i = 0; i < instMemSize; ++i)
+			{
+				bptptr = getbptptr(bpt[i], bleptr->instAddress);
+				if (bptptr)
+					break;
+			}
+
+			if (bptptr)
+			{
+				if (bptptr->taken)
+				{
+					pipeline[0] = new inst();
+				}
+				else
+				{
+					pipeline[0] = inst_memory[oldPC];
+				}
+			}
+			else
+			{
+				pipeline[0] = inst_memory[oldPC];
+			}
+		}
+		else
+		{
+			pipeline[0] = inst_memory[oldPC];
+		}
 	}
 	if ((binary_search(begin(hazards), end(hazards), 51)))
 	{
