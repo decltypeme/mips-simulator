@@ -80,15 +80,15 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 		int rd = stoi(params[2]);
 		if (instName.compare(string("ADD")) == 0)
 		{
-			return new Add(rs, rt, rd, address, instString);
+			return new Add(rd, rs, rt, address, instString);
+		}
+		else if (instName == "XOR")
+		{
+			return new Xor(rd, rs, rt, address, instString);
 		}
 		else if (instName == "SLT")
 		{
-			return new Xor(rs, rt, rd, address, instString);
-		}
-		else if (instName == "SLT")
-		{
-			return new Slt(rs, rt, rd, address, instString);
+			return new Slt(rd, rs, rt, address, instString);
 		}
 	}
 	//I-Type Instructions
@@ -112,7 +112,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 		}
 		else if (instName == "BLE")
 		{
-			return new Ble(rt, rs, immediate, address, instString);
+			return new Ble(rs, rt, immediate, address, instString);
 		}
 	}
 	else if (instName == "JR")
