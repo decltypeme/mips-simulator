@@ -1,4 +1,5 @@
 #include "Ble.h"
+#include <algorithm>
 using namespace std;
 
 
@@ -41,6 +42,7 @@ void Ble::execute()
 		{
 			*it = 0;
 		}
+		sort(begin(hazards), end(hazards));
 	}
 }
 

@@ -102,14 +102,28 @@ int predict_branch()
 	if (bptptr)
 	{
 		if (bptptr->taken)
-			return bleptr->addressIfTaken;
+			if (bleptr->addressIfTaken == PC)
+			{
+				return PC + 1;
+			}
+			else { return bleptr->addressIfTaken; }
 		else
-			return bleptr->addressIfNotTaken;
+		{
+			if (bleptr->addressIfNotTaken == PC)
+			{
+				return PC + 1;
+			}
+			else { return bleptr->addressIfNotTaken; }
+		}
 	}
 	else
 	{
 		bpt[static_cast<unsigned int>(bleptr->instAddress)%instMemSize] = prediction(bleptr->instAddress,0);
-		return bleptr->addressIfNotTaken;
+		if (bleptr->addressIfNotTaken == PC)
+		{
+			return PC + 1;
+		}
+		else { return bleptr->addressIfNotTaken; }
 	}
 }
 
