@@ -70,7 +70,13 @@ void fillNops()
 		pipeline[i] = new inst();
 	}
 }
-
+void resetInstMem()
+{
+	for (int i = 0; i < instMemSize; ++i)
+	{
+		inst_memory[i] = new inst();
+	}
+}
 void initialize()
 {
 	memset(registers, 0, sizeof(registers));

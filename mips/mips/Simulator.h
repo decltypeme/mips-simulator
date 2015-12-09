@@ -607,56 +607,56 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->label5 = (gcnew System::Windows::Forms::Label());
 				 this->label4 = (gcnew System::Windows::Forms::Label());
 				 this->label3 = (gcnew System::Windows::Forms::Label());
-				 this->InstFp10= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p10= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p10= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p10= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p10= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp9= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p9= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p9= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p9= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p9= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp8= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p8= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p8= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p8= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p8= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp7= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p7= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p7= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p7= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p7= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp6= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p6= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p6= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p6= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p6= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp5= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p5= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p5= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p5= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p5= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp4= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p4= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p4= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p4= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p4= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp3= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p3= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p3= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p3= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p3= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp2= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p2= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p2= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p2= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p2= (gcnew System::Windows::Forms::TextBox());
-				 this->InstFp1= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst0p1= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst2p1= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst3p1= (gcnew System::Windows::Forms::TextBox());
-				 this->Inst1p1= (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp10 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p10 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p10 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p10 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p10 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp9 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p9 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p9 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p9 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p9 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp8 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p8 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p8 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p8 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p8 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp7 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p7 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p7 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p7 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p7 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp6 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p6 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p6 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p6 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p6 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp5 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p5 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p5 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p5 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p5 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp4 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p4 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p4 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p4 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p4 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp3 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p3 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p3 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p3 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p3 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp2 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p2 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p2 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p2 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p2 = (gcnew System::Windows::Forms::TextBox());
+				 this->InstFp1 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst0p1 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst2p1 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst3p1 = (gcnew System::Windows::Forms::TextBox());
+				 this->Inst1p1 = (gcnew System::Windows::Forms::TextBox());
 				 this->sourceFile = (gcnew System::Windows::Forms::OpenFileDialog());
 				 this->isaFile = (gcnew System::Windows::Forms::OpenFileDialog());
 				 this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
@@ -1458,7 +1458,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->label3->Text = L"Fetch Stage";
 				 this->label3->Click += gcnew System::EventHandler(this, &Simulator::label3_Click_2);
 				 // 
-				 //InstFp10
+				 // InstFp10
 				 // 
 				 this->InstFp10->Location = System::Drawing::Point(6, 455);
 				 this->InstFp10->Name = L"InstFp10";
@@ -1466,7 +1466,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp10->Size = System::Drawing::Size(100, 20);
 				 this->InstFp10->TabIndex = 149;
 				 // 
-				 //Inst0p10
+				 // Inst0p10
 				 // 
 				 this->Inst0p10->Location = System::Drawing::Point(130, 455);
 				 this->Inst0p10->Name = L"Inst0p10";
@@ -1474,7 +1474,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p10->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p10->TabIndex = 148;
 				 // 
-				 //Inst2p10
+				 // Inst2p10
 				 // 
 				 this->Inst2p10->Location = System::Drawing::Point(378, 455);
 				 this->Inst2p10->Name = L"Inst2p10";
@@ -1482,7 +1482,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p10->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p10->TabIndex = 147;
 				 // 
-				 //Inst3p10
+				 // Inst3p10
 				 // 
 				 this->Inst3p10->Location = System::Drawing::Point(502, 455);
 				 this->Inst3p10->Name = L"Inst3p10";
@@ -1490,7 +1490,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p10->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p10->TabIndex = 146;
 				 // 
-				 //Inst1p10
+				 // Inst1p10
 				 // 
 				 this->Inst1p10->Location = System::Drawing::Point(254, 455);
 				 this->Inst1p10->Name = L"Inst1p10";
@@ -1498,7 +1498,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p10->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p10->TabIndex = 145;
 				 // 
-				 //InstFp9
+				 // InstFp9
 				 // 
 				 this->InstFp9->Location = System::Drawing::Point(6, 412);
 				 this->InstFp9->Name = L"InstFp9";
@@ -1506,7 +1506,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp9->Size = System::Drawing::Size(100, 20);
 				 this->InstFp9->TabIndex = 144;
 				 // 
-				 //Inst0p9
+				 // Inst0p9
 				 // 
 				 this->Inst0p9->Location = System::Drawing::Point(130, 412);
 				 this->Inst0p9->Name = L"Inst0p9";
@@ -1514,7 +1514,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p9->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p9->TabIndex = 143;
 				 // 
-				 //Inst2p9
+				 // Inst2p9
 				 // 
 				 this->Inst2p9->Location = System::Drawing::Point(378, 412);
 				 this->Inst2p9->Name = L"Inst2p9";
@@ -1522,7 +1522,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p9->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p9->TabIndex = 142;
 				 // 
-				 //Inst3p9
+				 // Inst3p9
 				 // 
 				 this->Inst3p9->Location = System::Drawing::Point(502, 412);
 				 this->Inst3p9->Name = L"Inst3p9";
@@ -1530,7 +1530,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p9->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p9->TabIndex = 141;
 				 // 
-				 //Inst1p9
+				 // Inst1p9
 				 // 
 				 this->Inst1p9->Location = System::Drawing::Point(254, 412);
 				 this->Inst1p9->Name = L"Inst1p9";
@@ -1538,7 +1538,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p9->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p9->TabIndex = 140;
 				 // 
-				 //InstFp8
+				 // InstFp8
 				 // 
 				 this->InstFp8->Location = System::Drawing::Point(7, 361);
 				 this->InstFp8->Name = L"InstFp8";
@@ -1546,7 +1546,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp8->Size = System::Drawing::Size(100, 20);
 				 this->InstFp8->TabIndex = 139;
 				 // 
-				 //Inst0p8
+				 // Inst0p8
 				 // 
 				 this->Inst0p8->Location = System::Drawing::Point(131, 361);
 				 this->Inst0p8->Name = L"Inst0p8";
@@ -1554,7 +1554,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p8->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p8->TabIndex = 138;
 				 // 
-				 //Inst2p8
+				 // Inst2p8
 				 // 
 				 this->Inst2p8->Location = System::Drawing::Point(379, 361);
 				 this->Inst2p8->Name = L"Inst2p8";
@@ -1562,7 +1562,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p8->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p8->TabIndex = 137;
 				 // 
-				 //Inst3p8
+				 // Inst3p8
 				 // 
 				 this->Inst3p8->Location = System::Drawing::Point(503, 361);
 				 this->Inst3p8->Name = L"Inst3p8";
@@ -1570,7 +1570,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p8->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p8->TabIndex = 136;
 				 // 
-				 //Inst1p8
+				 // Inst1p8
 				 // 
 				 this->Inst1p8->Location = System::Drawing::Point(255, 361);
 				 this->Inst1p8->Name = L"Inst1p8";
@@ -1578,7 +1578,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p8->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p8->TabIndex = 135;
 				 // 
-				 //InstFp7
+				 // InstFp7
 				 // 
 				 this->InstFp7->Location = System::Drawing::Point(8, 317);
 				 this->InstFp7->Name = L"InstFp7";
@@ -1586,7 +1586,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp7->Size = System::Drawing::Size(100, 20);
 				 this->InstFp7->TabIndex = 134;
 				 // 
-				 //Inst0p7
+				 // Inst0p7
 				 // 
 				 this->Inst0p7->Location = System::Drawing::Point(132, 317);
 				 this->Inst0p7->Name = L"Inst0p7";
@@ -1594,7 +1594,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p7->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p7->TabIndex = 133;
 				 // 
-				 //Inst2p7
+				 // Inst2p7
 				 // 
 				 this->Inst2p7->Location = System::Drawing::Point(380, 317);
 				 this->Inst2p7->Name = L"Inst2p7";
@@ -1602,7 +1602,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p7->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p7->TabIndex = 132;
 				 // 
-				 //Inst3p7
+				 // Inst3p7
 				 // 
 				 this->Inst3p7->Location = System::Drawing::Point(504, 317);
 				 this->Inst3p7->Name = L"Inst3p7";
@@ -1610,7 +1610,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p7->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p7->TabIndex = 131;
 				 // 
-				 //Inst1p7
+				 // Inst1p7
 				 // 
 				 this->Inst1p7->Location = System::Drawing::Point(256, 317);
 				 this->Inst1p7->Name = L"Inst1p7";
@@ -1618,7 +1618,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p7->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p7->TabIndex = 130;
 				 // 
-				 //InstFp6
+				 // InstFp6
 				 // 
 				 this->InstFp6->Location = System::Drawing::Point(7, 267);
 				 this->InstFp6->Name = L"InstFp6";
@@ -1626,7 +1626,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp6->Size = System::Drawing::Size(100, 20);
 				 this->InstFp6->TabIndex = 129;
 				 // 
-				 //Inst0p6
+				 // Inst0p6
 				 // 
 				 this->Inst0p6->Location = System::Drawing::Point(131, 267);
 				 this->Inst0p6->Name = L"Inst0p6";
@@ -1634,7 +1634,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p6->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p6->TabIndex = 128;
 				 // 
-				 //Inst2p6
+				 // Inst2p6
 				 // 
 				 this->Inst2p6->Location = System::Drawing::Point(379, 267);
 				 this->Inst2p6->Name = L"Inst2p6";
@@ -1642,7 +1642,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p6->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p6->TabIndex = 127;
 				 // 
-				 //Inst3p6
+				 // Inst3p6
 				 // 
 				 this->Inst3p6->Location = System::Drawing::Point(503, 267);
 				 this->Inst3p6->Name = L"Inst3p6";
@@ -1650,7 +1650,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p6->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p6->TabIndex = 126;
 				 // 
-				 //Inst1p6
+				 // Inst1p6
 				 // 
 				 this->Inst1p6->Location = System::Drawing::Point(255, 267);
 				 this->Inst1p6->Name = L"Inst1p6";
@@ -1658,7 +1658,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p6->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p6->TabIndex = 125;
 				 // 
-				 //InstFp5
+				 // InstFp5
 				 // 
 				 this->InstFp5->Location = System::Drawing::Point(6, 215);
 				 this->InstFp5->Name = L"InstFp5";
@@ -1666,7 +1666,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp5->Size = System::Drawing::Size(100, 20);
 				 this->InstFp5->TabIndex = 124;
 				 // 
-				 //Inst0p5
+				 // Inst0p5
 				 // 
 				 this->Inst0p5->Location = System::Drawing::Point(130, 215);
 				 this->Inst0p5->Name = L"Inst0p5";
@@ -1674,7 +1674,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p5->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p5->TabIndex = 123;
 				 // 
-				 //Inst2p5
+				 // Inst2p5
 				 // 
 				 this->Inst2p5->Location = System::Drawing::Point(378, 215);
 				 this->Inst2p5->Name = L"Inst2p5";
@@ -1682,7 +1682,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p5->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p5->TabIndex = 122;
 				 // 
-				 //Inst3p5
+				 // Inst3p5
 				 // 
 				 this->Inst3p5->Location = System::Drawing::Point(502, 215);
 				 this->Inst3p5->Name = L"Inst3p5";
@@ -1690,7 +1690,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p5->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p5->TabIndex = 121;
 				 // 
-				 //Inst1p5
+				 // Inst1p5
 				 // 
 				 this->Inst1p5->Location = System::Drawing::Point(254, 215);
 				 this->Inst1p5->Name = L"Inst1p5";
@@ -1698,7 +1698,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p5->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p5->TabIndex = 120;
 				 // 
-				 //InstFp4
+				 // InstFp4
 				 // 
 				 this->InstFp4->Location = System::Drawing::Point(6, 175);
 				 this->InstFp4->Name = L"InstFp4";
@@ -1706,7 +1706,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp4->Size = System::Drawing::Size(100, 20);
 				 this->InstFp4->TabIndex = 119;
 				 // 
-				 //Inst0p4
+				 // Inst0p4
 				 // 
 				 this->Inst0p4->Location = System::Drawing::Point(130, 175);
 				 this->Inst0p4->Name = L"Inst0p4";
@@ -1714,7 +1714,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p4->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p4->TabIndex = 118;
 				 // 
-				 //Inst2p4
+				 // Inst2p4
 				 // 
 				 this->Inst2p4->Location = System::Drawing::Point(378, 175);
 				 this->Inst2p4->Name = L"Inst2p4";
@@ -1722,7 +1722,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p4->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p4->TabIndex = 117;
 				 // 
-				 //Inst3p4
+				 // Inst3p4
 				 // 
 				 this->Inst3p4->Location = System::Drawing::Point(502, 175);
 				 this->Inst3p4->Name = L"Inst3p4";
@@ -1730,7 +1730,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p4->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p4->TabIndex = 116;
 				 // 
-				 //Inst1p4
+				 // Inst1p4
 				 // 
 				 this->Inst1p4->Location = System::Drawing::Point(254, 175);
 				 this->Inst1p4->Name = L"Inst1p4";
@@ -1738,7 +1738,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p4->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p4->TabIndex = 115;
 				 // 
-				 //InstFp3
+				 // InstFp3
 				 // 
 				 this->InstFp3->Location = System::Drawing::Point(6, 137);
 				 this->InstFp3->Name = L"InstFp3";
@@ -1746,7 +1746,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp3->Size = System::Drawing::Size(100, 20);
 				 this->InstFp3->TabIndex = 114;
 				 // 
-				 //Inst0p3
+				 // Inst0p3
 				 // 
 				 this->Inst0p3->Location = System::Drawing::Point(130, 137);
 				 this->Inst0p3->Name = L"Inst0p3";
@@ -1754,7 +1754,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p3->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p3->TabIndex = 113;
 				 // 
-				 //Inst2p3
+				 // Inst2p3
 				 // 
 				 this->Inst2p3->Location = System::Drawing::Point(378, 137);
 				 this->Inst2p3->Name = L"Inst2p3";
@@ -1762,7 +1762,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p3->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p3->TabIndex = 112;
 				 // 
-				 //Inst3p3
+				 // Inst3p3
 				 // 
 				 this->Inst3p3->Location = System::Drawing::Point(502, 137);
 				 this->Inst3p3->Name = L"Inst3p3";
@@ -1770,7 +1770,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p3->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p3->TabIndex = 111;
 				 // 
-				 //Inst1p3
+				 // Inst1p3
 				 // 
 				 this->Inst1p3->Location = System::Drawing::Point(254, 137);
 				 this->Inst1p3->Name = L"Inst1p3";
@@ -1778,7 +1778,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p3->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p3->TabIndex = 110;
 				 // 
-				 //InstFp2
+				 // InstFp2
 				 // 
 				 this->InstFp2->Location = System::Drawing::Point(6, 97);
 				 this->InstFp2->Name = L"InstFp2";
@@ -1786,7 +1786,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp2->Size = System::Drawing::Size(100, 20);
 				 this->InstFp2->TabIndex = 109;
 				 // 
-				 //Inst0p2
+				 // Inst0p2
 				 // 
 				 this->Inst0p2->Location = System::Drawing::Point(130, 97);
 				 this->Inst0p2->Name = L"Inst0p2";
@@ -1794,7 +1794,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p2->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p2->TabIndex = 108;
 				 // 
-				 //Inst2p2
+				 // Inst2p2
 				 // 
 				 this->Inst2p2->Location = System::Drawing::Point(378, 97);
 				 this->Inst2p2->Name = L"Inst2p2";
@@ -1802,7 +1802,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p2->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p2->TabIndex = 107;
 				 // 
-				 //Inst3p2
+				 // Inst3p2
 				 // 
 				 this->Inst3p2->Location = System::Drawing::Point(502, 97);
 				 this->Inst3p2->Name = L"Inst3p2";
@@ -1810,7 +1810,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p2->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p2->TabIndex = 106;
 				 // 
-				 //Inst1p2
+				 // Inst1p2
 				 // 
 				 this->Inst1p2->Location = System::Drawing::Point(254, 97);
 				 this->Inst1p2->Name = L"Inst1p2";
@@ -1818,7 +1818,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst1p2->Size = System::Drawing::Size(100, 20);
 				 this->Inst1p2->TabIndex = 105;
 				 // 
-				 //InstFp1
+				 // InstFp1
 				 // 
 				 this->InstFp1->Location = System::Drawing::Point(6, 57);
 				 this->InstFp1->Name = L"InstFp1";
@@ -1826,7 +1826,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->InstFp1->Size = System::Drawing::Size(100, 20);
 				 this->InstFp1->TabIndex = 104;
 				 // 
-				 //Inst0p1
+				 // Inst0p1
 				 // 
 				 this->Inst0p1->Location = System::Drawing::Point(130, 57);
 				 this->Inst0p1->Name = L"Inst0p1";
@@ -1834,7 +1834,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst0p1->Size = System::Drawing::Size(100, 20);
 				 this->Inst0p1->TabIndex = 103;
 				 // 
-				 //Inst2p1
+				 // Inst2p1
 				 // 
 				 this->Inst2p1->Location = System::Drawing::Point(378, 57);
 				 this->Inst2p1->Name = L"Inst2p1";
@@ -1842,7 +1842,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst2p1->Size = System::Drawing::Size(100, 20);
 				 this->Inst2p1->TabIndex = 92;
 				 // 
-				 //Inst3p1
+				 // Inst3p1
 				 // 
 				 this->Inst3p1->Location = System::Drawing::Point(502, 57);
 				 this->Inst3p1->Name = L"Inst3p1";
@@ -1850,7 +1850,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 this->Inst3p1->Size = System::Drawing::Size(100, 20);
 				 this->Inst3p1->TabIndex = 91;
 				 // 
-				 //Inst1p1
+				 // Inst1p1
 				 // 
 				 this->Inst1p1->Location = System::Drawing::Point(254, 57);
 				 this->Inst1p1->Name = L"Inst1p1";
@@ -1886,6 +1886,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 // 
 				 this->BoxH3->Location = System::Drawing::Point(115, 123);
 				 this->BoxH3->Name = L"BoxH3";
+				 this->BoxH3->ReadOnly = true;
 				 this->BoxH3->Size = System::Drawing::Size(486, 39);
 				 this->BoxH3->TabIndex = 5;
 				 this->BoxH3->Text = L"";
@@ -1894,6 +1895,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 // 
 				 this->BoxH2->Location = System::Drawing::Point(114, 73);
 				 this->BoxH2->Name = L"BoxH2";
+				 this->BoxH2->ReadOnly = true;
 				 this->BoxH2->Size = System::Drawing::Size(487, 43);
 				 this->BoxH2->TabIndex = 4;
 				 this->BoxH2->Text = L"";
@@ -1902,33 +1904,34 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 // 
 				 this->BoxH1->Location = System::Drawing::Point(114, 19);
 				 this->BoxH1->Name = L"BoxH1";
+				 this->BoxH1->ReadOnly = true;
 				 this->BoxH1->Size = System::Drawing::Size(487, 43);
 				 this->BoxH1->TabIndex = 3;
 				 this->BoxH1->Text = L"";
 				 // 
-				 //LabelH3 
+				 // LabelH3
 				 // 
 				 this->LabelH3->AutoSize = true;
 				 this->LabelH3->Location = System::Drawing::Point(7, 131);
-				 this->LabelH3->Name = L"H3Label";
+				 this->LabelH3->Name = L"LabelH3";
 				 this->LabelH3->Size = System::Drawing::Size(99, 13);
 				 this->LabelH3->TabIndex = 2;
 				 this->LabelH3->Text = L"Hazard 3 Message:";
 				 // 
-				 //LabelH2 
+				 // LabelH2
 				 // 
 				 this->LabelH2->AutoSize = true;
 				 this->LabelH2->Location = System::Drawing::Point(9, 83);
-				 this->LabelH2->Name = L"H2Label";
+				 this->LabelH2->Name = L"LabelH2";
 				 this->LabelH2->Size = System::Drawing::Size(99, 13);
 				 this->LabelH2->TabIndex = 1;
 				 this->LabelH2->Text = L"Hazard 2 Message:";
 				 // 
-				 //LabelH1 
+				 // LabelH1
 				 // 
 				 this->LabelH1->AutoSize = true;
 				 this->LabelH1->Location = System::Drawing::Point(9, 30);
-				 this->LabelH1->Name = L"H1Label";
+				 this->LabelH1->Name = L"LabelH1";
 				 this->LabelH1->Size = System::Drawing::Size(99, 13);
 				 this->LabelH1->TabIndex = 0;
 				 this->LabelH1->Text = L"Hazard 1 Message:";
@@ -1989,6 +1992,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 		try {
 			AssemblySource->Clear();
 			ParsingResults->Clear();
+			resetInstMem();
 			char* argsToPass[4];
 			argsToPass[0] = new char[1000];
 			strcpy(argsToPass[0], "handler");
@@ -2003,6 +2007,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
 			argsToPass[1] = "-parse";
 			fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
+			resetTheSimEnv();
 			//system("pause");
 		}
 		___CATCH_IN_FORM()

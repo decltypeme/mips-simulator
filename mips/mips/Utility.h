@@ -38,6 +38,8 @@ void writeDataMem(const int& index, const int& value);
 
 void fillNops();
 
+void resetInstMem();
+
 void initialize();
 
 void pushtostack(int address);

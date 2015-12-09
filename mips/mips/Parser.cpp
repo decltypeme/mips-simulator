@@ -66,71 +66,76 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 		}
 	}
 	//Now, we will do a must-do cases, I know, you know it sucks, even this plastic debugging duck knows it!
-	//transform(params.begin(), params.end(), params.begin(), toupper);
+	//transform(params[1].begin(), params[1].end(), params[1].begin(), toupper);
+	string instName = params[1];
+	for (char& iii: instName)
+	{
+		toupper(iii);
+	}
 	//R-Type instructions
-	if (params.str(1).compare(string("ADD")) == 0 || params[1] == "XOR" || params[1] == "SLT")
+	if (instName.compare(string("ADD")) == 0 || instName == "XOR" || instName == "SLT")
 	{
 		int rs = stoi(params[3]);
 		int rt = stoi(params[4]);
 		int rd = stoi(params[2]);
-		if (params.str(1).compare(string("ADD")) == 0)
+		if (instName.compare(string("ADD")) == 0)
 		{
 			return new Add(rs, rt, rd, address, instString);
 		}
-		else if (params[1] == "SLT")
+		else if (instName == "SLT")
 		{
 			return new Xor(rs, rt, rd, address, instString);
 		}
-		else if (params[1] == "SLT")
+		else if (instName == "SLT")
 		{
 			return new Slt(rs, rt, rd, address, instString);
 		}
 	}
 	//I-Type Instructions
 
-	else if (params[1] == "ADDI" | params[1] == "LW" | params[1] == "SW" | params[1] == "BLE")
+	else if (instName == "ADDI" | instName == "LW" | instName == "SW" | instName == "BLE")
 	{
 		int rt = stoi(params[2]);
 		int rs = stoi(params[3]);
 		immediateType immediate = resolveImmediate(params[4]);
-		if (params[1] == "ADDI")
+		if (instName == "ADDI")
 		{
 			return new Addi(rt, rs, immediate, address, instString);
 		}
-		if (params[1] == "LW")
+		if (instName == "LW")
 		{
 			return new Lw(rt, rs, immediate, address, instString);
 		}
-		else if (params[1] == "SW")
+		else if (instName == "SW")
 		{
 			return new Sw(rt, rs, immediate, address, instString);
 		}
-		else if (params[1] == "BLE")
+		else if (instName == "BLE")
 		{
 			return new Ble(rt, rs, immediate, address, instString);
 		}
 	}
-	else if (params[1] == "JR")
+	else if (instName == "JR")
 	{
 		return new Jr(stoi(params[2]));
 	}
-	else if (params[1] == "J" | params[1] == "JAL" || params[1] == "JMP")
+	else if (instName == "J" | instName == "JAL" || instName == "JMP")
 	{
 		immediateType jAddr = resolveJImmediate(params[2]);
-		if (params[1] == "J")
+		if (instName == "J")
 		{
 			return new J(jAddr, address, instString);
 		}
-		else if (params[1] == "JAL")
+		else if (instName == "JAL")
 		{
 			return new Jal(jAddr, address, instString);
 		}
-		else if (params[1] == "JMP")
+		else if (instName == "JMP")
 		{
 			return new Jmp(jAddr, address, instString);
 		}
 	}
-	else if (params[1] == "RET")
+	else if (instName == "RET")
 	{
 		return new Ret(address, instString);
 	}
