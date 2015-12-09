@@ -1,7 +1,6 @@
 #pragma once
-#include <string>
-#include "utility.h"
 
+#include "utility.h"
 class inst
 {
 public:

@@ -1,8 +1,21 @@
-
 #include <iostream>
 #include <string>
-#include "instructions.h"
+#include "Simulator.h"
+#include <iostream>
+#define ___GUI_ENV
+//#define ___CONSOLE_ENV
 using namespace std;
+using namespace System;
+using namespace System::Windows::Forms;
+
+
+
+void uiInitialize()
+{
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false);
+
+}
 
 void fillwithInst()
 {
@@ -24,7 +37,7 @@ void fillwithInst()
 	//inst_memory[1] = new Jr(2, 0, "jr");
 	//inst_memory[1] = new Add(0, 0, 0, 1, "add 0,0,0");
 	//inst_memory[2] = new Slt(0, 0, 0, 4, "slt 0,0,0");
-	
+
 	//inst_memory[4] = new Xor(0, 0, 0, 3, "xor 0,0,0");
 	//inst_memory[0] = new Lw(1, 2, 2 , 0, "lw $1, 2($2)");
 	//inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
@@ -63,8 +76,32 @@ void displayStorage()
 	}
 }
 
+#ifdef ___GUI_ENV
+[STAThread]
+#endif
 int main()
 {
+#ifdef ___GUI_ENV
+	initialize();
+	uiInitialize();
+	mips::Simulator mainSimulatorForm;
+	Application::Run(%mainSimulatorForm);
+	try {
+		
+	}
+	catch (exception& ex)
+	{
+		string msg = ex.what();
+		mainSimulatorForm.ParsingResults->AppendText(gcnew String(msg.c_str()));
+		mainSimulatorForm.ParsingResults->AppendText("\n");
+	}
+	catch (...)
+	{
+		mainSimulatorForm.ParsingResults->AppendText("Unhandled Exception");
+
+	}
+#endif
+#ifdef ___CONSOLE_ENV
 	initialize();
 
 	fillwithInst();
@@ -74,17 +111,17 @@ int main()
 	system("Pause");
 
 	int n = 0;
-	while (n<8)
+	while (n < 8)
 	{
 		n++;
 		fetch();
-		
+
 		displayPipe();
 
 		decode();
 
 		cout << endl << endl << hazards[0] << "\t" << hazards[1] << "\t" << hazards[2] << "\t" << hazards[3] << "\t" << hazards[4] << endl;
-		
+
 		execute();
 		memory();
 		writeBack();
@@ -95,4 +132,5 @@ int main()
 
 	cout << endl << endl << "End of simulation\n\n";
 	system("Pause");
+#endif
 }

@@ -137,7 +137,6 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 	else
 	{
 		throw logic_error("Unrecognized Instruction: Instruction was unrecognized as part of the ISA: " + to_string(address));
-		system("pause");
 	}
 	throw logic_error("Reached end of function, no suitable return");
 }

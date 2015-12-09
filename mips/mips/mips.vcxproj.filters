@@ -108,6 +108,15 @@
     <ClInclude Include="hazards.h">
       <Filter>Header Files\Hazard Detection</Filter>
     </ClInclude>
+    <ClInclude Include="Simulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Header Files\Utility Structures and Functions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt">
@@ -172,10 +181,11 @@
     <ClCompile Include="hazards.cpp">
       <Filter>Source Files\Hazard Detection</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Simulator.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
+    <ClCompile Include="fileHandling.cpp">
+      <Filter>Source Files\Utility Structures and Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>Source Files\Utility Structures and Functions</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

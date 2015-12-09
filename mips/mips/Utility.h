@@ -1,6 +1,11 @@
 #pragma once
 #include "datapath.h"
 #include "hazards.h"
+#include "Macro.h"
+#include <string>
+
+using namespace std;
+
 class inst;
 
 constexpr int maxRegNumber = 31;
@@ -15,6 +20,7 @@ extern int data_memory[dataMemSize];
 extern inst* inst_memory[instMemSize];
 extern inst* pipeline[4];
 extern int hazards[5];
+extern string hazard_msgs[3];
 
 struct prediction;
 extern prediction bpt[instMemSize];

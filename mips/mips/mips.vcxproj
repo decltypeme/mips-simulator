@@ -167,7 +167,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Addi.cpp" />
+    <ClCompile Include="fileHandling.cpp" />
     <ClCompile Include="Lw.cpp" />
+    <ClCompile Include="parser.cpp" />
     <ClCompile Include="Slt.cpp" />
     <ClCompile Include="Sw.cpp" />
     <ClCompile Include="Xor.cpp" />
@@ -185,10 +187,15 @@
     <ClInclude Include="iformat.h" />
     <ClInclude Include="Jr.h" />
     <ClInclude Include="Lw.h" />
+    <ClInclude Include="Macro.h" />
+    <ClInclude Include="parser.h" />
     <ClInclude Include="Ret.h" />
     <ClInclude Include="rformat.h" />
     <ClInclude Include="inst.h" />
     <ClCompile Include="utility.cpp" />
+    <ClInclude Include="Simulator.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Slt.h" />
     <ClInclude Include="Sw.h" />
     <ClInclude Include="utility.h" />
@@ -216,6 +223,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulator.resx">
+      <DependentUpon>Simulator.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

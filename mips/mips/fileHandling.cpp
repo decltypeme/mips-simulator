@@ -88,6 +88,13 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 			}
 			if (string(argv[1]) == string("-verify"))
 			{
+				int lineCount = 1;
+				for (const string& toParse : linesToVerify)
+				{
+					sourceField->AppendText(gcnew System::String((to_string(lineCount) + ".\t" + toParse).c_str()));
+					sourceField->AppendText("\n");
+					lineCount++;
+				}
 				if (verifyLines(str_rules, linesToVerify, errorLines))
 				{
 					resultsField->AppendText("The file is syntactically correct\n");
@@ -112,8 +119,6 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 					{
 						continue;
 					}
-					sourceField->AppendText(gcnew System::String(toParse.c_str()));
-					sourceField->AppendText("\n");
 					instsToFill[counterOnEarth] = (parseInstruction(toParse, reg_rules, counterOnEarth));
 					counterOnEarth++;
 				}
@@ -123,16 +128,14 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 			else
 			{
 				cerr << "Invalid use of " << argv[1] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
-				system("pause");
-				exit(EXIT_FAILURE);
+				throw invalid_argument("Invalid internal use of the parsing utility");
 			}
 
 		}
 		catch (exception& ex)
 		{
 			cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
-			system("pause");
-			exit(EXIT_FAILURE);
+			throw logic_error("A fatal exception has occured ");
 		}
 	}
 	else if (argc == 5)
@@ -162,22 +165,19 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 			catch (exception& ex)
 			{
 				cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
-				system("pause");
-				exit(EXIT_FAILURE);
+				throw logic_error("A fatal exception has occured ");
 			}
 		}
 		else
 		{
 			cerr << "Invalid use of " << argv[0] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
-			system("pause");
-			exit(EXIT_FAILURE);
+			throw invalid_argument("Invalid internal use of the parsing utility");
 		}
 	}
 	else
 	{
 		cerr << "Invalid use of " << argv[0] << ": Valid options are \n -replace replaceRuleFile sourceFile outputFile \n -verify regexFile fileToVerify";
-		system("pause");
-		exit(EXIT_FAILURE);
+		throw invalid_argument("Invalid internal use of the parsing utility");
 	}
 	return EXIT_SUCCESS;
 }

@@ -2,6 +2,8 @@
 #include <cstring>
 #include <stdexcept>
 #include <algorithm>
+#include <string>
+
 
 #include "instructions.h"
 using namespace std;
@@ -15,6 +17,7 @@ int data_memory[dataMemSize];
 inst* inst_memory[instMemSize];
 inst* pipeline[4];
 int hazards[5];
+string hazard_msgs[3];
 
 struct prediction 
 { int inst_address; bool taken;
