@@ -15,16 +15,7 @@ int data_memory[dataMemSize];
 inst* inst_memory[instMemSize];
 inst* pipeline[4];
 int hazards[5];
-
-struct prediction 
-{ int inst_address; bool taken;
-prediction()
-	:inst_address(-1), taken(0) {}
-	prediction(int _inst_address, bool _taken)
-	:inst_address(_inst_address), taken(_taken) {}
-};
 prediction bpt[instMemSize];
-int prediction_count = 0;
 
 bool validateRegister(const int& reg)
 {
@@ -117,8 +108,7 @@ int predict_branch()
 	}
 	else
 	{
-		bpt[static_cast<unsigned int>(prediction_count)%instMemSize] = prediction(bleptr->instAddress,0);
-		prediction_count++;
+		bpt[static_cast<unsigned int>(bleptr->instAddress)%instMemSize] = prediction(bleptr->instAddress,0);
 		return bleptr->addressIfNotTaken;
 	}
 }
@@ -132,7 +122,7 @@ prediction* getbptptr (prediction& totest, int inst_address)
 bool right_prediction()
 {
 	prediction* bptptr = nullptr;
-	Ble* bleptr = dynamic_cast<Ble*> (pipeline[2]);
+	Ble* bleptr = dynamic_cast<Ble*> (pipeline[1]);
 	for (int i = 0; i < instMemSize; ++i)
 	{
 		bptptr = getbptptr(bpt[i], bleptr->instAddress);
@@ -140,23 +130,32 @@ bool right_prediction()
 			break;
 	}
 
-	int branchedToLastTime;
-	if (bptptr->taken)
+	if (bptptr)
 	{
-		branchedToLastTime = bleptr->addressIfTaken;
+		int branchedToLastTime;
+		if (bptptr->taken)
+		{
+			branchedToLastTime = bleptr->addressIfTaken;
+		}
+		else
+		{
+			branchedToLastTime = bleptr->addressIfNotTaken;
+		}
+
+		if (branchedToLastTime != bleptr->addressTrue)
+		{
+			bptptr->taken = !(bptptr->taken);
+			bleptr->specialFlag = 1;
+			return false;
+		}
+		else
+		{
+			bleptr->specialFlag = 0;
+			return true;
+		}
 	}
 	else
-	{
-		branchedToLastTime = bleptr->addressIfNotTaken;
-	}
-	
-	if (branchedToLastTime != bleptr->addressTrue)
-	{
-		bptptr->taken = !(bptptr->taken);
 		return false;
-	}
-	else
-		return true;
 }
 
 int updatePC()
@@ -164,24 +163,55 @@ int updatePC()
 	J* jptr = dynamic_cast <J*> (pipeline[0]);
 	Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
 	Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
-	Ble* bleptr = dynamic_cast <Ble*> (pipeline[0]);
+	Ble* bleptr0 = dynamic_cast <Ble*> (pipeline[0]);
+	Ble* bleptr1 = dynamic_cast <Ble*> (pipeline[1]);
 
-	if (jptr)
-	{
-		return jptr->address;
-	}
-	if (retptr)
-	{
-		return retptr->addressPopped;
-	}
-	if (bleptr)
-	{
-		return predict_branch();
-	}
-	if (jrptr)
-	{
-		return jrptr->rsData;
-	}
+	if (bleptr1!= nullptr)
+		if(bleptr1->specialFlag==0)
+		{
+			if (jptr)
+			{
+				return jptr->address;
+			}
+			if (retptr)
+			{
+				return retptr->addressPopped;
+			}
+			if (bleptr0)
+			{
+				return predict_branch();
+			}
+			if (jrptr)
+			{
+				return jrptr->rsData;
+			}
 
-	return PC + 1;
+			return PC + 1;
+		}
+		else
+		{
+			bleptr1->specialFlag = 0;
+			return bleptr1->addressTrue;
+		}
+	else
+	{
+		if (jptr)
+		{
+			return jptr->address;
+		}
+		if (retptr)
+		{
+			return retptr->addressPopped;
+		}
+		if (bleptr0)
+		{
+			return predict_branch();
+		}
+		if (jrptr)
+		{
+			return jrptr->rsData;
+		}
+
+		return PC + 1;
+	}
 }

@@ -16,9 +16,15 @@ extern inst* inst_memory[instMemSize];
 extern inst* pipeline[4];
 extern int hazards[5];
 
-struct prediction;
+struct prediction
+{
+	int inst_address; bool taken;
+	prediction()
+		:inst_address(-1), taken(0) {}
+	prediction(int _inst_address, bool _taken)
+		:inst_address(_inst_address), taken(_taken) {}
+};
 extern prediction bpt[instMemSize];
-extern int prediction_count;
 
 bool validateRegister(const int& reg);
 

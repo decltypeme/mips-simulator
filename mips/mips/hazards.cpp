@@ -1,14 +1,19 @@
 
 #include "instructions.h"
+#include "hazards.h"
 #include <cstring>
 #include <algorithm>
 #include <iterator>
 using namespace std;
 
+int z;
+int flushHappened;
+
+
 void hazardDetection() 
 {
-	int z = 0;
-	int flushHappend = 0;
+	z = 0;
+	flushHappened = 0;
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -185,12 +190,52 @@ void hazardDetection()
 					MEM_WB_RegRD = Swptr->rt;
 				}
 			}
+
+			Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
+			if (bleptr != nullptr)
+			{
+				if (i == 0) // IF_ID
+				{
+					
+
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					IF_ID_RegRS = bleptr->rs;
+					IF_ID_RegRT = bleptr->rt;
+
+
+				}
+				if (i == 1)  // ID_EX
+				{
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					ID_EX_RegRS = bleptr->rs;
+					ID_EX_RegRT = bleptr->rt;
+				}
+
+				if (i == 2) //EX_MEM
+				{
+
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					EX_MEM_RegRD = -1;
+
+				}
+				if (i == 3)
+				{
+
+					EX_MEM_RegWrite = 0;
+					MEM_WB_RegWrite = 0;
+					MEM_WB_RegRD = -1;
+				}
+
+			}
 		}
 		
 
 		
 
-		Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
+	/*	Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
 		if (bleptr != nullptr)
 		{
 			if (i == 0) // IF_ID
@@ -204,10 +249,13 @@ void hazardDetection()
 			}
 			if (i == 1)  // ID_EX
 			{
+				
+
 				EX_MEM_RegWrite = 0;
 				MEM_WB_RegWrite = 0;
 				ID_EX_RegRS = bleptr->rs;
 				ID_EX_RegRT = bleptr->rt;
+				ID_EX_RegRD = -1;
 			}
 
 			if (i == 2) //EX_MEM
@@ -226,6 +274,7 @@ void hazardDetection()
 			}
 
 		}
+		*/
 		J* jptr = dynamic_cast<J*> (pipeline[i]);
 		if (jptr != nullptr)
 		{
@@ -459,25 +508,14 @@ void hazardDetection()
 		}
 	}*/
 
-	Ble* bleptr2 = dynamic_cast<Ble*>(pipeline[2]);
-	if (bleptr2 != nullptr)
-	{
-		if (right_prediction() == false) //Flush D&E
-		{
-			hazards[z] = 42;
-			z++;
-			flushHappend = 1;
-		}
-	}
-
 	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
 	{
 		hazards[z] = 41;
 		z++;
-		flushHappend = 1;
+		flushHappened = 1;
 	}
 	
-	if (flushHappend == 1)
+	if (flushHappened == 1)
 	{
 		int* it = find(begin(hazards), end(hazards), 51);
 		if ( it != end(hazards))
