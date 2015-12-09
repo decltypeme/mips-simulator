@@ -23,11 +23,16 @@ immediateType resolveImmediate(const string& strImmediate, bool signExtend)
 	}
 	if (signExtend)
 	{
-		return (int(__int16(imm16)));
+		int value = (0x0000FFFF & imm16);
+		int mask = 0x00008000;
+		if (mask & imm16) {
+			value += 0xFFFF0000;
+		}
+		return value;
 	}
 	else
 	{
-		return unsigned int(unsigned __int16(imm16));
+		return imm16;
 	}
 }
 immediateType resolveJImmediate(const string& strImmediate)

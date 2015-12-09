@@ -322,6 +322,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			 }
 			 void resetTheSimEnv()
 			 {
+				 time = 1;
 				 {
 					 ___resetAllPipeline(1)
 						 ___resetAllPipeline(2)
@@ -335,12 +336,12 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 						 ___resetAllPipeline(10)
 				 }
 				 initialize();
-				 fetch();
-				 _GUI_updatePC();
 				 _GUI_updateDataMemory();
 				 _GUI_updateRegisterFile();
 				 _GUI_updateStack();
-				 time = 1;
+				 _GUI_updateFourBoxes();
+				 _GUI_updateFetchBox();
+				 _GUI_updatePC();
 			 }
 			 void _GUI_updateStack()
 			 {
@@ -518,6 +519,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			 }
 			 void _GUI_updatePC()
 			 {
+				 
 				 PC_Show->Text = gcnew System::String((to_string(PC*4)).c_str());
 			 }
 			 void _GUI_updateHazardMsgs()
@@ -2073,6 +2075,11 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			base = 16;
 		else
 			____THROW_IN_FORM(invalid_argument("Invalid base: Only decimal and hexadecimal are supported");)
+			_GUI_updatePC();
+		_GUI_updateRegisterFile();
+		_GUI_updateDataMemory();
+		_GUI_updateStack();
+
 	}
 	private: System::Void label3_Click_2(System::Object^  sender, System::EventArgs^  e) {
 	}
