@@ -16,7 +16,7 @@ void J::fetch()
 {
 	int tempPC = PC >> 26;
 	tempPC = tempPC << 26;
-	address = immediate  ^ tempPC;
+	address = immediate  | tempPC;
 }
 
 bool J::valid()

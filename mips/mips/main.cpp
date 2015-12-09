@@ -12,8 +12,11 @@ void fillwithInst()
 	}
 
 	//data_memory[2] = 1;
-	inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
-	inst_memory[1] = new Jr(1, 1, "jr $1");
+	//inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
+	inst_memory[0] = new Jal(2, 0, "jal to address 2");
+	inst_memory[1] = new Add(0, 0, 0, 1, "add 0,0,0");
+	inst_memory[2] = new Jr(31, 2, "jr $31");
+	inst_memory[3] = new Xor(0, 0, 0, 3, "xor 0,0,0");
 	//inst_memory[0] = new Lw(1, 2, 2 , 0, "lw $1, 2($2)");
 	//inst_memory[0] = new Add(1, 0,0, 0,"add 1,0,0");
 	//inst_memory[1] = new Add(2, 0, 0, 1, "add 2,0,0");

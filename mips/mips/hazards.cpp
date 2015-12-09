@@ -417,7 +417,7 @@ void hazardDetection()
 
 		
 	}
-	if (JAL_EXIST) // Occurence of JAL and usage of $31 in other instructions
+	/*if (JAL_EXIST) // Occurence of JAL and usage of $31 in other instructions
 	{
 		if (EX_MEM_RegWrite)
 		{
@@ -446,7 +446,7 @@ void hazardDetection()
 			
 			}
 		}
-	}
+	}*/
 
 	Ble* bleptr2 = dynamic_cast<Ble*>(pipeline[1]);
 	if (bleptr2 != nullptr)
