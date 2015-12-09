@@ -226,6 +226,48 @@ void hazardDetection()
 			}
 
 		}
+		J* jptr = dynamic_cast<J*> (pipeline[i]);
+		if (jptr != nullptr)
+		{
+
+			Jal* jalptr = dynamic_cast<Jal*> (pipeline[i]);
+			if (jalptr != nullptr)
+			{
+				JAL_EXIST = 1;
+				if (i == 0)
+				{
+					IF_ID_RegRT_JAL = 1;
+				}
+				if (i == 1)
+				{
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 0;
+					JAL_Where = 1;
+				}
+				if (i == 2)
+				{
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 0;
+					JAL_Where = 2;
+				}
+				if (i == 3)
+				{
+					EX_MEM_RegWrite = 1;
+					MEM_WB_RegWrite = 1;
+					JAL_Where = 3;
+				}
+				if (JR_EXIST)
+					JALWhere = JAL_Where;
+			}
+
+			if (i == 0)
+			{
+				J_EXIST = 1;
+			}
+
+
+
+		}
 
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[i]);
 		if (jrptr != nullptr)
@@ -234,53 +276,13 @@ void hazardDetection()
 			{
 				JR_EXIST = 1;
 				IF_ID_RegRT_JR = jrptr->rs;
-				if (JAL_EXIST)
-				JALWhere = JAL_Where;
+				
 
 			}
 			
 
 		}
-		J* jptr = dynamic_cast<J*> (pipeline[i]);
-		if (jptr != nullptr)
-		{
-			
-		Jal* jalptr = dynamic_cast<Jal*> (pipeline[i]);
-		if (jalptr != nullptr)
-		{
-			JAL_EXIST = 1;
-			if (i == 0)
-			{
-				IF_ID_RegRT_JAL = 1;
-			}
-			if (i == 1)
-			{
-				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 0;
-				JAL_Where = 1;
-			}
-			if (i == 2)
-			{
-				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 0;
-				JAL_Where = 2;
-			}
-			if (i == 3)
-			{
-				EX_MEM_RegWrite = 1;
-				MEM_WB_RegWrite = 1;
-				JAL_Where = 3;
-			}
-		}
-
-			if (i == 0)
-			{
-				J_EXIST = 1;
-			}
-
-
-	
-		}
+		
 		Ret* Retptr = dynamic_cast<Ret*> (pipeline[i]);
 		if (Retptr != nullptr)
 		{
@@ -328,29 +330,30 @@ void hazardDetection()
 			JR_Notready = 1;
 		}
 
-		if (JAL_EXIST == 1) // Occurence of JAL and JR (Multiple usage of $31)
+		if (JAL_EXIST == 1 && JR_EXIST == 1) // Occurence of JAL and JR (Multiple usage of $31)
 		{
 			if (IF_ID_RegRT_JR == 31)
 			{
+
 				if (JALWhere == 1) // ID_EX -> IF_ID
 				{
-					hazards[z] = 112;
+					hazards[z] = 111;
 					z++;
-					JR_Notready = 1;
+					
 				}
 
 				if (JALWhere==2 ) // EX_MEM -> IF_ID
 				{
-					hazards[z] = 212;
+					hazards[z] = 211;
 					z++;
-					JR_Notready = 1;
+					
 				}
 
 				if (JALWhere == 3) // MEM_WB -> IF_ID
 				{
-					hazards[z] = 312;
+					hazards[z] = 311;
 					z++;
-					JR_Notready = 1;
+					
 				}
 				
 				
@@ -491,6 +494,7 @@ void dealWithForwarding(int value)
 	{
 		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[1]);
 		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[1]);
+		Jal* jalptrfrom = dynamic_cast<Jal*> (pipeline[1]);
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
@@ -499,6 +503,10 @@ void dealWithForwarding(int value)
 		else if (iptrfrom != nullptr)
 		{
 			jrptr->rsData = iptrfrom->writeData;
+		}
+		else if (jalptrfrom != nullptr)
+		{
+			jrptr->rsData = jalptrfrom->returnAddress;
 		}
 		break;
 	}
@@ -506,6 +514,7 @@ void dealWithForwarding(int value)
 	{
 		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[2]);
 		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[2]);
+		Jal* jalptrfrom = dynamic_cast<Jal*> (pipeline[2]);
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
@@ -514,6 +523,10 @@ void dealWithForwarding(int value)
 		else if (iptrfrom != nullptr)
 		{
 			jrptr->rsData = iptrfrom->writeData;
+		}
+		else if (jalptrfrom != nullptr)
+		{
+			jrptr->rsData = jalptrfrom->returnAddress;
 		}
 		break;
 	}
@@ -521,6 +534,7 @@ void dealWithForwarding(int value)
 	{
 		rformat* rptrfrom = dynamic_cast<rformat*> (pipeline[3]);
 		iformat* iptrfrom = dynamic_cast<iformat*> (pipeline[3]);
+		Jal* jalptrfrom = dynamic_cast<Jal*> (pipeline[3]);
 		Jr* jrptr = dynamic_cast<Jr*> (pipeline[0]);
 		if (rptrfrom != nullptr)
 		{
@@ -529,6 +543,10 @@ void dealWithForwarding(int value)
 		else if (iptrfrom != nullptr)
 		{
 			jrptr->rsData = iptrfrom->writeData;
+		}
+		else if (jalptrfrom != nullptr)
+		{
+			jrptr->rsData = jalptrfrom->returnAddress;
 		}
 		break;
 	}
