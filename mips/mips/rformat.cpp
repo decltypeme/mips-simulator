@@ -2,7 +2,7 @@
 #include <stdexcept>
 using namespace std;
 
-rformat::rformat(int _rs, int _rt, int _rd, int _instAddress, string _instString)
+rformat::rformat(int _rd, int _rs, int _rt,  int _instAddress, string _instString)
 	:inst(_instString), instAddress(_instAddress) , rs(_rs), rt(_rt), rd(_rd)
 {
 	if (!valid()) throw logic_error("Bad construction of rformat instruction.");

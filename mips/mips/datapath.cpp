@@ -1,18 +1,19 @@
 
-#include "parser.h"
+#include "instructions.h"
 #include <algorithm>
 using namespace std;
 
 void fetch()
-{
+{	
 	if (!(binary_search(begin(hazards), end(hazards), 51) || binary_search(begin(hazards), end(hazards), 52)
 		|| binary_search(begin(hazards), end(hazards), 41) || binary_search(begin(hazards), end(hazards), 42)))
 	{
+		int oldPC = PC;
+		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
-		pipeline[0] = inst_memory[PC];
-		PC = updatePC();
+		pipeline[0] = inst_memory[oldPC];
 	}
 	if ((binary_search(begin(hazards), end(hazards), 51)))
 	{
@@ -27,20 +28,20 @@ void fetch()
 	}
 	if ((binary_search(begin(hazards), end(hazards), 41)))
 	{
+		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
 		pipeline[0] = new inst();
-		PC = updatePC();
 	}
 	
 	if ((binary_search(begin(hazards), end(hazards), 42)))
 	{
+		PC = updatePC();
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = new inst();
 		pipeline[0] = new inst();
-		PC = updatePC();
 	}
 }
 

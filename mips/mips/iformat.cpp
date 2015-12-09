@@ -2,7 +2,7 @@
 #include <stdexcept>
 using namespace std;
 
-iformat::iformat(int _rs, int _rt, int _immediate, int _instAddress, string _instString)
+iformat::iformat(int _rt, int _rs,  int _immediate, int _instAddress, string _instString)
 	:inst(_instString), instAddress(_instAddress) , rs(_rs), rt(_rt), immediate(_immediate)
 {
 	if (!valid()) throw logic_error("Bad construction of iformat instruction.");

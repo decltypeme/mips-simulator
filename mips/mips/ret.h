@@ -5,7 +5,7 @@
 class Ret : public inst
 {
 public:
-	Ret(int _instAddress = -1, string _instString = "nop");
+	Ret(int _instAddress = -1, std::string _instString = "nop");
 	virtual ~Ret();
 	void fetch();
 	int addressPopped;

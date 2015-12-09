@@ -5,7 +5,7 @@
 class J : public inst
 {
 public:
-	J(int _immediate = -1, int _instAddress = -1, string _instString = "nop");
+	J(int _immediate = -1, int _instAddress = -1, std::string _instString = "nop");
 	virtual ~J();
 
 	int immediate;

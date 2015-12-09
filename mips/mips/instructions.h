@@ -1,4 +1,5 @@
 #pragma once
+#include "inst.h"
 #include "Add.h"
 #include "Xor.h"
 #include "Slt.h"

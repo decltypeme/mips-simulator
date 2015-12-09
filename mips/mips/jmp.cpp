@@ -9,4 +9,4 @@ Jmp::Jmp(int _immediate, int _instAddress, string _instString)
 
 Jmp::~Jmp() {}
 
-void Jmp::fetch() { J::fetch(); pushtostack(PC + 1);}
+void Jmp::fetch() { J::fetch(); pushtostack(PC);}
