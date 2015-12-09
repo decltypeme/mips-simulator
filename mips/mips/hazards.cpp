@@ -297,16 +297,16 @@ void hazardDetection()
 	{
 		if (IF_ID_RegRT_JR == EX_MEM_RegRD && IF_ID_RegRT_JR != -1)  //  Action = EX_MEM -> IF_ID   Example: add $1,$2,$3 or $2,$4,$5 jr $1
 		{
-			hazards[z] = 212;
+			hazards[z] = 211;
 			z++;
-			JR_Notready = 1; 
+			
 		}
 
 		if (IF_ID_RegRT_JR == MEM_WB_RegRD && IF_ID_RegRT_JR != -1) // Action = MEM_WB -> IF_ID     Example: add $1,$2,$3 or $2,$4,$5 and $5,$9,$10 jr $1
 		{
 			hazards[z] = 311;
 			z++;
-			JR_Notready = 1;
+			
 		}
 
 		if (IF_ID_RegRT_JR == ID_EX_RegRD && IF_ID_RegRT_JR != -1) //Stall  nop-> EX   Example: add $1,$2,$3 jr $1
@@ -362,7 +362,7 @@ void hazardDetection()
 
 	}
 	
-	if (ID_EX_MemRead)  // for example lw $2,20($1) followed by add $4,$2,$5 
+	if (ID_EX_MemRead == 1)  // for example lw $2,20($1) followed by add $4,$2,$5 
 	{ 
 		if (EX_MEM_RegRD_LW == ID_EX_RegRS && EX_MEM_RegRD_LW != -1)
 		{
@@ -378,7 +378,7 @@ void hazardDetection()
 		
 	}
 
-	if (EX_MEM_RegWrite && ID_EX_MemRead != 1)
+	if (EX_MEM_RegWrite == 1 && ID_EX_MemRead != 1)
 	{
 		if (EX_MEM_RegRD == ID_EX_RegRS && EX_MEM_RegRD != -1) //EX_MEM -> ID_EX
 		{
@@ -398,7 +398,7 @@ void hazardDetection()
 		
 	}
 
-	if (MEM_WB_RegWrite && !(EX_MEM_RegWrite))
+	if (MEM_WB_RegWrite ==1 && !(EX_MEM_RegWrite))
 	{
 		if (MEM_WB_RegRD == ID_EX_RegRS && MEM_WB_RegRD != -1) //MEM_WB -> ID_EX
 		{
@@ -469,7 +469,7 @@ void hazardDetection()
 		flushHappend = 1;
 	}
 	
-	if (flushHappend)
+	if (flushHappend == 1)
 	{
 		int* it = find(begin(hazards), end(hazards), 51);
 		if ( it != end(hazards))
