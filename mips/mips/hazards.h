@@ -9,7 +9,7 @@ struct hazardMsg
 {
 	int value;
 	std::string hazard;
-	hazardMsg() : hazardMsg(0, "No Hazard") {}
-	hazardMsg(int i, string j) : value(i) , hazard(j) {}
+	hazardMsg(int i, std::string j) : value(i) , hazard(j) {}
+	hazardMsg() : hazardMsg(0, std::string("No Hazard")) {}
 };
 extern hazardMsg hazardMsgs[14];

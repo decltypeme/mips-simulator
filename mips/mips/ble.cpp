@@ -42,7 +42,6 @@ void Ble::execute()
 		{
 			*it = 0;
 		}
-		sort(begin(hazards), end(hazards));
 	}
 }
 

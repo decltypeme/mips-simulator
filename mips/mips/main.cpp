@@ -19,6 +19,19 @@ void displayFetch()
 	}
 }
 
+void displayHazards()
+{
+	cout << endl << endl;
+	for (int i = 4; i >= 0; i--)
+	{
+		if (hazards[i])
+		{
+			hazardMsg* msgptr = gethazardMsgPtr(hazards[i]);
+			cout << msgptr->hazard << endl;
+		}
+	}
+}
+
 void displayStorage()
 {
 	cout << endl << endl;
@@ -69,9 +82,9 @@ int main()
 		memory();
 		writeBack();
 
-		cout << endl << endl << hazards[0] << "\t" << hazards[1] << "\t" << hazards[2] << "\t" << hazards[3] << "\t" << hazards[4] << endl;
-
+		displayHazards();
 		displayStorage();
+
 		system("Pause");
 	}
 

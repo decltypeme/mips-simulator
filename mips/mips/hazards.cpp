@@ -842,20 +842,20 @@ void dealWithForwarding(int value)
 	}
 }
 
-hazardMsg hazardMsgs [14] = 
+hazardMsg hazardMsgs[14] =
 {
-	hazardMsg(41,"Need to flush fetched instruction during next cycle."),
-	hazardMsg(42,"Need to flush fetched and decoded instructions during next cycle."),
-	hazardMsg(51,"Need to stall at the decode stage for the next cycle."),
-	hazardMsg(52,"Need to stall at the execute stage for the next cycle."),
-	hazardMsg(111,"Forwarded the value of rs from execute to decode."),
-	hazardMsg(211,"Forwarded the value of rs from memory to decode."),
-	hazardMsg(212,"Forwarded the value of rt from memory to decode."),
-	hazardMsg(311,"Forwarded the value of rs from writeback to decode."),
-	hazardMsg(312,"Forwarded the value of rt from writeback to decode."),
-	hazardMsg(221,"Forwarded the value of rs from memory to execute."),
-	hazardMsg(222,"Forwarded the value of rt from memory to execute."),
-	hazardMsg(321,"Forwarded the value of rs from writeback to execute."),
-	hazardMsg(322,"Forwarded the value of rt from writeback to execute."),
-	hazardMsg(332,"Forwarded the value of rt from writeback to memory.")
-}
+	hazardMsg(41, string("Need to flush fetched instruction during next cycle.")),
+	hazardMsg(42, string("Need to flush fetched and decoded instructions during next cycle.")),
+	hazardMsg(51, string("Need to stall at the decode stage for the next cycle.")),
+	hazardMsg(52, string("Need to stall at the execute stage for the next cycle.")),
+	hazardMsg(111, string("Forwarded the value of rs from execute to decode.")),
+	hazardMsg(211, string("Forwarded the value of rs from memory to decode.")),
+	hazardMsg(212, string("Forwarded the value of rt from memory to decode.")),
+	hazardMsg(311, string("Forwarded the value of rs from writeback to decode.")),
+	hazardMsg(312, string("Forwarded the value of rt from writeback to decode.")),
+	hazardMsg(221, string("Forwarded the value of rs from memory to execute.")),
+	hazardMsg(222, string("Forwarded the value of rt from memory to execute.")),
+	hazardMsg(321, string("Forwarded the value of rs from writeback to execute.")),
+	hazardMsg(322, string("Forwarded the value of rt from writeback to execute.")),
+	hazardMsg(332, string("Forwarded the value of rt from writeback to memory."))
+};

@@ -26,6 +26,8 @@ struct prediction
 };
 extern prediction bpt[instMemSize];
 
+extern hazardMsg* gethazardMsgPtr(int value);
+
 bool validateRegister(const int& reg);
 
 int readRegister(const int& reg);

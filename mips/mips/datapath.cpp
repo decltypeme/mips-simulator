@@ -6,7 +6,8 @@ using namespace std;
 
 
 void fetch()
-{	
+{
+	sort(begin(hazards), end(hazards));
 	if (!(binary_search(begin(hazards), end(hazards), 51) || binary_search(begin(hazards), end(hazards), 52)
 		|| binary_search(begin(hazards), end(hazards), 41) || binary_search(begin(hazards), end(hazards), 42)))
 	{
@@ -81,7 +82,6 @@ void decode()
 {
 	pipeline[0]->fetch();
 	hazardDetection();
-	sort(begin(hazards), end(hazards));
 	for_each(begin(hazards), end(hazards), dealWithForwarding);
 }
 
