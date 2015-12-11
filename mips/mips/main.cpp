@@ -17,15 +17,19 @@ void uiInitialize()
 
 }
 
-void displayPipe()
+
+char* stageName[5] = { "Fetch", "Decode", "Execute", "Memory", "Write Back" };
+
+void displayFetch()
 {
-	cout << endl << endl << endl;
+	cout << endl << endl;
 	cout << "PC:\t" << PC * 4;
 	cout << endl << endl;
-	cout << "Pipeline\t" << "Inst" << endl;
-	for (int i = 0; i < 4; ++i)
+	cout << "Pipeline\t\t" << "Inst" << endl;
+	cout << stageName[0] << "\t\t" << inst_memory[PC]->instString << endl;
+	for (int i = 1; i < 5; ++i)
 	{
-		cout << i << "\t\t" << pipeline[i]->instString << endl;
+		cout << stageName[i] << "\t\t" << pipeline[i - 1]->instString << endl;
 	}
 }
 
@@ -44,6 +48,13 @@ void displayStorage()
 	{
 		cout << i << "\t" << data_memory[i] << endl;
 	}
+	cout << endl << endl;
+}
+
+void fillwithInst()
+{
+	inst_memory[0] = new Addi(1, 1, 1, 0, "addi 1,1,1");
+	inst_memory[1] = new J(0, 1, "J 0");
 }
 
 #ifdef ___GUI_ENV
@@ -76,31 +87,33 @@ int main()
 
 	fillwithInst();
 
-	displayPipe();
+	displayFetch();
 	displayStorage();
+
 	system("Pause");
 
+
 	int n = 0;
-	while (n < 8)
+	while (n<100)
 	{
 		n++;
+
 		fetch();
 
-		displayPipe();
+		displayFetch();
 
 		decode();
-
-		cout << endl << endl << hazards[0] << "\t" << hazards[1] << "\t" << hazards[2] << "\t" << hazards[3] << "\t" << hazards[4] << endl;
-
 		execute();
 		memory();
 		writeBack();
+
+		cout << endl << endl << hazards[0] << "\t" << hazards[1] << "\t" << hazards[2] << "\t" << hazards[3] << "\t" << hazards[4] << endl;
 
 		displayStorage();
 		system("Pause");
 	}
 
 	cout << endl << endl << "End of simulation\n\n";
-	system("Pause");
+	system("Pause"); 
 #endif
 }

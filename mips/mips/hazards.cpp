@@ -4,16 +4,15 @@
 #include <cstring>
 #include <algorithm>
 #include <iterator>
+#include <string>
 using namespace std;
 
 int z;
-int flushHappened;
 
 
 void hazardDetection()
 {
 	z = 0;
-	flushHappened = 0;
 	int IF_ID_RegRS = -1;
 	int IF_ID_RegRT = -1;
 	int ID_EX_MemRead = -1;
@@ -508,13 +507,6 @@ void hazardDetection()
 		}
 	}*/
 
-	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
-	{
-		hazards[z] = 41;
-		z++;
-		flushHappened = 1;
-	}
-
 	Ble* bleptrSpecial = dynamic_cast<Ble*> (pipeline[0]);
 	if (bleptrSpecial != nullptr)
 	{
@@ -562,10 +554,12 @@ void hazardDetection()
 
 	}
 	
-	if (flushHappened == 1)
+	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
 	{
+		hazards[z] = 41;
+		z++;
 		int* it = find(begin(hazards), end(hazards), 51);
-		if ( it != end(hazards))
+		if (it != end(hazards))
 		{
 			*it = 0;
 		}
@@ -576,6 +570,8 @@ void hazardDetection()
 			*it = 0;
 		}
 	}
+
+
 }
 	
 	
@@ -848,3 +844,21 @@ void dealWithForwarding(int value)
 		break;
 	}
 }
+
+hazardMsg hazardMsgs[14] =
+{
+	hazardMsg(41, string("Need to flush fetched instruction during next cycle.")),
+		hazardMsg(42, string("Need to flush fetched and decoded instructions during next cycle.")),
+		hazardMsg(51, string("Need to stall at the decode stage for the next cycle.")),
+		hazardMsg(52, string("Need to stall at the execute stage for the next cycle.")),
+		hazardMsg(111, string("Forwarded the value of rs from execute to decode.")),
+		hazardMsg(211, string("Forwarded the value of rs from memory to decode.")),
+		hazardMsg(212, string("Forwarded the value of rt from memory to decode.")),
+		hazardMsg(311, string("Forwarded the value of rs from writeback to decode.")),
+		hazardMsg(312, string("Forwarded the value of rt from writeback to decode.")),
+		hazardMsg(221, string("Forwarded the value of rs from memory to execute.")),
+		hazardMsg(222, string("Forwarded the value of rt from memory to execute.")),
+		hazardMsg(321, string("Forwarded the value of rs from writeback to execute.")),
+		hazardMsg(322, string("Forwarded the value of rt from writeback to execute.")),
+		hazardMsg(332, string("Forwarded the value of rt from writeback to memory."))
+};

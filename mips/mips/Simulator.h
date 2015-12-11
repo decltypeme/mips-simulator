@@ -1994,7 +1994,6 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 		try {
 			AssemblySource->Clear();
 			ParsingResults->Clear();
-			resetInstMem();
 			char* argsToPass[4];
 			argsToPass[0] = new char[1000];
 			strcpy(argsToPass[0], "handler");

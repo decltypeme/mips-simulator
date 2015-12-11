@@ -31,8 +31,6 @@ struct prediction
 };
 extern prediction bpt[instMemSize];
 
-void resetInstMem();
-
 bool validateRegister(const int& reg);
 
 int readRegister(const int& reg);
