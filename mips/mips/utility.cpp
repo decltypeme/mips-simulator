@@ -19,6 +19,19 @@ int hazards[5];
 prediction bpt[instMemSize];
 string hazard_msgs[3];
 
+hazardMsg* gethazardMsgPtr(int value)
+ {
+	for (int i = 0; i < 14; i++)
+		 {
+		if (hazardMsgs[i].value == value)
+			 {
+		return &hazardMsgs[i];
+			}
+		}
+	return nullptr;
+	}
+
+
 bool validateRegister(const int& reg)
 {
 	return !(reg < 0 || reg >maxRegNumber);
