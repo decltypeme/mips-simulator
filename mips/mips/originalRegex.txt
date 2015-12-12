@@ -1,1 +1,6 @@
-({r-inst})\s+{register-desc-regex}\s*,\s*{register-desc-regex}\s*,\s*{register-desc-regex}\s*#
+({r-inst})\s+{reg}\s*,\s*{reg}\s*,\s*{reg}\s*{EOL}#R-InstructionTAKECARE-In-New-Implementation-We-Disallow-Comments
+({i-inst})\s+{reg}\s*,\s*{reg}\s*,\s*{imm}\s*{EOL}#I-Instruction
+({j-inst})\s+{imm}\s*{EOL}#J-Instruction
+({jr-inst})\s+{reg}\s*{EOL}#JR-Instruction
+({ret-inst})\s*{EOL}#RET-Instruction
+\s*{EOL}#Empty-Instruction

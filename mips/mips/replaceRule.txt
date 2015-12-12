@@ -1,2 +1,8 @@
-{r-inst} [Aa][Dd][Dd]|[Xx][Oo][Rr]
-{register-desc-regex} [\$]([stva]{0,1}[0-9]{1,2})
+{r-inst}	[Aa][Dd][Dd]|[Xx][Oo][Rr]|[Ss][Ll][Tt]
+{i-inst}	[Aa][Dd][Dd][Ii]|[Ll][Ww]|[Ss][Ww]|[Bb][Ll][Ee]
+{j-inst}	[Jj][Aa][Ll]|[Jj]|[Jj][Mm][Pp]
+{jr-inst}	[Jj][Rr]
+{ret-inst}	[Rr][Ee][Tt]
+{reg}		\$(1[0-9]{1}|2[0-9]{1}|3[0-1]{1}|0[0-9]{1}|[0-9])
+{imm}		(0x[0-9A-Fa-f]+|(?:0d){0,1}[0-9]+)
+{EOL}		(?:\#(?:.*)){0,1}

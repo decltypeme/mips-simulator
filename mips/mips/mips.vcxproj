@@ -203,6 +203,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="InstructionsInOrder.txt" />
+    <Text Include="MIPS.txt" />
+    <Text Include="originalRegex.txt" />
+    <Text Include="regexRule.txt" />
+    <Text Include="replaceRule.txt" />
+    <Text Include="test1.txt" />
+    <Text Include="testing.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ble.cpp" />
@@ -228,6 +234,10 @@
     <EmbeddedResource Include="Simulator.resx">
       <DependentUpon>Simulator.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="coolRegex.exe" />
+    <None Include="tester.bat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

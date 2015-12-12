@@ -49,6 +49,9 @@
     <Filter Include="Header Files\Hazard Detection">
       <UniqueIdentifier>{8fd1b423-1f59-426b-94ea-8e31e33b6ddc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RegexFiles">
+      <UniqueIdentifier>{3bcd2f66-05bb-4741-9ff1-9fe69aa04bd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rformat.h">
@@ -122,6 +125,24 @@
     <Text Include="InstructionsInOrder.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="regexRule.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
+    <Text Include="originalRegex.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
+    <Text Include="MIPS.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
+    <Text Include="test1.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
+    <Text Include="replaceRule.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
+    <Text Include="testing.txt">
+      <Filter>RegexFiles</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="iformat.cpp">
@@ -187,5 +208,18 @@
     <ClCompile Include="parser.cpp">
       <Filter>Source Files\Utility Structures and Functions</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulator.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tester.bat">
+      <Filter>RegexFiles</Filter>
+    </None>
+    <None Include="coolRegex.exe">
+      <Filter>RegexFiles</Filter>
+    </None>
   </ItemGroup>
 </Project>
