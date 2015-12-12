@@ -40,11 +40,14 @@ catch (exception& ex)\
 string msg = ex.what(); \
 String^ temp = gcnew String(msg.c_str());\
 ParsingResults->AppendText(temp); \
-ParsingResults->AppendText("\n"); \
+ParsingResults->AppendText("\n Now resetting the environment\n"); \
+resetTheSimEnv();\
 }\
 catch (...)\
 {\
 ParsingResults->AppendText("Unhandled Exception"); \
+ParsingResults->AppendText("\n Now resetting the environment\n"); \
+resetTheSimEnv();\
 }
 
 #define ___print_Inst_TextBox(___TIME_ID)\

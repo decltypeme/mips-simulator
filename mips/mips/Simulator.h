@@ -180,15 +180,15 @@ namespace mips {
 	private: System::Windows::Forms::TextBox^  PC_Show;
 
 	private: System::Windows::Forms::GroupBox^  pipelineGroup;
-private: System::Windows::Forms::TextBox^ Inst2p1;
+	private: System::Windows::Forms::TextBox^ Inst2p1;
 
-private: System::Windows::Forms::TextBox^ Inst3p1;
+	private: System::Windows::Forms::TextBox^ Inst3p1;
 
-private: System::Windows::Forms::TextBox^ Inst1p1;
+	private: System::Windows::Forms::TextBox^ Inst1p1;
 
 	private: System::Windows::Forms::OpenFileDialog^  sourceFile;
 	private: System::Windows::Forms::OpenFileDialog^  isaFile;
-private: System::Windows::Forms::TextBox^ Inst0p1;
+	private: System::Windows::Forms::TextBox^ Inst0p1;
 
 	private:
 		/// <summary>
@@ -196,110 +196,110 @@ private: System::Windows::Forms::TextBox^ Inst0p1;
 		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::Label^  label3;
-private: System::Windows::Forms::TextBox^ InstFp10;
-private: System::Windows::Forms::TextBox^ Inst0p10;
-private: System::Windows::Forms::TextBox^ Inst2p10;
-private: System::Windows::Forms::TextBox^ Inst3p10;
-private: System::Windows::Forms::TextBox^ Inst1p10;
+	private: System::Windows::Forms::TextBox^ InstFp10;
+	private: System::Windows::Forms::TextBox^ Inst0p10;
+	private: System::Windows::Forms::TextBox^ Inst2p10;
+	private: System::Windows::Forms::TextBox^ Inst3p10;
+	private: System::Windows::Forms::TextBox^ Inst1p10;
 
-private: System::Windows::Forms::TextBox^ InstFp9;
-private: System::Windows::Forms::TextBox^ Inst0p9;
-private: System::Windows::Forms::TextBox^ Inst2p9;
-private: System::Windows::Forms::TextBox^ Inst3p9;
-
-
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p9;
-
-private: System::Windows::Forms::TextBox^ InstFp8;
-private: System::Windows::Forms::TextBox^ Inst0p8;
-private: System::Windows::Forms::TextBox^ Inst2p8;
-private: System::Windows::Forms::TextBox^ Inst3p8;
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p8;
-
-private: System::Windows::Forms::TextBox^ InstFp7;
-private: System::Windows::Forms::TextBox^ Inst0p7;
-private: System::Windows::Forms::TextBox^ Inst2p7;
-private: System::Windows::Forms::TextBox^ Inst3p7;
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p7;
-
-private: System::Windows::Forms::TextBox^ InstFp6;
-private: System::Windows::Forms::TextBox^ Inst0p6;
-private: System::Windows::Forms::TextBox^ Inst2p6;
-private: System::Windows::Forms::TextBox^ Inst3p6;
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p6;
-
-private: System::Windows::Forms::TextBox^ InstFp5;
-private: System::Windows::Forms::TextBox^ Inst0p5;
-private: System::Windows::Forms::TextBox^ Inst2p5;
-private: System::Windows::Forms::TextBox^ Inst3p5;
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p5;
-
-private: System::Windows::Forms::TextBox^ InstFp4;
-private: System::Windows::Forms::TextBox^ Inst0p4;
-private: System::Windows::Forms::TextBox^ Inst2p4;
-private: System::Windows::Forms::TextBox^ Inst3p4;
-
-
-
-
-private: System::Windows::Forms::TextBox^ Inst1p4;
-
-private: System::Windows::Forms::TextBox^ InstFp3;
-
-private: System::Windows::Forms::TextBox^ Inst0p3;
-
-private: System::Windows::Forms::TextBox^ Inst2p3;
-
-private: System::Windows::Forms::TextBox^ Inst3p3;
-private: System::Windows::Forms::TextBox^ Inst1p3;
-
-
-private: System::Windows::Forms::TextBox^ InstFp2;
-private: System::Windows::Forms::TextBox^ Inst0p2;
-private: System::Windows::Forms::TextBox^ Inst2p2;
-private: System::Windows::Forms::TextBox^ Inst3p2;
+	private: System::Windows::Forms::TextBox^ InstFp9;
+	private: System::Windows::Forms::TextBox^ Inst0p9;
+	private: System::Windows::Forms::TextBox^ Inst2p9;
+	private: System::Windows::Forms::TextBox^ Inst3p9;
 
 
 
 
 
-private: System::Windows::Forms::TextBox^ Inst1p2;
 
-private: System::Windows::Forms::TextBox^ InstFp1;
+	private: System::Windows::Forms::TextBox^ Inst1p9;
+
+	private: System::Windows::Forms::TextBox^ InstFp8;
+	private: System::Windows::Forms::TextBox^ Inst0p8;
+	private: System::Windows::Forms::TextBox^ Inst2p8;
+	private: System::Windows::Forms::TextBox^ Inst3p8;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p8;
+
+	private: System::Windows::Forms::TextBox^ InstFp7;
+	private: System::Windows::Forms::TextBox^ Inst0p7;
+	private: System::Windows::Forms::TextBox^ Inst2p7;
+	private: System::Windows::Forms::TextBox^ Inst3p7;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p7;
+
+	private: System::Windows::Forms::TextBox^ InstFp6;
+	private: System::Windows::Forms::TextBox^ Inst0p6;
+	private: System::Windows::Forms::TextBox^ Inst2p6;
+	private: System::Windows::Forms::TextBox^ Inst3p6;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p6;
+
+	private: System::Windows::Forms::TextBox^ InstFp5;
+	private: System::Windows::Forms::TextBox^ Inst0p5;
+	private: System::Windows::Forms::TextBox^ Inst2p5;
+	private: System::Windows::Forms::TextBox^ Inst3p5;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p5;
+
+	private: System::Windows::Forms::TextBox^ InstFp4;
+	private: System::Windows::Forms::TextBox^ Inst0p4;
+	private: System::Windows::Forms::TextBox^ Inst2p4;
+	private: System::Windows::Forms::TextBox^ Inst3p4;
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p4;
+
+	private: System::Windows::Forms::TextBox^ InstFp3;
+
+	private: System::Windows::Forms::TextBox^ Inst0p3;
+
+	private: System::Windows::Forms::TextBox^ Inst2p3;
+
+	private: System::Windows::Forms::TextBox^ Inst3p3;
+	private: System::Windows::Forms::TextBox^ Inst1p3;
+
+
+	private: System::Windows::Forms::TextBox^ InstFp2;
+	private: System::Windows::Forms::TextBox^ Inst0p2;
+	private: System::Windows::Forms::TextBox^ Inst2p2;
+	private: System::Windows::Forms::TextBox^ Inst3p2;
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Inst1p2;
+
+	private: System::Windows::Forms::TextBox^ InstFp1;
 
 
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label5;
-private: System::Windows::Forms::GroupBox^  groupBox1;
-private: System::Windows::Forms::RichTextBox^  BoxH3;
-private: System::Windows::Forms::RichTextBox^  BoxH2;
-private: System::Windows::Forms::RichTextBox^  BoxH1;
-private: System::Windows::Forms::Label^ LabelH3 ;
-private: System::Windows::Forms::Label^ LabelH2 ;
-private: System::Windows::Forms::Label^ LabelH1 ;
-		 int base;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::RichTextBox^  BoxH3;
+	private: System::Windows::Forms::RichTextBox^  BoxH2;
+	private: System::Windows::Forms::RichTextBox^  BoxH1;
+	private: System::Windows::Forms::Label^ LabelH3;
+	private: System::Windows::Forms::Label^ LabelH2;
+	private: System::Windows::Forms::Label^ LabelH1;
+			 int base;
 #pragma region Windows Form Designer generated code
 			 /// <summary>
 			 /// Required method for Designer support - do not modify
@@ -342,6 +342,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 				 _GUI_updateFourBoxes();
 				 _GUI_updateFetchBox();
 				 _GUI_updatePC();
+				 _GUI_updateHazardMsgs();
 			 }
 			 void _GUI_updateStack()
 			 {
@@ -519,8 +520,8 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			 }
 			 void _GUI_updatePC()
 			 {
-				 
-				 PC_Show->Text = gcnew System::String((to_string(PC*4)).c_str());
+
+				 PC_Show->Text = gcnew System::String((to_string(PC * 4)).c_str());
 			 }
 			 void _GUI_updateHazardMsgs()
 			 {
@@ -529,16 +530,16 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 					 if (hazards[i])
 					 {
 						 hazardMsg* msgptr = gethazardMsgPtr(hazards[i]);
-						 hazard_msgs[4-i] = (msgptr->hazard);
+						 hazard_msgs[4 - i] = (msgptr->hazard);
 					 }
 					 else
 					 {
 						 hazard_msgs[4 - i] = "";
 					 }
 				 }
-				___HAZARD_DISPLAY(1)
-				___HAZARD_DISPLAY(2)
-				___HAZARD_DISPLAY(3)
+				 ___HAZARD_DISPLAY(1)
+					 ___HAZARD_DISPLAY(2)
+					 ___HAZARD_DISPLAY(3)
 			 }
 			 void InitializeComponent(void)
 			 {
@@ -2070,22 +2071,24 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 		resetTheSimEnv();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		
-		fetch();
-		_GUI_updatePC();
-		_GUI_updateFetchBox();
-		decode();
-		execute();
-		memory();
-		writeBack();
-		_GUI_updateHazardMsgs();
-		_GUI_updateRegisterFile();
-		_GUI_updateDataMemory();
-		_GUI_updateFourBoxes();
-		_GUI_updateStack();
-		time++;
-		if (time > 10)
-			time -= 10;
+		try {
+			fetch();
+			_GUI_updatePC();
+			_GUI_updateFetchBox();
+			decode();
+			execute();
+			memory();
+			writeBack();
+			_GUI_updateHazardMsgs();
+			_GUI_updateRegisterFile();
+			_GUI_updateDataMemory();
+			_GUI_updateFourBoxes();
+			_GUI_updateStack();
+			time++;
+			if (time > 10)
+				time -= 10;
+		}
+		___CATCH_IN_FORM()
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (base_choice->SelectedIndex == 0)

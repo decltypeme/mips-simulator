@@ -73,9 +73,9 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 	//Now, we will do a must-do cases, I know, you know it sucks, even this plastic debugging duck knows it!
 	//transform(params[1].begin(), params[1].end(), params[1].begin(), toupper);
 	string instName = params[1];
-	for (char& iii: instName)
+	for (int ii_it = 0; ii_it < instName.size(); ii_it++)
 	{
-		toupper(iii);
+		instName[ii_it] = toupper(instName[ii_it]);
 	}
 	//R-Type instructions
 	if (instName.compare(string("ADD")) == 0 || instName == "XOR" || instName == "SLT")
