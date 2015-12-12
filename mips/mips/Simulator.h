@@ -335,7 +335,7 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 						 ___resetAllPipeline(9)
 						 ___resetAllPipeline(10)
 				 }
-				 initialize();
+				 reset();
 				 _GUI_updateDataMemory();
 				 _GUI_updateRegisterFile();
 				 _GUI_updateStack();
@@ -524,6 +524,18 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			 }
 			 void _GUI_updateHazardMsgs()
 			 {
+				 for (int i = 4; i >= 2; i--)
+				 {
+					 if (hazards[i])
+					 {
+						 hazardMsg* msgptr = gethazardMsgPtr(hazards[i]);
+						 hazard_msgs[4-i] = (msgptr->hazard);
+					 }
+					 else
+					 {
+						 hazard_msgs[4 - i] = "";
+					 }
+				 }
 				___HAZARD_DISPLAY(1)
 				___HAZARD_DISPLAY(2)
 				___HAZARD_DISPLAY(3)
@@ -1992,6 +2004,8 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		try {
+			initialize();
+			resetTheSimEnv();
 			AssemblySource->Clear();
 			ParsingResults->Clear();
 			char* argsToPass[4];
@@ -2008,8 +2022,13 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 			fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
 			argsToPass[1] = "-parse";
 			fileHandler(4, argsToPass, inst_memory, AssemblySource, ParsingResults);
-			resetTheSimEnv();
 			//system("pause");
+			_GUI_updateDataMemory();
+			_GUI_updateRegisterFile();
+			_GUI_updateStack();
+			_GUI_updateFourBoxes();
+			_GUI_updateFetchBox();
+			_GUI_updatePC();
 		}
 		___CATCH_IN_FORM()
 	}
@@ -2051,21 +2070,22 @@ private: System::Windows::Forms::Label^ LabelH1 ;
 		resetTheSimEnv();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		
+		fetch();
+		_GUI_updatePC();
+		_GUI_updateFetchBox();
 		decode();
 		execute();
 		memory();
 		writeBack();
+		_GUI_updateHazardMsgs();
 		_GUI_updateRegisterFile();
 		_GUI_updateDataMemory();
 		_GUI_updateFourBoxes();
 		_GUI_updateStack();
-		_GUI_updateHazardMsgs();
 		time++;
 		if (time > 10)
 			time -= 10;
-		fetch();
-		_GUI_updatePC();
-		_GUI_updateFetchBox();
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (base_choice->SelectedIndex == 0)

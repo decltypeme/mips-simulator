@@ -45,6 +45,8 @@ void writeDataMem(const int& index, const int& value);
 
 void fillNops();
 
+void reset();
+
 void initialize();
 
 void pushtostack(int address);

@@ -68,6 +68,7 @@ void fillwithInst()
 {
 	inst_memory[0] = new Addi(1, 1, 1, 0, "addi 1,1,1");
 	inst_memory[1] = new J(0, 1, "J 0");
+	inst_memory[2] = new Xor(2, 2, 2, 2, "xor 2,2,2");
 }
 
 #ifdef ___GUI_ENV

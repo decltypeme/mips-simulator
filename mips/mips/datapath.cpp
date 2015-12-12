@@ -82,6 +82,7 @@ void decode()
 {
 	pipeline[0]->fetch();
 	hazardDetection();
+	sort(begin(hazards), end(hazards));
 	for_each(begin(hazards), end(hazards), dealWithForwarding);
 }
 

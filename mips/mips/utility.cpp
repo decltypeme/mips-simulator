@@ -79,6 +79,20 @@ void fillNops()
 	}
 }
 
+void reset ()
+{
+	PC = 0;
+	stack_size = 0;
+	memset(registers, 0, sizeof(registers));
+	memset(stack, 0, sizeof(stack));
+	memset(data_memory, 0, sizeof(data_memory));
+	memset(hazards, 0, sizeof(hazards));
+	for (int i = 0; i < 4; ++i)
+	{
+		pipeline[i] = new inst();
+	}
+}
+
 void initialize()
 {
 	PC = 0;
@@ -207,11 +221,17 @@ int updatePC()
 		{
 			if (jptr)
 			{
-				return jptr->address;
+				if (jptr->address != PC)
+					return jptr->address;
+				else
+					return PC + 1;
 			}
 			if (retptr)
 			{
-				return retptr->addressPopped;
+				if (retptr->addressPopped != PC)
+					return retptr->addressPopped;
+				else
+					return PC + 1;
 			}
 			if (bleptr0)
 			{
@@ -219,7 +239,10 @@ int updatePC()
 			}
 			if (jrptr)
 			{
-				return jrptr->rsData;
+				if (jrptr->rsData != PC)
+					return jrptr->rsData;
+				else
+					return PC + 1;
 			}
 
 			return PC + 1;
@@ -233,11 +256,21 @@ int updatePC()
 	{
 		if (jptr)
 		{
-			return jptr->address;
+			if (jptr)
+			{
+				if (jptr->address != PC)
+					return jptr->address;
+				else
+					return PC + 1;
+			}
+
 		}
 		if (retptr)
 		{
-			return retptr->addressPopped;
+			if (retptr->addressPopped != PC)
+				return retptr->addressPopped;
+			else
+				return PC + 1;
 		}
 		if (bleptr0)
 		{
@@ -245,7 +278,10 @@ int updatePC()
 		}
 		if (jrptr)
 		{
-			return jrptr->rsData;
+			if (jrptr->rsData != PC)
+				return jrptr->rsData;
+			else
+				return PC + 1;
 		}
 
 		return PC + 1;
