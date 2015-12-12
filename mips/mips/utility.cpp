@@ -74,6 +74,11 @@ void fillNops()
 	{
 		inst_memory[i] = new inst();
 	}
+
+	for (int i = 0; i < instMemSize; ++i)
+	{
+		bpt[i] = prediction();
+	}
 }
 
 void initialize()
@@ -91,7 +96,7 @@ void pushtostack(int address)
 {
 	if (stack_size < 4)
 	{
-		stack[++stack_size] = address;
+		stack[stack_size++] = address;
 	}
 	else
 		throw logic_error("Stack full.");
@@ -101,7 +106,7 @@ int popfromstack()
 {
 	if (stack_size > 0)
 	{
-		return stack[stack_size--];
+		return stack[--stack_size];
 	}
 	else
 		throw logic_error("Stack empty.");
