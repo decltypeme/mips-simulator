@@ -563,15 +563,15 @@ void hazardDetection()
 		
 		if (jptr)
 			if (jptr->address != PC)
-				reallyFlush = 0;
+				reallyFlush = 1;
 
 		if (retptr)
 			if ( retptr->addressPopped != PC)
-				reallyFlush = 0;
+				reallyFlush = 1;
 
 		if (jrptr)
 			if (jrptr->rsData != PC)
-				reallyFlush = 0;
+				reallyFlush = 1;
 
 		if (reallyFlush)
 		{
