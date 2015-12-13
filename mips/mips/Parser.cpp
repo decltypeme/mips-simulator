@@ -122,7 +122,7 @@ inst* parseInstruction(const string& instString, const vector<regex>& instRules,
 	}
 	else if (instName == "JR")
 	{
-		return new Jr(stoi(params[2]));
+		return new Jr(stoi(params[2]), address, instString);
 	}
 	else if (instName == "J" | instName == "JAL" || instName == "JMP")
 	{
