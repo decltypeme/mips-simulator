@@ -135,7 +135,7 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 		catch (exception& ex)
 		{
 			cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
-			throw logic_error("A fatal exception has occured ");
+			throw logic_error("A fatal exception has occured using the parsing utility");
 		}
 	}
 	else if (argc == 5)
@@ -165,7 +165,7 @@ int fileHandler(int argc, char** argv, inst** instsToFill, System::Windows::Form
 			catch (exception& ex)
 			{
 				cerr << "A fatal exception has occured .... Now exiting: " << ex.what() << endl;
-				throw logic_error("A fatal exception has occured ");
+				throw logic_error("A fatal exception has occured using the replace utility");
 			}
 		}
 		else
