@@ -13,6 +13,6 @@ public:
 	int addressTrue;
 	int addressIfNotTaken;
 	int addressIfTaken;
-	int specialFlag;
+	int wrongPredicitonFlag;
 };
 

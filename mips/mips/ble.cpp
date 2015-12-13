@@ -31,7 +31,12 @@ void Ble::execute()
 	{
 		hazards[z] = 42;
 		z++;
-		int* it = find(begin(hazards), end(hazards), 51);
+		int* it = find(begin(hazards), end(hazards), 41);
+		if (it != end(hazards))
+		{
+			*it = 0;
+		}
+		it = find(begin(hazards), end(hazards), 51);
 		if (it != end(hazards))
 		{
 			*it = 0;
@@ -42,6 +47,7 @@ void Ble::execute()
 		{
 			*it = 0;
 		}
+		sort(begin(hazards), end(hazards));
 	}
 }
 

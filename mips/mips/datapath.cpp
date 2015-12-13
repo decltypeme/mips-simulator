@@ -16,37 +16,7 @@ void fetch()
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = pipeline[0];
-		Ble* bleptr = dynamic_cast<Ble*> (pipeline[0]);
-		if (bleptr != nullptr)
-		{
-			prediction* bptptr = nullptr;
-			for (int i = 0; i < instMemSize; ++i)
-			{
-				bptptr = getbptptr(bpt[i], bleptr->instAddress);
-				if (bptptr)
-					break;
-			}
-
-			if (bptptr)
-			{
-				if (bptptr->taken)
-				{
-					pipeline[0] = new inst();
-				}
-				else
-				{
-					pipeline[0] = inst_memory[oldPC];
-				}
-			}
-			else
-			{
-				pipeline[0] = inst_memory[oldPC];
-			}
-		}
-		else
-		{
-			pipeline[0] = inst_memory[oldPC];
-		}
+		pipeline[0] = inst_memory[oldPC];
 	}
 	if ((binary_search(begin(hazards), end(hazards), 51)))
 	{
@@ -74,7 +44,29 @@ void fetch()
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = new inst();
-		pipeline[0] = new inst();
+		
+		Ble* bleptr = dynamic_cast <Ble*> (pipeline[1]);
+		
+		J* jptr = dynamic_cast <J*> (pipeline[0]);
+		if (bleptr->addressTrue != jptr->instAddress)
+			pipeline[0] = new inst();
+
+		Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
+		if (bleptr->addressTrue != jrptr->instAddress)
+			pipeline[0] = new inst();
+
+		Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
+		if (bleptr->addressTrue != jptr->instAddress)
+			pipeline[0] = new inst();
+
+		rformat* rptr = dynamic_cast <rformat*> (pipeline[0]);
+		if (bleptr->addressTrue != rptr->instAddress)
+			pipeline[0] = new inst();
+
+		iformat* iptr = dynamic_cast <iformat*> (pipeline[0]);
+		if (bleptr->addressTrue != iptr->instAddress)
+			pipeline[0] = new inst();
+
 	}
 }
 
@@ -82,6 +74,7 @@ void decode()
 {
 	pipeline[0]->fetch();
 	hazardDetection();
+	sort(begin(hazards), end(hazards));
 	for_each(begin(hazards), end(hazards), dealWithForwarding);
 }
 

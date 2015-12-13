@@ -52,8 +52,8 @@ void displayStorage()
 
 void fillwithInst()
 {
-	inst_memory[0] = new Addi(1, 1, 1, 0, "addi 1,1,1");
-	inst_memory[1] = new J(0, 1, "J 0");
+	inst_memory[0] = new Ble(0,0, 0,0, "Ble that branches to next inst");
+	inst_memory[1] = new Xor(0, 0, 0, 4, "XOR $0, $0, $0");
 }
 
 int main()

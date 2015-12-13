@@ -2,7 +2,6 @@
 #include <cstring>
 #include <stdexcept>
 #include <algorithm>
-
 #include "instructions.h"
 using namespace std;
 
@@ -126,28 +125,39 @@ int predict_branch()
 	if (bptptr)
 	{
 		if (bptptr->taken)
-			if (bleptr->addressIfTaken == PC)
+		{
+			if (bleptr->addressIfTaken != PC)
+			{
+				return bleptr->addressIfTaken;
+			}
+			else
 			{
 				return PC + 1;
 			}
-			else { return bleptr->addressIfTaken; }
+		}
 		else
 		{
-			if (bleptr->addressIfNotTaken == PC)
+			if (bleptr->addressIfNotTaken != PC)
+			{
+				return bleptr->addressIfNotTaken;
+			}
+			else
 			{
 				return PC + 1;
 			}
-			else { return bleptr->addressIfNotTaken; }
 		}
 	}
 	else
 	{
 		bpt[static_cast<unsigned int>(bleptr->instAddress)%instMemSize] = prediction(bleptr->instAddress,0);
-		if (bleptr->addressIfNotTaken == PC)
+		if (bleptr->addressIfNotTaken != PC)
+		{
+			return bleptr->addressIfNotTaken;
+		}
+		else
 		{
 			return PC + 1;
 		}
-		else { return bleptr->addressIfNotTaken; }
 	}
 }
 
@@ -183,17 +193,17 @@ bool right_prediction()
 		if (branchedToLastTime != bleptr->addressTrue)
 		{
 			bptptr->taken = !(bptptr->taken);
-			bleptr->specialFlag = 1;
+			bleptr->wrongPredicitonFlag = 1;
 			return false;
 		}
 		else
 		{
-			bleptr->specialFlag = 0;
+			bleptr->wrongPredicitonFlag = 0;
 			return true;
 		}
 	}
 	else
-		return false;
+		throw logic_error ("No prediction record of this branching instruction");
 }
 
 int updatePC()
@@ -204,16 +214,29 @@ int updatePC()
 	Ble* bleptr0 = dynamic_cast <Ble*> (pipeline[0]);
 	Ble* bleptr1 = dynamic_cast <Ble*> (pipeline[1]);
 
-	if (bleptr1!= nullptr)
-		if(bleptr1->specialFlag==0)
+	if (bleptr1 != nullptr)
+	{
+		if (bleptr1->wrongPredicitonFlag == 0)
 		{
 			if (jptr)
-			{
-				return jptr->address;
-			}
+				if(jptr->address != PC)
+				{
+					return jptr->address;
+				}
+				else
+				{
+					return PC + 1;
+				}
 			if (retptr)
 			{
-				return retptr->addressPopped;
+				if(retptr->addressPopped != PC)
+				{
+					return retptr->addressPopped;
+				}
+				else
+				{
+					return PC + 1;
+				}
 			}
 			if (bleptr0)
 			{
@@ -221,25 +244,52 @@ int updatePC()
 			}
 			if (jrptr)
 			{
-				return jrptr->rsData;
+				if (jrptr->rsData != PC)
+				{
+					return jrptr->rsData;
+				}
+				else
+				{
+					return PC + 1;
+				}
 			}
 
 			return PC + 1;
 		}
 		else
 		{
-			bleptr1->specialFlag = 0;
-			return bleptr1->addressTrue;
+			bleptr1->wrongPredicitonFlag = 0;
+			if (bleptr1->addressTrue != PC)
+			{
+				return bleptr1->addressTrue;
+			}
+			else
+			{
+				return PC + 1;
+			}
 		}
+	}
 	else
 	{
 		if (jptr)
-		{
-			return jptr->address;
-		}
+			if (jptr->address != PC)
+			{
+				return jptr->address;
+			}
+			else
+			{
+				return PC + 1;
+			}
 		if (retptr)
 		{
-			return retptr->addressPopped;
+			if (retptr->addressPopped != PC)
+			{
+				return retptr->addressPopped;
+			}
+			else
+			{
+				return PC + 1;
+			}
 		}
 		if (bleptr0)
 		{
@@ -247,7 +297,14 @@ int updatePC()
 		}
 		if (jrptr)
 		{
-			return jrptr->rsData;
+			if (jrptr->rsData != PC)
+			{
+				return jrptr->rsData;
+			}
+			else
+			{
+				return PC + 1;
+			}
 		}
 
 		return PC + 1;

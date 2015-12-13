@@ -553,24 +553,33 @@ void hazardDetection()
 
 	}
 
-	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
+	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush F
 	{
-		hazards[z] = 41;
-		z++;
-		int* it = find(begin(hazards), end(hazards), 51);
-		if (it != end(hazards))
-		{
-			*it = 0;
-		}
+		int reallyFlush = 0;
 
-		it = find(begin(hazards), end(hazards), 52);
-		if (it != end(hazards))
+		J* jptr = dynamic_cast <J*> (pipeline[0]);
+		Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
+		Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
+		
+		if (jptr)
+			if (jptr->address != PC)
+				reallyFlush = 0;
+
+		if (retptr)
+			if ( retptr->addressPopped != PC)
+				reallyFlush = 0;
+
+		if (jrptr)
+			if (jrptr->rsData != PC)
+				reallyFlush = 0;
+
+		if (reallyFlush)
 		{
-			*it = 0;
+			hazards[z] = 41;
+			z++;
 		}
 	}
 }
-	
 	
 void dealWithForwarding(int value)
 {
