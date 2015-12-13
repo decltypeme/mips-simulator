@@ -40,7 +40,7 @@ catch (exception& ex)\
 string msg = ex.what(); \
 String^ temp = gcnew String(msg.c_str());\
 ParsingResults->AppendText(temp); \
-ParsingResults->AppendText("\n Now resetting the environment\n"); \
+ParsingResults->AppendText("\nNow resetting the environment\n"); \
 resetTheSimEnv();\
 }\
 catch (...)\

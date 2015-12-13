@@ -19,18 +19,35 @@ int hazards[5];
 prediction bpt[instMemSize];
 string hazard_msgs[3];
 
-hazardMsg* gethazardMsgPtr(int value)
- {
-	for (int i = 0; i < 14; i++)
-		 {
-		if (hazardMsgs[i].value == value)
-			 {
-		return &hazardMsgs[i];
-			}
-		}
-	return nullptr;
+void reset()
+{
+	PC = 0;
+	stack_size = 0;
+	memset(registers, 0, sizeof(registers));
+	memset(stack, 0, sizeof(stack));
+	memset(data_memory, 0, sizeof(data_memory));
+	memset(hazards, 0, sizeof(hazards));
+	for (int i = 0; i < 4; ++i)
+	{
+		pipeline[i] = new inst();
 	}
+	for (int i = 0; i < instMemSize; ++i)
+	{
+		bpt[i] = prediction();
+	}
+}
 
+hazardMsg* gethazardMsgPtr(int value)
+{
+	for (int i = 0; i < 14; i++)
+	{
+		if (hazardMsgs[i].value == value)
+		{
+			return &hazardMsgs[i];
+		}
+	}
+	return nullptr;
+}
 
 bool validateRegister(const int& reg)
 {
@@ -77,24 +94,7 @@ void fillNops()
 	{
 		inst_memory[i] = new inst();
 	}
-	for (int i = 0; i < instMemSize; ++i)
-	{
-		bpt[i] = prediction();
-	}
-}
 
-void reset ()
-{
-	PC = 0;
-	stack_size = 0;
-	memset(registers, 0, sizeof(registers));
-	memset(stack, 0, sizeof(stack));
-	memset(data_memory, 0, sizeof(data_memory));
-	memset(hazards, 0, sizeof(hazards));
-	for (int i = 0; i < 4; ++i)
-	{
-		pipeline[i] = new inst();
-	}
 	for (int i = 0; i < instMemSize; ++i)
 	{
 		bpt[i] = prediction();
@@ -105,10 +105,10 @@ void initialize()
 {
 	PC = 0;
 	stack_size = 0;
-	memset (registers, 0, sizeof(registers));
-	memset (stack, 0, sizeof(stack));
-	memset (data_memory, 0, sizeof(data_memory));
-	memset (hazards, 0, sizeof(hazards));
+	memset(registers, 0, sizeof(registers));
+	memset(stack, 0, sizeof(stack));
+	memset(data_memory, 0, sizeof(data_memory));
+	memset(hazards, 0, sizeof(hazards));
 	fillNops();
 }
 
@@ -146,32 +146,43 @@ int predict_branch()
 	if (bptptr)
 	{
 		if (bptptr->taken)
-			if (bleptr->addressIfTaken == PC)
+		{
+			if (bleptr->addressIfTaken != PC)
+			{
+				return bleptr->addressIfTaken;
+			}
+			else
 			{
 				return PC + 1;
 			}
-			else { return bleptr->addressIfTaken; }
+		}
 		else
 		{
-			if (bleptr->addressIfNotTaken == PC)
+			if (bleptr->addressIfNotTaken != PC)
+			{
+				return bleptr->addressIfNotTaken;
+			}
+			else
 			{
 				return PC + 1;
 			}
-			else { return bleptr->addressIfNotTaken; }
 		}
 	}
 	else
 	{
-		bpt[static_cast<unsigned int>(bleptr->instAddress)%instMemSize] = prediction(bleptr->instAddress,0);
-		if (bleptr->addressIfNotTaken == PC)
+		bpt[static_cast<unsigned int>(bleptr->instAddress) % instMemSize] = prediction(bleptr->instAddress, 0);
+		if (bleptr->addressIfNotTaken != PC)
+		{
+			return bleptr->addressIfNotTaken;
+		}
+		else
 		{
 			return PC + 1;
 		}
-		else { return bleptr->addressIfNotTaken; }
 	}
 }
 
-prediction* getbptptr (prediction& totest, int inst_address)
+prediction* getbptptr(prediction& totest, int inst_address)
 {
 	if (totest.inst_address == inst_address) return &totest;
 	else return nullptr;
@@ -203,17 +214,17 @@ bool right_prediction()
 		if (branchedToLastTime != bleptr->addressTrue)
 		{
 			bptptr->taken = !(bptptr->taken);
-			bleptr->specialFlag = 1;
+			bleptr->wrongPredicitonFlag = 1;
 			return false;
 		}
 		else
 		{
-			bleptr->specialFlag = 0;
+			bleptr->wrongPredicitonFlag = 0;
 			return true;
 		}
 	}
 	else
-		return false;
+		throw logic_error("No prediction record of this branching instruction");
 }
 
 int updatePC()
@@ -224,22 +235,29 @@ int updatePC()
 	Ble* bleptr0 = dynamic_cast <Ble*> (pipeline[0]);
 	Ble* bleptr1 = dynamic_cast <Ble*> (pipeline[1]);
 
-	if (bleptr1!= nullptr)
-		if(bleptr1->specialFlag==0)
+	if (bleptr1 != nullptr)
+	{
+		if (bleptr1->wrongPredicitonFlag == 0)
 		{
 			if (jptr)
-			{
 				if (jptr->address != PC)
+				{
 					return jptr->address;
+				}
 				else
+				{
 					return PC + 1;
-			}
+				}
 			if (retptr)
 			{
 				if (retptr->addressPopped != PC)
+				{
 					return retptr->addressPopped;
+				}
 				else
+				{
 					return PC + 1;
+				}
 			}
 			if (bleptr0)
 			{
@@ -248,37 +266,51 @@ int updatePC()
 			if (jrptr)
 			{
 				if (jrptr->rsData != PC)
+				{
 					return jrptr->rsData;
+				}
 				else
+				{
 					return PC + 1;
+				}
 			}
 
 			return PC + 1;
 		}
 		else
 		{
-			bleptr1->specialFlag = 0;
-			return bleptr1->addressTrue;
+			bleptr1->wrongPredicitonFlag = 0;
+			if (bleptr1->addressTrue != PC)
+			{
+				return bleptr1->addressTrue;
+			}
+			else
+			{
+				return PC + 1;
+			}
 		}
+	}
 	else
 	{
 		if (jptr)
-		{
-			if (jptr)
+			if (jptr->address != PC)
 			{
-				if (jptr->address != PC)
-					return jptr->address;
-				else
-					return PC + 1;
+				return jptr->address;
 			}
-
-		}
+			else
+			{
+				return PC + 1;
+			}
 		if (retptr)
 		{
 			if (retptr->addressPopped != PC)
+			{
 				return retptr->addressPopped;
+			}
 			else
+			{
 				return PC + 1;
+			}
 		}
 		if (bleptr0)
 		{
@@ -287,9 +319,13 @@ int updatePC()
 		if (jrptr)
 		{
 			if (jrptr->rsData != PC)
+			{
 				return jrptr->rsData;
+			}
 			else
+			{
 				return PC + 1;
+			}
 		}
 
 		return PC + 1;

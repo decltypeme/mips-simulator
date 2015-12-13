@@ -9,7 +9,6 @@ using namespace std;
 
 int z;
 
-
 void hazardDetection()
 {
 	z = 0;
@@ -235,45 +234,37 @@ void hazardDetection()
 
 
 		/*	Ble* bleptr = dynamic_cast<Ble*> (pipeline[i]);
-			if (bleptr != nullptr)
-			{
-				if (i == 0) // IF_ID
-				{
-					EX_MEM_RegWrite = 0;
-					MEM_WB_RegWrite = 0;
-					IF_ID_RegRS = bleptr->rs;
-					IF_ID_RegRT = bleptr->rt;
-
-
-				}
-				if (i == 1)  // ID_EX
-				{
-
-
-					EX_MEM_RegWrite = 0;
-					MEM_WB_RegWrite = 0;
-					ID_EX_RegRS = bleptr->rs;
-					ID_EX_RegRT = bleptr->rt;
-					ID_EX_RegRD = -1;
-				}
-
-				if (i == 2) //EX_MEM
-				{
-					EX_MEM_RegWrite = 0;
-					MEM_WB_RegWrite = 0;
-					EX_MEM_RegRD = -1;
-
-				}
-				if (i == 3)
-				{
-
-					EX_MEM_RegWrite = 0;
-					MEM_WB_RegWrite = 0;
-					MEM_WB_RegRD = -1;
-				}
-
-			}
-			*/
+		if (bleptr != nullptr)
+		{
+		if (i == 0) // IF_ID
+		{
+		EX_MEM_RegWrite = 0;
+		MEM_WB_RegWrite = 0;
+		IF_ID_RegRS = bleptr->rs;
+		IF_ID_RegRT = bleptr->rt;
+		}
+		if (i == 1)  // ID_EX
+		{
+		EX_MEM_RegWrite = 0;
+		MEM_WB_RegWrite = 0;
+		ID_EX_RegRS = bleptr->rs;
+		ID_EX_RegRT = bleptr->rt;
+		ID_EX_RegRD = -1;
+		}
+		if (i == 2) //EX_MEM
+		{
+		EX_MEM_RegWrite = 0;
+		MEM_WB_RegWrite = 0;
+		EX_MEM_RegRD = -1;
+		}
+		if (i == 3)
+		{
+		EX_MEM_RegWrite = 0;
+		MEM_WB_RegWrite = 0;
+		MEM_WB_RegRD = -1;
+		}
+		}
+		*/
 		J* jptr = dynamic_cast<J*> (pipeline[i]);
 		if (jptr != nullptr)
 		{
@@ -478,34 +469,34 @@ void hazardDetection()
 	}
 	/*if (JAL_EXIST) // Occurence of JAL and usage of $31 in other instructions
 	{
-		if (EX_MEM_RegWrite)
-		{
-			if (ID_EX_RegRS == 31) // Rs is using $31  //EX_MEM -> ID_EX
-			{
-				hazards[z] = 221;
-				z++;
-			}
-			if (ID_EX_RegRT == 31) // RT is using $31
-			{
-				hazards[z] = 222;
-				z++;
-			}
-		}
-		if (MEM_WB_RegWrite)
-		{
-			if (ID_EX_RegRS == 31) // Rs is using $31 //MEM_WB -> ID_EX
-			{
-				hazards[z] = 321;
-				z++;
-			}
-			if (ID_EX_RegRT == 31) // RT is using $31
-			{
-				hazards[z] = 322;
-				z++;
-
-			}
-		}
+	if (EX_MEM_RegWrite)
+	{
+	if (ID_EX_RegRS == 31) // Rs is using $31  //EX_MEM -> ID_EX
+	{
+	hazards[z] = 221;
+	z++;
+	}
+	if (ID_EX_RegRT == 31) // RT is using $31
+	{
+	hazards[z] = 222;
+	z++;
+	}
+	}
+	if (MEM_WB_RegWrite)
+	{
+	if (ID_EX_RegRS == 31) // Rs is using $31 //MEM_WB -> ID_EX
+	{
+	hazards[z] = 321;
+	z++;
+	}
+	if (ID_EX_RegRT == 31) // RT is using $31
+	{
+	hazards[z] = 322;
+	z++;
+	}
+	}
 	}*/
+
 
 	Ble* bleptrSpecial = dynamic_cast<Ble*> (pipeline[0]);
 	if (bleptrSpecial != nullptr)
@@ -520,7 +511,7 @@ void hazardDetection()
 			hazards[z] = 222;
 			z++;
 		}
-		if (MEM_WB_RegRD == ID_EX_RegRS  && MEM_WB_RegRD != -1 )
+		if (MEM_WB_RegRD == ID_EX_RegRS  && MEM_WB_RegRD != -1)
 		{
 			hazards[z] = 321;
 			z++;
@@ -553,28 +544,35 @@ void hazardDetection()
 		}
 
 	}
-	
-	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush D
-	{
-		hazards[z] = 41;
-		z++;
-		int* it = find(begin(hazards), end(hazards), 51);
-		if (it != end(hazards))
-		{
-			*it = 0;
-		}
 
-		it = find(begin(hazards), end(hazards), 52);
-		if (it != end(hazards))
+	if ((IF_ID_RegRT_JR != -1 && JR_Notready != 1) || IF_ID_RegRT_JAL == 1 || Ret_EXIST == 1 || J_EXIST == 1) //Flush F
+	{
+		int reallyFlush = 0;
+
+		J* jptr = dynamic_cast <J*> (pipeline[0]);
+		Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
+		Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
+
+		if (jptr)
+			if (jptr->address != PC)
+				reallyFlush = 1;
+
+		if (retptr)
+			if (retptr->addressPopped != PC)
+				reallyFlush = 1;
+
+		if (jrptr)
+			if (jrptr->rsData != PC)
+				reallyFlush = 1;
+
+		if (reallyFlush)
 		{
-			*it = 0;
+			hazards[z] = 41;
+			z++;
 		}
 	}
-
-
 }
-	
-	
+
 void dealWithForwarding(int value)
 {
 	switch (value)
@@ -848,17 +846,17 @@ void dealWithForwarding(int value)
 hazardMsg hazardMsgs[14] =
 {
 	hazardMsg(41, string("Need to flush fetched instruction during next cycle.")),
-		hazardMsg(42, string("Need to flush fetched and decoded instructions during next cycle.")),
-		hazardMsg(51, string("Need to stall at the decode stage for the next cycle.")),
-		hazardMsg(52, string("Need to stall at the execute stage for the next cycle.")),
-		hazardMsg(111, string("Forwarded the value of rs from execute to decode.")),
-		hazardMsg(211, string("Forwarded the value of rs from memory to decode.")),
-		hazardMsg(212, string("Forwarded the value of rt from memory to decode.")),
-		hazardMsg(311, string("Forwarded the value of rs from writeback to decode.")),
-		hazardMsg(312, string("Forwarded the value of rt from writeback to decode.")),
-		hazardMsg(221, string("Forwarded the value of rs from memory to execute.")),
-		hazardMsg(222, string("Forwarded the value of rt from memory to execute.")),
-		hazardMsg(321, string("Forwarded the value of rs from writeback to execute.")),
-		hazardMsg(322, string("Forwarded the value of rt from writeback to execute.")),
-		hazardMsg(332, string("Forwarded the value of rt from writeback to memory."))
+	hazardMsg(42, string("Need to flush fetched and decoded instructions during next cycle.")),
+	hazardMsg(51, string("Need to stall at the decode stage for the next cycle.")),
+	hazardMsg(52, string("Need to stall at the execute stage for the next cycle.")),
+	hazardMsg(111, string("Forwarded the value of rs from execute to decode.")),
+	hazardMsg(211, string("Forwarded the value of rs from memory to decode.")),
+	hazardMsg(212, string("Forwarded the value of rt from memory to decode.")),
+	hazardMsg(311, string("Forwarded the value of rs from writeback to decode.")),
+	hazardMsg(312, string("Forwarded the value of rt from writeback to decode.")),
+	hazardMsg(221, string("Forwarded the value of rs from memory to execute.")),
+	hazardMsg(222, string("Forwarded the value of rt from memory to execute.")),
+	hazardMsg(321, string("Forwarded the value of rs from writeback to execute.")),
+	hazardMsg(322, string("Forwarded the value of rt from writeback to execute.")),
+	hazardMsg(332, string("Forwarded the value of rt from writeback to memory."))
 };

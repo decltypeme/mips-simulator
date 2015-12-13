@@ -34,17 +34,17 @@ void displayFetch()
 }
 
 void displayHazards()
- {
+{
 	cout << endl << endl;
 	for (int i = 4; i >= 0; i--)
-		 {
+	{
 		if (hazards[i])
-			 {
+		{
 			hazardMsg* msgptr = gethazardMsgPtr(hazards[i]);
 			cout << msgptr->hazard << endl;
-			}
 		}
 	}
+}
 
 void displayStorage()
 {
@@ -66,10 +66,10 @@ void displayStorage()
 
 void fillwithInst()
 {
-	inst_memory[0] = new Addi(1, 1, 1, 0, "addi 1,1,1");
-	inst_memory[1] = new J(0, 1, "J 0");
-	inst_memory[2] = new Xor(2, 2, 2, 2, "xor 2,2,2");
+	inst_memory[0] = new Ble(0, 0, 0, 0, "Ble that branches to next inst");
+	inst_memory[1] = new Xor(0, 0, 0, 4, "XOR $0, $0, $0");
 }
+
 
 #ifdef ___GUI_ENV
 [STAThread]
@@ -122,12 +122,12 @@ int main()
 		writeBack();
 
 		displayHazards();
-
 		displayStorage();
+
 		system("Pause");
 	}
 
 	cout << endl << endl << "End of simulation\n\n";
-	system("Pause"); 
+	system("Pause");
 #endif
 }

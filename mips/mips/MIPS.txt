@@ -1,5 +1,4 @@
 jmp 1 
-#teze hamra
 jmp 2
 jmp 3
 jmp 4

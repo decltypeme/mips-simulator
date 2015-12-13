@@ -3,8 +3,8 @@
 using namespace std;
 
 
-Ble::Ble(int _rt, int _rs,  int _immediate, int _instAddress, string _instString)
-	:iformat(_rt, _rs, _immediate, _instAddress, _instString){}
+Ble::Ble(int _rt, int _rs, int _immediate, int _instAddress, string _instString)
+	:iformat(_rt, _rs, _immediate, _instAddress, _instString) {}
 
 Ble::~Ble() {}
 
@@ -12,8 +12,8 @@ void Ble::fetch()
 {
 	rsData = readRegister(rs);
 	rtData = readRegister(rt);
-	addressIfNotTaken = PC ;
-	addressIfTaken = immediate + PC  ;
+	addressIfNotTaken = PC;
+	addressIfTaken = immediate + PC;
 }
 
 void Ble::execute()
@@ -31,7 +31,12 @@ void Ble::execute()
 	{
 		hazards[z] = 42;
 		z++;
-		int* it = find(begin(hazards), end(hazards), 51);
+		int* it = find(begin(hazards), end(hazards), 41);
+		if (it != end(hazards))
+		{
+			*it = 0;
+		}
+		it = find(begin(hazards), end(hazards), 51);
 		if (it != end(hazards))
 		{
 			*it = 0;
