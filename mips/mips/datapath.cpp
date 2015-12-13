@@ -43,29 +43,7 @@ void fetch()
 		pipeline[3] = pipeline[2];
 		pipeline[2] = pipeline[1];
 		pipeline[1] = new inst();
-
-		Ble* bleptr = dynamic_cast <Ble*> (pipeline[1]);
-
-		J* jptr = dynamic_cast <J*> (pipeline[0]);
-		if (bleptr->addressTrue != jptr->instAddress)
-			pipeline[0] = new inst();
-
-		Jr* jrptr = dynamic_cast <Jr*> (pipeline[0]);
-		if (bleptr->addressTrue != jrptr->instAddress)
-			pipeline[0] = new inst();
-
-		Ret* retptr = dynamic_cast <Ret*> (pipeline[0]);
-		if (bleptr->addressTrue != jptr->instAddress)
-			pipeline[0] = new inst();
-
-		rformat* rptr = dynamic_cast <rformat*> (pipeline[0]);
-		if (bleptr->addressTrue != rptr->instAddress)
-			pipeline[0] = new inst();
-
-		iformat* iptr = dynamic_cast <iformat*> (pipeline[0]);
-		if (bleptr->addressTrue != iptr->instAddress)
-			pipeline[0] = new inst();
-
+		pipeline[0] = new inst();
 	}
 }
 
