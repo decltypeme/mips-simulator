@@ -1,6 +1,6 @@
 #include "parser.h"
 regex hex_reg = regex("(0x)([0-9A-Fa-f]+)");
-regex dec_reg = regex("(0d){0,1}([0-9]+)");
+regex dec_reg = regex("(0d){0,1}([0-9\-]+)");
 immediateType resolveImmediate(const string& strImmediate, bool signExtend)
 {
 	smatch results;

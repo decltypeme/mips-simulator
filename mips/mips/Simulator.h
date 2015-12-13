@@ -351,6 +351,77 @@ namespace mips {
 					 ___updateStackField(2)
 					 ___updateStackField(3)
 			 }
+			 void _GUI_updateColors()
+			 {
+					___SetColorBlack(1)
+					 ___SetColorBlack(2)
+					 ___SetColorBlack(3)
+					 ___SetColorBlack(4)
+					 ___SetColorBlack(5)
+					 ___SetColorBlack(6)
+					 ___SetColorBlack(7)
+					 ___SetColorBlack(8)
+					 ___SetColorBlack(9)
+					 ___SetColorBlack(10)
+						switch (time)
+						{
+						case 1:
+						{
+							___SetColorBlue(1)
+								break;
+						}
+						case 2:
+						{
+							___SetColorBlue(2)
+								break;
+						}
+						case 3:
+						{
+							___SetColorBlue(3)
+								break;
+						}
+						case 4:
+						{
+							___SetColorBlue(4)
+								break;
+						}
+						case 5:
+						{
+							___SetColorBlue(5)
+								break;
+						}
+						case 6:
+						{
+							___SetColorBlue(6)
+								break;
+						}
+						case 7:
+						{
+							___SetColorBlue(7)
+								break;
+						}
+						case 8:
+						{
+							___SetColorBlue(8)
+								break;
+						}
+						case 9:
+						{
+							___SetColorBlue(9)
+								break;
+						}
+						case 10:
+						{
+							___SetColorBlue(10)
+								break;
+						}
+
+						}
+
+
+
+			 }
+
 			 void _GUI_updateRegisterFile() {
 				 Reg0->Text = gcnew String(("00: " + fromContentToString(readRegister(0))).c_str());
 				 Reg1->Text = gcnew String(("01: " + fromContentToString(readRegister(1))).c_str());
@@ -744,6 +815,7 @@ namespace mips {
 				 // 
 				 // ParsingResults
 				 // 
+				 this->ParsingResults->ForeColor = System::Drawing::Color::Red;
 				 this->ParsingResults->Location = System::Drawing::Point(12, 504);
 				 this->ParsingResults->Name = L"ParsingResults";
 				 this->ParsingResults->ReadOnly = true;
@@ -1835,6 +1907,7 @@ namespace mips {
 				 // 
 				 // InstFp1
 				 // 
+				 this->InstFp1->ForeColor = System::Drawing::SystemColors::WindowText;
 				 this->InstFp1->Location = System::Drawing::Point(6, 57);
 				 this->InstFp1->Name = L"InstFp1";
 				 this->InstFp1->ReadOnly = true;
@@ -1980,6 +2053,7 @@ namespace mips {
 				 this->Controls->Add(this->CodeFileLabel);
 				 this->Name = L"Simulator";
 				 this->Text = L"Simulator";
+				 this->Load += gcnew System::EventHandler(this, &Simulator::Simulator_Load);
 				 this->RegistersGroupBox->ResumeLayout(false);
 				 this->RegistersGroupBox->PerformLayout();
 				 this->memGroupBox->ResumeLayout(false);
@@ -2070,6 +2144,7 @@ namespace mips {
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		resetTheSimEnv();
 	}
+
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		try {
 			fetch();
@@ -2084,6 +2159,7 @@ namespace mips {
 			_GUI_updateDataMemory();
 			_GUI_updateFourBoxes();
 			_GUI_updateStack();
+			_GUI_updateColors();
 			time++;
 			if (time > 10)
 				time -= 10;
@@ -2107,5 +2183,7 @@ namespace mips {
 	}
 	private: System::Void label4_Click_1(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void Simulator_Load(System::Object^  sender, System::EventArgs^  e) {
+	}
+};
 }

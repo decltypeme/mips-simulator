@@ -56,6 +56,20 @@ Inst1p##___TIME_ID ->Text = gcnew String(pipeline[1]->instString.c_str());\
 Inst2p##___TIME_ID ->Text = gcnew String(pipeline[2]->instString.c_str());\
 Inst3p##___TIME_ID ->Text = gcnew String(pipeline[3]->instString.c_str());
 
+#define ___SetColorBlue(___TIME_ID)\
+Inst0p##___TIME_ID ->ForeColor = System::Drawing::Color::Red;\
+Inst1p##___TIME_ID ->ForeColor = System::Drawing::Color::Red;\
+Inst2p##___TIME_ID ->ForeColor = System::Drawing::Color::Red;\
+Inst3p##___TIME_ID ->ForeColor = System::Drawing::Color::Red;
+
+#define ___SetColorBlack(___TIME_ID)\
+Inst0p##___TIME_ID ->ForeColor = System::Drawing::Color::Blue;\
+Inst1p##___TIME_ID ->ForeColor = System::Drawing::Color::Blue;\
+Inst2p##___TIME_ID ->ForeColor = System::Drawing::Color::Blue;\
+Inst3p##___TIME_ID ->ForeColor = System::Drawing::Color::Blue;
+
+
+
 #define ___printFetchBox(___TIME_ID)\
 InstFp##___TIME_ID ->Text = gcnew String(inst_memory[PC]->instString.c_str());
 
