@@ -1,6 +1,0 @@
-jmp 1 
-jmp 2
-jmp 3
-jmp 4
-xor $1, $1, $1
-j 0
